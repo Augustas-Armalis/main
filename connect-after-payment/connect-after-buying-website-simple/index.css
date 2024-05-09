@@ -1,0 +1,121 @@
+@font-face {
+  font-family: "Sf";
+  src: url("SFPRODISPLAYREGULAR.OTF") format("truetype");
+}
+
+@font-face {
+  font-family: "New";
+  src: url("NewYork\ PERSONAL\ USE.otf") format("truetype");
+}
+
+@font-face {
+  font-family: "It";
+  src: url("SFPRODISPLAYTHINITALIC.OTF") format("truetype");
+}
+
+
+
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a:focus,
+a:visited,
+a:active {
+  outline: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+::selection {
+  background-color: rgba(150, 150, 150, 0.2);
+}
+
+::-moz-selection {
+  background-color: rgba(150, 150, 150, 0.2);
+}
+
+body {
+  font-family: "Sf";
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  color: white;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#New {
+  font-family: "New";
+}
+
+#It {
+  font-family: "It";
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.heading {
+  font-size: 7vh;
+  margin-bottom: 10vh;
+  width: 100vw;
+}
+
+.below {
+  font-size: 3vh;
+  line-height: 35px;
+  margin-bottom: 2vh;
+}
+
+.below2 {
+  font-size: 2vh;
+  line-height: 30px;
+  margin-bottom: 10vh;
+}
+
+
+@media screen and (max-width: 1024px) {
+
+  .below,
+  .below2 {
+    width: 80vw;
+  }
+}
+
+.images-holder-contacts {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: -15px;
+  margin-bottom: 20px;
+}
+
+#image-link:hover #hover-image {
+  transform: scale(1.1);
+}
