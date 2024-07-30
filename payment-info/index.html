@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Copy Text Example</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="top-container">
+      <img src="seb.jpg" class="seb-image">
+      <p>Click to copy!</p>
+    </div>
+
+    <div class="input-container">
+      <p style="color: #939393">Name:</p>
+      <div class="copy-container" onclick="copyText('Augustas', 'tooltip1')">
+        Augustas
+        <div class="copy-tooltip" id="tooltip1">Copied!</div>
+      </div>
+    </div>
+
+    <div class="input-container">
+      <p style="color: #939393">Surname:</p>
+      <div class="copy-container" onclick="copyText('Armalis', 'tooltip2')">
+        Armalis
+        <div class="copy-tooltip" id="tooltip2">Armalis</div>
+      </div>
+    </div>
+
+    <div class="input-container">
+      <p style="color: #939393">IBAN:</p>
+      <div class="copy-container" onclick="copyText('LT93 7044 0901 0654 3756', 'tooltip3')">
+        LT93 7044 0901 0654 3756
+        <div class="copy-tooltip" id="tooltip3">Copied!</div>
+      </div>
+    </div>
+
+    <div class="input-container">
+      <p style="color: #939393">Gmail:</p>
+      <div class="copy-container" onclick="copyText('armaugustas@gmail.com', 'tooltip4')">
+        armaugustas@gmail.com
+        <div class="copy-tooltip" id="tooltip4">Copied!</div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
