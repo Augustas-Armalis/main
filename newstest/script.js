@@ -46,9 +46,22 @@ function startDrag(e) {
   dragLine.style.height = '3px';
 }
 
+// Track if the drag has started to avoid immediate position changes
+let hasMoved = false;
+
 function onDrag(e) {
   if (!isDragging || window.innerWidth > 768) return;
+
+  // Calculate current position
   const currentY = e.touches ? e.touches[0].clientY : e.clientY;
+
+  // Check if we've moved a significant distance
+  if (!hasMoved && Math.abs(startY - currentY) < 5) {
+    return; // If we haven't moved enough, do nothing
+  }
+
+  hasMoved = true; // Set to true once we've moved
+
   const dy = startY - currentY;
   const newHeight = startHeight + dy;
   const minHeight = window.innerHeight * 0.5;
@@ -70,7 +83,7 @@ function onDrag(e) {
       formContainer.style.flexBasis = `${newFlexBasis}%`;
       imageContainer.style.flexBasis = `${100 - newFlexBasis}%`;
 
-      if (newFlexBasis < 49 && newFlexBasis >= 47) {
+      if (newFlexBasis < 47.5 && newFlexBasis >= 47) {
         formContainer.classList.add('in-radius');
       } else {
         formContainer.classList.remove('in-radius');
@@ -89,6 +102,7 @@ function onDrag(e) {
 
 function endDrag() {
   if (!isDragging) return;
+
   formContainer.style.transition = '';
   imageContainer.style.transition = '';
   const formFlexBasis = parseFloat(getComputedStyle(formContainer).flexBasis);
@@ -107,6 +121,7 @@ function endDrag() {
     targetHeight = 50;
   }
 
+  // New behavior: Apply snapping to 100% if targetHeight is still in the 87-100% zone after inertia
   if (targetHeight >= 87) {
     targetHeight = 100;
   }
@@ -145,7 +160,7 @@ function endDrag() {
       formContainer.classList.remove('full-down');
     }
 
-    if (targetHeight < 49 && targetHeight >= 47) {
+    if (targetHeight < 47.5 && targetHeight >= 47) {
       formContainer.classList.add('in-radius');
     } else {
       formContainer.classList.remove('in-radius');
@@ -157,6 +172,7 @@ function endDrag() {
   }, 16);
 
   isDragging = false;
+  hasMoved = false; // Reset move tracking
   document.body.style.cursor = 'default';
 }
 
