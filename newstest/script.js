@@ -44,6 +44,11 @@ function startDrag(e) {
   dragLine.style.backgroundColor = 'white';
   dragLine.style.width = '90px';
   dragLine.style.height = '3px';
+
+  // Trigger vibration effect on press
+  if (navigator.vibrate) {
+    navigator.vibrate(50); // Vibration for 50 milliseconds
+  }
 }
 
 // Track if the drag has started to avoid immediate position changes
@@ -52,7 +57,6 @@ let hasMoved = false;
 function onDrag(e) {
   if (!isDragging || window.innerWidth > 768) return;
 
-  // Calculate current position
   const currentY = e.touches ? e.touches[0].clientY : e.clientY;
 
   // Check if we've moved a significant distance
@@ -60,7 +64,7 @@ function onDrag(e) {
     return; // If we haven't moved enough, do nothing
   }
 
-  hasMoved = true; // Set to true once we've moved
+  hasMoved = true;
 
   const dy = startY - currentY;
   const newHeight = startHeight + dy;
@@ -83,7 +87,7 @@ function onDrag(e) {
       formContainer.style.flexBasis = `${newFlexBasis}%`;
       imageContainer.style.flexBasis = `${100 - newFlexBasis}%`;
 
-      if (newFlexBasis < 47.5 && newFlexBasis >= 47) {
+      if (newFlexBasis < 49 && newFlexBasis >= 47) {
         formContainer.classList.add('in-radius');
       } else {
         formContainer.classList.remove('in-radius');
@@ -111,6 +115,10 @@ function endDrag() {
   if (formFlexBasis >= 87) {
     targetHeight = 100;
     formContainer.classList.add('full-open');
+    // Trigger vibration effect when reaching 100%
+    if (navigator.vibrate) {
+      navigator.vibrate(100); // Vibration for 100 milliseconds
+    }
   } else {
     targetHeight = formFlexBasis - (velocity * bounceFactor * 5);
   }
@@ -160,8 +168,12 @@ function endDrag() {
       formContainer.classList.remove('full-down');
     }
 
-    if (targetHeight < 47.5 && targetHeight >= 47) {
+    // Trigger vibration effect when reaching 47%
+    if (targetHeight < 49 && targetHeight >= 47) {
       formContainer.classList.add('in-radius');
+      if (navigator.vibrate) {
+        navigator.vibrate(100); // Vibration for 100 milliseconds
+      }
     } else {
       formContainer.classList.remove('in-radius');
     }
