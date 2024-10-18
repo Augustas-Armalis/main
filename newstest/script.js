@@ -47,7 +47,7 @@ function startDrag(e) {
 
   // Trigger vibration effect on press
   if (navigator.vibrate) {
-    navigator.vibrate(50); // Vibration for 50 milliseconds
+    navigator.vibrate(50);
   }
 }
 
@@ -66,8 +66,8 @@ function onDrag(e) {
 
   hasMoved = true;
 
-  const dy = startY - currentY;
-  const newHeight = startHeight + dy;
+  const dy = currentY - startY; // Adjust dy to measure distance moved from start
+  const newHeight = startHeight - dy; // Subtract dy from the starting height
   const minHeight = window.innerHeight * 0.5;
   const maxHeight = window.innerHeight;
 
@@ -117,7 +117,7 @@ function endDrag() {
     formContainer.classList.add('full-open');
     // Trigger vibration effect when reaching 100%
     if (navigator.vibrate) {
-      navigator.vibrate(100); // Vibration for 100 milliseconds
+      navigator.vibrate(100);
     }
   } else {
     targetHeight = formFlexBasis - (velocity * bounceFactor * 5);
@@ -172,7 +172,7 @@ function endDrag() {
     if (targetHeight < 49 && targetHeight >= 47) {
       formContainer.classList.add('in-radius');
       if (navigator.vibrate) {
-        navigator.vibrate(100); // Vibration for 100 milliseconds
+        navigator.vibrate(100);
       }
     } else {
       formContainer.classList.remove('in-radius');
