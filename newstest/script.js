@@ -41,11 +41,11 @@ function startDrag(e) {
   formContainer.style.transition = 'none';
   imageContainer.style.transition = 'none';
 
-  lastY = startY;
-  lastTimestamp = performance.now();
+  lastY = startY; // Initialize lastY with the starting position
+  lastTimestamp = performance.now(); // Get the current timestamp
 
-  document.body.style.cursor = 'grabbing';
-  e.preventDefault();
+  document.body.style.cursor = 'grabbing'; // Change cursor
+  e.preventDefault(); // Prevent default behavior
 
   // Change drag line style
   dragLine.style.backgroundColor = 'white';
@@ -64,26 +64,15 @@ function onDrag(e) {
   const currentY = e.touches ? e.touches[0].clientY : e.clientY;
 
   // Calculate the change in Y position (dy)
-  const dy = startY - currentY;
-  const newHeight = startHeight + dy;
+  const dy = startY - currentY; // Calculate the difference
+  const newHeight = startHeight + dy; // Update the new height based on dy
 
-  const minHeight = window.innerHeight * 0.5;
-  const maxHeight = window.innerHeight;
+  const minHeight = window.innerHeight * 0.5; // Minimum height is 50% of the viewport
+  const maxHeight = window.innerHeight; // Maximum height is 100% of the viewport
 
+  // Check if the new height is within bounds
   if (newHeight >= minHeight - 20 && newHeight <= maxHeight + 20) {
     const newFlexBasis = (newHeight / window.innerHeight) * 100;
-
-    // Calculate velocity for inertia effect
-    const currentTimestamp = performance.now();
-    const deltaTime = currentTimestamp - lastTimestamp;
-
-    if (deltaTime > 0) {
-      // Update velocity in pixels per millisecond
-      velocity = (currentY - lastY) / deltaTime; // Current velocity
-    }
-
-    lastY = currentY; // Update last Y position
-    lastTimestamp = currentTimestamp;
 
     // Use requestAnimationFrame for smoother updates
     window.requestAnimationFrame(() => {
@@ -106,7 +95,7 @@ function onDrag(e) {
     });
   }
 
-  e.preventDefault();
+  e.preventDefault(); // Prevent unwanted behaviors like page scrolling
 }
 
 function endDrag() {
@@ -120,14 +109,14 @@ function endDrag() {
 
   // Check if we should fill to 100%
   if (formFlexBasis >= 87) {
-    targetHeight = 100;
-    formContainer.classList.add('full-open');
+    targetHeight = 100; // Set target height to 100%
+    formContainer.classList.add('full-open'); // Ensure full-open class is added
     // Trigger vibration effect when reaching 100%
     if (navigator.vibrate) {
       navigator.vibrate(100);
     }
   } else {
-    targetHeight = formFlexBasis - (velocity * bounceFactor * 5);
+    targetHeight = formFlexBasis - (velocity * bounceFactor * 5); // Adjust target height based on velocity
   }
 
   // Limit the target height
@@ -147,7 +136,7 @@ function endDrag() {
   dragLine.style.transform = 'scale(1.05, 1.05)';
   setTimeout(() => {
     dragLine.style.transform = 'scale(1, 1)';
-  }, 150);
+  }, 150); // Adjust timing as needed
 
   // Apply transition for smooth effect
   formContainer.style.transition = 'flex-basis 0.3s cubic-bezier(0.25, 1, 0.5, 1)';
@@ -161,44 +150,48 @@ function endDrag() {
   const inertiaInterval = setInterval(() => {
     if (Math.abs(velocity) < 0.1) {
       clearInterval(inertiaInterval);
-      return;
+      return; // Stop when velocity is small
     }
 
-    targetHeight -= velocity * bounceFactor;
+    targetHeight -= velocity * bounceFactor; // Apply inverted inertia
 
+    // Cap the targetHeight at 100% and 50%
     if (targetHeight > 100) {
-      targetHeight = 100;
-      formContainer.classList.add('full-open');
+      targetHeight = 100; // Limit to 100%
+      formContainer.classList.add('full-open'); // Ensure the class is added when fully open
     } else if (targetHeight < 50) {
-      targetHeight = 50;
-      formContainer.classList.remove('full-open');
-      formContainer.classList.add('full-down');
+      targetHeight = 50; // Limit to 50%
+      formContainer.classList.remove('full-open'); // Remove class if not fully open
+      formContainer.classList.add('full-down'); // Add class when below 50%
     } else {
-      formContainer.classList.remove('full-down');
+      formContainer.classList.remove('full-down'); // Remove class when above 50%
     }
 
+    // Check for the 47% to 49% zone for border radius
     if (targetHeight < 49 && targetHeight >= 47) {
-      formContainer.classList.add('in-radius');
+      formContainer.classList.add('in-radius'); // Add class to round the corners
       if (navigator.vibrate) {
-        navigator.vibrate(100);
+        navigator.vibrate(100); // Trigger vibration when reaching the radius zone
       }
     } else {
-      formContainer.classList.remove('in-radius');
+      formContainer.classList.remove('in-radius'); // Remove class if outside the zone
     }
 
+    // Update height with transition
     formContainer.style.flexBasis = `${targetHeight}%`;
     imageContainer.style.flexBasis = `${100 - targetHeight}%`;
 
-    // Reduce velocity for smooth inertia
-    velocity *= velocityDecay;
+    // Reduce velocity
+    velocity *= velocityDecay; // Gradually reduce velocity
   }, 16); // Roughly 60 FPS
 
-  isDragging = false;
-  document.body.style.cursor = 'default';
+  isDragging = false; // Reset dragging state
+  document.body.style.cursor = 'default'; // Reset cursor
 }
 
 const nonPassiveOptions = { passive: false };
 
+// Add event listeners for both touch and mouse events with non-passive option
 dragLineContainer.addEventListener('mousedown', startDrag);
 dragLineContainer.addEventListener('touchstart', startDrag, nonPassiveOptions);
 document.addEventListener('mousemove', onDrag);
@@ -208,4 +201,5 @@ document.addEventListener('touchend', endDrag);
 dragLineContainer.addEventListener('mouseenter', handleHover);
 dragLineContainer.addEventListener('mouseleave', handleMouseLeave);
 
+// Initialize layout on page load
 window.addEventListener('load', initializeLayout);
