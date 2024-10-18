@@ -1,0 +1,329 @@
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
+  font-family: var(--ff);
+  background-color: var(--black);
+  color: var(--white);
+  overflow: hidden;
+}
+
+img,
+video {
+  pointer-events: none;
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a:focus,
+a:visited,
+a:active {
+  outline: none;
+}
+
+::selection {
+  background-color: hsla(235, 3%, 90%, 0.2);
+}
+
+::-moz-selection {
+  background-color: hsla(235, 3%, 90%, 0.2);
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  font-weight: 400;
+  font-style: normal;
+  src: url('fonts/Sf\ Pro\ Display\ REGULAR.OTF') format('truetype');
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  font-weight: 500;
+  font-style: normal;
+  src: url('fonts/Sf\ Pro\ Display\ MEDIUM.OTF') format('truetype');
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  font-weight: 700;
+  font-style: normal;
+  src: url('fonts/Sf\ Pro\ Display\ BOLD.OTF') format('truetype');
+}
+
+:root {
+  font-size: 20px;
+
+  --margin-xxs: 0.25rem;
+  --margin-xs: 0.5rem;
+  --margin-s: 0.75rem;
+  --margin-m: 1rem;
+  --margin-l: 1.25rem;
+  --margin-xl: 1.75rem;
+  --margin-xxl: 2.5rem;
+
+  --black: #000000;
+  --white: #ffffff;
+  --gray1: hsla(235, 5%, 83%, 1);
+  --gray2: hsla(235, 5%, 71%, 1);
+  --gray3: hsla(235, 5%, 15%, 1);
+  --gray4: hsla(235, 5%, 9%, 1);
+  --gray5: hsla(235, 5%, 6%, 1);
+
+  --ff: 'SF Pro Display', arial;
+
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-bold: 700;
+
+  --h1-bold: var(--font-bold) 4rem/4rem var(--ff);
+  --h1-medium: var(--font-medium) 4rem/4rem var(--ff);
+  --h1-regular: var(--font-regular) 4rem/4rem var(--ff);
+
+  --h2-bold: var(--font-bold) 3.5rem/3.5rem var(--ff);
+  --h2-medium: var(--font-medium) 3.5rem/3.5rem var(--ff);
+  --h2-regular: var(--font-regular) 3.5rem/3.5rem var(--ff);
+
+  --h3-bold: var(--font-bold) 2.5rem/2.5rem var(--ff);
+  --h3-medium: var(--font-medium) 2.5rem/2.5rem var(--ff);
+  --h3-regular: var(--font-regular) 2.5rem/2.5rem var(--ff);
+
+  --h4-bold: var(--font-bold) 1.75rem/1.75rem var(--ff);
+  --h4-medium: var(--font-medium) 1.75rem/1.75rem var(--ff);
+  --h4-regular: var(--font-regular) 1.75rem/1.75rem var(--ff);
+
+  --big-bold: var(--font-bold) 1.25rem/1.25rem var(--ff);
+  --big-medium: var(--font-medium) 1.25rem/1.25rem var(--ff);
+  --big-regular: var(--font-regular) 1.25rem/1.25rem var(--ff);
+
+  --p-bold: var(--font-bold) 1rem/1rem var(--ff);
+  --p-medium: var(--font-medium) 1rem/1rem var(--ff);
+  --p-regular: var(--font-regular) 1rem/1rem var(--ff);
+
+  --small-bold: var(--font-bold) 0.875rem/0.875rem var(--ff);
+  --small-medium: var(--font-medium) 0.875rem/0.875rem var(--ff);
+  --small-regular: var(--font-regular) 0.875rem/0.875rem var(--ff);
+}
+
+@media (max-width: 768px) {
+  :root {
+    font-size: 18px;
+
+    --h1-bold: var(--font-bold) 3rem/3rem var(--ff);
+    --h1-medium: var(--font-medium) 3rem/3rem var(--ff);
+    --h1-regular: var(--font-regular) 3rem/3rem var(--ff);
+
+    --h2-bold: var(--font-bold) 2.5rem/2.5rem var(--ff);
+    --h2-medium: var(--font-medium) 2.5rem/2.5rem var(--ff);
+    --h2-regular: var(--font-regular) 2.5rem/2.5rem var(--ff);
+
+    --h3-bold: var(--font-bold) 2rem/2rem var(--ff);
+    --h3-medium: var(--font-medium) 2rem/2rem var(--ff);
+    --h3-regular: var(--font-regular) 2rem/2rem var(--ff);
+
+    --h4-bold: var(--font-bold) 1.5rem/1.5rem var(--ff);
+    --h4-medium: var(--font-medium) 1.5rem/1.5rem var(--ff);
+    --h4-regular: var(--font-regular) 1.5rem/1.5rem var(--ff);
+
+    --big-bold: var(--font-bold) 1.125rem/1.125rem var(--ff);
+    --big-medium: var(--font-medium) 1.125rem/1.125rem var(--ff);
+    --big-regular: var(--font-regular) 1.125rem/1.125rem var(--ff);
+
+    --p-bold: var(--font-bold) 0.9rem/0.9rem var(--ff);
+    --p-medium: var(--font-medium) 0.9rem/0.9rem var(--ff);
+    --p-regular: var(--font-regular) 0.9rem/0.9rem var(--ff);
+
+    --small-bold: var(--font-bold) 0.75rem/0.75rem var(--ff);
+    --small-medium: var(--font-medium) 0.75rem/0.75rem var(--ff);
+    --small-regular: var(--font-regular) 0.75rem/0.75rem var(--ff);
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    font-size: 16px;
+
+    --h1-bold: var(--font-bold) 2.5rem/2.5rem var(--ff);
+    --h1-medium: var(--font-medium) 2.5rem/2.5rem var(--ff);
+    --h1-regular: var(--font-regular) 2.5rem/2.5rem var(--ff);
+
+    --h2-bold: var(--font-bold) 2rem/2rem var(--ff);
+    --h2-medium: var(--font-medium) 2rem/2rem var(--ff);
+    --h2-regular: var(--font-regular) 2rem/2rem var(--ff);
+
+    --h3-bold: var(--font-bold) 1.5rem/1.5rem var(--ff);
+    --h3-medium: var(--font-medium) 1.5rem/1.5rem var(--ff);
+    --h3-regular: var(--font-regular) 1.5rem/1.5rem var(--ff);
+
+    --h4-bold: var(--font-bold) 1.25rem/1.25rem var(--ff);
+    --h4-medium: var(--font-medium) 1.25rem/1.25rem var(--ff);
+    --h4-regular: var(--font-regular) 1.25rem/1.25rem var(--ff);
+
+    --big-bold: var(--font-bold) 1rem/1rem var(--ff);
+    --big-medium: var(--font-medium) 1rem/1rem var(--ff);
+    --big-regular: var(--font-regular) 1rem/1rem var(--ff);
+
+    --p-bold: var(--font-bold) 0.875rem/0.875rem var(--ff);
+    --p-medium: var(--font-medium) 0.875rem/0.875rem var(--ff);
+    --p-regular: var(--font-regular) 0.875rem/0.875rem var(--ff);
+
+    --small-bold: var(--font-bold) 0.75rem/0.75rem var(--ff);
+    --small-medium: var(--font-medium) 0.75rem/0.75rem var(--ff);
+    --small-regular: var(--font-regular) 0.75rem/0.75rem var(--ff);
+  }
+}
+
+
+h1 {
+  font: var(--h1-regular);
+}
+
+h2 {
+  font: var(--h2-regular);
+}
+
+h3 {
+  font: var(--h3-regular);
+}
+
+h4 {
+  font: var(--h4-regular);
+}
+
+p {
+  font: var(--p-regular);
+}
+
+/* ------------------------------------------------------------------------------------------ */
+
+.drag-line {
+  display: none;
+}
+
+.form-side-container,
+.image-side-container {
+  height: 100vh;
+  /* Ensure both sides take full height */
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.image-side-container {
+  flex: 1;
+  background-color: var(--gray3);
+  width: 100vw;
+  height: 100vh;
+}
+
+.form-side-container {
+  flex: 1;
+  background-color: var(--black);
+  width: 100vw;
+  height: 100%;
+  position: relative;
+}
+
+.centered-rectangle {
+  width: 50px;
+  height: 50px;
+  background-color: var(--gray1);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.centered-rectangle2 {
+  width: 50px;
+  height: 50px;
+  background-color: brown;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    /* Stack elements on mobile */
+  }
+
+  .image-side-container {
+    flex-basis: 50%;
+    /* Set image side to take half height */
+  }
+
+  .form-side-container {
+    flex: 1;
+    background-color: var(--black);
+    width: 100%;
+    height: 100vh;
+    /* Keep full height on mobile */
+    position: relative;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    transition: border-top-left-radius 1s ease, border-top-right-radius 1s ease, flex-basis 1s ease;
+  }
+
+  .form-side-container.full-open {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+  }
+
+  .form-side-container.in-radius {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    transition: border-top-left-radius 0.3s ease, border-top-right-radius 0.3s ease;
+  }
+
+  .the-overlaping-image-container {
+    background-color: var(--gray2);
+    width: 100%;
+    height: 60%;
+    position: absolute;
+  }
+
+  .drag-line-container {
+    width: 70%;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 9999px;
+    cursor: pointer;
+    margin-top: 15px;
+    padding-top: 25px;
+    position: relative;
+    z-index: 1;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .drag-line {
+    width: 100px;
+    height: 5px;
+    background-color: hsla(235, 5%, 25%, 1);
+    margin: auto;
+    border-radius: 2.5px;
+    transition: background-color 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+      width 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+      height 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    display: block;
+  }
+}
