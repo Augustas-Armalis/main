@@ -137,7 +137,7 @@ function handleLinkClick() {
 
     // Fly off the link container to the left
     gsap.to(linkContainer, {
-        x: '-100%', // Move completely off the screen
+        x: '-800%', // Move completely off the screen
         duration: 0.5,
         ease: "power2.inOut",
         onComplete: () => {
@@ -257,5 +257,22 @@ touchArea.addEventListener('mouseleave', () => {
         backgroundColor: '#3D3D42',
         duration: 0.25,
         ease: "cubic-bezier(0.25, 0.1, 0.25, 1)"
+    });
+});
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const linkContainer = document.querySelector(".link-container-mobile");
+
+    linkContainer.addEventListener("click", function () {
+        // Toggle the active class on click
+        this.classList.toggle("active");
+
+        // Optionally redirect to the URL if needed
+        // window.location.href = this.getAttribute('data-url');
     });
 });

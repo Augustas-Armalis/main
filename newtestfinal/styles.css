@@ -233,6 +233,7 @@ p {
         transition: height 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-radius 0.3s ease;
         border-top-left-radius: 16px;
         border-top-right-radius: 16px;
+        cursor: default;
     }
 
     .line-mobile {
@@ -297,27 +298,48 @@ p {
         justify-content: center;
         cursor: pointer;
         padding: 16px;
+        transition: transform 0.1s ease-in;
+        /* Transition for scaling effect */
     }
 
     .arrow-mobile {
         height: 12px;
         width: auto;
+        /* Transition for color change */
     }
 
     .link-mobile {
         font: var(--p-regular);
         text-decoration: none;
         color: white;
+        transition: color 0.3s ease;
+        /* Transition for color change */
     }
 
-    .form-container-mobile {
-        cursor: default;
-        /* or any other cursor property */
+    .link-container-mobile:hover .link-mobile {
+        color: var(--gray2);
+        /* Change link text color */
     }
 
-    .line-mobile {
-        cursor: grab;
-        /* This should allow grabbing when hovering over the line */
+    .link-container-mobile:hover .arrow-mobile {
+        filter: brightness(100);
+        /* Change arrow color */
+    }
+
+    /* Active state */
+    .link-container-mobile.active {
+        transform: scale(0.05);
+        /* Scale down effect */
+    }
+
+    .link-container-mobile.active .link-mobile {
+        color: var(--gray2);
+        /* Change text color */
+    }
+
+    .link-container-mobile.active .arrow-mobile {
+        filter: brightness(100);
+        /* Change arrow color */
     }
 
 }
