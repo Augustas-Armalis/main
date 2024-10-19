@@ -137,8 +137,8 @@ function handleLinkClick() {
 
     // Fly off the link container to the left
     gsap.to(linkContainer, {
-        x: '-800%', // Move completely off the screen
-        duration: 0.5,
+        x: '-2000%', // Move completely off the screen
+        duration: 0.4,
         ease: "power2.inOut",
         onComplete: () => {
             const url = linkContainer.getAttribute('data-url'); // Get the URL from data attribute
@@ -153,6 +153,31 @@ function handleLinkClick() {
         duration: 0.5,
         ease: "power2.inOut"
     });
+}
+
+// Resetting page state when coming back
+document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "visible") {
+        resetNewsletter(); // Call the function to reset your newsletter state
+    }
+});
+
+// Function to reset the newsletter state
+function resetNewsletter() {
+    // Resetting code goes here
+    container.style.height = '50%'; // Example: Reset to initial height
+    container.style.borderWidth = '4px'; // Example: Reset border width
+    container.style.borderTopLeftRadius = '16px'; // Reset border radius
+    container.style.borderTopRightRadius = '16px'; // Reset border radius
+
+    gsap.to(insideContent, { opacity: 1, duration: 0.5 }); // Fade in inside content
+    gsap.to(touchArea, { opacity: 1, duration: 0.5 }); // Fade in touch area
+
+    // Reset link container position
+    linkContainer.style.transform = 'translateX(0)'; // Reset the link container position if necessary
+    linkContainer.style.opacity = '1'; // Make sure it's visible again
+
+    // Any other state resets as needed
 }
 
 // Event listeners
@@ -259,11 +284,6 @@ touchArea.addEventListener('mouseleave', () => {
         ease: "cubic-bezier(0.25, 0.1, 0.25, 1)"
     });
 });
-
-
-
-
-
 
 document.addEventListener("DOMContentLoaded", function () {
     const linkContainer = document.querySelector(".link-container-mobile");

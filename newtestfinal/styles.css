@@ -4,7 +4,7 @@ html {
     font-family: var(--ff);
     background-color: var(--black);
     color: var(--white);
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 img,
