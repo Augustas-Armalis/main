@@ -162,22 +162,42 @@ document.addEventListener("visibilitychange", function () {
     }
 });
 
-// Function to reset the newsletter state
 function resetNewsletter() {
-    // Resetting code goes here
+    // Resetting the main container's properties
     container.style.height = '50%'; // Example: Reset to initial height
     container.style.borderWidth = '4px'; // Example: Reset border width
     container.style.borderTopLeftRadius = '16px'; // Reset border radius
     container.style.borderTopRightRadius = '16px'; // Reset border radius
 
+    // Resetting the link container's styles
+    linkContainer.classList.remove('active'); // Remove active state class
+    linkContainer.style.transform = 'scale(1)'; // Reset scale
+    linkContainer.style.opacity = '1'; // Make sure it's visible
+    linkContainer.style.transition = 'transform 0.1s ease-in'; // Reset transition
+    gsap.to(linkContainer, {
+        x: '0%', // Reset position
+        duration: 0.3,
+        ease: "power2.out"
+    });
+
+    // Fade in inside content and touch area
     gsap.to(insideContent, { opacity: 1, duration: 0.5 }); // Fade in inside content
     gsap.to(touchArea, { opacity: 1, duration: 0.5 }); // Fade in touch area
 
     // Reset link container position
     linkContainer.style.transform = 'translateX(0)'; // Reset the link container position if necessary
-    linkContainer.style.opacity = '1'; // Make sure it's visible again
 
-    // Any other state resets as needed
+    // Reset arrow styles if applicable
+    const arrows = document.querySelectorAll('.arrow-mobile');
+    arrows.forEach(arrow => {
+        arrow.style.filter = 'brightness(1)'; // Reset brightness
+    });
+
+    // Reset link text styles
+    const links = document.querySelectorAll('.link-mobile');
+    links.forEach(link => {
+        link.style.color = 'white'; // Reset link color
+    });
 }
 
 // Event listeners
@@ -288,7 +308,7 @@ touchArea.addEventListener('mouseleave', () => {
 document.addEventListener("DOMContentLoaded", function () {
     const linkContainer = document.querySelector(".link-container-mobile");
 
-    linkContainer.addEventListener("click", function () {
+    linkContainer.addEventListener("mouse", function () {
         // Toggle the active class on click
         this.classList.toggle("active");
 
