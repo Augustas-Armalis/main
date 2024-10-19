@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  background-color: #000;
+}
+
+.container {
+  position: fixed;
+  bottom: 0;
+  /* Start from the bottom */
+  width: 100%;
+  /* Full width of the viewport */
+  height: 50vh;
+  /* Start at 50% of the viewport height */
+  max-height: 100vh;
+  /* Allow resizing up to 100% of viewport height */
+  min-height: 50vh;
+  /* Minimum height at 50% of viewport height */
+  background-color: #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Removed transition for instant response during dragging */
+
+}
+
+.drag-handle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background-color: white;
+  cursor: ns-resize;
+}
+
+.center-box {
+  width: 80px;
+  height: 80px;
+  background-color: lightgray;
+}
+
+/* Apply resizing only on screens smaller than 768px */
+@media (min-width: 768px) {
+  .container {
+    display: none;
+    /* Hide the resizable container on larger screens */
+  }
+}
