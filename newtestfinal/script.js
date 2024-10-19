@@ -170,22 +170,21 @@ function resetNewsletter() {
     container.style.borderTopRightRadius = '16px'; // Reset border radius
 
     // Resetting the link container's styles
+    gsap.killTweensOf(linkContainer); // Stop any ongoing animations
     linkContainer.classList.remove('active'); // Remove active state class
-    linkContainer.style.transform = 'scale(1)'; // Reset scale
-    linkContainer.style.opacity = '1'; // Make sure it's visible
-    linkContainer.style.transition = 'transform 0.1s ease-in'; // Reset transition
-    gsap.to(linkContainer, {
-        x: '0%', // Reset position
-        duration: 0.3,
-        ease: "power2.out"
-    });
+    linkContainer.style.transform = 'scale(1)'; // Reset scale to original size
+    linkContainer.style.opacity = '1'; // Ensure it is fully visible
+    linkContainer.style.transition = 'none'; // Disable transition for immediate reset
+
+    // Move link container back into view
+    gsap.set(linkContainer, { x: '0%', duration: 0 }); // Reset position instantly
 
     // Fade in inside content and touch area
     gsap.to(insideContent, { opacity: 1, duration: 0.5 }); // Fade in inside content
     gsap.to(touchArea, { opacity: 1, duration: 0.5 }); // Fade in touch area
 
     // Reset link container position
-    linkContainer.style.transform = 'translateX(0)'; // Reset the link container position if necessary
+    linkContainer.style.transform = 'translateX(0)'; // Reset the link container position
 
     // Reset arrow styles if applicable
     const arrows = document.querySelectorAll('.arrow-mobile');
@@ -199,6 +198,7 @@ function resetNewsletter() {
         link.style.color = 'white'; // Reset link color
     });
 }
+
 
 // Event listeners
 dragHandle.addEventListener('mousedown', startDrag);
