@@ -1,52 +1,256 @@
+html {
+scroll-behavior: smooth;
+scroll-padding-top: 4rem;
+font-family: var(--ff);
+background-color: var(--gray2);
+color: var(--white);
+overflow: hidden;
+}
+
+img,
+video {
+pointer-events: none;
+}
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body,
-  html {
-    height: 100%;
-    background-color: #b6b6b6;
-  }
-  
-  
-  .container {
+-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+
+input,
+textarea,
+button,
+select,
+a {
+-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a:focus,
+a:visited,
+a:active {
+outline: none;
+}
+
+::selection {
+background-color: hsla(235, 3%, 90%, 0.2);
+}
+
+::-moz-selection {
+background-color: hsla(235, 3%, 90%, 0.2);
+}
+
+@font-face {
+font-family: 'SF Pro Display';
+font-weight: 400;
+font-style: normal;
+src: url('fonts/Sf\ Pro\ Display\ REGULAR.OTF') format('truetype');
+}
+
+@font-face {
+font-family: 'SF Pro Display';
+font-weight: 500;
+font-style: normal;
+src: url('fonts/Sf\ Pro\ Display\ MEDIUM.OTF') format('truetype');
+}
+
+@font-face {
+font-family: 'SF Pro Display';
+font-weight: 700;
+font-style: normal;
+src: url('fonts/Sf\ Pro\ Display\ BOLD.OTF') format('truetype');
+}
+
+:root {
+font-size: 20px;
+
+--margin-xxs: 0.25rem;
+--margin-xs: 0.5rem;
+--margin-s: 0.75rem;
+--margin-m: 1rem;
+--margin-l: 1.25rem;
+--margin-xl: 1.75rem;
+--margin-xxl: 2.5rem;
+
+--black: #000000;
+--white: #ffffff;
+--gray1: hsla(235, 5%, 83%, 1);
+--gray2: hsla(235, 5%, 71%, 1);
+--gray25: #3D3D42;
+--gray3: hsla(235, 5%, 15%, 1);
+--gray4: hsla(235, 5%, 9%, 1);
+--gray5: hsla(235, 5%, 6%, 1);
+
+--ff: 'SF Pro Display', arial;
+
+--font-regular: 400;
+--font-medium: 500;
+--font-bold: 700;
+
+--h1-bold: var(--font-bold) 4rem/4rem var(--ff);
+--h1-medium: var(--font-medium) 4rem/4rem var(--ff);
+--h1-regular: var(--font-regular) 4rem/4rem var(--ff);
+
+--h2-bold: var(--font-bold) 3.5rem/3.5rem var(--ff);
+--h2-medium: var(--font-medium) 3.5rem/3.5rem var(--ff);
+--h2-regular: var(--font-regular) 3.5rem/3.5rem var(--ff);
+
+--h3-bold: var(--font-bold) 2.5rem/2.5rem var(--ff);
+--h3-medium: var(--font-medium) 2.5rem/2.5rem var(--ff);
+--h3-regular: var(--font-regular) 2.5rem/2.5rem var(--ff);
+
+--h4-bold: var(--font-bold) 1.75rem/1.75rem var(--ff);
+--h4-medium: var(--font-medium) 1.75rem/1.75rem var(--ff);
+--h4-regular: var(--font-regular) 1.75rem/1.75rem var(--ff);
+
+--big-bold: var(--font-bold) 1.25rem/1.25rem var(--ff);
+--big-medium: var(--font-medium) 1.25rem/1.25rem var(--ff);
+--big-regular: var(--font-regular) 1.25rem/1.25rem var(--ff);
+
+--p-bold: var(--font-bold) 1rem/1rem var(--ff);
+--p-medium: var(--font-medium) 1rem/1rem var(--ff);
+--p-regular: var(--font-regular) 1rem/1rem var(--ff);
+
+--small-bold: var(--font-bold) 0.875rem/0.875rem var(--ff);
+--small-medium: var(--font-medium) 0.875rem/0.875rem var(--ff);
+--small-regular: var(--font-regular) 0.875rem/0.875rem var(--ff);
+}
+
+@media (max-width: 768px) {
+:root {
+    font-size: 18px;
+
+    --h1-bold: var(--font-bold) 3rem/3rem var(--ff);
+    --h1-medium: var(--font-medium) 3rem/3rem var(--ff);
+    --h1-regular: var(--font-regular) 3rem/3rem var(--ff);
+
+    --h2-bold: var(--font-bold) 2.5rem/2.5rem var(--ff);
+    --h2-medium: var(--font-medium) 2.5rem/2.5rem var(--ff);
+    --h2-regular: var(--font-regular) 2.5rem/2.5rem var(--ff);
+
+    --h3-bold: var(--font-bold) 2rem/2rem var(--ff);
+    --h3-medium: var(--font-medium) 2rem/2rem var(--ff);
+    --h3-regular: var(--font-regular) 2rem/2rem var(--ff);
+
+    --h4-bold: var(--font-bold) 1.5rem/1.5rem var(--ff);
+    --h4-medium: var(--font-medium) 1.5rem/1.5rem var(--ff);
+    --h4-regular: var(--font-regular) 1.5rem/1.5rem var(--ff);
+
+    --big-bold: var(--font-bold) 1.125rem/1.125rem var(--ff);
+    --big-medium: var(--font-medium) 1.125rem/1.125rem var(--ff);
+    --big-regular: var(--font-regular) 1.125rem/1.125rem var(--ff);
+
+    --p-bold: var(--font-bold) 0.9rem/0.9rem var(--ff);
+    --p-medium: var(--font-medium) 0.9rem/0.9rem var(--ff);
+    --p-regular: var(--font-regular) 0.9rem/0.9rem var(--ff);
+
+    --small-bold: var(--font-bold) 0.75rem/0.75rem var(--ff);
+    --small-medium: var(--font-medium) 0.75rem/0.75rem var(--ff);
+    --small-regular: var(--font-regular) 0.75rem/0.75rem var(--ff);
+}
+}
+
+@media (max-width: 480px) {
+:root {
+    font-size: 16px;
+
+    --h1-bold: var(--font-bold) 2.5rem/2.5rem var(--ff);
+    --h1-medium: var(--font-medium) 2.5rem/2.5rem var(--ff);
+    --h1-regular: var(--font-regular) 2.5rem/2.5rem var(--ff);
+
+    --h2-bold: var(--font-bold) 2rem/2rem var(--ff);
+    --h2-medium: var(--font-medium) 2rem/2rem var(--ff);
+    --h2-regular: var(--font-regular) 2rem/2rem var(--ff);
+
+    --h3-bold: var(--font-bold) 1.5rem/1.5rem var(--ff);
+    --h3-medium: var(--font-medium) 1.5rem/1.5rem var(--ff);
+    --h3-regular: var(--font-regular) 1.5rem/1.5rem var(--ff);
+
+    --h4-bold: var(--font-bold) 1.25rem/1.25rem var(--ff);
+    --h4-medium: var(--font-medium) 1.25rem/1.25rem var(--ff);
+    --h4-regular: var(--font-regular) 1.25rem/1.25rem var(--ff);
+
+    --big-bold: var(--font-bold) 1rem/1rem var(--ff);
+    --big-medium: var(--font-medium) 1rem/1rem var(--ff);
+    --big-regular: var(--font-regular) 1rem/1rem var(--ff);
+
+    --p-bold: var(--font-bold) 0.875rem/0.875rem var(--ff);
+    --p-medium: var(--font-medium) 0.875rem/0.875rem var(--ff);
+    --p-regular: var(--font-regular) 0.875rem/0.875rem var(--ff);
+
+    --small-bold: var(--font-bold) 0.75rem/0.75rem var(--ff);
+    --small-medium: var(--font-medium) 0.75rem/0.75rem var(--ff);
+    --small-regular: var(--font-regular) 0.75rem/0.75rem var(--ff);
+}
+}
+
+
+h1 {
+font: var(--h1-regular);
+}
+
+h2 {
+font: var(--h2-regular);
+}
+
+h3 {
+font: var(--h3-regular);
+}
+
+h4 {
+font: var(--h4-regular);
+}
+
+p {
+font: var(--p-regular);
+}
+
+/* ------------------------------------------------------------------------------------------ */
+
+.mobile-container{
+    display: none;
+}
+
+@media (max-width: 768px) {
+
+    .mobile-container{
+        display: block;
+    }
+
+    .form-container-mobile {
     position: fixed;
     bottom: 0;
     width: 100%;
     height: 50vh;
     max-height: 100%;
     min-height: 47%;
-    background-color: #000000;
+    background-color: var(--black);
     display: flex;
     justify-content: center;
     align-items: center;
     transition: height 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-radius 0.3s ease;
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
-  }
-  
-  .drag-handle {
+    }
+
+    .line-mobile {
     position: absolute;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
     width: 100px;
     height: 5px;
-    background-color: #3D3D42;
+    background-color: var(--gray25);
     border-radius: 999px;
     cursor: ns-resize;
     z-index: 2;
     margin-top: 20px;
-    /* transition: width 0.15s ease, height 0.15s ease, background-color 0.15s ease; */
     transition: background-color 0.05s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
 
-    /* Smooth transitions */
-  }
-  
-  
-  .touch-area {
+    .touch-area {
     position: absolute;
     top: 0;
     left: 0;
@@ -55,25 +259,38 @@
     background-color: transparent;
     cursor: ns-resize;
     margin-top: -10px;
-  }
-  
-  .center-box {
+    }
+
+    .center-box {
     width: 80px;
     height: 80px;
     background-color: lightgray;
-  }
-  
-  /* Hover effects */
-  .touch-area:hover+.drag-handle {
+    }
+
+    .center-box2 {
+    width: 80px;
+    height: 80px;
+    background-color: lightgray;
+    }
+
+    .touch-area:hover+.line-mobile {
     width: 100px;
     height: 7px;
     background-color: white;
     transition: width 0.2s, height 0.2s, background-color 0.2s;
-  }
-  
-  /* Apply resizing only on screens smaller than 768px */
-  @media (min-width: 768px) {
-    .container {
-      display: none;
     }
-  }
+
+
+.background-image{
+    width: 100vw;
+    height: 55vh;
+    position: absolute;
+    z-index: -1;
+    background-color: var(--gray2);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+}
+
