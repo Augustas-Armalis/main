@@ -1,6 +1,8 @@
 const container = document.querySelector('.form-container-mobile');
 const dragHandle = document.querySelector('.line-mobile');
 const touchArea = document.querySelector('.touch-area');
+const linkContainer = document.querySelector('.link-container-mobile'); // The clickable link container
+const insideContent = document.querySelector('.inside-content'); // Inside content to fade out
 
 let isDragging = false;
 let startY = 0;
@@ -50,21 +52,8 @@ function drag(e) {
 
         const heightPercentage = (newHeight / window.innerHeight) * 100;
 
-        if (heightPercentage < 49 && heightPercentage >= 47) {
-            const radius = 16 - (16 - 8) * ((49 - heightPercentage) / 2);
-            container.style.borderTopLeftRadius = `${radius}px`;
-            container.style.borderTopRightRadius = `${radius}px`;
-        } else if (heightPercentage >= 85 && heightPercentage < 100) {
-            const radius = 16 * ((100 - heightPercentage) / 15);
-            container.style.borderTopLeftRadius = `${radius}px`;
-            container.style.borderTopRightRadius = `${radius}px`;
-        } else if (heightPercentage >= 100) {
-            container.style.borderTopLeftRadius = '0px';
-            container.style.borderTopRightRadius = '0px';
-        } else {
-            container.style.borderTopLeftRadius = '16px';
-            container.style.borderTopRightRadius = '16px';
-        }
+        // Adjust border radius based on height
+        adjustBorderRadius(heightPercentage);
     }
 
     e.preventDefault();
@@ -73,7 +62,7 @@ function drag(e) {
 function endDrag() {
     if (!isDragging) return;
 
-    container.style.transition = 'height 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-radius 0.3s ease';
+    container.style.transition = 'height 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-radius 0.3s ease, border-width 0.3s ease';
 
     let targetHeight = container.offsetHeight + velocity * bounceFactor * 30;
     const minHeight = window.innerHeight * 0.5;
@@ -85,6 +74,7 @@ function endDrag() {
     const snapZoneLower = maxHeight * 0.85;
     const snapZoneUpper = maxHeight;
 
+    // Determine target height and border radius on snap
     if (targetHeight >= snapZoneLower && targetHeight <= snapZoneUpper) {
         targetHeight = maxHeight;
         container.style.borderTopLeftRadius = '0px';
@@ -103,36 +93,69 @@ function endDrag() {
             targetHeight += (bounceZoneUpper - targetHeight) * 0.2;
             container.style.height = `${targetHeight}px`;
 
-            const radius = 8 + (16 - 8) * ((49 - (targetHeight / window.innerHeight) * 100) / 2);
-            container.style.borderTopLeftRadius = `${radius}px`;
-            container.style.borderTopRightRadius = `${radius}px`;
+            const heightPercentage = (targetHeight / window.innerHeight) * 100;
+            adjustBorderRadius(heightPercentage);
         }, 16);
     } else {
         container.style.height = `${targetHeight}px`;
-
         const heightPercentage = (targetHeight / window.innerHeight) * 100;
-
-        if (heightPercentage < 49 && heightPercentage >= 47) {
-            const radius = 16 - (16 - 8) * ((49 - heightPercentage) / 2);
-            container.style.borderTopLeftRadius = `${radius}px`;
-            container.style.borderTopRightRadius = `${radius}px`;
-        } else if (heightPercentage >= 85 && heightPercentage < 100) {
-            const radius = 16 * ((100 - heightPercentage) / 15);
-            container.style.borderTopLeftRadius = `${radius}px`;
-            container.style.borderTopRightRadius = `${radius}px`;
-        } else if (heightPercentage >= 100) {
-            container.style.borderTopLeftRadius = '0px';
-            container.style.borderTopRightRadius = '0px';
-        } else {
-            container.style.borderTopLeftRadius = '16px';
-            container.style.borderTopRightRadius = '16px';
-        }
+        adjustBorderRadius(heightPercentage);
     }
 
     isDragging = false;
     document.body.style.cursor = 'default';
 }
 
+function adjustBorderRadius(heightPercentage) {
+    let borderRadius;
+
+    if (heightPercentage < 49 && heightPercentage >= 47) {
+        borderRadius = 16 - (16 - 8) * ((49 - heightPercentage) / 2);
+    } else if (heightPercentage >= 85 && heightPercentage < 100) {
+        borderRadius = 16 * ((100 - heightPercentage) / 15);
+    } else if (heightPercentage >= 100) {
+        borderRadius = 0; // Set to 0 when fully expanded
+    } else {
+        borderRadius = 16; // Reset to full radius if not fully expanded
+    }
+
+    // Apply border radius with a smooth transition
+    container.style.borderTopLeftRadius = `${borderRadius}px`;
+    container.style.borderTopRightRadius = `${borderRadius}px`;
+}
+
+// New function to handle the click animation and redirect
+function handleLinkClick() {
+    // Expand to full height
+    container.style.transition = 'height 0.5s ease, opacity 0.5s ease, border-width 0.5s ease, border-radius 0.5s ease';
+    container.style.height = '100%';
+    container.style.borderWidth = '0px'; // Animate border to 0
+
+    // Fade out inside content and touch area
+    gsap.to(insideContent, { opacity: 0, duration: 0.5 });
+    gsap.to(touchArea, { opacity: 0, duration: 0.5 });
+
+    // Fly off the link container to the left
+    gsap.to(linkContainer, {
+        x: '-100%', // Move completely off the screen
+        duration: 0.5,
+        ease: "power2.inOut",
+        onComplete: () => {
+            const url = linkContainer.getAttribute('data-url'); // Get the URL from data attribute
+            window.location.href = url; // Redirect to the URL
+        }
+    });
+
+    // Fade out the border radius to 0px
+    gsap.to(container, {
+        borderTopLeftRadius: '0px',
+        borderTopRightRadius: '0px',
+        duration: 0.5,
+        ease: "power2.inOut"
+    });
+}
+
+// Event listeners
 dragHandle.addEventListener('mousedown', startDrag);
 dragHandle.addEventListener('touchstart', startDrag, { passive: false });
 document.addEventListener('mousemove', drag);
@@ -143,16 +166,18 @@ document.addEventListener('touchend', endDrag);
 touchArea.addEventListener('mousedown', startDrag);
 touchArea.addEventListener('touchstart', startDrag, { passive: false });
 
+// Link container click event
+linkContainer.addEventListener('click', handleLinkClick);
+
+// Existing touch area animations
 touchArea.addEventListener('mousedown', () => {
     gsap.killTweensOf(dragHandle);
-    
     gsap.to(dragHandle, {
         width: '90px',
         height: '3px',
         duration: 0.25,
-        ease: "power2.inOut"
+        ease: "power2.out"
     });
-
     gsap.to(dragHandle, {
         backgroundColor: '#D0D1D5',
         duration: 0.15,
@@ -162,14 +187,12 @@ touchArea.addEventListener('mousedown', () => {
 
 touchArea.addEventListener('mouseup', () => {
     gsap.killTweensOf(dragHandle);
-    
     gsap.to(dragHandle, {
         width: '100px',
         height: '5px',
         duration: 0.6,
         ease: "elastic.out(0.2, 0.1)"
     });
-
     gsap.to(dragHandle, {
         backgroundColor: '#3D3D42',
         duration: 0.3,
@@ -179,14 +202,12 @@ touchArea.addEventListener('mouseup', () => {
 
 touchArea.addEventListener('touchstart', () => {
     gsap.killTweensOf(dragHandle);
-    
     gsap.to(dragHandle, {
         width: '90px',
         height: '3px',
         duration: 0.25,
         ease: "power2.inOut"
     });
-
     gsap.to(dragHandle, {
         backgroundColor: '#D0D1D5',
         duration: 0.15,
@@ -196,14 +217,12 @@ touchArea.addEventListener('touchstart', () => {
 
 touchArea.addEventListener('touchend', () => {
     gsap.killTweensOf(dragHandle);
-    
     gsap.to(dragHandle, {
         width: '100px',
         height: '5px',
         duration: 0.6,
         ease: "elastic.out(0.5, 0.2)"
     });
-
     gsap.to(dragHandle, {
         backgroundColor: '#3D3D42',
         duration: 0.3,
@@ -213,14 +232,12 @@ touchArea.addEventListener('touchend', () => {
 
 touchArea.addEventListener('mouseenter', () => {
     gsap.killTweensOf(dragHandle);
-    
     gsap.to(dragHandle, {
         width: '110px',
         height: '7px',
         duration: 0.25,
         ease: "power2.out"
     });
-
     gsap.to(dragHandle, {
         backgroundColor: '#ffffff',
         duration: 0.2,
@@ -230,14 +247,12 @@ touchArea.addEventListener('mouseenter', () => {
 
 touchArea.addEventListener('mouseleave', () => {
     gsap.killTweensOf(dragHandle);
-    
     gsap.to(dragHandle, {
         width: '100px',
         height: '5px',
         duration: 0.3,
         ease: "power2.out"
     });
-
     gsap.to(dragHandle, {
         backgroundColor: '#3D3D42',
         duration: 0.25,
