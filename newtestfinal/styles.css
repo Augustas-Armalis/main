@@ -209,6 +209,7 @@ p {
 
 /* ------------------------------------------------------------------------------------------ */
 
+
 .mobile-container {
     display: none;
 }
@@ -342,4 +343,12 @@ p {
         /* Change arrow color */
     }
 
+    .demo-title {
+        font: var(--h2-bold);
+        margin-bottom: 16px;
+    }
+
+    .inside-content {
+        text-align: center;
+    }
 }
