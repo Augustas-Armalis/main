@@ -1,0 +1,62 @@
+.container {
+  display: flex;
+  gap: 20px;
+  /* Add some space between the rectangles */
+}
+
+/* Basic rectangle styles */
+.rectangle {
+  position: relative;
+  height: 30px;
+  /* Default height */
+  width: 110px;
+  /* Width of the first rectangle */
+  background-color: #f0f0f0;
+  /* Light gray for the first rectangle */
+  overflow: hidden;
+  /* Hide blobs going outside */
+}
+
+/* Second rectangle (wider and taller) */
+.rectangle-second {
+  width: 145px;
+  /* Width of the second rectangle */
+  height: 47px;
+  /* Height for blue rectangle */
+  background-color: #e0e0ff;
+  /* Slightly blue background */
+}
+
+/* Third rectangle (wider) */
+.rectangle-third {
+  width: 135px;
+  /* Width of the third rectangle */
+  height: 41px;
+  /* Height for green rectangle */
+  background-color: #e0ffe0;
+  /* Light green background */
+}
+
+/* Common blob styles */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  background-color: red;
+  /* Default red for the first rectangle */
+}
+
+/* Blue bubbles for the second rectangle */
+.blob.blue {
+  background-color: blue;
+  /* Blue color for the blobs in the second rectangle */
+}
+
+/* Green bubbles for the third rectangle */
+.blob.green {
+  background-color: green;
+  /* Green color for the blobs in the third rectangle */
+}
+
+body {
+  background-color: black;
+}
