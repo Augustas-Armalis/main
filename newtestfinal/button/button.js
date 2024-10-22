@@ -23,7 +23,7 @@ function moveBlob(blob, widthRange, heightRange) {
       autoRotate: false
     },
     duration: random(12, 20),  // Increased duration for random movement
-    ease: 'power1.inOut',      // Smoother easing function
+    ease: 'power6.in',      // Smoother easing function
     onComplete: () => moveBlob(blob, widthRange, heightRange), // Continue moving after completion
     repeat: 0
   });
@@ -67,7 +67,7 @@ function moveToCursor(blobs, rectangle) {
       gsap.to(blob, {
         x: cursorX - parseInt(blob.style.width) / 2,
         y: cursorY - parseInt(blob.style.height) / 2,
-        duration: 2.0, // Increased duration for even smoother following
+        duration: 3.0, // Increased duration for even smoother following
         ease: 'power2.out', // Easing for more natural movement
         overwrite: 'auto' // Ensures that previous animations are overwritten
       });
@@ -89,7 +89,7 @@ function continueAnimation(blobs, rectangle) {
         path: [
           { x: random(-20, width - size), y: random(-10, height - size) },
           { x: random(-20, width - size), y: random(-10, height - size) },
-
+          { x: random(-20, width - size), y: random(-10, height - size) },
           { x: random(-20, width - size), y: random(-10, height - size) }
         ],
         curviness: 1.5,
