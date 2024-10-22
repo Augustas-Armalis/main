@@ -316,3 +316,65 @@ document.addEventListener("DOMContentLoaded", function () {
         // window.location.href = this.getAttribute('data-url');
     });
 });
+
+
+
+
+
+
+
+
+
+
+// GSAP Blob Movement
+gsap.registerPlugin(MotionPathPlugin);
+
+function random(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+function moveBlob(blob, widthRange, heightRange) {
+    const randomPath = [
+        { x: random(-20, widthRange), y: random(-10, heightRange) },
+        { x: random(-20, widthRange), y: random(-10, heightRange) },
+        { x: random(-20, widthRange), y: random(-10, heightRange) },
+        { x: random(-20, widthRange), y: random(-10, heightRange) }
+    ];
+
+    gsap.to(blob, {
+        motionPath: {
+            path: randomPath,
+            curviness: 1.5,
+            autoRotate: false
+        },
+        duration: random(12, 20),
+        ease: 'power6.in',
+        onComplete: () => moveBlob(blob, widthRange, heightRange),
+        repeat: 0
+    });
+}
+
+function initializeBlobs(rectangle) {
+    const blobs = rectangle.querySelectorAll('.blob');
+    const { width, height } = rectangle.getBoundingClientRect();
+
+    blobs.forEach(blob => {
+        const size = random(20, 45);
+        blob.style.width = `${size}px`;
+        blob.style.height = `${size}px`;
+
+        gsap.set(blob, {
+            x: random(-20, width - size),
+            y: random(-10, height - size)
+        });
+
+        moveBlob(blob, width - size, height - size);
+    });
+}
+
+function init() {
+    document.querySelectorAll('.rectangle').forEach(initializeBlobs);
+}
+
+// Initialize Blobs on page load
+init();
