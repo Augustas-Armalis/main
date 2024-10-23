@@ -515,6 +515,7 @@ p {
         border-top-left-radius: 16px;
         border-top-right-radius: 16px;
         cursor: default;
+        box-shadow: 0px -10px 19px 0px rgba(0, 0, 0, 0.25);
     }
 
     .form-container-mobile-black-curtains {
@@ -576,12 +577,25 @@ p {
         height: 55vh;
         position: absolute;
         z-index: -1;
-        background-image: url('images/main-image-mobile.png');
+        background-image: url('images/main\ image.jpg');
         background-position: center top;
         /* Center horizontally, align with the top vertically */
         background-repeat: no-repeat;
         background-size: cover;
         /* Ensures the image fills the container */
+    }
+
+    .this-dark-blob {
+        width: 215px;
+        height: 50px;
+        flex-shrink: 0;
+        background-color: #000000;
+        /* Use background-color for HTML elements */
+        filter: blur(40px);
+        position: absolute;
+        left: -10%;
+        top: -3%;
+        z-index: 10;
     }
 
     .link-container-mobile {
@@ -595,12 +609,14 @@ p {
         padding: 16px;
         transition: transform 0.1s ease-in;
         /* Transition for scaling effect */
+        z-index: 20;
     }
 
     .arrow-mobile {
         height: 12px;
         width: auto;
         /* Transition for color change */
+        z-index: 20;
     }
 
     .link-mobile {
@@ -609,6 +625,7 @@ p {
         color: white;
         transition: color 0.3s ease;
         /* Transition for color change */
+        z-index: 20;
     }
 
     .link-container-mobile:hover .link-mobile {

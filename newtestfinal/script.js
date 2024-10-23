@@ -555,7 +555,7 @@ document.getElementById("subscriptionForm").addEventListener("submit", function 
                         throw new Error('Subscription failed');
                     }
                     console.log('Subscription successful');
-                    document.getElementById('afterSubText').textContent = 'Thank you! Your subscription was successful.';
+                    document.getElementById('afterSubText').textContent = 'Thank you!';
                     document.getElementById('afterSubButtonContainer').innerHTML = `
                         
                         <div class="link-container-mobile-sub" id="gmailButton">
@@ -567,7 +567,7 @@ document.getElementById("subscriptionForm").addEventListener("submit", function 
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    document.getElementById('afterSubText').textContent = 'Subscription failed.';
+                    document.getElementById('afterSubText').textContent = 'Subscription failed...';
                     document.getElementById('afterSubButtonContainer').innerHTML = `
                         
                                                 <div class="link-container-mobile-sub" id="resetButton">
@@ -580,7 +580,7 @@ document.getElementById("subscriptionForm").addEventListener("submit", function 
         })
         .catch(error => {
             console.error('Error:', error);
-            document.getElementById('afterSubText').textContent = 'Failed to retrieve group information.';
+            document.getElementById('afterSubText').textContent = 'Subscription failed...';
             document.getElementById('afterSubButtonContainer').innerHTML = `
                 <div class="link-container-mobile-sub" id="resetButton">
         <a class="link-mobile-sub">Try again</a>
