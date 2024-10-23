@@ -34,12 +34,14 @@ a:active {
     outline: none;
 }
 
+/* select color */
+
 ::selection {
-    background-color: hsla(235, 3%, 90%, 0.2);
+    background-color: hsla(240, 2%, 90%, 0);
 }
 
 ::-moz-selection {
-    background-color: hsla(235, 3%, 90%, 0.2);
+    background-color: hsla(240, 2%, 90%, 0);
 }
 
 @font-face {

@@ -149,11 +149,19 @@ function adjustBorderRadius(heightPercentage) {
     container.style.borderTopRightRadius = `${borderRadius}px`;
 }
 
-// New function to handle the click animation and redirect
 function handleLinkClick() {
-    // Expand to full height
+    // Calculate the current height of the container to avoid teleporting
+    const currentHeight = container.offsetHeight;
+
+    // If current height is less than desired height, expand to 100%
     container.style.transition = 'height 0.5s ease, opacity 0.5s ease, border-width 0.5s ease, border-radius 0.5s ease';
-    container.style.height = '100%';
+
+    // Start by explicitly setting the height to the current height to allow transition
+    container.style.height = `${currentHeight}px`; // Set it to the current height first
+    requestAnimationFrame(() => { // Wait for the next repaint
+        container.style.height = '100%'; // Then transition to full height
+    });
+
     container.style.borderWidth = '0px'; // Animate border to 0
 
     // Fade out inside content and touch area
