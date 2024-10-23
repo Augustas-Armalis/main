@@ -1,6 +1,7 @@
 const container = document.querySelector('.form-container-mobile');
 const dragHandle = document.querySelector('.line-mobile');
 const touchArea = document.querySelector('.touch-area');
+const textMobile = document.querySelector('.text-mobile-container');
 const linkContainer = document.querySelector('.link-container-mobile'); // The clickable link container
 const insideContent = document.querySelector('.inside-content'); // Inside content to fade out
 const blackCurtains = document.querySelector('.form-container-mobile-black-curtains'); // Get the black curtains element
@@ -149,24 +150,36 @@ function adjustBorderRadius(heightPercentage) {
     container.style.borderTopRightRadius = `${borderRadius}px`;
 }
 
-function handleLinkClick() {
-    // Calculate the current height of the container to avoid teleporting
-    const currentHeight = container.offsetHeight;
+document.addEventListener("DOMContentLoaded", () => {
+    // Set the initial height based on fit-content
+    const initialHeight = container.scrollHeight; // Get the height that fits the content
+    container.style.height = `${initialHeight}px`; // Set this as the starting height
 
-    // If current height is less than desired height, expand to 100%
+    // If you want to ensure black curtains are visible at the start
+    blackCurtains.style.opacity = '1'; // Make black curtains fully opaque at the beginning
+});
+
+// New function to handle the click animation and redirect
+function handleLinkClick() {
+    // Set the transition for smooth height change
     container.style.transition = 'height 0.5s ease, opacity 0.5s ease, border-width 0.5s ease, border-radius 0.5s ease';
 
-    // Start by explicitly setting the height to the current height to allow transition
-    container.style.height = `${currentHeight}px`; // Set it to the current height first
-    requestAnimationFrame(() => { // Wait for the next repaint
+    // Get the current height based on fit-content
+    const currentHeight = container.scrollHeight; // Get the height that fits the content
+    container.style.height = `${currentHeight}px`; // Set height to current
+
+    // Use requestAnimationFrame to ensure the transition to full height happens on the next frame
+    requestAnimationFrame(() => {
         container.style.height = '100%'; // Then transition to full height
     });
 
+    // Animate the border width
     container.style.borderWidth = '0px'; // Animate border to 0
 
     // Fade out inside content and touch area
     gsap.to(insideContent, { opacity: 0, duration: 0.5 });
     gsap.to(touchArea, { opacity: 0, duration: 0.5 });
+    gsap.to(textMobile, { opacity: 0, duration: 0.5 });
 
     // Fly off the link container to the left
     gsap.to(linkContainer, {
@@ -188,7 +201,10 @@ function handleLinkClick() {
     });
 }
 
-// Resetting page state when coming back
+// Event listener for link container click
+linkContainer.addEventListener('click', handleLinkClick);
+
+
 document.addEventListener("visibilitychange", function () {
     if (document.visibilityState === "visible") {
         resetNewsletter(); // Call the function to reset your newsletter state
@@ -197,7 +213,7 @@ document.addEventListener("visibilitychange", function () {
 
 function resetNewsletter() {
     // Resetting the main container's properties
-    container.style.height = '50%'; // Example: Reset to initial height
+    container.style.height = `${container.scrollHeight}px`; // Set to initial height based on content
     container.style.borderWidth = '4px'; // Example: Reset border width
     container.style.borderTopLeftRadius = '16px'; // Reset border radius
     container.style.borderTopRightRadius = '16px'; // Reset border radius
@@ -215,6 +231,7 @@ function resetNewsletter() {
     // Fade in inside content and touch area
     gsap.to(insideContent, { opacity: 1, duration: 0.5 }); // Fade in inside content
     gsap.to(touchArea, { opacity: 1, duration: 0.5 }); // Fade in touch area
+    gsap.to(textMobile, { opacity: 1, duration: 0.5 });
 
     // Reset link container position
     linkContainer.style.transform = 'translateX(0)'; // Reset the link container position
@@ -230,7 +247,9 @@ function resetNewsletter() {
     links.forEach(link => {
         link.style.color = 'white'; // Reset link color
     });
+
 }
+
 
 // Event listeners
 dragHandle.addEventListener('mousedown', startDrag);
@@ -411,3 +430,157 @@ function init() {
 
 // Initialize Blobs on page load
 init();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.getElementById("subscriptionForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const apiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiMTE4ZGJlYTk5OWMzNjkwYjY5MWYxODJiNmVhMjBmMDY5YjJlYTFhYThiNGViZjNmMDkxYmM3N2E0NmI3ZjEwYmRkNGU5MjgzNTE5MTY1OTMiLCJpYXQiOjE3MDg2ODg2MzcuNzUwMTQsIm5iZiI6MTcwODY4ODYzNy43NTAxNDQsImV4cCI6NDg2NDM2MjIzNy43NDUyOTUsInN1YiI6IjgzNzU4OCIsInNjb3BlcyI6W119.w-4-JmwM5gOZFBlQ3rbRPAt8YVb13MVH2xw0HvHfHVFNtJJEW5xhrTbQ14_JDsYWFNL-sOkHygbtfyOZVa1lO0EG25hwInANzN3d2q730CvfH3lRPZaoHl12HTRtTh1CprsKvuW5J_NMNxfY78R9TJv6MGkKZ6p2RD0oW-eyiu_feYUNUrC62P8P77kIRHLKn_JlqOVnpoB3cN4OSYL28cRZfls4geMj7d_2gOA8XOBIcGjZEqyGCMM145KOc30rAQsWymGD8vpifD8Jd-0UG6Y_J6NW0JcLr-o5ZrJfG8YqztS1Ls88A92ynSw2a-BgexwdXuNQw94_jCiq2MFQMHkptR0pW4G2kDk1b_fxqS5BarndnXOyj5_QtQ9X_f9oO5EF95Cb7sUgYN0n0GBszZL4-tDO1hIeYmjwz2Sba4aNMOtnwmatDW2Y4ynq_mOB2TsOe48Nbg91qyF4aCcx6T9riODAlMsV0E4kUUfPMM6LJyn-LLZ1WZ4x4mk24IsSZoFGg4fTkFkvE7yMem9q4IU4zdZ08n7ZYjTpf2vVvsT7a6uded-mb5dChiS6K2LriyjrsDbcQ74tQy1F7m8t0TdksZntVW_Vz0W_waUHH6SjBsDllmI5rL48wLC2O2lSd_pu22At3eLtSViMV80L3pLK61DPq39pRmuWL4oUBzM";
+
+    // Prepare to hide the existing containers with a fade-out effect
+    const textMobileContainer = document.querySelector('.text-mobile-container');
+    const insideContent = document.querySelector('.inside-content');
+    const afterSubscriptionContainer = document.querySelector('.container-after-subscribtion');
+
+    // Add fade-out class for animation
+    textMobileContainer.classList.add('fade-out');
+    insideContent.classList.add('fade-out');
+
+    // Wait 0.3 seconds before performing the hiding action
+    setTimeout(() => {
+        // Hide the original containers
+        textMobileContainer.style.display = 'none';
+        insideContent.style.display = 'none';
+        afterSubscriptionContainer.style.display = 'block';
+
+        // Make the after subscription container visible with fade-in effect
+        afterSubscriptionContainer.classList.remove('fade-out'); // Reset fade-out class for this container
+    }, 300); // 300 milliseconds delay
+
+    fetch('https://connect.mailerlite.com/api/groups?filter[name]=Newsletter', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${apiKey}`
+        }
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to retrieve group information');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const groupId = data.data[0].id;
+
+            fetch('https://connect.mailerlite.com/api/subscribers', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${apiKey}`
+                },
+                body: JSON.stringify({
+                    email: email,
+                    fields: {
+                        name: name
+                    },
+                    groups: [groupId]
+                })
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Subscription failed');
+                    }
+                    console.log('Subscription successful');
+                    document.getElementById('afterSubText').textContent = 'Thank you! Your subscription was successful.';
+                    document.getElementById('afterSubButtonContainer').innerHTML = '<button id="resetButton">Reset</button>';
+                    addResetButtonEvent();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('afterSubText').textContent = 'Subscription failed.';
+                    document.getElementById('afterSubButtonContainer').innerHTML = '<button id="resetButton">Reset</button>';
+                    addResetButtonEvent();
+                });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById('afterSubText').textContent = 'Failed to retrieve group information.';
+            document.getElementById('afterSubButtonContainer').innerHTML = '<button id="resetButton">Reset</button>';
+            addResetButtonEvent();
+        });
+});
+
+// Change from button to div click event
+document.getElementById("submitDiv").addEventListener("click", function () {
+    document.getElementById("subscriptionForm").dispatchEvent(new Event('submit'));
+});
+
+// Function to add event listener for the reset button
+function addResetButtonEvent() {
+    document.getElementById("resetButton").addEventListener("click", function () {
+        // Hide the after subscription container with a fade-out effect
+        const afterSubscriptionContainer = document.querySelector('.container-after-subscribtion');
+        afterSubscriptionContainer.classList.add('fade-out');
+
+        // Wait for the fade-out transition to complete
+        setTimeout(() => {
+            // Hide the after subscription container
+            afterSubscriptionContainer.style.display = 'none';
+
+            // Show the original containers again with fade-in effect
+            const textMobileContainer = document.querySelector('.text-mobile-container');
+            const insideContent = document.querySelector('.inside-content');
+
+            textMobileContainer.style.display = 'block';
+            insideContent.style.display = 'block';
+
+            // Reset fade-out class for these containers
+            textMobileContainer.classList.remove('fade-out');
+            insideContent.classList.remove('fade-out');
+
+            // Clear the input fields
+            document.getElementById("name").value = '';
+            document.getElementById("email").value = '';
+        }, 500); // Wait for 0.5 seconds for the fade-out to finish before hiding
+    });
+}

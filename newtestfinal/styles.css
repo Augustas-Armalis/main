@@ -421,6 +421,18 @@ p {
 
 
 
+    /* Add this CSS to your stylesheet */
+    .fade-out {
+        opacity: 0;
+        transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        /* 0.5 seconds for the fade-out effect */
+    }
+
+    .hidden {
+        display: none;
+        /* Ensures the element is not displayed after fading out */
+    }
+
 
 
     .rectangle {
@@ -442,9 +454,14 @@ p {
         display: block;
     }
 
+    .text-mobile-container {
+        text-align: center;
+    }
+
     .form-container-mobile {
         position: fixed;
         bottom: 0;
+        width: 100vw;
         height: fit-content;
         /* Initial height fits the content */
         min-height: fit-content;
