@@ -188,7 +188,7 @@ a:active {
 
 
 h1 {
-    font: var(--h1-regular);
+    font: var(--h1-regular)
 }
 
 h2 {
@@ -371,7 +371,7 @@ p {
 
     /* Email input with larger bottom margin */
     input[type=email] {
-        margin-bottom: var(--margin-xl);
+        margin-bottom: var(--margin-l);
     }
 
 
@@ -402,9 +402,14 @@ p {
         height: 50vh;
         max-height: 100%;
         min-height: 47%;
+        padding-right: 32px;
+        padding-left: 32px;
+        padding-top: 64px;
+        padding-bottom: 64px;
         background-color: var(--black);
         display: flex;
         justify-content: center;
+        flex-direction: column;
         align-items: center;
         transition: height 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-radius 0.3s ease;
         border-top-left-radius: 16px;
@@ -526,4 +531,21 @@ p {
     .inside-content {
         text-align: center;
     }
+
+    .newsletter-mobile-title {
+        font: var(--h1-bold);
+        font-size: 32px;
+        letter-spacing: -0.16px;
+        margin-bottom: var(--margin-xs);
+    }
+
+    .newsletter-mobile-alt {
+        color: #AEB1BB;
+        font-size: 16px;
+        line-height: 130%;
+        margin-bottom: var(--margin-l);
+        text-align: center;
+    }
+
+
 }
