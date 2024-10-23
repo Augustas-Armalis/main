@@ -3,6 +3,9 @@ const dragHandle = document.querySelector('.line-mobile');
 const touchArea = document.querySelector('.touch-area');
 const linkContainer = document.querySelector('.link-container-mobile'); // The clickable link container
 const insideContent = document.querySelector('.inside-content'); // Inside content to fade out
+const blackCurtains = document.querySelector('.form-container-mobile-black-curtains'); // Get the black curtains element
+
+
 
 let isDragging = false;
 let startY = 0;
