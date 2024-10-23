@@ -244,6 +244,7 @@ function resetNewsletter() {
     // Fade in inside content and touch area
     gsap.to(insideContent, { opacity: 1, duration: 0.5 }); // Fade in inside content
     gsap.to(touchArea, { opacity: 1, duration: 0.5 }); // Fade in touch area
+    gsap.to(textMobile, { opacity: 1, duration: 0.5 }); // Fade in touch area
 
     // Reset link container position
     linkContainer.style.transform = 'translateX(0)'; // Reset the link container position
