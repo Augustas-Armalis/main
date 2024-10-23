@@ -419,6 +419,24 @@ p {
         margin-bottom: var(--margin-xl);
     }
 
+    /* Autofill styling */
+    input:-webkit-autofill {
+        -webkit-box-shadow: inset 0 0 0 30px #161618 !important;
+        /* Use the same background color */
+        -webkit-text-fill-color: white !important;
+        /* Keep the text color */
+        background-image: url('images/name\ form\ icon.png');
+        /* Background image for text input */
+        background-position: 12px center;
+        /* Adjust the position as needed */
+        background-repeat: no-repeat;
+        background-size: 18px auto;
+    }
+
+    input[type=email]:-webkit-autofill {
+        background-image: url('images/email\ form\ icon.png');
+        /* Background image for email input */
+    }
 
     .fade-out {
         opacity: 0;
@@ -643,6 +661,57 @@ p {
         padding-left: 16px;
         margin-bottom: var(--margin-xl);
         text-align: center;
+    }
+
+
+
+
+
+
+
+
+
+
+    .arrow-mobile-sub {
+        height: 12px;
+        width: auto;
+        /* Transition for color change */
+        filter: brightness(100);
+    }
+
+    .link-mobile-sub {
+        font: var(--p-regular);
+        text-decoration: none;
+        color: var(--gray2);
+        transition: color 0.3s ease;
+        padding-right: 4px;
+        /* Transition for color change */
+    }
+
+    .link-container-mobile-sub:hover .link-mobile-sub {
+        color: var(--white);
+        /* Change link text color */
+    }
+
+    .link-container-mobile-sub:hover .arrow-mobile-sub {
+        filter: brightness(100);
+        /* Change arrow color */
+    }
+
+    /* Active state */
+    .link-container-mobile-sub.active {
+        transform: scale(0.05);
+        /* Scale down effect */
+    }
+
+    .link-container-mobile-sub.active .link-mobile-sub {
+        color: var(--white);
+        /* Change text color */
+    }
+
+    .link-container-mobile-sub.active .arrow-mobile-sub {
+        filter: brightness(100);
+        /* Change arrow color */
     }
 
 

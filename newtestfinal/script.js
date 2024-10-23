@@ -477,7 +477,7 @@ document.getElementById("subscriptionForm").addEventListener("submit", function 
 
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
-    const apiKey = "YOUR_API_KEY"; // Replace with your actual API key
+    const apiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiMTE4ZGJlYTk5OWMzNjkwYjY5MWYxODJiNmVhMjBmMDY5YjJlYTFhYThiNGViZjNmMDkxYmM3N2E0NmI3ZjEwYmRkNGU5MjgzNTE5MTY1OTMiLCJpYXQiOjE3MDg2ODg2MzcuNzUwMTQsIm5iZiI6MTcwODY4ODYzNy43NTAxNDQsImV4cCI6NDg2NDM2MjIzNy43NDUyOTUsInN1YiI6IjgzNzU4OCIsInNjb3BlcyI6W119.w-4-JmwM5gOZFBlQ3rbRPAt8YVb13MVH2xw0HvHfHVFNtJJEW5xhrTbQ14_JDsYWFNL-sOkHygbtfyOZVa1lO0EG25hwInANzN3d2q730CvfH3lRPZaoHl12HTRtTh1CprsKvuW5J_NMNxfY78R9TJv6MGkKZ6p2RD0oW-eyiu_feYUNUrC62P8P77kIRHLKn_JlqOVnpoB3cN4OSYL28cRZfls4geMj7d_2gOA8XOBIcGjZEqyGCMM145KOc30rAQsWymGD8vpifD8Jd-0UG6Y_J6NW0JcLr-o5ZrJfG8YqztS1Ls88A92ynSw2a-BgexwdXuNQw94_jCiq2MFQMHkptR0pW4G2kDk1b_fxqS5BarndnXOyj5_QtQ9X_f9oO5EF95Cb7sUgYN0n0GBszZL4-tDO1hIeYmjwz2Sba4aNMOtnwmatDW2Y4ynq_mOB2TsOe48Nbg91qyF4aCcx6T9riODAlMsV0E4kUUfPMM6LJyn-LLZ1WZ4x4mk24IsSZoFGg4fTkFkvE7yMem9q4IU4zdZ08n7ZYjTpf2vVvsT7a6uded-mb5dChiS6K2LriyjrsDbcQ74tQy1F7m8t0TdksZntVW_Vz0W_waUHH6SjBsDllmI5rL48wLC2O2lSd_pu22At3eLtSViMV80L3pLK61DPq39pRmuWL4oUBzM"; // Replace with your actual API key
 
     // Prepare to hide the existing containers with a fade-out effect
     const textMobileContainer = document.querySelector('.text-mobile-container');
@@ -556,17 +556,23 @@ document.getElementById("subscriptionForm").addEventListener("submit", function 
                     console.log('Subscription successful');
                     document.getElementById('afterSubText').textContent = 'Thank you! Your subscription was successful.';
                     document.getElementById('afterSubButtonContainer').innerHTML = `
-                        <button id="gmailButton">Go to Gmail</button>
-                        <button id="resetButton">Reset</button>
+                        
+                        <div class="link-container-mobile-sub" id="gmailButton">
+        <a class="link-mobile-sub">Go to Gmail</a>
+        <img class="arrow-mobile-sub" src="images/Arrow-mobile-flipped.svg">
+      </div>
                     `;
                     addGmailButtonEvent(); // Add event for Gmail button
-                    addResetButtonEvent(); // Add event for Reset button
                 })
                 .catch(error => {
                     console.error('Error:', error);
                     document.getElementById('afterSubText').textContent = 'Subscription failed.';
                     document.getElementById('afterSubButtonContainer').innerHTML = `
-                        <button id="resetButton">Reset</button>
+                        
+                                                <div class="link-container-mobile-sub" id="resetButton">
+        <a class="link-mobile-sub">Try again</a>
+        <img class="arrow-mobile-sub" src="images/Arrow-mobile-again.svg">
+      </div>
                     `;
                     addResetButtonEvent();
                 });
@@ -575,7 +581,10 @@ document.getElementById("subscriptionForm").addEventListener("submit", function 
             console.error('Error:', error);
             document.getElementById('afterSubText').textContent = 'Failed to retrieve group information.';
             document.getElementById('afterSubButtonContainer').innerHTML = `
-                <button id="resetButton">Reset</button>
+                <div class="link-container-mobile-sub" id="resetButton">
+        <a class="link-mobile-sub">Try again</a>
+        <img class="arrow-mobile-sub" src="images/Arrow-mobile-again.svg">
+      </div>
             `;
             addResetButtonEvent();
         });
