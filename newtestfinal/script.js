@@ -204,6 +204,14 @@ function handleLinkClick() {
 // Event listener for link container click
 linkContainer.addEventListener('click', handleLinkClick);
 
+document.addEventListener("DOMContentLoaded", () => {
+    // Get the initial height based on fit-content
+    initialHeight = container.scrollHeight; // Store the initial height
+    container.style.height = `${initialHeight}px`; // Set this as the starting height
+
+    // If you want to ensure black curtains are visible at the start
+    blackCurtains.style.opacity = '1'; // Make black curtains fully opaque at the beginning
+});
 
 document.addEventListener("visibilitychange", function () {
     if (document.visibilityState === "visible") {
@@ -212,8 +220,13 @@ document.addEventListener("visibilitychange", function () {
 });
 
 function resetNewsletter() {
-    // Resetting the main container's properties
-    container.style.height = `${container.scrollHeight}px`; // Set to initial height based on content
+    // Set a transition for smooth height change
+    container.style.transition = 'height 0.5s ease'; // Set transition
+
+    // Transition from 100% to initial height
+    container.style.height = `${initialHeight}px`; // Animate back to the initial height
+
+    // Resetting the main container's other properties
     container.style.borderWidth = '4px'; // Example: Reset border width
     container.style.borderTopLeftRadius = '16px'; // Reset border radius
     container.style.borderTopRightRadius = '16px'; // Reset border radius
@@ -231,7 +244,6 @@ function resetNewsletter() {
     // Fade in inside content and touch area
     gsap.to(insideContent, { opacity: 1, duration: 0.5 }); // Fade in inside content
     gsap.to(touchArea, { opacity: 1, duration: 0.5 }); // Fade in touch area
-    gsap.to(textMobile, { opacity: 1, duration: 0.5 });
 
     // Reset link container position
     linkContainer.style.transform = 'translateX(0)'; // Reset the link container position
@@ -247,7 +259,6 @@ function resetNewsletter() {
     links.forEach(link => {
         link.style.color = 'white'; // Reset link color
     });
-
 }
 
 
@@ -452,13 +463,7 @@ init();
 
 
 
-
-
-
-
-
-
-
+// eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiMTE4ZGJlYTk5OWMzNjkwYjY5MWYxODJiNmVhMjBmMDY5YjJlYTFhYThiNGViZjNmMDkxYmM3N2E0NmI3ZjEwYmRkNGU5MjgzNTE5MTY1OTMiLCJpYXQiOjE3MDg2ODg2MzcuNzUwMTQsIm5iZiI6MTcwODY4ODYzNy43NTAxNDQsImV4cCI6NDg2NDM2MjIzNy43NDUyOTUsInN1YiI6IjgzNzU4OCIsInNjb3BlcyI6W119.w-4-JmwM5gOZFBlQ3rbRPAt8YVb13MVH2xw0HvHfHVFNtJJEW5xhrTbQ14_JDsYWFNL-sOkHygbtfyOZVa1lO0EG25hwInANzN3d2q730CvfH3lRPZaoHl12HTRtTh1CprsKvuW5J_NMNxfY78R9TJv6MGkKZ6p2RD0oW-eyiu_feYUNUrC62P8P77kIRHLKn_JlqOVnpoB3cN4OSYL28cRZfls4geMj7d_2gOA8XOBIcGjZEqyGCMM145KOc30rAQsWymGD8vpifD8Jd-0UG6Y_J6NW0JcLr-o5ZrJfG8YqztS1Ls88A92ynSw2a-BgexwdXuNQw94_jCiq2MFQMHkptR0pW4G2kDk1b_fxqS5BarndnXOyj5_QtQ9X_f9oO5EF95Cb7sUgYN0n0GBszZL4-tDO1hIeYmjwz2Sba4aNMOtnwmatDW2Y4ynq_mOB2TsOe48Nbg91qyF4aCcx6T9riODAlMsV0E4kUUfPMM6LJyn-LLZ1WZ4x4mk24IsSZoFGg4fTkFkvE7yMem9q4IU4zdZ08n7ZYjTpf2vVvsT7a6uded-mb5dChiS6K2LriyjrsDbcQ74tQy1F7m8t0TdksZntVW_Vz0W_waUHH6SjBsDllmI5rL48wLC2O2lSd_pu22At3eLtSViMV80L3pLK61DPq39pRmuWL4oUBzM
 
 
 
@@ -472,14 +477,14 @@ document.getElementById("subscriptionForm").addEventListener("submit", function 
 
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
-    const apiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiMTE4ZGJlYTk5OWMzNjkwYjY5MWYxODJiNmVhMjBmMDY5YjJlYTFhYThiNGViZjNmMDkxYmM3N2E0NmI3ZjEwYmRkNGU5MjgzNTE5MTY1OTMiLCJpYXQiOjE3MDg2ODg2MzcuNzUwMTQsIm5iZiI6MTcwODY4ODYzNy43NTAxNDQsImV4cCI6NDg2NDM2MjIzNy43NDUyOTUsInN1YiI6IjgzNzU4OCIsInNjb3BlcyI6W119.w-4-JmwM5gOZFBlQ3rbRPAt8YVb13MVH2xw0HvHfHVFNtJJEW5xhrTbQ14_JDsYWFNL-sOkHygbtfyOZVa1lO0EG25hwInANzN3d2q730CvfH3lRPZaoHl12HTRtTh1CprsKvuW5J_NMNxfY78R9TJv6MGkKZ6p2RD0oW-eyiu_feYUNUrC62P8P77kIRHLKn_JlqOVnpoB3cN4OSYL28cRZfls4geMj7d_2gOA8XOBIcGjZEqyGCMM145KOc30rAQsWymGD8vpifD8Jd-0UG6Y_J6NW0JcLr-o5ZrJfG8YqztS1Ls88A92ynSw2a-BgexwdXuNQw94_jCiq2MFQMHkptR0pW4G2kDk1b_fxqS5BarndnXOyj5_QtQ9X_f9oO5EF95Cb7sUgYN0n0GBszZL4-tDO1hIeYmjwz2Sba4aNMOtnwmatDW2Y4ynq_mOB2TsOe48Nbg91qyF4aCcx6T9riODAlMsV0E4kUUfPMM6LJyn-LLZ1WZ4x4mk24IsSZoFGg4fTkFkvE7yMem9q4IU4zdZ08n7ZYjTpf2vVvsT7a6uded-mb5dChiS6K2LriyjrsDbcQ74tQy1F7m8t0TdksZntVW_Vz0W_waUHH6SjBsDllmI5rL48wLC2O2lSd_pu22At3eLtSViMV80L3pLK61DPq39pRmuWL4oUBzM";
+    const apiKey = "YOUR_API_KEY"; // Replace with your actual API key
 
     // Prepare to hide the existing containers with a fade-out effect
     const textMobileContainer = document.querySelector('.text-mobile-container');
     const insideContent = document.querySelector('.inside-content');
     const afterSubscriptionContainer = document.querySelector('.container-after-subscribtion');
 
-    // Add fade-out class for animation
+    // Fade out effect for the original containers
     textMobileContainer.classList.add('fade-out');
     insideContent.classList.add('fade-out');
 
@@ -488,12 +493,29 @@ document.getElementById("subscriptionForm").addEventListener("submit", function 
         // Hide the original containers
         textMobileContainer.style.display = 'none';
         insideContent.style.display = 'none';
+
+        // Make the after subscription container visible
         afterSubscriptionContainer.style.display = 'block';
 
-        // Make the after subscription container visible with fade-in effect
-        afterSubscriptionContainer.classList.remove('fade-out'); // Reset fade-out class for this container
+        // Reset fade-out class for this container
+        afterSubscriptionContainer.classList.remove('fade-out');
+
+        // Set opacity to 0 before applying fade-in effect
+        afterSubscriptionContainer.style.opacity = 0;
+
+        // Trigger a reflow/repaint to ensure the opacity change is recognized
+        void afterSubscriptionContainer.offsetWidth;
+
+        // Apply fade-in class to start the fade-in animation
+        afterSubscriptionContainer.classList.add('fade-in');
+
+        // After a short delay, set opacity to 1 to make it visible
+        setTimeout(() => {
+            afterSubscriptionContainer.style.opacity = 1;
+        }, 20); // Small delay for the fade-in effect
     }, 300); // 300 milliseconds delay
 
+    // Fetch the group information from MailerLite
     fetch('https://connect.mailerlite.com/api/groups?filter[name]=Newsletter', {
         method: 'GET',
         headers: {
@@ -511,6 +533,7 @@ document.getElementById("subscriptionForm").addEventListener("submit", function 
         .then(data => {
             const groupId = data.data[0].id;
 
+            // Subscribe the user
             fetch('https://connect.mailerlite.com/api/subscribers', {
                 method: 'POST',
                 headers: {
@@ -532,20 +555,28 @@ document.getElementById("subscriptionForm").addEventListener("submit", function 
                     }
                     console.log('Subscription successful');
                     document.getElementById('afterSubText').textContent = 'Thank you! Your subscription was successful.';
-                    document.getElementById('afterSubButtonContainer').innerHTML = '<button id="resetButton">Reset</button>';
-                    addResetButtonEvent();
+                    document.getElementById('afterSubButtonContainer').innerHTML = `
+                        <button id="gmailButton">Go to Gmail</button>
+                        <button id="resetButton">Reset</button>
+                    `;
+                    addGmailButtonEvent(); // Add event for Gmail button
+                    addResetButtonEvent(); // Add event for Reset button
                 })
                 .catch(error => {
                     console.error('Error:', error);
                     document.getElementById('afterSubText').textContent = 'Subscription failed.';
-                    document.getElementById('afterSubButtonContainer').innerHTML = '<button id="resetButton">Reset</button>';
+                    document.getElementById('afterSubButtonContainer').innerHTML = `
+                        <button id="resetButton">Reset</button>
+                    `;
                     addResetButtonEvent();
                 });
         })
         .catch(error => {
             console.error('Error:', error);
             document.getElementById('afterSubText').textContent = 'Failed to retrieve group information.';
-            document.getElementById('afterSubButtonContainer').innerHTML = '<button id="resetButton">Reset</button>';
+            document.getElementById('afterSubButtonContainer').innerHTML = `
+                <button id="resetButton">Reset</button>
+            `;
             addResetButtonEvent();
         });
 });
@@ -582,5 +613,12 @@ function addResetButtonEvent() {
             document.getElementById("name").value = '';
             document.getElementById("email").value = '';
         }, 500); // Wait for 0.5 seconds for the fade-out to finish before hiding
+    });
+}
+
+// Function to add event listener for the Gmail button
+function addGmailButtonEvent() {
+    document.getElementById("gmailButton").addEventListener("click", function () {
+        window.open("https://mail.google.com", "_blank"); // Opens Gmail in a new tab
     });
 }

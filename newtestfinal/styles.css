@@ -420,20 +420,36 @@ p {
     }
 
 
-
-    /* Add this CSS to your stylesheet */
     .fade-out {
         opacity: 0;
-        transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-        /* 0.5 seconds for the fade-out effect */
+        transition: opacity 0.5s ease-in-out;
     }
 
-    .hidden {
-        display: none;
-        /* Ensures the element is not displayed after fading out */
+    .fade-in {
+        opacity: 1;
+        transition: opacity 0.5s ease-in-out;
     }
 
 
+
+
+    .container-after-subscribtion {
+        width: 100vw;
+        height: fit-content;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-bottom: var(--margin-xl);
+    }
+
+    .after-sub-text {
+        font: var(--h1-bold);
+        font-size: 32px;
+        letter-spacing: -0.16px;
+        margin-bottom: var(--margin-xs);
+    }
 
     .rectangle {
         transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
