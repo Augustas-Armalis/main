@@ -5,8 +5,6 @@ const linkContainer = document.querySelector('.link-container-mobile'); // The c
 const insideContent = document.querySelector('.inside-content'); // Inside content to fade out
 const blackCurtains = document.querySelector('.form-container-mobile-black-curtains'); // Get the black curtains element
 
-
-
 let isDragging = false;
 let startY = 0;
 let startHeight = 0;
@@ -43,6 +41,21 @@ function drag(e) {
     if (newHeight >= minHeight - 20 && newHeight <= maxHeight + 20) {
         container.style.height = `${newHeight}px`;
 
+        const heightPercentage = (newHeight / window.innerHeight) * 100;
+
+        // Set the black curtains opacity based on the height of the container
+        let opacityValue = 0;
+
+        if (heightPercentage <= 47) {
+            opacityValue = 1; // Fully opaque when below or equal to 47%
+        } else if (heightPercentage < 50) {
+            opacityValue = (50 - heightPercentage) / 3; // Smooth transition to fully transparent
+        }
+
+        // Update black curtains opacity
+        blackCurtains.style.opacity = `${opacityValue}`;  // Set opacity
+        blackCurtains.style.display = opacityValue > 0 ? 'block' : 'none';
+
         const currentTimestamp = performance.now();
         const deltaTime = currentTimestamp - lastTimestamp;
 
@@ -52,8 +65,6 @@ function drag(e) {
 
         lastY = currentY;
         lastTimestamp = currentTimestamp;
-
-        const heightPercentage = (newHeight / window.innerHeight) * 100;
 
         // Adjust border radius based on height
         adjustBorderRadius(heightPercentage);
@@ -98,11 +109,22 @@ function endDrag() {
 
             const heightPercentage = (targetHeight / window.innerHeight) * 100;
             adjustBorderRadius(heightPercentage);
+
+            // Update black curtains opacity on bounce
+            const opacityValue = Math.min(1, (50 - heightPercentage) / 10);
+            blackCurtains.style.opacity = `${opacityValue}`;
+            blackCurtains.style.display = opacityValue > 0 ? 'block' : 'none';
         }, 16);
     } else {
         container.style.height = `${targetHeight}px`;
         const heightPercentage = (targetHeight / window.innerHeight) * 100;
         adjustBorderRadius(heightPercentage);
+
+        // Hide curtains if the height is above 50%
+        if (heightPercentage >= 50) {
+            blackCurtains.style.opacity = '0'; // Fade out
+            setTimeout(() => blackCurtains.style.display = 'none', 300); // Hide after transition
+        }
     }
 
     isDragging = false;
@@ -202,7 +224,6 @@ function resetNewsletter() {
     });
 }
 
-
 // Event listeners
 dragHandle.addEventListener('mousedown', startDrag);
 dragHandle.addEventListener('touchstart', startDrag, { passive: false });
@@ -216,6 +237,7 @@ touchArea.addEventListener('touchstart', startDrag, { passive: false });
 
 // Link container click event
 linkContainer.addEventListener('click', handleLinkClick);
+
 
 // Existing touch area animations
 touchArea.addEventListener('mousedown', () => {
