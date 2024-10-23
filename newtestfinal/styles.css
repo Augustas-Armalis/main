@@ -354,7 +354,7 @@ p {
         background-repeat: no-repeat;
         background-size: 18px auto;
         /* Height 100%, width auto */
-        padding: 8px 42px;
+        padding: 8px 40px;
     }
 
     /* Email input with larger bottom margin */
@@ -365,7 +365,7 @@ p {
         background-repeat: no-repeat;
         background-size: 18px auto;
         /* Height 100%, width auto */
-        padding: 8px 42px;
+        padding: 8px 40px;
     }
 
     input[type=text]:hover {
@@ -375,7 +375,7 @@ p {
         background-repeat: no-repeat;
         background-size: 18px auto;
         /* Height 100%, width auto */
-        padding: 8px 42px;
+        padding: 8px 40px;
     }
 
     /* Email input with larger bottom margin */
@@ -386,7 +386,7 @@ p {
         background-repeat: no-repeat;
         background-size: 18px auto;
         /* Height 100%, width auto */
-        padding: 8px 42px;
+        padding: 8px 40px;
     }
 
 
@@ -670,13 +670,16 @@ p {
 
 
 
-
+    .link-container-mobile-sub {
+        cursor: pointer;
+    }
 
     .arrow-mobile-sub {
         height: 12px;
         width: auto;
         /* Transition for color change */
         filter: brightness(100);
+
     }
 
     .link-mobile-sub {
