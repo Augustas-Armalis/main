@@ -34,12 +34,14 @@ a:active {
     outline: none;
 }
 
+/* select color */
+
 ::selection {
-    background-color: hsla(235, 3%, 90%, 0.2);
+    background-color: hsla(240, 2%, 90%, 0.2);
 }
 
 ::-moz-selection {
-    background-color: hsla(235, 3%, 90%, 0.2);
+    background-color: hsla(240, 2%, 90%, 0.2);
 }
 
 @font-face {
@@ -188,7 +190,7 @@ a:active {
 
 
 h1 {
-    font: var(--h1-regular);
+    font: var(--h1-regular)
 }
 
 h2 {
@@ -209,49 +211,552 @@ p {
 
 /* ------------------------------------------------------------------------------------------ */
 
-.demo-container {
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    text-align: center;
-}
-
-
 
 .mobile-container {
     display: none;
 }
 
+/* Button */
+
+.rectangle {
+    position: relative;
+    height: 30px;
+    min-width: fit-content;
+    max-width: fit-content;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 1px solid rgba(126, 128, 144, 0.5);
+    background: rgba(22, 22, 24, 0.50);
+    box-shadow: 0px 0px 5px 2px #000;
+    backdrop-filter: blur(5px);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.under-rectangle-layer {
+    width: fit-content;
+    height: fit-content;
+    background-color: aqua;
+    padding: 5px;
+    border-radius: 12px;
+    border: 1px solid rgba(181, 184, 208, 0.15);
+    background: rgba(0, 0, 0, 0.01);
+    box-shadow: 0px 0px 6px 3px rgba(255, 255, 255, 0.17) inset;
+    transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.blob {
+    position: absolute;
+    border-radius: 106px;
+    background: rgba(184, 193, 204, 0.20);
+    filter: blur(5px);
+    z-index: -10;
+}
+
+.grain-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(images/grain-btn.png) no-repeat;
+    background-size: auto;
+    background-repeat: repeat;
+    mix-blend-mode: overlay;
+    z-index: 5;
+    opacity: 0.4;
+}
+
+.btn-text-container {
+    display: inline-flex;
+    align-items: center;
+    padding-right: 20px;
+    padding-left: 20px;
+    position: relative;
+    width: fit-content;
+    height: 100%;
+}
+
+.blob-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+.under-rectangle-layer:hover .rectangle {
+    box-shadow: 0px 0px 12px 3px rgba(108, 108, 111, 0.31) inset, 0px 0px 5.9px 3px #000;
+    border: 1px solid rgba(126, 128, 144, 0.7);
+}
+
+.under-rectangle-layer:hover {
+    box-shadow: 0px 0px 6px 3px rgba(255, 255, 255, 0.09) inset;
+}
+
+.under-rectangle-layer:active .rectangle {
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 1) inset, 0px 0px 5.9px 3px #000;
+    transform: scale(0.97) translateZ(0);
+    opacity: 0.9;
+}
+
+.under-rectangle-layer:active {
+    transform: scale(0.97) translateZ(0);
+}
+
+.under-rectangle-layer.active .rectangle {
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 1) inset, 0px 0px 5.9px 3px #000;
+    transform: scale(0.97) translateZ(0);
+    opacity: 0.9;
+}
+
+.under-rectangle-layer.active {
+    transform: scale(0.97) translateZ(0);
+}
+
+
+
+
+
+.desk-text,
+#dekSubscriptionForm,
+.left-image-spacing {
+    opacity: 0;
+    /* Hide elements initially */
+}
+
+
+.image-itself-containers {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    position: absolute;
+    z-index: -1;
+}
+
+.spacing-right-image {
+    flex: 0.9;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+}
+
+.left-image-spacing {
+    background-image: url(images/main%20image.webp);
+    /* Ensure correct URL formatting */
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* Scale the image to fit within the container while maintaining aspect ratio */
+    height: 100vh;
+    /* Set height to 100% of the viewport height */
+    width: 51vw;
+    /* Set width to 100% of the parent container */
+
+}
+
+.desktop-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.form-side {
+    flex: 1;
+    height: 100vh;
+    width: 100%;
+    background-color: black;
+    /* padding-right: 64px;
+    padding-left: 64px; */
+}
+
+.image-side {
+    /* background-image: url(images/main\ image.webp); */
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    flex: 1;
+    height: 100vh;
+    width: 100%;
+}
+
+.this-dark-blob-desk {
+    width: 400px;
+    height: 50px;
+    flex-shrink: 0;
+    background-color: #000000;
+    /* Use background-color for HTML elements */
+    filter: blur(45px);
+    position: absolute;
+    left: -10%;
+    top: 0%;
+    z-index: 10;
+}
+
+.after-sub-container-desk {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.desktop-title-name {
+    font: var(--h1-bold);
+    font-size: 48px;
+    letter-spacing: -0.16px;
+    margin-bottom: var(--margin-xs);
+}
+
+.alt-desktop-text {
+    color: #AEB1BB;
+    font-size: 24px;
+    line-height: 130%;
+    margin-bottom: var(--margin-xxl);
+    text-align: center;
+    width: 520px;
+    margin-right: 64px;
+    margin-left: 64px;
+}
+
+.to-my-web-desktop {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    gap: 10px;
+    margin: 24px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+    z-index: 20;
+}
+
+.arrow-desk {
+    height: 10px;
+    width: auto;
+}
+
+.arrow-desk-spec {
+    height: 15px;
+    width: auto;
+}
+
+.go-to-link-desk {
+    font-size: 18px;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.to-my-web-desktop:hover .go-to-link-desk {
+    color: var(--gray2);
+}
+
+.to-my-web-desktop:hover .arrow-desk {
+    filter: brightness(100);
+}
+
+
+
+
+.form-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    border-radius: 16px 0px 0px 16px;
+    background: #000;
+    box-shadow: -8px 0px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+
+#dekSubscriptionForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centers items horizontally */
+    justify-content: center;
+    /* Centers items vertically (if there's extra space) */
+    height: fit-content;
+}
+
+.after-sub-container-desk {
+    display: none;
+    /* Initially hidden */
+    opacity: 0;
+    /* Start invisible */
+    transition: opacity 0.3s ease;
+    /* Smooth transition for fading in and out */
+}
+
+.things-to-dissapear-desk {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+    /* Start visible */
+}
+
+
+input {
+    width: 430px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(181, 184, 208, 0.15);
+    background: #161618;
+    color: white;
+    outline: none;
+    transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+    color: white;
+    font: var(--small-regular);
+}
+
+/* Text input with bottom margin */
+input[type=text] {
+    margin-bottom: none;
+}
+
+input[type=text]:focus {
+    background-image: url('images/name\ form\ icon.png');
+    background-position: 12px center;
+    /* 12px gap on the left */
+    background-repeat: no-repeat;
+    background-size: 18px auto;
+    /* Height 100%, width auto */
+    padding: 8px 40px;
+}
+
+/* Email input with larger bottom margin */
+input[type=email]:focus {
+    background-image: url('images/email\ form\ icon.png');
+    background-position: 12px center;
+    /* 12px gap on the left */
+    background-repeat: no-repeat;
+    background-size: 18px auto;
+    /* Height 100%, width auto */
+    padding: 8px 40px;
+}
+
+input[type=text]:hover {
+    background-image: url('images/name\ form\ icon.png');
+    background-position: 12px center;
+    /* 12px gap on the left */
+    background-repeat: no-repeat;
+    background-size: 18px auto;
+    /* Height 100%, width auto */
+    padding: 8px 40px;
+}
+
+/* Email input with larger bottom margin */
+input[type=email]:hover {
+    background-image: url('images/email\ form\ icon.png');
+    background-position: 12px center;
+    /* 12px gap on the left */
+    background-repeat: no-repeat;
+    background-size: 18px auto;
+    /* Height 100%, width auto */
+    padding: 8px 40px;
+}
+
+
+/* Custom focus style for text input */
+input:focus {
+    border: 1px solid #494950;
+    background: var(--gray3);
+    outline: none;
+    /* Ensure default outline is off */
+}
+
+input::placeholder {
+    color: #AEB1BB;
+    /* Change this color to whatever you prefer */
+    opacity: 1;
+    /* Ensures the color is fully visible */
+}
+
+
+/* Custom focus style for text input */
+input:hover {
+    border: 1px solid #494950;
+    background: var(--gray3);
+    outline: none;
+    /* Ensure default outline is off */
+}
+
+/* Email input with larger bottom margin */
+input[type=email] {
+    margin-bottom: none;
+}
+
+/* Autofill styling */
+input:-webkit-autofill {
+    -webkit-box-shadow: inset 0 0 0 30px #161618 !important;
+    /* Use the same background color */
+    -webkit-text-fill-color: white !important;
+    /* Keep the text color */
+    background-image: url('images/name\ form\ icon.png');
+    /* Background image for text input */
+    background-position: 12px center;
+    /* Adjust the position as needed */
+    background-repeat: no-repeat;
+    background-size: 18px auto;
+}
+
+input[type=email]:-webkit-autofill {
+    background-image: url('images/email\ form\ icon.png');
+    /* Background image for email input */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media (max-width: 768px) {
 
-    .demo-container {
+    .background-image,
+    .text-mobile-container,
+    #subscriptionForm {
+        opacity: 0;
+    }
+
+
+    input {
+        width: 250px;
+        padding: 8px 12px;
+        border-radius: 8px;
+        border: 1px solid rgba(181, 184, 208, 0.15);
+        background: #161618;
+        color: white;
+        outline: none;
+        transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+        color: white;
+        font: var(--p-regular);
+    }
+
+
+    /* Text input with bottom margin */
+    input[type=text] {
+        margin-bottom: var(--margin-m);
+    }
+
+
+    /* Email input with larger bottom margin */
+    input[type=email] {
+        margin-bottom: var(--margin-xl);
+    }
+
+
+    .desktop-container {
         display: none;
+    }
+
+
+
+    .fade-out {
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .fade-in {
+        opacity: 1;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+
+
+
+    .container-after-subscribtion {
+        width: 100vw;
+        height: fit-content;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-bottom: var(--margin-xl);
+    }
+
+    .after-sub-text {
+        font: var(--h1-bold);
+        font-size: 32px;
+        letter-spacing: -0.16px;
+        margin-bottom: var(--margin-xs);
+    }
+
+    .rectangle {
+        transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .under-rectangle-layer {
+        transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .btn-text {
+        color: white;
+        font: --font-medium;
+        position: relative;
+        font-size: 24px;
     }
 
     .mobile-container {
         display: block;
     }
 
+    .text-mobile-container {
+        text-align: center;
+    }
+
     .form-container-mobile {
         position: fixed;
         bottom: 0;
-        width: 100%;
-        height: 50vh;
+        width: 100vw;
+        height: fit-content;
+        /* Initial height fits the content */
+        min-height: fit-content;
+        /* The smallest height will fit the content */
         max-height: 100%;
         min-height: 47%;
+        padding-right: 16px;
+        padding-left: 16px;
+        padding-top: 46px;
+        padding-bottom: 32px;
         background-color: var(--black);
         display: flex;
         justify-content: center;
+        flex-direction: column;
         align-items: center;
         transition: height 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-radius 0.3s ease;
         border-top-left-radius: 16px;
         border-top-right-radius: 16px;
         cursor: default;
+        box-shadow: 0px -10px 19px 0px rgba(0, 0, 0, 0.25);
     }
+
+    .form-container-mobile-black-curtains {
+        width: 100vw;
+        height: 100%;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+        box-shadow: 0px -60px 60px 0px rgba(0, 0, 0, 0.9) inset, 0px 100px 60px 0px rgba(0, 0, 0, 0.9) inset;
+        z-index: 20;
+        display: none;
+        transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
 
     .line-mobile {
         position: absolute;
@@ -277,6 +782,7 @@ p {
         background-color: transparent;
         cursor: ns-resize;
         margin-top: -10px;
+        z-index: 9000;
     }
 
     .center-box {
@@ -290,6 +796,7 @@ p {
         height: 7px;
         background-color: white;
         transition: width 0.2s, height 0.2s, background-color 0.2s;
+        z-index: 90;
     }
 
 
@@ -298,12 +805,25 @@ p {
         height: 55vh;
         position: absolute;
         z-index: -1;
-        background-image: url('images/main-image-mobile.png');
+        background-image: url('images/main\ image.webp');
         background-position: center top;
         /* Center horizontally, align with the top vertically */
         background-repeat: no-repeat;
         background-size: cover;
         /* Ensures the image fills the container */
+    }
+
+    .this-dark-blob {
+        width: 215px;
+        height: 50px;
+        flex-shrink: 0;
+        background-color: #000000;
+        /* Use background-color for HTML elements */
+        filter: blur(40px);
+        position: absolute;
+        left: -10%;
+        top: -3%;
+        z-index: 10;
     }
 
     .link-container-mobile {
@@ -317,12 +837,14 @@ p {
         padding: 16px;
         transition: transform 0.1s ease-in;
         /* Transition for scaling effect */
+        z-index: 20;
     }
 
     .arrow-mobile {
         height: 12px;
         width: auto;
         /* Transition for color change */
+        z-index: 20;
     }
 
     .link-mobile {
@@ -331,6 +853,7 @@ p {
         color: white;
         transition: color 0.3s ease;
         /* Transition for color change */
+        z-index: 20;
     }
 
     .link-container-mobile:hover .link-mobile {
@@ -366,5 +889,110 @@ p {
 
     .inside-content {
         text-align: center;
+    }
+
+    .newsletter-mobile-title {
+        font: var(--h1-bold);
+        font-size: 42px;
+        letter-spacing: -0.16px;
+        margin-bottom: var(--margin-xs);
+    }
+
+    .newsletter-mobile-alt {
+        color: #AEB1BB;
+        font-size: 24px;
+        line-height: 130%;
+        padding-right: 26px;
+        padding-left: 26px;
+        margin-bottom: var(--margin-xl);
+        text-align: center;
+    }
+
+
+
+
+
+
+
+
+    .link-container-mobile-sub {
+        cursor: pointer;
+    }
+
+    .arrow-mobile-sub {
+        height: 12px;
+        width: auto;
+        /* Transition for color change */
+        filter: brightness(100);
+
+    }
+
+    .link-mobile-sub {
+        font: var(--p-regular);
+        text-decoration: none;
+        color: var(--gray2);
+        transition: color 0.3s ease;
+        padding-right: 4px;
+        /* Transition for color change */
+    }
+
+    .link-container-mobile-sub:hover .link-mobile-sub {
+        color: var(--white);
+        /* Change link text color */
+    }
+
+    .link-container-mobile-sub:hover .arrow-mobile-sub {
+        filter: brightness(100);
+        /* Change arrow color */
+    }
+
+    /* Active state */
+    .link-container-mobile-sub.active {
+        transform: scale(0.05);
+        /* Scale down effect */
+    }
+
+    .link-container-mobile-sub.active .link-mobile-sub {
+        color: var(--white);
+        /* Change text color */
+    }
+
+    .link-container-mobile-sub.active .arrow-mobile-sub {
+        filter: brightness(100);
+        /* Change arrow color */
+    }
+
+
+}
+
+
+
+
+
+
+
+
+@media (max-width: 480px) {
+    .newsletter-mobile-title {
+        font: var(--h1-bold);
+        font-size: 32px;
+        letter-spacing: -0.16px;
+        margin-bottom: var(--margin-xs);
+    }
+
+    .newsletter-mobile-alt {
+        color: #AEB1BB;
+        font-size: 16px;
+        line-height: 130%;
+        padding-right: 16px;
+        padding-left: 16px;
+        margin-bottom: var(--margin-xl);
+        text-align: center;
+    }
+}
+
+@media (max-width: 1150px) {
+    .image-side {
+        display: none;
     }
 }

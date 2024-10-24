@@ -37,30 +37,96 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
 
-
 <body>
-  <div class="demo-container">
-    <h2 class="demo-title">Join my waitlist
-    </h2>
-    <p style="padding-left: 64px; padding-right: 64px; color: hsla(235, 5%, 71%, 1)">Sorry for the scrap up website,
-      I'm doing my
-      best to create
-      it as fast as possible<br><br>
-      Thankyou for your
-      understanding</p><br>
 
-    <form id="subscriptionForm" style="align-items: center; display: flex; flex-direction: column;">
-      <input type="text" id="name" name="name" placeholder="Name"><br>
-      <input type="email" id="email" name="email" placeholder="Email"><br><br>
-      <button type="submit" style="margin-top: 0px; margin-bottom: 0px;" class="sub-button">
-        <p>Subscribe</p>
-      </button>
-    </form>
+
+
+  <div class="desktop-container">
+
+    <div class="this-dark-blob-desk"></div>
+
+    <div class="image-itself-containers">
+      <div class="spacing-right-image"></div>
+      <div class="left-image-spacing"></div>
+    </div>
+
+    <div class="image-side">
+
+      <div class="to-my-web-desktop">
+        <img src="images/Arrow-desk.svg" class="arrow-desk">
+        <a class="go-to-link-desk" href="https://augustas.co">Go to my website</a>
+      </div>
+
+
+    </div>
+
+    <div class="form-side">
+      <div class="after-sub-container-desk" style="display: none;">
+        <h1 class="desktop-title-name">Success/failure</h1>
+        <div class="alt-desktop-text" style="width: 400px;">Little text</div>
+        <div class="to-my-web-desktop" style="position: relative;">
+          <a class="go-to-link-desk">reload/go to gmail</a>
+          <img src="images/Arrow-desk.svg" class="arrow-desk-spec">
+        </div>
+      </div>
+
+      <div class="things-to-dissapear-desk">
+        <div class="desk-text">
+          <h1 class="desktop-title-name">Join my waitlist</h1>
+          <div class="alt-desktop-text">The newsletter is currently in development, but I can tell it's going to be
+            fire! so join below:</div>
+        </div>
+
+        <form id="dekSubscriptionForm">
+          <input type="text" id="dekName" name="name" placeholder="Name"><br>
+          <input type="email" id="dekEmail" name="email" placeholder="Email"><br><br>
+
+          <div class="dek-sub-button" id="dek-submitDiv">
+            <div class="under-rectangle-layer">
+              <div class="rectangle" style="height: 47px;">
+                <div class="btn-text-container">
+                  <div class="btn-text" style="font-size: 24px;">Subscribe</div>
+                </div>
+                <div class="grain-overlay"></div>
+                <div class="blob-container">
+                  <div class="blob"></div>
+                  <div class="blob"></div>
+                  <div class="blob"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 
 
+
+
+
+
+
+
+
   <div class="mobile-container">
+
     <div class="form-container-mobile">
+
+      <div class="container-after-subscribtion" style="display: none;">
+        <h1 class="after-sub-text" id="afterSubText"></h1>
+        <div id="afterSubButtonContainer"></div>
+      </div>
+
+      <div class="form-container-mobile-black-curtains"></div>
+
+      <div class="text-mobile-container">
+        <h1 class="newsletter-mobile-title">Join my waitlist</h1>
+        <p class="newsletter-mobile-alt">The newsletter is currently in development, but I can tell it's going to be
+          fire! so join below:
+        </p>
+      </div>
+
 
       <div class="touch-area">
         <div class="line-mobile"></div>
@@ -68,21 +134,28 @@
 
 
       <div class="inside-content">
-        <h2 class="demo-title">Join my waitlist
-        </h2>
-        <p style="padding-left: 64px; padding-right: 64px; color: hsla(235, 5%, 71%, 1)">Sorry for the scrap up website,
-          I'm doing my
-          best to create
-          it as fast as possible<br><br>
-          Thankyou for your
-          understanding</p><br>
 
         <form id="subscriptionForm" style="align-items: center; display: flex; flex-direction: column;">
-          <input type="text" id="name" name="name" placeholder="Name"><br>
-          <input type="email" id="email" name="email" placeholder="Email"><br><br>
-          <button type="submit" style="margin-top: 0px; margin-bottom: 0px;" class="sub-button">
-            <p>Subscribe</p>
-          </button>
+          <input type="text" id="name" name="name" placeholder="Name">
+          <input type="email" id="email" name="email" placeholder="Email">
+
+          <div class="sub-button" id="submitDiv">
+            <div class="under-rectangle-layer">
+              <div class="rectangle" style="height: 41px;">
+                <div class="btn-text-container">
+                  <p class="btn-text">Subscribe</p>
+                </div>
+                <div class="grain-overlay"></div>
+                <div class="blob-container">
+                  <div class="blob"></div>
+                  <div class="blob"></div>
+                  <div class="blob"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
         </form>
 
       </div>
@@ -90,91 +163,20 @@
     </div>
 
     <div class="background-image">
+      <div class="this-dark-blob"></div>
+
       <div class="link-container-mobile" data-url="https://augustas.co">
         <img class="arrow-mobile" src="images/Arrow-mobile.svg">
         <a class="link-mobile">Go to my website</a>
       </div>
     </div>
 
+
   </div>
+
 
   <script src="script.js"></script>
 
-  <script>
-
-    document.getElementById("subscriptionForm").addEventListener("submit", function (event) {
-      event.preventDefault();
-
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-      const apiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiMTE4ZGJlYTk5OWMzNjkwYjY5MWYxODJiNmVhMjBmMDY5YjJlYTFhYThiNGViZjNmMDkxYmM3N2E0NmI3ZjEwYmRkNGU5MjgzNTE5MTY1OTMiLCJpYXQiOjE3MDg2ODg2MzcuNzUwMTQsIm5iZiI6MTcwODY4ODYzNy43NTAxNDQsImV4cCI6NDg2NDM2MjIzNy43NDUyOTUsInN1YiI6IjgzNzU4OCIsInNjb3BlcyI6W119.w-4-JmwM5gOZFBlQ3rbRPAt8YVb13MVH2xw0HvHfHVFNtJJEW5xhrTbQ14_JDsYWFNL-sOkHygbtfyOZVa1lO0EG25hwInANzN3d2q730CvfH3lRPZaoHl12HTRtTh1CprsKvuW5J_NMNxfY78R9TJv6MGkKZ6p2RD0oW-eyiu_feYUNUrC62P8P77kIRHLKn_JlqOVnpoB3cN4OSYL28cRZfls4geMj7d_2gOA8XOBIcGjZEqyGCMM145KOc30rAQsWymGD8vpifD8Jd-0UG6Y_J6NW0JcLr-o5ZrJfG8YqztS1Ls88A92ynSw2a-BgexwdXuNQw94_jCiq2MFQMHkptR0pW4G2kDk1b_fxqS5BarndnXOyj5_QtQ9X_f9oO5EF95Cb7sUgYN0n0GBszZL4-tDO1hIeYmjwz2Sba4aNMOtnwmatDW2Y4ynq_mOB2TsOe48Nbg91qyF4aCcx6T9riODAlMsV0E4kUUfPMM6LJyn-LLZ1WZ4x4mk24IsSZoFGg4fTkFkvE7yMem9q4IU4zdZ08n7ZYjTpf2vVvsT7a6uded-mb5dChiS6K2LriyjrsDbcQ74tQy1F7m8t0TdksZntVW_Vz0W_waUHH6SjBsDllmI5rL48wLC2O2lSd_pu22At3eLtSViMV80L3pLK61DPq39pRmuWL4oUBzM";
-
-      fetch('https://connect.mailerlite.com/api/groups?filter[name]=Newsletter', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'Authorization': `Bearer ${apiKey}`
-        }
-      })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Failed to retrieve group information');
-          }
-          return response.json();
-        })
-        .then(data => {
-          const groupId = data.data[0].id;
-
-          fetch('https://connect.mailerlite.com/api/subscribers', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json',
-              'Authorization': `Bearer ${apiKey}`
-            },
-            body: JSON.stringify({
-              email: email,
-              fields: {
-                name: name
-              },
-              groups: [groupId]
-            })
-          })
-            .then(response => {
-              if (!response.ok) {
-                throw new Error('Subscription failed');
-              }
-              console.log('Subscription successful');
-
-              alert('Thank you! Your subscription was successful.');
-            })
-            .catch(error => {
-              console.error('Error:', error);
-              alert('Subscription failed');
-            });
-        })
-        .catch(error => {
-          console.error('Error:', error);
-          alert('Failed to retrieve group information');
-        });
-    });
-
-    const timelinerasas = gsap.to(".star-absolute-free3", {
-      rotation: 360,
-      duration: 10,
-      ease: "none",
-      repeat: -1,
-    });
-
-    document.getElementById("subsribe-hover-on").addEventListener("mouseenter", () => {
-      gsap.to(timelinerasas, { duration: 0.5, timeScale: 5 });
-    });
-
-    document.getElementById("subsribe-hover-on").addEventListener("mouseleave", () => {
-      gsap.to(timelinerasas, { duration: 0.5, timeScale: 1 });
-    });
-  </script>
 
 </body>
 

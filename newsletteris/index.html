@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+
+  <meta name="description" content="A brief description of your page content.">
+  <meta name="keywords"
+    content="Newsletter, aweb Newsletter, Augustas Newsletter, Web Newsletter, news, aweb, website newsletter, newslet">
+
+  <meta property="og:title" content="Your Page Title">
+  <meta property="og:description" content="A brief description of your page content.">
+  <meta property="og:image" content="https://www.example.com/image.jpg">
+  <meta property="og:url" content="https://www.example.com/page-url">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Your Page Title">
+  <meta name="twitter:description" content="A brief description of your page content.">
+  <meta name="twitter:image" content="https://www.example.com/image.jpg">
+
+  <meta name="author" content="Author Name">
+  <meta name="theme-color" content="#000000">
+
+  <link rel="alternate" href="https://www.example.com" hreflang="en">
+
+  <title>Newsletter</title>
+  <link rel="canonical" href="https://augustas.co/newsletter">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/x-icon" href="favicon">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
+
+
+<body>
+  <div class="demo-container">
+    <h2 class="demo-title">Join my waitlist
+    </h2>
+    <p style="padding-left: 64px; padding-right: 64px; color: hsla(235, 5%, 71%, 1)">Sorry for the scrap up website,
+      I'm doing my
+      best to create
+      it as fast as possible<br><br>
+      Thankyou for your
+      understanding</p><br>
+
+    <form id="subscriptionForm" style="align-items: center; display: flex; flex-direction: column;">
+      <input type="text" id="name" name="name" placeholder="Name"><br>
+      <input type="email" id="email" name="email" placeholder="Email"><br><br>
+      <button type="submit" style="margin-top: 0px; margin-bottom: 0px;" class="sub-button">
+        <p>Subscribe</p>
+      </button>
+    </form>
+  </div>
+
+
+  <div class="mobile-container">
+    <div class="form-container-mobile">
+
+      <div class="touch-area">
+        <div class="line-mobile"></div>
+      </div>
+
+
+      <div class="inside-content">
+        <h2 class="demo-title">Join my waitlist
+        </h2>
+        <p style="padding-left: 64px; padding-right: 64px; color: hsla(235, 5%, 71%, 1)">Sorry for the scrap up website,
+          I'm doing my
+          best to create
+          it as fast as possible<br><br>
+          Thankyou for your
+          understanding</p><br>
+
+        <form id="subscriptionForm" style="align-items: center; display: flex; flex-direction: column;">
+          <input type="text" id="name" name="name" placeholder="Name"><br>
+          <input type="email" id="email" name="email" placeholder="Email"><br><br>
+          <button type="submit" style="margin-top: 0px; margin-bottom: 0px;" class="sub-button">
+            <p>Subscribe</p>
+          </button>
+        </form>
+
+      </div>
+
+    </div>
+
+    <div class="background-image">
+      <div class="link-container-mobile" data-url="https://augustas.co">
+        <img class="arrow-mobile" src="images/Arrow-mobile.svg">
+        <a class="link-mobile">Go to my website</a>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+
+  <script>
+
+    document.getElementById("subscriptionForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const apiKey = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiMTE4ZGJlYTk5OWMzNjkwYjY5MWYxODJiNmVhMjBmMDY5YjJlYTFhYThiNGViZjNmMDkxYmM3N2E0NmI3ZjEwYmRkNGU5MjgzNTE5MTY1OTMiLCJpYXQiOjE3MDg2ODg2MzcuNzUwMTQsIm5iZiI6MTcwODY4ODYzNy43NTAxNDQsImV4cCI6NDg2NDM2MjIzNy43NDUyOTUsInN1YiI6IjgzNzU4OCIsInNjb3BlcyI6W119.w-4-JmwM5gOZFBlQ3rbRPAt8YVb13MVH2xw0HvHfHVFNtJJEW5xhrTbQ14_JDsYWFNL-sOkHygbtfyOZVa1lO0EG25hwInANzN3d2q730CvfH3lRPZaoHl12HTRtTh1CprsKvuW5J_NMNxfY78R9TJv6MGkKZ6p2RD0oW-eyiu_feYUNUrC62P8P77kIRHLKn_JlqOVnpoB3cN4OSYL28cRZfls4geMj7d_2gOA8XOBIcGjZEqyGCMM145KOc30rAQsWymGD8vpifD8Jd-0UG6Y_J6NW0JcLr-o5ZrJfG8YqztS1Ls88A92ynSw2a-BgexwdXuNQw94_jCiq2MFQMHkptR0pW4G2kDk1b_fxqS5BarndnXOyj5_QtQ9X_f9oO5EF95Cb7sUgYN0n0GBszZL4-tDO1hIeYmjwz2Sba4aNMOtnwmatDW2Y4ynq_mOB2TsOe48Nbg91qyF4aCcx6T9riODAlMsV0E4kUUfPMM6LJyn-LLZ1WZ4x4mk24IsSZoFGg4fTkFkvE7yMem9q4IU4zdZ08n7ZYjTpf2vVvsT7a6uded-mb5dChiS6K2LriyjrsDbcQ74tQy1F7m8t0TdksZntVW_Vz0W_waUHH6SjBsDllmI5rL48wLC2O2lSd_pu22At3eLtSViMV80L3pLK61DPq39pRmuWL4oUBzM";
+
+      fetch('https://connect.mailerlite.com/api/groups?filter[name]=Newsletter', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': `Bearer ${apiKey}`
+        }
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Failed to retrieve group information');
+          }
+          return response.json();
+        })
+        .then(data => {
+          const groupId = data.data[0].id;
+
+          fetch('https://connect.mailerlite.com/api/subscribers', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+              'Authorization': `Bearer ${apiKey}`
+            },
+            body: JSON.stringify({
+              email: email,
+              fields: {
+                name: name
+              },
+              groups: [groupId]
+            })
+          })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Subscription failed');
+              }
+              console.log('Subscription successful');
+
+              alert('Thank you! Your subscription was successful.');
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              alert('Subscription failed');
+            });
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('Failed to retrieve group information');
+        });
+    });
+
+    const timelinerasas = gsap.to(".star-absolute-free3", {
+      rotation: 360,
+      duration: 10,
+      ease: "none",
+      repeat: -1,
+    });
+
+    document.getElementById("subsribe-hover-on").addEventListener("mouseenter", () => {
+      gsap.to(timelinerasas, { duration: 0.5, timeScale: 5 });
+    });
+
+    document.getElementById("subsribe-hover-on").addEventListener("mouseleave", () => {
+      gsap.to(timelinerasas, { duration: 0.5, timeScale: 1 });
+    });
+  </script>
+
+</body>
+
+</html>
