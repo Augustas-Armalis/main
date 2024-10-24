@@ -37,16 +37,79 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
 
-
-  <link rel="preload" as="image" href="images/email form icon.png">
-  <link rel="preload" as="image" href="images/name form icon.png">
-
-
 <body>
 
+
+
+  <div class="desktop-container">
+
+    <div class="this-dark-blob-desk"></div>
+
+    <div class="image-itself-containers">
+      <div class="spacing-right-image"></div>
+      <div class="left-image-spacing"></div>
+    </div>
+
+    <div class="image-side">
+
+      <div class="to-my-web-desktop">
+        <img src="images/Arrow-desk.svg" class="arrow-desk">
+        <a class="go-to-link-desk" href="https://augustas.co">Go to my website</a>
+      </div>
+
+
+    </div>
+
+    <div class="form-side">
+      <div class="after-sub-container-desk" style="display: none;">
+        <h1 class="desktop-title-name">Success/failure</h1>
+        <div class="alt-desktop-text" style="width: 400px;">Little text</div>
+        <div class="to-my-web-desktop" style="position: relative;">
+          <a class="go-to-link-desk">reload/go to gmail</a>
+          <img src="images/Arrow-desk.svg" class="arrow-desk-spec">
+        </div>
+      </div>
+
+      <div class="things-to-dissapear-desk">
+        <div class="desk-text">
+          <h1 class="desktop-title-name">Join my waitlist</h1>
+          <div class="alt-desktop-text">The newsletter is currently in development, but I can tell it's going to be
+            fire! so join below:</div>
+        </div>
+
+        <form id="dekSubscriptionForm">
+          <input type="text" id="dekName" name="name" placeholder="Name"><br>
+          <input type="email" id="dekEmail" name="email" placeholder="Email"><br><br>
+
+          <div class="dek-sub-button" id="dek-submitDiv">
+            <div class="under-rectangle-layer">
+              <div class="rectangle" style="height: 47px;">
+                <div class="btn-text-container">
+                  <div class="btn-text" style="font-size: 24px;">Subscribe</div>
+                </div>
+                <div class="grain-overlay"></div>
+                <div class="blob-container">
+                  <div class="blob"></div>
+                  <div class="blob"></div>
+                  <div class="blob"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
   <div class="mobile-container">
-
-
 
     <div class="form-container-mobile">
 
@@ -55,12 +118,12 @@
         <div id="afterSubButtonContainer"></div>
       </div>
 
-
       <div class="form-container-mobile-black-curtains"></div>
 
       <div class="text-mobile-container">
-        <h1 class="newsletter-mobile-title">Join my newsletter</h1>
-        <p class="newsletter-mobile-alt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, ducimus ut
+        <h1 class="newsletter-mobile-title">Join my waitlist</h1>
+        <p class="newsletter-mobile-alt">The newsletter is currently in development, but I can tell it's going to be
+          fire! so join below:
         </p>
       </div>
 
