@@ -345,7 +345,7 @@ p {
 }
 
 .left-image-spacing {
-    background-image: url(images/main%20image.webp);
+    background-image: url(images/lolis.png);
     /* Ensure correct URL formatting */
     background-position: center top;
     background-repeat: no-repeat;
@@ -805,7 +805,7 @@ input[type=email]:-webkit-autofill {
         height: 55vh;
         position: absolute;
         z-index: -1;
-        background-image: url('images/main\ image.webp');
+        background-image: url('images/lolis.png');
         background-position: center top;
         /* Center horizontally, align with the top vertically */
         background-repeat: no-repeat;
