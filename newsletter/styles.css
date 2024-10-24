@@ -902,8 +902,8 @@ input[type=email]:-webkit-autofill {
         color: #AEB1BB;
         font-size: 24px;
         line-height: 130%;
-        padding-right: 26px;
-        padding-left: 26px;
+        padding-right: 16px;
+        padding-left: 16px;
         margin-bottom: var(--margin-xl);
         text-align: center;
     }
