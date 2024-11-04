@@ -48,22 +48,45 @@ a:active {
 @font-face {
   font-family: 'SF Pro Display Regular';
   font-weight: 400;
-  font-style: normal;
   src: url('fonts/Sf\ Pro\ Display\ REGULAR.OTF') format('truetype');
 }
 
 @font-face {
   font-family: 'SF Pro Display Medium';
   font-weight: 500;
-  font-style: normal;
   src: url('fonts/Sf\ Pro\ Display\ MEDIUM.OTF') format('truetype');
 }
 
 @font-face {
   font-family: 'SF Pro Display Bold';
   font-weight: 700;
-  font-style: normal;
   src: url('fonts/Sf\ Pro\ Display\ BOLD.OTF') format('truetype');
+}
+
+:root{
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-bold: 700;
+
+
+ --ff-regular: 'SF Pro Display Regular', arial;
+ --ff-medium: 'SF Pro Display Medium', arial;
+ --ff-bold: 'SF Pro Display Bold', arial;
+ --gray1: hsla(235, 5%, 70%, 1);
+}
+
+h1{
+  font-size: 64px;
+  letter-spacing: -0.64px;
+  font-family: var(--ff-bold);
+  font-weight: var(--font-bold);
+}
+
+h4{
+  font-size: 24px;
+  font-family: var(--ff-regular);
+  font-weight: var(--font-regular);
+  line-height: 130%;
 }
 
 
@@ -92,12 +115,15 @@ a:active {
 }
 
 .grain-overlay {
-  background: url(images/Grain-big.png);
+  background: url(images/Grain-big.webp);
   mix-blend-mode: overlay;
+  background-size: fill;
+  background-position: center;
   width: 100%;
   height: 100vh;
   position: absolute;
 }
+
 
 .black-fade-thing {
   height: 30vh;
@@ -120,4 +146,39 @@ a:active {
   .god-ray-bck {
     height: 100vh;
   }
+}
+
+
+
+
+
+
+/* Hero section */
+
+.hero-section-container{
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  position: absolute;
+  margin-top: 192px;
+}
+
+.title-container{
+  margin-bottom: 16px;
+}
+
+.title-container h1{
+text-align: center;
+background: linear-gradient(180deg, #FFF 74.67%, #AFAFB6 100%);
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+.alt-container h4{
+  text-align: center;
+  color: var(--gray1);
 }
