@@ -104,3 +104,18 @@ a:active {
   bottom: 0;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #000 100%);
 }
+
+
+@media (max-width: 1064px) {
+  .god-ray-bck {
+    height: 140vh;
+  }
+}
+
+
+@media (max-width: 480px) {
+
+  .god-ray-bck {
+    height: 100vh;
+  }
+}
