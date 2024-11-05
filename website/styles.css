@@ -63,35 +63,70 @@ a:active {
   src: url('fonts/Sf\ Pro\ Display\ BOLD.OTF') format('truetype');
 }
 
-:root{
+:root {
   --font-regular: 400;
   --font-medium: 500;
   --font-bold: 700;
 
 
- --ff-regular: 'SF Pro Display Regular', arial;
- --ff-medium: 'SF Pro Display Medium', arial;
- --ff-bold: 'SF Pro Display Bold', arial;
- --gray1: hsla(235, 5%, 70%, 1);
+  --ff-regular: 'SF Pro Display Regular', arial;
+  --ff-medium: 'SF Pro Display Medium', arial;
+  --ff-bold: 'SF Pro Display Bold', arial;
+  --gray1: hsla(235, 5%, 70%, 1);
 }
 
-h1{
+h1 {
   font-size: 64px;
   letter-spacing: -0.64px;
   font-family: var(--ff-bold);
   font-weight: var(--font-bold);
 }
 
-h4{
+h4 {
   font-size: 24px;
   font-family: var(--ff-regular);
   font-weight: var(--font-regular);
   line-height: 130%;
 }
 
+@media (max-width: 1064px) {
+
+  h1 {
+    font-size: 50px;
+  }
+
+  h4 {
+    font-size: 20px;
+  }
+
+}
+
+@media (max-width: 555px) {
+  h1 {
+    font-size: 32px;
+  }
+
+  h4 {
+    font-size: 16px;
+  }
+}
+
 
 
 /* --------------------------------------------------------------------------------------------------- */
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* Background top godrays */
@@ -106,7 +141,7 @@ h4{
   width: 100%;
   height: 200vh;
   border: 0;
-  opacity: 0.7; /* <--- here*/
+  opacity: 0.7;
   z-index: 1;
 }
 
@@ -146,7 +181,7 @@ h4{
 }
 
 
-@media (max-width: 480px) {
+@media (max-width: 555px) {
 
   .god-ray-bck {
     height: 100vh;
@@ -159,9 +194,21 @@ h4{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 /* Hero section */
 
-.hero-section-container{
+.hero-section-container {
   height: fit-content;
   width: 100%;
   display: flex;
@@ -173,19 +220,177 @@ h4{
   z-index: 4;
 }
 
-.title-container{
+.hero-content-container {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+  flex-direction: column;
+}
+
+.title-container {
   margin-bottom: 16px;
 }
 
-.title-container h1{
-text-align: center;
-background: linear-gradient(180deg, #FFF 74.67%, #AFAFB6 100%);
-background-clip: text;
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
+.title-container h1 {
+  text-align: center;
+  background: linear-gradient(180deg, #FFF 74.67%, #AFAFB6 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.alt-container h4{
+.alt-container h4 {
   text-align: center;
   color: var(--gray1);
+}
+
+@media (max-width: 1064px) {
+  .hero-content-container {
+    margin-right: 24px;
+    margin-left: 24px;
+  }
+}
+
+
+@media (max-width: 555px) {
+
+  .hero-content-container {
+    margin-right: 16px;
+    margin-left: 16px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Button */
+
+.rectangle {
+  position: relative;
+  height: 44px;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid #54555D;
+  background: rgba(0, 0, 0, 0.40);
+  box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.50);
+  backdrop-filter: blur(5px);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.rectangle h4 {
+  font-family: var(--ff-medium);
+}
+
+.under-rectangle-layer {
+  width: fit-content;
+  height: fit-content;
+  padding: 5px;
+  border-radius: 10px;
+  border: 1px solid #252528;
+  background: rgba(0, 0, 0, 0.01);
+  box-shadow: 0px 0px 8px 3px rgba(175, 175, 182, 0.20) inset;
+  backdrop-filter: blur(2.5px);
+  backdrop-filter: blur(5px);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+  margin-top: 42px;
+}
+
+.under-rectangle-layer:hover .rectangle {
+  border: 1px solid hsla(233, 5%, 50%, 1);
+}
+
+.under-rectangle-layer:hover {
+  box-shadow: 0px 0px 8px 0px rgba(175, 175, 182, 0.20) inset;
+  border: 1px solid hsla(240, 4%, 13%, 1);
+}
+
+.under-rectangle-layer.active .rectangle {
+  transform: scale(0.97) translateZ(0);
+  opacity: 0.9;
+}
+
+.under-rectangle-layer.active {
+  transform: scale(0.95) translateZ(0);
+}
+
+.blob {
+  position: absolute;
+  border-radius: 100px;
+  background: rgba(184, 193, 204, 0.20);
+  filter: blur(6px);
+  z-index: -10;
+}
+
+.grain-overlay-button {
+  width: 100%;
+  height: 100%;
+  background: url(images/Grain-big.webp) repeat;
+  mix-blend-mode: overlay;
+  background-size: fill;
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: 5;
+  opacity: 0.4;
+}
+
+.btn-text-container {
+  display: inline-flex;
+  align-items: center;
+  padding-right: 20px;
+  padding-left: 20px;
+  position: relative;
+  width: fit-content;
+  height: 100%;
+}
+
+.blob-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+
+@media (max-width: 1064px) {
+
+  .rectangle {
+    height: 38px;
+  }
+
+  .under-rectangle-layer {
+    padding: 4px;
+  }
+}
+
+@media (max-width: 555px) {
+  .rectangle {
+    height: 34px;
+  }
+
+  .rectangle h4 {
+    font-size: 18px;
+  }
 }

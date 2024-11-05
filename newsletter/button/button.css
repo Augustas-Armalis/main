@@ -1,9 +1,10 @@
-html {
+html,
+body {
   scroll-behavior: smooth;
   scroll-padding-top: 4rem;
-  font-family: var(--ff);
-  background-color: var(--black);
-  color: var(--white);
+  font-family: 'SF Pro Display Regular';
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   overflow-x: hidden;
 }
 
@@ -34,181 +35,81 @@ a:active {
   outline: none;
 }
 
+/* select color */
+
 ::selection {
-  background-color: hsla(235, 3%, 90%, 0.2);
+  background-color: hsla(240, 2%, 90%, 0.2);
 }
 
 ::-moz-selection {
-  background-color: hsla(235, 3%, 90%, 0.2);
+  background-color: hsla(240, 2%, 90%, 0.2);
 }
 
 @font-face {
-  font-family: 'SF Pro Display';
+  font-family: 'SF Pro Display Regular';
   font-weight: 400;
-  font-style: normal;
-  src: url('fonts/Sf\ Pro\ Display\ REGULAR.OTF') format('truetype');
+  src: url('fonts//Sf\ Pro\ Display\ REGULAR.OTF') format('truetype');
 }
 
 @font-face {
-  font-family: 'SF Pro Display';
+  font-family: 'SF Pro Display Medium';
   font-weight: 500;
-  font-style: normal;
   src: url('fonts/Sf\ Pro\ Display\ MEDIUM.OTF') format('truetype');
 }
 
 @font-face {
-  font-family: 'SF Pro Display';
+  font-family: 'SF Pro Display Bold';
   font-weight: 700;
-  font-style: normal;
   src: url('fonts/Sf\ Pro\ Display\ BOLD.OTF') format('truetype');
 }
 
 :root {
-  font-size: 20px;
-
-  --margin-xxs: 0.25rem;
-  --margin-xs: 0.5rem;
-  --margin-s: 0.75rem;
-  --margin-m: 1rem;
-  --margin-l: 1.25rem;
-  --margin-xl: 1.75rem;
-  --margin-xxl: 2.5rem;
-
-  --black: #000000;
-  --white: #ffffff;
-  --gray1: hsla(235, 5%, 83%, 1);
-  --gray2: hsla(235, 5%, 71%, 1);
-  --gray25: #3D3D42;
-  --gray3: hsla(235, 5%, 15%, 1);
-  --gray4: hsla(235, 5%, 9%, 1);
-  --gray5: hsla(235, 5%, 6%, 1);
-
-  --ff: 'SF Pro Display', arial;
-
   --font-regular: 400;
   --font-medium: 500;
   --font-bold: 700;
 
-  --h1-bold: var(--font-bold) 4rem/4rem var(--ff);
-  --h1-medium: var(--font-medium) 4rem/4rem var(--ff);
-  --h1-regular: var(--font-regular) 4rem/4rem var(--ff);
 
-  --h2-bold: var(--font-bold) 3.5rem/3.5rem var(--ff);
-  --h2-medium: var(--font-medium) 3.5rem/3.5rem var(--ff);
-  --h2-regular: var(--font-regular) 3.5rem/3.5rem var(--ff);
-
-  --h3-bold: var(--font-bold) 2.5rem/2.5rem var(--ff);
-  --h3-medium: var(--font-medium) 2.5rem/2.5rem var(--ff);
-  --h3-regular: var(--font-regular) 2.5rem/2.5rem var(--ff);
-
-  --h4-bold: var(--font-bold) 1.75rem/1.75rem var(--ff);
-  --h4-medium: var(--font-medium) 1.75rem/1.75rem var(--ff);
-  --h4-regular: var(--font-regular) 1.75rem/1.75rem var(--ff);
-
-  --big-bold: var(--font-bold) 1.25rem/1.25rem var(--ff);
-  --big-medium: var(--font-medium) 1.25rem/1.25rem var(--ff);
-  --big-regular: var(--font-regular) 1.25rem/1.25rem var(--ff);
-
-  --p-bold: var(--font-bold) 1rem/1rem var(--ff);
-  --p-medium: var(--font-medium) 1rem/1rem var(--ff);
-  --p-regular: var(--font-regular) 1rem/1rem var(--ff);
-
-  --small-bold: var(--font-bold) 0.875rem/0.875rem var(--ff);
-  --small-medium: var(--font-medium) 0.875rem/0.875rem var(--ff);
-  --small-regular: var(--font-regular) 0.875rem/0.875rem var(--ff);
+  --ff-regular: 'SF Pro Display Regular', arial;
+  --ff-medium: 'SF Pro Display Medium', arial;
+  --ff-bold: 'SF Pro Display Bold', arial;
+  --gray1: hsla(235, 5%, 70%, 1);
 }
-
-@media (max-width: 768px) {
-  :root {
-    font-size: 18px;
-
-    --h1-bold: var(--font-bold) 3rem/3rem var(--ff);
-    --h1-medium: var(--font-medium) 3rem/3rem var(--ff);
-    --h1-regular: var(--font-regular) 3rem/3rem var(--ff);
-
-    --h2-bold: var(--font-bold) 2.5rem/2.5rem var(--ff);
-    --h2-medium: var(--font-medium) 2.5rem/2.5rem var(--ff);
-    --h2-regular: var(--font-regular) 2.5rem/2.5rem var(--ff);
-
-    --h3-bold: var(--font-bold) 2rem/2rem var(--ff);
-    --h3-medium: var(--font-medium) 2rem/2rem var(--ff);
-    --h3-regular: var(--font-regular) 2rem/2rem var(--ff);
-
-    --h4-bold: var(--font-bold) 1.5rem/1.5rem var(--ff);
-    --h4-medium: var(--font-medium) 1.5rem/1.5rem var(--ff);
-    --h4-regular: var(--font-regular) 1.5rem/1.5rem var(--ff);
-
-    --big-bold: var(--font-bold) 1.125rem/1.125rem var(--ff);
-    --big-medium: var(--font-medium) 1.125rem/1.125rem var(--ff);
-    --big-regular: var(--font-regular) 1.125rem/1.125rem var(--ff);
-
-    --p-bold: var(--font-bold) 0.9rem/0.9rem var(--ff);
-    --p-medium: var(--font-medium) 0.9rem/0.9rem var(--ff);
-    --p-regular: var(--font-regular) 0.9rem/0.9rem var(--ff);
-
-    --small-bold: var(--font-bold) 0.75rem/0.75rem var(--ff);
-    --small-medium: var(--font-medium) 0.75rem/0.75rem var(--ff);
-    --small-regular: var(--font-regular) 0.75rem/0.75rem var(--ff);
-  }
-}
-
-@media (max-width: 480px) {
-  :root {
-    font-size: 16px;
-
-    --h1-bold: var(--font-bold) 2.5rem/2.5rem var(--ff);
-    --h1-medium: var(--font-medium) 2.5rem/2.5rem var(--ff);
-    --h1-regular: var(--font-regular) 2.5rem/2.5rem var(--ff);
-
-    --h2-bold: var(--font-bold) 2rem/2rem var(--ff);
-    --h2-medium: var(--font-medium) 2rem/2rem var(--ff);
-    --h2-regular: var(--font-regular) 2rem/2rem var(--ff);
-
-    --h3-bold: var(--font-bold) 1.5rem/1.5rem var(--ff);
-    --h3-medium: var(--font-medium) 1.5rem/1.5rem var(--ff);
-    --h3-regular: var(--font-regular) 1.5rem/1.5rem var(--ff);
-
-    --h4-bold: var(--font-bold) 1.25rem/1.25rem var(--ff);
-    --h4-medium: var(--font-medium) 1.25rem/1.25rem var(--ff);
-    --h4-regular: var(--font-regular) 1.25rem/1.25rem var(--ff);
-
-    --big-bold: var(--font-bold) 1rem/1rem var(--ff);
-    --big-medium: var(--font-medium) 1rem/1rem var(--ff);
-    --big-regular: var(--font-regular) 1rem/1rem var(--ff);
-
-    --p-bold: var(--font-bold) 0.875rem/0.875rem var(--ff);
-    --p-medium: var(--font-medium) 0.875rem/0.875rem var(--ff);
-    --p-regular: var(--font-regular) 0.875rem/0.875rem var(--ff);
-
-    --small-bold: var(--font-bold) 0.75rem/0.75rem var(--ff);
-    --small-medium: var(--font-medium) 0.75rem/0.75rem var(--ff);
-    --small-regular: var(--font-regular) 0.75rem/0.75rem var(--ff);
-  }
-}
-
 
 h1 {
-  font: var(--h1-regular);
-}
-
-h2 {
-  font: var(--h2-regular);
-}
-
-h3 {
-  font: var(--h3-regular);
+  font-size: 64px;
+  letter-spacing: -0.64px;
+  font-family: var(--ff-bold);
+  font-weight: var(--font-bold);
 }
 
 h4 {
-  font: var(--h4-regular);
+  font-size: 24px;
+  font-family: var(--ff-regular);
+  font-weight: var(--font-regular);
+  line-height: 130%;
 }
 
-p {
-  font: var(--p-regular);
+@media (max-width: 1064px) {
+
+  h1 {
+    font-size: 50px;
+  }
+
+  h4 {
+    font-size: 20px;
+  }
+
 }
 
+@media (max-width: 555px) {
+  h1 {
+    font-size: 32px;
+  }
 
-
+  h4 {
+    font-size: 16px;
+  }
+}
 
 
 
@@ -223,59 +124,74 @@ p {
 
 .rectangle {
   position: relative;
-  height: 30px;
-  min-width: fit-content;
-  max-width: fit-content;
+  height: 44px;
   overflow: hidden;
-  border-radius: 10px;
-  border: 1px solid rgba(126, 128, 144, 0.5);
-  background: rgba(22, 22, 24, 0.50);
-  box-shadow: 0px 0px 5px 3px #000;
+  border-radius: 8px;
+  border: 1px solid #54555D;
+  background: rgba(0, 0, 0, 0.40);
+  box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.50);
   backdrop-filter: blur(5px);
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
+.rectangle h4 {
+  font-family: var(--ff-medium);
+}
+
 .under-rectangle-layer {
   width: fit-content;
   height: fit-content;
-  background-color: aqua;
   padding: 5px;
-  border-radius: 12px;
-  border: 1px solid rgba(181, 184, 208, 0.15);
+  border-radius: 10px;
+  border: 1px solid #252528;
   background: rgba(0, 0, 0, 0.01);
-  box-shadow: 0px 0px 6px 3px rgba(255, 255, 255, 0.17) inset;
-  transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0px 0px 8px 3px rgba(175, 175, 182, 0.20) inset;
+  backdrop-filter: blur(2.5px);
+  backdrop-filter: blur(5px);
   cursor: pointer;
   touch-action: manipulation;
+  transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.under-rectangle-layer:hover .rectangle {
+  border: 1px solid hsla(233, 5%, 50%, 1);
+}
+
+.under-rectangle-layer:hover {
+  box-shadow: 0px 0px 8px 0px rgba(175, 175, 182, 0.20) inset;
+  border: 1px solid hsla(240, 4%, 13%, 1);
+}
+
+.under-rectangle-layer.active .rectangle {
+  transform: scale(0.97) translateZ(0);
+  opacity: 0.9;
+}
+
+.under-rectangle-layer.active {
+  transform: scale(0.95) translateZ(0);
 }
 
 .blob {
   position: absolute;
-  border-radius: 106px;
+  border-radius: 100px;
   background: rgba(184, 193, 204, 0.20);
-  filter: blur(5px);
+  filter: blur(6px);
   z-index: -10;
 }
 
 .grain-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  background: url(grain-btn.png) no-repeat;
-  background-size: auto;
-  background-repeat: repeat;
+  background: url(Grain-big.webp) repeat;
   mix-blend-mode: overlay;
+  background-size: fill;
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
   z-index: 5;
   opacity: 0.4;
-}
-
-.btn-text {
-  color: white;
-  font: --font-medium;
-  position: relative;
 }
 
 .btn-text-container {
@@ -297,31 +213,23 @@ p {
   z-index: 1;
 }
 
-.under-rectangle-layer:hover .rectangle {
-  box-shadow: 0px 0px 12px 3px rgba(108, 108, 111, 0.31) inset, 0px 0px 5.9px 3px #000;
-  border: 1px solid rgba(126, 128, 144, 0.7);
+@media (max-width: 1064px) {
+
+  .rectangle {
+    height: 38px;
+  }
+
+  .under-rectangle-layer {
+    padding: 4px;
+  }
 }
 
-.under-rectangle-layer:hover {
-  box-shadow: 0px 0px 6px 3px rgba(255, 255, 255, 0.09) inset;
-}
+@media (max-width: 555px) {
+  .rectangle {
+    height: 34px;
+  }
 
-.under-rectangle-layer:active .rectangle {
-  box-shadow: 0px 0px 6px rgba(0, 0, 0, 1) inset, 0px 0px 5.9px 3px #000;
-  transform: scale(0.97) translateZ(0);
-  opacity: 0.9;
-}
-
-.under-rectangle-layer:active {
-  transform: scale(0.97) translateZ(0);
-}
-
-.under-rectangle-layer.active .rectangle {
-  box-shadow: 0px 0px 6px rgba(0, 0, 0, 1) inset, 0px 0px 5.9px 3px #000;
-  transform: scale(0.97) translateZ(0);
-  opacity: 0.9;
-}
-
-.under-rectangle-layer.active {
-  transform: scale(0.97) translateZ(0);
+  .rectangle h4 {
+    font-size: 20px;
+  }
 }

@@ -30,7 +30,7 @@ function initializeBlobs(rectangle) {
   const { width, height } = rectangle.getBoundingClientRect();
 
   blobs.forEach(blob => {
-    const size = random(20, 45);
+    const size = random(30, 45);
     blob.style.width = `${size}px`;
     blob.style.height = `${size}px`;
 
