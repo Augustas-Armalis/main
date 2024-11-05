@@ -6,6 +6,7 @@ body {
   background-color: rgb(0, 0, 0);
   color: rgb(255, 255, 255);
   overflow-x: hidden;
+  width: 100%;
 }
 
 img,
@@ -217,7 +218,7 @@ h4 {
   z-index: 2;
   position: absolute;
   margin-top: 192px;
-  z-index: 4;
+  z-index: 40;
 }
 
 .hero-content-container {
@@ -392,4 +393,26 @@ h4 {
   .rectangle h4 {
     font-size: 18px;
   }
+}
+
+
+
+
+
+
+/* Following Fly */
+
+.circle {
+  --circle-size: 12px;
+  position: fixed;
+  height: var(--circle-size);
+  width: var(--circle-size);
+  background-color: white;
+  border-radius: 100%;
+  top: calc(var(--circle-size) / 2 * -1);
+  left: calc(var(--circle-size) / 2 * -1);
+  pointer-events: none;
+  z-index: 20;
+  opacity: 1;
+  transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1); /* Fades over 0.3 seconds */
 }

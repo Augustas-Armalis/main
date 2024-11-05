@@ -181,3 +181,15 @@ dragLineContainer.addEventListener('mouseleave', handleMouseLeave);
 
 // Initialize layout on page load
 window.addEventListener('load', initializeLayout);
+
+
+
+
+
+
+
+
+
+
+
+
