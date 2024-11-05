@@ -286,9 +286,9 @@ h4 {
   position: relative;
   height: 44px;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 10px;
   border: 1px solid #54555D;
-  background: rgba(0, 0, 0, 0.40);
+  background: #09090C;
   box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.50);
   backdrop-filter: blur(5px);
   cursor: pointer;
@@ -303,11 +303,10 @@ h4 {
   width: fit-content;
   height: fit-content;
   padding: 5px;
-  border-radius: 10px;
+  border-radius: 12px;
   border: 1px solid #252528;
   background: rgba(0, 0, 0, 0.01);
   box-shadow: 0px 0px 8px 3px rgba(175, 175, 182, 0.20) inset;
-  backdrop-filter: blur(2.5px);
   backdrop-filter: blur(5px);
   cursor: pointer;
   touch-action: manipulation;
@@ -316,7 +315,7 @@ h4 {
 }
 
 .under-rectangle-layer:hover .rectangle {
-  border: 1px solid hsla(233, 5%, 50%, 1);
+  border: 1px solid hsla(233, 5%, 45%, 1);
 }
 
 .under-rectangle-layer:hover {
@@ -337,7 +336,7 @@ h4 {
   position: absolute;
   border-radius: 100px;
   background: rgba(184, 193, 204, 0.20);
-  filter: blur(6px);
+  filter: blur(10px);
   z-index: -10;
 }
 
@@ -352,7 +351,7 @@ h4 {
   height: 100vh;
   position: absolute;
   z-index: 5;
-  opacity: 0.4;
+  opacity: 0.8;
 }
 
 .btn-text-container {
