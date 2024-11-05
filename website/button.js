@@ -127,8 +127,4 @@ buttons.forEach(button => {
   });
 });
 
-window.addEventListener('touchstart', function (event) {
-  event.preventDefault();
-}, { passive: false });
-
 init();
