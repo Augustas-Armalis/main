@@ -414,5 +414,12 @@ h4 {
   pointer-events: none;
   z-index: 20;
   opacity: 1;
-  transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1); /* Fades over 0.3 seconds */
+  transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (max-width: 1064px) {
+
+  .circle{
+    display: none;
+  }
 }
