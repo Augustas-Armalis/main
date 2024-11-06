@@ -272,6 +272,10 @@ h5 {
   color: var(--gray1);
 }
 
+.alt-container{
+  opacity: 0;
+}
+
 @media (max-width: 1064px) {
   .hero-content-container {
     margin-right: 24px;
@@ -340,6 +344,7 @@ h5 {
   touch-action: manipulation;
   transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
   margin-top: 42px;
+  opacity: 0;
 }
 
 .under-rectangle-layer:hover .rectangle {
@@ -496,7 +501,7 @@ h5 {
   pointer-events: none;
   z-index: 20;
   opacity: 1;
-  transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: opacity 1.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 @media (max-width: 1064px) {
@@ -567,6 +572,7 @@ h5 {
   white-space: nowrap;
   position: relative;
   z-index: 90;
+  opacity: 0;
 }
 
 .logos-dbb {
@@ -650,6 +656,16 @@ h5 {
   display: flex;
   justify-content: center;
   align-items: flex-end;
+}
+
+.black-fade-out-thing-bottom{
+  width: 100vw;
+  height: 150px;
+  bottom: -150px;
+  z-index: 90;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.00) 0%, #000 100%);
+  position: absolute;
+
 }
 
 .black-bottom-content-container {
@@ -817,13 +833,3 @@ h5 {
 
 
 
-
-
-/* Apply initial opacity: 0 */
-.alt-container,
-.under-rectangle-layer,
-.logos,
-.logos-opp,
-.logos-dbb {
-  opacity: 0;
-}

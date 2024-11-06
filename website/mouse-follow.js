@@ -38,13 +38,16 @@ function executeAbove1064px() {
 
     tick();
 
-    const targetContainer = document.querySelector('.under-rectangle-layer');
+    const targetContainers = document.querySelectorAll('.under-rectangle-layer, .black-bottom-fade-out-container');
 
     const fadeOutCircle = () => circleElement.style.opacity = '0';
     const fadeInCircle = () => circleElement.style.opacity = '1';
-
-    targetContainer.addEventListener('mouseenter', fadeOutCircle);
-    targetContainer.addEventListener('mouseleave', fadeInCircle);
+    
+    // Add event listeners to each target container element
+    targetContainers.forEach(container => {
+        container.addEventListener('mouseenter', fadeOutCircle);
+        container.addEventListener('mouseleave', fadeInCircle);
+    });
 
     document.addEventListener('visibilitychange', () => {
       if (document.visibilityState === 'hidden') {
