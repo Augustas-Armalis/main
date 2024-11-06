@@ -102,7 +102,7 @@
 
         <div class="logos-opp">
           <div class="logos-slide-opp">
-            <img src="images/websites/6-design.webp" class="strange-slider-img-first" />
+            <img src="images/websites/6-design.webp" />
             <img src="images/websites/7-design.webp" />
             <img src="images/websites/8-design.webp" />
             <img src="images/websites/9-design.webp" />
@@ -220,12 +220,12 @@
 
 
       gsap.fromTo(".black-bottom-content-container", {
-        y: 100, opacity: 0
+        y: 50, opacity: 0
       }, {
         y: 0, opacity: 1, duration: 1, ease: "power4.out",
         scrollTrigger: {
           trigger: ".black-bottom-content-container",
-          start: "top 80%",
+          start: "top 90%",
           toggleActions: "play none none none"
         }
       });

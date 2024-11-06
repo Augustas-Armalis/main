@@ -614,6 +614,7 @@ h5 {
 
 .logos-slide-opp {
   display: inline-block;
+  padding-right: 1px;
   animation: 35s slide-opp infinite linear;
   pointer-events: none;
 }
@@ -622,20 +623,12 @@ h5 {
 .logos-slide-opp img,
 .logos-slide-dbb img {
   height: 340px;
-  width: 530px;
+  width: auto;
   margin-right: 8px;
   margin-left: 8px;
   border-radius: 20px;
   pointer-events: auto;
   transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.strange-slider-img-first {
-  margin-left: 8px;
-}
-
-.strange-slider-img-second {
-  margin-right: 8px;
 }
 
 .logos-slide img:hover,

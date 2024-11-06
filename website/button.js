@@ -141,12 +141,16 @@ init();
 
 var copy = document.querySelector(".logos-slide").cloneNode(true);
 document.querySelector(".logos").appendChild(copy);
+copy.offsetHeight;  // Forces a reflow to update layout
 
 var copy = document.querySelector(".logos-slide-opp").cloneNode(true);
 document.querySelector(".logos-opp").appendChild(copy);
+copy.offsetHeight;  // Forces a reflow to update layout
 
 var copy = document.querySelector(".logos-slide-dbb").cloneNode(true);
 document.querySelector(".logos-dbb").appendChild(copy);
+copy.offsetHeight;  // Forces a reflow to update layout
+
 
 document.querySelectorAll('.logos-slide img, .logos-slide-opp img, .logos-slide-dbb img').forEach((img) => {
 
