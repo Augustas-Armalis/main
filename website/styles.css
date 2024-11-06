@@ -135,7 +135,14 @@ h4 {
 .spacer {
   width: 100%;
   height: 300vh;
-  background-color: black;
+  background-color: rgb(82, 82, 82);
+}
+
+.bck-container {
+  width: 100%;
+  z-index: 1;
+  position: absolute;
+  top: 0;
 }
 
 .god-ray-bck {
@@ -160,6 +167,7 @@ h4 {
   width: 100%;
   height: 100vh;
   position: absolute;
+  top: 0;
   z-index: 2;
 }
 
@@ -216,7 +224,7 @@ h4 {
   align-items: center;
   justify-content: center;
   z-index: 2;
-  position: absolute;
+  position: relative;
   margin-top: 192px;
   z-index: 40;
 }
@@ -400,6 +408,18 @@ h4 {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 /* Following Fly */
 
 .circle {
@@ -430,14 +450,32 @@ h4 {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Image slider */
 
 .slider-container {
   width: 100%;
   margin-top: 192px;
 }
-
-
 
 @keyframes slide {
   from {
@@ -525,24 +563,12 @@ h4 {
   transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-
-
-
-
-/* Image hover effect */
 .logos-slide img:hover,
 .logos-slide-opp img:hover,
 .logos-slide-dbb img:hover {
   opacity: 0.7;
   scale: 0.99;
-  /* Set to desired transparency */
-
-  /* Smooth transition */
 }
-
-
-
-
 
 @media (max-width: 1064px) {
 
@@ -554,28 +580,18 @@ h4 {
     transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
   }
 
-  /* Image hover effect */
   .logos-slide img:hover,
   .logos-slide-opp img:hover,
   .logos-slide-dbb img:hover {
     opacity: 1;
     scale: 1;
-    /* Set to desired transparency */
-
-    /* Smooth transition */
   }
 
-
-  /* Image active effect */
   .logos-slide img:active,
   .logos-slide-opp img:active,
   .logos-slide-dbb img:active {
     opacity: 0.9;
-    /* Set desired transparency */
     transform: scale(0.99);
-    /* Slightly scale down */
-
-    /* Smooth transition */
   }
 
   .logos:before,
@@ -618,7 +634,6 @@ h4 {
     height: 49vw !important;
     width: auto;
   }
-
 
   .logos:before,
   .logos-opp:before,

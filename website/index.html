@@ -60,6 +60,8 @@
 
       </div>
 
+      <!-- Button -->
+
       <div class="under-rectangle-layer">
 
         <div class="rectangle">
@@ -81,6 +83,8 @@
         </div>
 
       </div>
+
+      <!-- Image slider -->
 
       <div class="slider-container">
 
@@ -119,9 +123,6 @@
 
     </div>
 
-    <!-- Image slider -->
-
-
 
   </div>
 
@@ -155,9 +156,9 @@
 
 
   <!-- Background top godrays -->
+
   <div class="bck-container">
 
-    <div class="grain-overlay"></div>
     <div class="black-fade-thing"></div>
 
     <div class="god-ray-container">
@@ -167,47 +168,7 @@
 
   </div>
 
-
-
-
-
-
-
-
-  <script>
-    var copy = document.querySelector(".logos-slide").cloneNode(true);
-    document.querySelector(".logos").appendChild(copy);
-
-    var copy = document.querySelector(".logos-slide-opp").cloneNode(true);
-    document.querySelector(".logos-opp").appendChild(copy);
-
-    var copy = document.querySelector(".logos-slide-dbb").cloneNode(true);
-    document.querySelector(".logos-dbb").appendChild(copy);
-
-    document.querySelectorAll('.logos-slide img, .logos-slide-opp img, .logos-slide-dbb img').forEach((img) => {
-      // Add event listeners for touch events
-      img.addEventListener('touchstart', () => {
-        img.style.opacity = '0.7';
-        img.style.transform = 'scale(0.99)';
-      });
-
-      img.addEventListener('touchend', () => {
-        img.style.opacity = '';
-        img.style.transform = '';
-      });
-    });
-
-  </script>
-
-
-
-
-
-
-
-
-
-
+  <div class="grain-overlay"></div>
 
 
 

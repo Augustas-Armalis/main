@@ -42,20 +42,18 @@ function initializeBlobs(rectangle) {
     moveBlob(blob, width - size, height - size);
   });
 
-  // Handle mouseenter and mouseleave for larger screens
   if (window.innerWidth >= 768) {
     rectangle.addEventListener('mouseenter', () => moveToCursor(blobs, rectangle));
     rectangle.addEventListener('mouseleave', () => continueAnimation(blobs, rectangle));
   } else {
-    // Handle touchstart and touchend for mobile devices
     rectangle.addEventListener('touchstart', (event) => {
-      event.preventDefault(); // Prevent default touch actions
-      rectangle.classList.add('active'); // Add class for active state
+      event.preventDefault();
+      rectangle.classList.add('active');
       moveToCursor(blobs, rectangle);
     });
 
     rectangle.addEventListener('touchend', () => {
-      rectangle.classList.remove('active'); // Remove active class
+      rectangle.classList.remove('active');
       continueAnimation(blobs, rectangle);
     });
   }
@@ -106,7 +104,6 @@ function init() {
   document.querySelectorAll('.rectangle').forEach(initializeBlobs);
 }
 
-// Touch event handling
 const buttons = document.querySelectorAll('.under-rectangle-layer');
 buttons.forEach(button => {
   button.addEventListener('touchstart', function () {
@@ -117,7 +114,6 @@ buttons.forEach(button => {
     this.classList.remove('active');
   });
 
-  // Optional: Handle mouse events for desktop
   button.addEventListener('mousedown', function () {
     this.classList.add('active');
   });
