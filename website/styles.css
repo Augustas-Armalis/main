@@ -436,6 +436,8 @@ h5 {
   border-radius: 6px;
   height: 23px;
   transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  text-decoration: none;
+
 }
 
 
