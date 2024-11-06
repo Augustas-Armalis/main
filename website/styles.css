@@ -256,10 +256,15 @@ h5 {
 
 .title-container h1 {
   text-align: center;
-  background: linear-gradient(180deg, #FFF 74.67%, #AFAFB6 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  visibility: hidden;
+}
+
+.title-container h1 span {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(20px);
+  transition: opacity 0.3s ease-out, filter 0.3s ease-out, transform 0.3s ease-out;
 }
 
 .alt-container h4 {
@@ -587,7 +592,7 @@ h5 {
   left: -10px;
   width: 100px;
   background: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
-  /* pointer-events: none; */
+  pointer-events: none;
 }
 
 .logos:after,
@@ -596,7 +601,7 @@ h5 {
   right: -10px;
   width: 100px;
   background: linear-gradient(to right, rgba(255, 255, 255, 0), rgb(0, 0, 0));
-  /* pointer-events: none; */
+  pointer-events: none;
 }
 
 .logos-slide,
@@ -791,4 +796,40 @@ h5 {
     margin-right: 16px;
     margin-left: 16px;
   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Apply initial opacity: 0 */
+.alt-container,
+.under-rectangle-layer,
+.logos,
+.logos-opp,
+.logos-dbb {
+  opacity: 0;
 }

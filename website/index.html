@@ -52,7 +52,9 @@
       <div class="title-alt-container">
 
         <div class="title-container">
+
           <h1>Building World-Class<br>Websites For Startups</h1>
+
         </div>
         <div class="alt-container">
           <h4>We write, design & code Front-end websites<br>that shape the future of your business</h4>
@@ -150,15 +152,86 @@
 
 
 
+  <script>window.onload = () => {
+      const textElement = document.querySelector('.title-container h1');
 
+      // Make the text visible once the page is fully loaded
+      textElement.style.visibility = 'visible';
 
-  <script>
+      const letters = textElement.innerText.split('');
+      textElement.innerHTML = '';
+
+      letters.forEach((letter, index) => {
+        const span = document.createElement('span');
+        span.innerText = letter;
+        textElement.appendChild(span);
+
+        // Apply the animation to each letter with a slight delay
+        setTimeout(() => {
+          span.style.opacity = 1;
+          span.style.filter = 'blur(0)';
+          span.style.transform = 'translateY(0)'; // Each letter flies up to its original position
+        }, index * 20); // Delay each letter's animation for a smoother effect
+      });
+    };
 
   </script>
 
 
+  <script>
+    window.addEventListener('load', () => {
+      // Target elements for animation
+      const altContainer = document.querySelector('.alt-container');
+      const underRectangleLayer = document.querySelector('.under-rectangle-layer');
+      const logos = document.querySelector('.logos');
+      const logosOpp = document.querySelector('.logos-opp');
+      const logosDbb = document.querySelector('.logos-dbb');
+
+      // Get the screen width dynamically
+      const screenWidth = window.innerWidth;
+
+      // Calculate movement based on screen width (e.g., 50% of the screen width)
+      const moveDistance = screenWidth; // 50% of screen width
+
+      // Create a GSAP timeline with easing
+      const timeline = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
+
+      // .alt-container: Fly in from bottom to top with fade-in
+      timeline.fromTo(altContainer, { y: 50, opacity: 0 }, { y: 0, opacity: 1 });
+
+      // .under-rectangle-layer: Starts slightly after .alt-container
+      timeline.fromTo(underRectangleLayer, { y: 50, opacity: 0 }, { y: 0, opacity: 1 }, "-=0.8");
+
+      // .logos: Fly in from right to left with extended fade-in
+      timeline.fromTo(logos, { x: moveDistance, opacity: 0 }, { x: 0, opacity: 1, duration: 1.8 }, "-=0.8");
+
+      // .logos-opp: Fly in from left to right with extended fade-in
+      timeline.fromTo(logosOpp, { x: -moveDistance, opacity: 0 }, { x: 0, opacity: 1, duration: 1.8 }, "-=1.5");
+
+      // .logos-dbb: Similar animation from right to left
+      timeline.fromTo(logosDbb, { x: moveDistance, opacity: 0 }, { x: 0, opacity: 1, duration: 1.8 }, "-=1.5");
+
+      // Additional animation for ".bck-container"
+      gsap.fromTo(".bck-container", { opacity: 0 }, {
+        opacity: 1,
+        duration: 4,
+        ease: "power4.out"
+      });
 
 
+      gsap.fromTo(".black-bottom-fade-out-container", {
+        y: 50, opacity: 0
+      }, {
+        y: 0, opacity: 1, duration: 1.5, ease: "power4.out",
+        scrollTrigger: {
+          trigger: ".black-bottom-fade-out-container",
+          start: "top 90%",
+          toggleActions: "play none none none"
+        }
+      });
+    });
+
+  </script>
 
 
 
