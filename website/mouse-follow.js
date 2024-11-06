@@ -62,26 +62,3 @@ function executeAbove1064px() {
 executeAbove1064px();
 window.addEventListener('resize', executeAbove1064px);
 
-// Slider
-
-var copy = document.querySelector(".logos-slide").cloneNode(true);
-document.querySelector(".logos").appendChild(copy);
-
-var copy = document.querySelector(".logos-slide-opp").cloneNode(true);
-document.querySelector(".logos-opp").appendChild(copy);
-
-var copy = document.querySelector(".logos-slide-dbb").cloneNode(true);
-document.querySelector(".logos-dbb").appendChild(copy);
-
-document.querySelectorAll('.logos-slide img, .logos-slide-opp img, .logos-slide-dbb img').forEach((img) => {
-  // Add event listeners for touch events
-  img.addEventListener('touchstart', () => {
-    img.style.opacity = '0.7';
-    img.style.transform = 'scale(0.99)';
-  });
-
-  img.addEventListener('touchend', () => {
-    img.style.opacity = '';
-    img.style.transform = '';
-  });
-});

@@ -124,3 +124,74 @@ buttons.forEach(button => {
 });
 
 init();
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Slider
+
+var copy = document.querySelector(".logos-slide").cloneNode(true);
+document.querySelector(".logos").appendChild(copy);
+
+var copy = document.querySelector(".logos-slide-opp").cloneNode(true);
+document.querySelector(".logos-opp").appendChild(copy);
+
+var copy = document.querySelector(".logos-slide-dbb").cloneNode(true);
+document.querySelector(".logos-dbb").appendChild(copy);
+
+document.querySelectorAll('.logos-slide img, .logos-slide-opp img, .logos-slide-dbb img').forEach((img) => {
+
+  img.addEventListener('touchstart', () => {
+    img.style.opacity = '0.7';
+    img.style.transform = 'scale(0.99)';
+  });
+
+  img.addEventListener('touchend', () => {
+    img.style.opacity = '';
+    img.style.transform = '';
+  });
+});
+
+
+
+
+
+
+
+
+
+// Black slider thing
+
+const fadeOutContainer = document.querySelector('.black-bottom-fade-out-container');
+const logosDbb = document.querySelector('.logos-dbb');
+
+fadeOutContainer.addEventListener('mouseenter', () => {
+  logosDbb.style.opacity = '0.6';
+});
+
+fadeOutContainer.addEventListener('mouseleave', () => {
+  logosDbb.style.opacity = '1';
+});
+
+const button = document.querySelector('.white-btn-container');
+
+button.addEventListener('touchstart', function () {
+  button.style.backgroundColor = 'hsla(235, 5%, 70%, 1)';
+  button.style.transform = 'scale(0.97) translateZ(0)';
+  button.style.opacity = '0.9';
+});
+
+button.addEventListener('touchend', function () {
+  button.style.backgroundColor = 'rgb(255, 255, 255)';
+  button.style.transform = 'scale(1)';
+  button.style.opacity = '1';
+});
