@@ -118,7 +118,11 @@ h4 {
 
 
 
-
+.spacer {
+  width: 100%;
+  height: 300vh;
+  background-color: rgb(0, 0, 0);
+}
 
 
 
@@ -131,12 +135,6 @@ h4 {
 
 
 /* Background top godrays */
-
-.spacer {
-  width: 100%;
-  height: 300vh;
-  background-color: rgb(82, 82, 82);
-}
 
 .bck-container {
   width: 100%;
@@ -570,6 +568,16 @@ h4 {
   scale: 0.99;
 }
 
+.black-bottom-fade-out-container {
+  width: 100vw;
+  height: 150px;
+  bottom: 0;
+  z-index: 90;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.89) 71.06%, #000 100%);
+  position: absolute;
+  pointer-events: none;
+}
+
 @media (max-width: 1064px) {
 
   .logos-slide img,
@@ -623,6 +631,9 @@ h4 {
     margin-top: 128px;
   }
 
+  .black-bottom-fade-out-container {
+    height: 130px;
+  }
 }
 
 
@@ -664,4 +675,7 @@ h4 {
     margin-top: 92px;
   }
 
+  .black-bottom-fade-out-container {
+    height: 100px;
+  }
 }
