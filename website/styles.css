@@ -453,6 +453,11 @@ h5 {
   opacity: 0.9;
 }
 
+@media (max-width: 555px) {
+  .white-btn-container {
+    padding-top: 2px;
+  }
+}
 
 
 
