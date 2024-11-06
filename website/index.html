@@ -62,7 +62,7 @@
 
       <!-- Button -->
 
-      <div class="under-rectangle-layer">
+      <a class="under-rectangle-layer" href="#">
 
         <div class="rectangle">
 
@@ -82,7 +82,7 @@
 
         </div>
 
-      </div>
+      </a>
 
       <!-- Image slider -->
 
@@ -119,9 +119,22 @@
           </div>
         </div>
 
+
+
+
+
         <!-- Bottom cta thing -->
 
         <div class="black-bottom-fade-out-container">
+
+          <!-- White button -->
+          <div class="black-bottom-content-container">
+            <h5>Our recent Website Designs</h5>
+            <div class="white-btn-container">
+              <h5>Get Designs</h5>
+            </div>
+          </div>
+
           <div class="black-fade-out-thing"></div>
         </div>
 
@@ -138,7 +151,20 @@
 
 
 
+  <script>const fadeOutContainer = document.querySelector('.black-bottom-fade-out-container');
+    const logosDbb = document.querySelector('.logos-dbb');
 
+    // When mouse enters the .black-bottom-fade-out-container
+    fadeOutContainer.addEventListener('mouseenter', () => {
+      logosDbb.style.opacity = '0.6'; // Change opacity
+    });
+
+    // When mouse leaves the .black-bottom-fade-out-container
+    fadeOutContainer.addEventListener('mouseleave', () => {
+      logosDbb.style.opacity = '1'; // Reset opacity back to 1
+    });
+
+  </script>
 
 
 

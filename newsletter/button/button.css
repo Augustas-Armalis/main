@@ -89,6 +89,13 @@ h4 {
   line-height: 130%;
 }
 
+h5 {
+  font-size: 16px;
+  font-family: var(--ff-regular);
+  font-weight: var(--font-regular);
+  line-height: 130%;
+}
+
 @media (max-width: 1064px) {
 
   h1 {
@@ -108,6 +115,13 @@ h4 {
 
   h4 {
     font-size: 16px;
+  }
+
+  h5 {
+    font-size: 14px;
+    font-family: var(--ff-regular);
+    font-weight: var(--font-regular);
+    line-height: 130%;
   }
 }
 
@@ -240,6 +254,54 @@ h4 {
 
 
 
+/* white */
+
+
+.white-btn-container {
+  background-color: rgb(255, 255, 255);
+  height: fit-content;
+  width: fit-content;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  padding-right: 12px;
+  padding-left: 12px;
+  border-radius: 6px;
+  height: 23px;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+
+.white-btn-container h5 {
+  font-family: var(--ff-medium);
+  margin-top: 2px;
+}
+
+.white-btn-container:hover {
+  background-color: hsla(235, 5%, 85%, 1);
+  transform: scale(1.03) translateZ(0);
+}
+
+.white-btn-container:active {
+  background-color: hsla(235, 5%, 70%, 1);
+  transform: scale(0.97) translateZ(0);
+  opacity: 0.9;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .circle {
   --circle-size: 16px;
@@ -251,6 +313,5 @@ h4 {
   top: calc(var(--circle-size) / 2 * -1);
   left: calc(var(--circle-size) / 2 * -1);
   pointer-events: none;
+  display: none;
 }
-
-
