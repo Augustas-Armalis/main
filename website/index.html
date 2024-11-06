@@ -194,16 +194,16 @@
       const moveDistance = screenWidth; // 50% of screen width
 
       // Create a GSAP timeline with easing
-      const timeline = gsap.timeline({ defaults: { ease: "power4.out", duration: 1 } });
+      const timeline = gsap.timeline({ defaults: { ease: "power4.out", duration: 2 } });
 
       // .alt-container: Fly in from bottom to top with fade-in
-      timeline.fromTo(altContainer, { y: 50, opacity: 0 }, { y: 0, opacity: 1 });
+      timeline.fromTo(altContainer, { y: 100, opacity: 0 }, { y: 0, opacity: 1 });
 
       // .under-rectangle-layer: Starts slightly after .alt-container
-      timeline.fromTo(underRectangleLayer, { y: 50, opacity: 0 }, { y: 0, opacity: 1 }, "-=0.8");
+      timeline.fromTo(underRectangleLayer, { y: 100, opacity: 0 }, { y: 0, opacity: 1 }, "-=1.8");
 
       // .logos: Fly in from right to left with extended fade-in
-      timeline.fromTo(logos, { x: moveDistance, opacity: 0 }, { x: 0, opacity: 1, duration: 1.8 }, "-=0.8");
+      timeline.fromTo(logos, { x: moveDistance, opacity: 0 }, { x: 0, opacity: 1, duration: 1.8 }, "-=1.8");
 
       // .logos-opp: Fly in from left to right with extended fade-in
       timeline.fromTo(logosOpp, { x: -moveDistance, opacity: 0 }, { x: 0, opacity: 1, duration: 1.8 }, "-=1.5");
@@ -215,17 +215,17 @@
       gsap.fromTo(".bck-container", { opacity: 0 }, {
         opacity: 1,
         duration: 4,
-        ease: "power4.out"
+        ease: "power2.out"
       });
 
 
-      gsap.fromTo(".black-bottom-fade-out-container", {
-        y: 50, opacity: 0
+      gsap.fromTo(".black-bottom-content-container", {
+        y: 100, opacity: 0
       }, {
-        y: 0, opacity: 1, duration: 1.5, ease: "power4.out",
+        y: 0, opacity: 1, duration: 1, ease: "power4.out",
         scrollTrigger: {
-          trigger: ".black-bottom-fade-out-container",
-          start: "top 90%",
+          trigger: ".black-bottom-content-container",
+          start: "top 80%",
           toggleActions: "play none none none"
         }
       });
