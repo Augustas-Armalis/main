@@ -736,14 +736,6 @@ h5 {
     border-radius: 16px;
   }
 
-  .strange-slider-img-first {
-    margin-left: 6px;
-  }
-
-  .strange-slider-img-second {
-    margin-right: 6px;
-  }
-
   .slider-container {
     margin-top: 128px;
   }
@@ -792,14 +784,6 @@ h5 {
   .logos-slide-dbb img {
     margin: 0 4px;
     border-radius: 12px;
-  }
-
-  .strange-slider-img-first {
-    margin-left: 4px;
-  }
-
-  .strange-slider-img-second {
-    margin-right: 4px;
   }
 
   .slider-container {
