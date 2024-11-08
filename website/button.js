@@ -143,9 +143,26 @@ var copy = document.querySelector(".logos-slide").cloneNode(true);
 document.querySelector(".logos").appendChild(copy);
 copy.offsetHeight;  // Forces a reflow to update layout
 
-var copy = document.querySelector(".logos-slide-opp").cloneNode(true);
-document.querySelector(".logos-opp").appendChild(copy);
-copy.offsetHeight;  // Forces a reflow to update layout
+
+const logosContainer = document.querySelector(".logos-opp");
+const originalSlide = document.querySelector(".logos-slide-opp");
+
+// Clone the slide
+const clonedSlide = originalSlide.cloneNode(true);
+logosContainer.appendChild(clonedSlide);
+
+// Force a reflow and reset animation on both original and clone
+function resetAnimation() {
+  originalSlide.style.animation = "none";
+  clonedSlide.style.animation = "none";
+  void originalSlide.offsetWidth; // Force reflow
+  originalSlide.style.animation = "";
+  clonedSlide.style.animation = "";
+}
+
+// Reset animation on load and when the window resizes
+window.addEventListener("load", resetAnimation);
+window.addEventListener("resize", resetAnimation);
 
 var copy = document.querySelector(".logos-slide-dbb").cloneNode(true);
 document.querySelector(".logos-dbb").appendChild(copy);
