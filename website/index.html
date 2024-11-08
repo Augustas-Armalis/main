@@ -40,19 +40,88 @@
 
 <body>
 
-
-  <script>// Wait for the page to fully load, then hide the preloader
-    window.addEventListener("load", function() {
-        const preloader = document.getElementById("preloader");
-        const content = document.getElementById("content");
-        
-        // Hide preloader and show content
-        preloader.style.display = "none";
-        content.style.display = "block";
-    });
-    </script>
-
   <div class="circle"></div>
+
+  <!-- Navigation bar -->
+
+  <nav>
+
+    <div class="inside-container-nav">
+
+      <a class="logo-container" href="#">
+        <img src="images/Logo.svg" class="logo-img-nav">
+      </a>
+
+      <div class="burger-menu-container">
+
+        <div id="burger-line" class="top-burger-line"></div>
+        <div id="burger-line" class="bottom-burger-line"></div>
+
+      </div>
+
+
+
+      <a href="#" id="button-nav-container">
+
+        <div class="rectangle" id="nav-button">
+
+          <div class="grain-overlay-button"></div>
+
+          <div class="btn-text-container">
+            <div class="btn-text">
+              <h4 style="font-size: 23px;">Pricing</h4>
+            </div>
+          </div>
+
+          <div class="blob-container">
+            <div class="blob"></div>
+            <div class="blob"></div>
+            <div class="blob"></div>
+          </div>
+
+        </div>
+
+      </a>
+
+      <div class="mobile-links-container">
+        <a href="#">Home</a>
+        <a href="#">Testimonials</a>
+        <a href="#">Newsletter</a>
+        <a href="#">Hiring</a>
+        <a href="#">Contacts</a>
+
+      </div>
+
+
+
+    </div>
+
+    <div class="links-container">
+
+      <a href="#">Home</a>
+      <a href="#">Testimonials</a>
+      <a href="#">Newsletter</a>
+      <a href="#">Hiring</a>
+      <a href="#">Contacts</a>
+
+    </div>
+
+  </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   <!-- Hero section -->
@@ -195,19 +264,12 @@
   </div>
 
   <div class="grain-overlay"></div>
-  
 
 
 
 
 
   <div class="spacer"></div>
-
-
-
-
-
-</div>
 
   <script src="mouse-follow.js"></script>
   <script src="button.js"></script>
