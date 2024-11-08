@@ -66,3 +66,73 @@ window.onload = () => {
     }, index * 20);
   });
 };
+
+
+
+
+
+
+
+
+// Burger menu
+
+
+const burgerContainer = document.querySelector('.burger-menu-container');
+const topLine = document.querySelector('.top-burger-line');
+const bottomLine = document.querySelector('.bottom-burger-line');
+const nav = document.querySelector('nav'); // Select the <nav> element
+
+let isOpen = false;
+let initialNavHeight = nav.offsetHeight; // Store the initial height of the <nav> element
+
+gsap.set(topLine, { rotation: 0 });
+gsap.set(bottomLine, { rotation: 0, y: 0 });
+
+// Function to check screen size
+function isMobile() {
+  return window.innerWidth < 850;
+}
+
+burgerContainer.addEventListener('click', () => {
+  if (isMobile()) { // Only trigger animation if screen width is below 850px
+    if (isOpen) {
+      // Burger lines to 'X' close animation
+      gsap.to(topLine, {
+        rotation: 0,
+        y: 0,
+        duration: 0.15,
+      });
+      gsap.to(bottomLine, {
+        rotation: 0,
+        y: 0,
+        duration: 0.15,
+      });
+
+      // Animate nav height back to initial value
+      gsap.to(nav, {
+        height: initialNavHeight, // Return to original height
+        duration: 0.3,
+      });
+    } else {
+      // Burger lines to 'X' open animation
+      gsap.to(topLine, {
+        rotation: 45,
+        y: 4,
+        duration: 0.15,
+      });
+      gsap.to(bottomLine, {
+        rotation: -45,
+        y: -4,
+        duration: 0.15,
+      });
+
+      // Animate nav height to 500px
+      gsap.to(nav, {
+        height: "300px", // Open height
+        duration: 0.3,
+      });
+    }
+
+    isOpen = !isOpen;
+  }
+});
