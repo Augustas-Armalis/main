@@ -73,7 +73,15 @@ a:active {
   --ff-regular: 'SF Pro Display Regular', arial;
   --ff-medium: 'SF Pro Display Medium', arial;
   --ff-bold: 'SF Pro Display Bold', arial;
+
+
+  --white: hsla(0, 0%, 100%, 1);
   --gray1: hsla(235, 5%, 70%, 1);
+  --gray2: hsla(235, 5%, 35%, 1);
+  --gray3: hsla(235, 5%, 15%, 1);
+  --gray4: hsla(235, 5%, 9%, 1);
+  --gray5: hsla(235, 5%, 6%, 1);
+  --black: hsla(0, 0%, 0%, 1);
 }
 
 h1 {
@@ -162,6 +170,7 @@ nav {
   padding-right: 7px;
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  opacity: 0;
 }
 
 .inside-container-nav {
@@ -226,6 +235,7 @@ nav {
   justify-content: center;
   display: flex;
   cursor: pointer;
+  touch-action: manipulation;
 }
 
 .logo-img-nav {
@@ -238,7 +248,7 @@ nav {
 }
 
 .logo-container:active .logo-img-nav {
-  transform: scale(1) translateZ(0);
+  transform: scale(1);
   opacity: 0.7;
 }
 
@@ -276,6 +286,9 @@ nav {
   #button-nav-container-mobile {
     display: block;
     padding: 5px;
+    width: 100%;
+    text-align: center;
+    margin-top: 11px;
   }
 
   #nav-button:hover .rectangle {
@@ -335,7 +348,9 @@ nav {
     position: absolute;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 86%;
     top: 60px;
   }
 
@@ -344,6 +359,32 @@ nav {
     margin-top: 8px;
   }
 
+  .divider-mobile-menu{
+    width: 100%;
+    height: 1px;
+    background-color: var(--gray3);
+  }
+
+  .link-elements-mobile-nav{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 12px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+
+  .link-elements-mobile-nav a {
+    color: white;
+    text-decoration: none;
+    font-family: var(--ff-regular);
+    font-size: 24px;
+    opacity: 0; /* Initially hide the links */
+    transform: translateX(-100px); /* Initially move them off-screen */
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); /* Keep the transition for smoother effects */
+  }
+  
 }
 
 
@@ -753,6 +794,7 @@ nav {
   z-index: 20;
   opacity: 1;
   transition: opacity 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+  opacity: 0;
 }
 
 @media (max-width: 1064px) {
