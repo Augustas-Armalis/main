@@ -81,6 +81,7 @@ const burgerContainer = document.querySelector('.burger-menu-container');
 const topLine = document.querySelector('.top-burger-line');
 const bottomLine = document.querySelector('.bottom-burger-line');
 const nav = document.querySelector('nav'); // Select the <nav> element
+const topThingNav = document.querySelector('.inside-container-nav')
 
 let isOpen = false;
 let initialNavHeight = nav.offsetHeight; // Store the initial height of the <nav> element
@@ -108,9 +109,15 @@ burgerContainer.addEventListener('click', () => {
         duration: 0.15,
       });
 
+      gsap.to(topThingNav, {
+        marginTop: "9px",
+        duration: 0.5,
+      });
+
+
       // Animate nav height back to initial value
       gsap.to(nav, {
-        height: initialNavHeight, // Return to original height
+        height: "48px", // Return to original height
         duration: 0.3,
       });
     } else {
@@ -124,6 +131,11 @@ burgerContainer.addEventListener('click', () => {
         rotation: -45,
         y: -4,
         duration: 0.15,
+      });
+
+      gsap.to(topThingNav, {
+        marginTop: "15px",
+        duration: 0.5,
       });
 
       // Animate nav height to 500px
