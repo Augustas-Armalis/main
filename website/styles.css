@@ -295,9 +295,9 @@ nav {
     border-radius: 24px;
   }
 
-  .inside-container-nav {
-    margin-left: 16px;
-    margin-right: 6px;
+
+  .logo-container{
+    margin-left: 14px;
   }
 
   .burger-menu-container {
@@ -307,6 +307,7 @@ nav {
     gap: 6px;
     padding: 10px;
     cursor: pointer;
+    margin-right: 8px;
   }
 
   #burger-line {
