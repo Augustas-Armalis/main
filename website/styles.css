@@ -6,6 +6,7 @@ body {
   background-color: rgb(0, 0, 0);
   color: rgb(255, 255, 255);
   overflow-x: hidden;
+  overflow: auto;
   width: 100%;
 }
 
@@ -260,6 +261,17 @@ nav {
   display: none;
 }
 
+.background-blur-thing-nav-mobile{
+  display: none;
+}
+
+.overlay-close-button {
+  display: none;
+}
+
+#button-nav-container-mobile{
+  display: none;
+}
 
 @media (max-width: 1064px) {
 
@@ -289,7 +301,20 @@ nav {
     width: 100%;
     text-align: center;
     margin-top: 11px;
+    margin-bottom: 16px;
   }
+
+  .overlay-close-button {
+    position: absolute;
+    display: flex;
+height: 100%;
+width: 100%;
+    z-index: 1004; /* Make sure it's above the button */
+    background: rgba(232, 93, 93, 0.79); /* Slight background for visibility */
+    cursor: pointer;
+    display: none; /* Hidden by default */
+  }
+  
 
   #nav-button:hover .rectangle {
     border: 1px solid hsla(233, 5%, 45%, 1);
@@ -378,11 +403,21 @@ nav {
   .link-elements-mobile-nav a {
     color: white;
     text-decoration: none;
-    font-family: var(--ff-regular);
+    font-family: var(--ff-medium);
     font-size: 24px;
     opacity: 0; /* Initially hide the links */
     transform: translateX(-100px); /* Initially move them off-screen */
     transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); /* Keep the transition for smoother effects */
+  }
+
+  .background-blur-thing-nav-mobile{
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    backdrop-filter: blur(10px);
+    z-index: 999;
+    top: -100vh;
   }
   
 }

@@ -81,125 +81,164 @@ window.onload = () => {
 
 // Burger menu
 
+
+
 const burgerContainer = document.querySelector('.burger-menu-container');
 const topLine = document.querySelector('.top-burger-line');
 const bottomLine = document.querySelector('.bottom-burger-line');
 const nav = document.querySelector('nav');
 const topThingNav = document.querySelector('.inside-container-nav');
 const logoNav = document.querySelector('.logo-container');
-const linkElementsMobile = document.querySelectorAll('.link-elements-mobile-nav a'); // Changed variable name
+const linkElementsMobile = document.querySelectorAll('.link-elements-mobile-nav a');
+const backgroundBlur = document.querySelector('.background-blur-thing-nav-mobile');
+const buttonNavContainerMobile = document.querySelector('#button-nav-container-mobile'); // Button container
 
 let isOpen = false;
 
 gsap.set(topLine, { rotation: 0 });
 gsap.set(bottomLine, { rotation: 0, y: 0 });
+gsap.set(buttonNavContainerMobile, { y: 50, opacity: 0 }); // Initial position below the view
 
 // Function to check screen size
 function isMobile() {
   return window.innerWidth < 850;
 }
 
+// Function to disable scrolling
+function disableScroll() {
+  document.body.style.overflow = 'hidden';
+  document.documentElement.style.overflow = 'hidden'; // Prevent scrolling on html element
+}
+
+// Function to enable scrolling
+function enableScroll() {
+  document.body.style.overflow = 'auto';
+  document.documentElement.style.overflow = 'auto'; // Re-enable scrolling on html element
+}
+
+
+// Function to close the menu (refactored for reuse)
+function closeMenu() {
+  gsap.to(topLine, { rotation: 0, y: 0, duration: 0.15 });
+  gsap.to(bottomLine, { rotation: 0, y: 0, duration: 0.15 });
+  
+  gsap.to(topThingNav, { marginTop: "9px", duration: 0.3 });
+  gsap.to(logoNav, { marginLeft: "14px", duration: 0.3 });
+  gsap.to(nav, { height: "48px", duration: 0.15 });
+  gsap.to(burgerContainer, { marginRight: "6px", duration: 0.3 });
+  
+  // Animate links to fly out and fade in reverse order
+  gsap.to(linkElementsMobile, {
+    x: -100,
+    opacity: 0,
+    stagger: -0.05,
+    duration: 0.3,
+  });
+
+  // Hide background blur on close
+  gsap.to(backgroundBlur, {
+    opacity: 0,
+    duration: 0.2,
+    onComplete: () => {
+      gsap.set(backgroundBlur, { top: "-100vh" });
+    }
+  });
+
+  // Animate button-nav-container-mobile to fly down and fade out
+  gsap.to(buttonNavContainerMobile, {
+    y: 50, // Move down
+    opacity: 0,
+    duration: 0.3,
+  });
+
+  enableScroll();  // Enable scroll when menu closes
+
+  isOpen = false;
+}
+
+// Open/close toggle for the burger menu button
 burgerContainer.addEventListener('click', () => {
   if (isMobile()) {
     if (isOpen) {
-      // Burger lines to 'X' close animation
-      gsap.to(topLine, {
-        rotation: 0,
-        y: 0,
-        duration: 0.15,
-      });
-      gsap.to(bottomLine, {
-        rotation: 0,
-        y: 0,
-        duration: 0.15,
-      });
-
-      gsap.to(topThingNav, {
-        marginTop: "9px",
-        duration: 0.3,
-      });
-
-      gsap.to(logoNav, {
-        marginLeft: "14px",
-        duration: 0.3,
-      });
-
-      // Animate nav height back to initial value
-      gsap.to(nav, {
-        height: "48px", // Return to original height
-        duration: 0.4,
-      });
-
-      gsap.to(burgerContainer, {
-        marginRight: "6px", // Return to original height
-        duration: 0.3,
-      });
-
-      // Animate the links to fly out (fade out) and move left in reverse order
-      gsap.to(linkElementsMobile, {
-        x: -100,
-        opacity: 0,  // Ensure they fade out
-        stagger: -0.05, // Negative stagger for reverse animation (last element first)
-        duration: 0.3, // Fast 0.3s duration for the entire closing animation
-      });
-
+      closeMenu();
     } else {
-      // Burger lines to 'X' open animation
-      gsap.to(topLine, {
-        rotation: 45,
-        y: 4,
-        duration: 0.15,
-      });
-      gsap.to(bottomLine, {
-        rotation: -45,
-        y: -4,
-        duration: 0.15,
-      });
+      // Open animations
+      gsap.to(topLine, { rotation: 45, y: 4, duration: 0.15 });
+      gsap.to(bottomLine, { rotation: -45, y: -4, duration: 0.15 });
+      
+      gsap.to(topThingNav, { marginTop: "15px", duration: 0.3 });
+      gsap.to(logoNav, { marginLeft: "20px", duration: 0.3 });
+      gsap.to(nav, { height: "357px", duration: 0.15 });
+      gsap.to(burgerContainer, { marginRight: "12px", duration: 0.3 });
 
-      gsap.to(topThingNav, {
-        marginTop: "15px",
-        duration: 0.3,
-      });
-
-      gsap.to(logoNav, {
-        marginLeft: "20px",
-        duration: 0.3,
-      });
-
-      // Animate nav height to 400px
-      gsap.to(nav, {
-        height: "400px", // Open height
-        duration: 0.4,
-      });
-
-      gsap.to(burgerContainer, {
-        marginRight: "12px",
-        duration: 0.3,
-      });
-
-      // Animate the links to fly in from the left with the original speed and easing
+      // Animate links to fly in from the left
       gsap.fromTo(linkElementsMobile, 
-        {
-          x: -100, // Start off-screen
-          opacity: 0, // Start invisible
-        }, 
-        {
-          x: 0, // End at their original position
-          opacity: 1, // Fade in
-          stagger: 0.1, // Stagger the animation of the links
-          duration: 0.5, // Original duration for smoothness
-          ease: "power2.out", // Custom easing (start fast, slow down)
-        }
+        { x: -100, opacity: 0 },
+        { x: 0, opacity: 1, stagger: 0.1, duration: 0.5, ease: "power2.out" }
       );
-    }
 
-    isOpen = !isOpen;
+      // Background blur jumps down instantly and fades in
+      gsap.set(backgroundBlur, { top: "0" });
+      gsap.to(backgroundBlur, { opacity: 1, duration: 0.3 });
+
+      // Animate button-nav-container-mobile to fly up and fade in with a 0.2s delay
+      gsap.to(buttonNavContainerMobile, 
+        { y: 0, opacity: 1, delay: 0.2, duration: 0.5, ease: "power2.out" } // Fly up to initial position and fade in
+      );
+
+      disableScroll();  // Disable scroll when menu opens
+
+      isOpen = true;
+    }
   }
+});
+
+// Add click event to background blur, link elements, logo, and button to close the menu
+backgroundBlur.addEventListener('click', () => {
+  if (isOpen) closeMenu();
+});
+linkElementsMobile.forEach(link => link.addEventListener('click', () => {
+  if (isOpen) closeMenu();
+}));
+logoNav.addEventListener('click', () => {
+  if (isOpen) closeMenu();
+});
+
+// Add event listeners for touch and mouse release to close menu
+buttonNavContainerMobile.addEventListener('mouseup', () => {
+  if (isOpen) closeMenu(); // Close the menu on mouse button release
+});
+
+buttonNavContainerMobile.addEventListener('touchend', () => {
+  if (isOpen) closeMenu(); // Close the menu on touch release
+});
+
+// Adding the correct link behavior for the button
+buttonNavContainerMobile.addEventListener('click', (event) => {
+  if (isOpen) closeMenu(); // Close the menu on click
+  // Allow the default link behavior (navigate to the href)
+  // event.preventDefault(); // Uncomment this if you want to stop the navigation
 });
 
 
 
 
+
+
+
+
+
+
+
+document.getElementById('button-nav-container-mobile').addEventListener('touchend', function(event) {
+  event.preventDefault();  // Prevent the default link behavior
+  window.location.href = "#"; // Replace with your custom link
+});
+
+document.getElementById('load-in-btn-hero').addEventListener('touchend', function(event) {
+  event.preventDefault();  // Prevent the default link behavior
+  window.location.href = "#"; // Replace with your custom link
+});
 
 
 
