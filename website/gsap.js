@@ -47,6 +47,29 @@ window.addEventListener('load', () => {
 });
 
 
+let lastScrollTop = 0;
+const navis = document.querySelector('nav'); // Select the <nav> element (now renamed to navis)
+
+// On page load, animate the <nav> element as it comes into view
+window.addEventListener('load', () => {
+  gsap.fromTo(navis, { y: -100, opacity: 0 }, { y: 0, opacity: 1, duration: 2, ease: "power4.out" });
+});
+
+window.addEventListener('scroll', () => {
+  let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+  if (currentScroll > lastScrollTop) {
+    // Scrolling down: hide the <nav> by moving it up and fading out
+    gsap.to(navis, { y: -navis.offsetHeight, opacity: 0, duration: 0.6, ease: "power4.out" });
+  } else {
+    // Scrolling up: show the <nav> by moving it down and fading in
+    gsap.to(navis, { y: 0, opacity: 1, duration: 0.6, ease: "power4.out" });
+  }
+
+  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Prevent negative scroll
+});
+
+
 
 
 // Hero section main tech fade glur in animation on load
@@ -306,6 +329,10 @@ linkElements.forEach(link => {
     link.style.opacity = '1';
   });
 });
+
+
+
+
 
 
 

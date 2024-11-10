@@ -42,24 +42,39 @@
 
   <script>// Preloader
 
-    // Wait for the page to fully load, then hide the preloader
-    window.addEventListener("load", function() {
-        const preloader = document.getElementById("preloader");
-        const content = document.getElementById("content");
-        
-        // Hide preloader and show content
-        preloader.style.display = "none";
-        content.style.display = "block";
-    });</script>
+   // Preloader
+window.addEventListener("load", function() {
+    const preloader = document.getElementById("preloader");
+    const content = document.getElementById("content");
+    const connectionMessage = document.getElementById("connectionMessage");
+    
+    // Hide preloader and show content after page load
+    preloader.style.display = "none";
+    content.style.display = "block";
+});
+
+// Show message after 3 seconds if page is still loading
+setTimeout(function() {
+    const connectionMessage = document.getElementById("connectionMessage");
+    connectionMessage.style.display = "block"; // Make the message visible
+    connectionMessage.classList.add("show"); // Add the fade-in effect
+}, 1500);
+
+</script>
 
 
-  <div id="preloader">
-    <div class="dot" id="dot1"></div>
-    <div class="dot" id="dot2"></div>
-    <div class="dot" id="dot3"></div>
+<div id="preloader">
+  <div class="dot-cont">
+  <div class="dot" id="dot1"></div>
+  <div class="dot" id="dot2"></div>
+  <div class="dot" id="dot3"></div>
+</div>
+  <!-- Message that will appear after 3 seconds -->
+  <div id="connectionMessage" style="display:none;">Check your connection</div>
 </div>
 
-<div id="content" style="display:none;"></div> <!-- Kažkodėl žiūrėk kai div uždedi kad buttonu blobai noarmaliai judėtų-->
+<div id="content" style="display:none;"></div>
+<!-- Kažkodėl žiūrėk kai div uždedi kad buttonu blobai noarmaliai judėtų-->
 
   <div class="circle"></div>
 
