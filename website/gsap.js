@@ -47,15 +47,28 @@ window.addEventListener('load', () => {
 });
 
 
+
+
+
+
 let lastScrollTop = 0;
 const navis = document.querySelector('nav'); // Select the <nav> element (now renamed to navis)
+
+let isScrollingEnabled = false; // Flag to control when scroll animations should be enabled
 
 // On page load, animate the <nav> element as it comes into view
 window.addEventListener('load', () => {
   gsap.fromTo(navis, { y: -100, opacity: 0 }, { y: 0, opacity: 1, duration: 2, ease: "power4.out" });
+
+  // Enable scroll-based animations after 3 seconds
+  setTimeout(() => {
+    isScrollingEnabled = true;
+  }, 3000); // 3000ms = 3 seconds
 });
 
 window.addEventListener('scroll', () => {
+  if (!isScrollingEnabled) return; // Exit if scroll animations are not enabled yet
+
   let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
   if (currentScroll > lastScrollTop) {
@@ -68,6 +81,7 @@ window.addEventListener('scroll', () => {
 
   lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Prevent negative scroll
 });
+
 
 
 
