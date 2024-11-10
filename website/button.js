@@ -1,3 +1,5 @@
+// Button blobs movement and click animations
+
 gsap.registerPlugin(MotionPathPlugin);
 
 function random(min, max) {
@@ -105,23 +107,76 @@ function init() {
 }
 
 const buttons = document.querySelectorAll('.under-rectangle-layer');
+
 buttons.forEach(button => {
-  button.addEventListener('touchstart', function () {
-    this.classList.add('active');
+  button.addEventListener('mouseenter', () => {
+    gsap.to(button, {
+      border: '1px solid hsla(240, 4%, 13%, 1)',
+      boxShadow: '0px 0px 8px 0px rgba(175, 175, 182, 0.20) inset',
+      duration: 0.15,
+      ease: 'power1.out'
+    });
   });
 
-  button.addEventListener('touchend', function () {
-    this.classList.remove('active');
+  button.addEventListener('mouseleave', () => {
+    gsap.to(button, {
+      border: '1px solid var(--gray3)',
+      boxShadow: '0px 0px 8px 3px rgba(175, 175, 182, 0.20) inset',
+      duration: 0.15,
+      ease: 'power1.out'
+    });
   });
 
-  button.addEventListener('mousedown', function () {
-    this.classList.add('active');
+  button.addEventListener('mousedown', () => {
+    gsap.to(button, {
+      scale: 0.95,
+      duration: 0.15,
+      ease: 'power2.out'
+    });
+
+    gsap.to(button.querySelector('.rectangle'), {
+      scale: 0.97,
+      opacity: 0.7,
+      duration: 0.15,
+      ease: 'power2.out'
+    });
   });
 
-  button.addEventListener('mouseup', function () {
-    this.classList.remove('active');
+  button.addEventListener('touchstart', () => {
+    gsap.to(button, {
+      scale: 0.95,
+      duration: 0.15,
+      ease: 'power2.out'
+    });
+    gsap.to(button.querySelector('.rectangle'), {
+      scale: 0.97,
+      opacity: 0.7,
+      duration: 0.15,
+      ease: 'power2.out'
+    });
   });
+
+  const resetScale = () => {
+    gsap.to(button, {
+      scale: 1,
+      duration: 0.15,
+      ease: 'power2.out'
+    });
+    gsap.to(button.querySelector('.rectangle'), {
+      scale: 1,
+      opacity: 1,
+      duration: 0.15,
+      ease: 'power2.out'
+    });
+  };
+
+  button.addEventListener('mouseup', resetScale);
+  button.addEventListener('mouseleave', resetScale);
+  button.addEventListener('touchend', resetScale);
 });
+
+
+
 
 init();
 
@@ -129,43 +184,41 @@ init();
 
 
 
+// Mobile button hrefs
+
+document.getElementById('button-nav-container-mobile').addEventListener('touchend', function(event) {
+  event.preventDefault();
+  window.location.href = "#";
+});
+
+document.getElementById('load-in-btn-hero').addEventListener('touchend', function(event) {
+  event.preventDefault();
+  window.location.href = "#";
+});
 
 
 
 
 
-
-
-
-// Slider
+// Image slider
 
 var copy = document.querySelector(".logos-slide").cloneNode(true);
 document.querySelector(".logos").appendChild(copy);
-copy.offsetHeight;  // Forces a reflow to update layout
-
-
-
-
-
+copy.offsetHeight;
 
 var copy = document.querySelector(".logos-slide-opp").cloneNode(true);
 document.querySelector(".logos-opp").appendChild(copy);
-copy.offsetHeight;  // Forces a reflow to update layout
-
-
-
-
+copy.offsetHeight;
 
 var copy = document.querySelector(".logos-slide-dbb").cloneNode(true);
 document.querySelector(".logos-dbb").appendChild(copy);
-copy.offsetHeight;  // Forces a reflow to update layout
+copy.offsetHeight;
 
 
 
 
 
-
-
+// Advanced image click on mobile aniamtion
 
 document.querySelectorAll('.logos-slide img, .logos-slide-opp img, .logos-slide-dbb img').forEach((img) => {
 
@@ -184,11 +237,7 @@ document.querySelectorAll('.logos-slide img, .logos-slide-opp img, .logos-slide-
 
 
 
-
-
-
-
-// Black slider thing
+// Black slider hover animation thing
 
 const fadeOutContainer = document.querySelector('.black-bottom-fade-out-container');
 const logosDbb = document.querySelector('.logos-dbb');
@@ -200,6 +249,12 @@ fadeOutContainer.addEventListener('mouseenter', () => {
 fadeOutContainer.addEventListener('mouseleave', () => {
   logosDbb.style.opacity = '1';
 });
+
+
+
+
+
+// White button advanced click animation
 
 const button = document.querySelector('.white-btn-container');
 
@@ -214,3 +269,7 @@ button.addEventListener('touchend', function () {
   button.style.transform = 'scale(1)';
   button.style.opacity = '1';
 });
+
+
+
+

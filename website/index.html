@@ -40,27 +40,6 @@
 
 <body>
 
-  <script>// Preloader
-
-   // Preloader
-window.addEventListener("load", function() {
-    const preloader = document.getElementById("preloader");
-    const content = document.getElementById("content");
-    const connectionMessage = document.getElementById("connectionMessage");
-    
-    // Hide preloader and show content after page load
-    preloader.style.display = "none";
-    content.style.display = "block";
-});
-
-// Show message after 3 seconds if page is still loading
-setTimeout(function() {
-    const connectionMessage = document.getElementById("connectionMessage");
-    connectionMessage.style.display = "block"; // Make the message visible
-    connectionMessage.classList.add("show"); // Add the fade-in effect
-}, 1500);
-
-</script>
 
 
 <div id="preloader">

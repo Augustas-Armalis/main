@@ -42,11 +42,10 @@ function executeAbove1064px() {
 
     const fadeOutCircle = () => circleElement.style.opacity = '0';
     const fadeInCircle = () => circleElement.style.opacity = '1';
-    
-    // Add event listeners to each target container element
+
     targetContainers.forEach(container => {
-        container.addEventListener('mouseenter', fadeOutCircle);
-        container.addEventListener('mouseleave', fadeInCircle);
+      container.addEventListener('mouseenter', fadeOutCircle);
+      container.addEventListener('mouseleave', fadeInCircle);
     });
 
     document.addEventListener('visibilitychange', () => {
@@ -64,4 +63,3 @@ function executeAbove1064px() {
 
 executeAbove1064px();
 window.addEventListener('resize', executeAbove1064px);
-

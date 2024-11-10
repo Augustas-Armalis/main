@@ -1,35 +1,27 @@
-// Hero section on load
+// Hero section load in animations
+
 window.addEventListener('load', () => {
   const altContainer = document.querySelector('.alt-container');
   const underRectangleLayer = document.querySelector('#load-in-btn-hero');
   const logos = document.querySelector('.logos');
   const logosOpp = document.querySelector('.logos-opp');
   const logosDbb = document.querySelector('.logos-dbb');
-  const nav = document.querySelector('nav'); // Select <nav> element
-  const circle = document.querySelector('.circle'); // Select .circle element
+  const nav = document.querySelector('nav');
+  const circle = document.querySelector('.circle');
   
   const screenWidth = window.innerWidth;
   const moveDistance = screenWidth;
 
   const timeline = gsap.timeline({ defaults: { ease: "power4.out", duration: 2 } });
 
-  // Alt container animation
   timeline.fromTo(altContainer, { y: 100, opacity: 0 }, { y: 0, opacity: 1 });
-  
-  // New animation for <nav> element at the same time as altContainer
-  timeline.fromTo(nav, { y: -100, opacity: 0 }, { y: 0, opacity: 1 }, "-=2"); 
-
+  timeline.fromTo(nav, { y: -100, opacity: 0 }, { y: 0, opacity: 1 }, "-=2");
   timeline.fromTo(underRectangleLayer, { y: 100, opacity: 0 }, { y: 0, opacity: 1 }, "-=1.8");
   timeline.fromTo(logos, { x: moveDistance, opacity: 0 }, { x: 0, opacity: 1, duration: 1.8 }, "-=1.8");
   timeline.fromTo(logosOpp, { x: -moveDistance, opacity: 0 }, { x: 0, opacity: 1, duration: 1.8 }, "-=1.5");
   timeline.fromTo(logosDbb, { x: moveDistance, opacity: 0 }, { x: 0, opacity: 1, duration: 1.8 }, "-=1.5");
 
-  gsap.fromTo(".bck-container", { opacity: 0 }, {
-    opacity: 1,
-    duration: 2,
-    delay: 0.2,
-    ease: "power2.out"
-  });
+  gsap.fromTo(".bck-container", { opacity: 0 }, { opacity: 1, duration: 2, delay: 0.2, ease: "power2.out" });
 
   gsap.fromTo(".black-bottom-content-container", {
     y: 50, opacity: 0
@@ -42,7 +34,6 @@ window.addEventListener('load', () => {
     }
   });
 
-  // New fade-in animation for .circle with a 2-second delay
   gsap.fromTo(circle, { opacity: 0 }, { opacity: 1, duration: 1, delay: 1, ease: "power2.out" });
 });
 
@@ -50,43 +41,39 @@ window.addEventListener('load', () => {
 
 
 
+// Hide/show the nav if scrolling
 
 let lastScrollTop = 0;
-const navis = document.querySelector('nav'); // Select the <nav> element (now renamed to navis)
+const navis = document.querySelector('nav');
+let isScrollingEnabled = false;
 
-let isScrollingEnabled = false; // Flag to control when scroll animations should be enabled
-
-// On page load, animate the <nav> element as it comes into view
 window.addEventListener('load', () => {
   gsap.fromTo(navis, { y: -100, opacity: 0 }, { y: 0, opacity: 1, duration: 2, ease: "power4.out" });
 
-  // Enable scroll-based animations after 3 seconds
   setTimeout(() => {
     isScrollingEnabled = true;
-  }, 3000); // 3000ms = 3 seconds
+  }, 3000);
 });
 
 window.addEventListener('scroll', () => {
-  if (!isScrollingEnabled) return; // Exit if scroll animations are not enabled yet
+  if (!isScrollingEnabled) return;
 
   let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
   if (currentScroll > lastScrollTop) {
-    // Scrolling down: hide the <nav> by moving it up and fading out
     gsap.to(navis, { y: -navis.offsetHeight, opacity: 0, duration: 0.6, ease: "power4.out" });
   } else {
-    // Scrolling up: show the <nav> by moving it down and fading in
     gsap.to(navis, { y: 0, opacity: 1, duration: 0.6, ease: "power4.out" });
   }
 
-  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Prevent negative scroll
+  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
 });
 
 
 
 
 
-// Hero section main tech fade glur in animation on load
+// Hero section title framer fade in
 
 window.onload = () => {
   const textElement = document.querySelector('.title-container h1');
@@ -113,12 +100,7 @@ window.onload = () => {
 
 
 
-
-
-
 // Burger menu
-
-
 
 const burgerContainer = document.querySelector('.burger-menu-container');
 const topLine = document.querySelector('.top-burger-line');
@@ -128,43 +110,36 @@ const topThingNav = document.querySelector('.inside-container-nav');
 const logoNav = document.querySelector('.logo-container');
 const linkElementsMobile = document.querySelectorAll('.link-elements-mobile-nav a');
 const backgroundBlur = document.querySelector('.background-blur-thing-nav-mobile');
-const buttonNavContainerMobile = document.querySelector('#button-nav-container-mobile'); // Button container
+const buttonNavContainerMobile = document.querySelector('#button-nav-container-mobile');
 
 let isOpen = false;
 
 gsap.set(topLine, { rotation: 0 });
 gsap.set(bottomLine, { rotation: 0, y: 0 });
-gsap.set(buttonNavContainerMobile, { y: 50, opacity: 0 }); // Initial position below the view
+gsap.set(buttonNavContainerMobile, { y: 50, opacity: 0 });
 
-// Function to check screen size
 function isMobile() {
   return window.innerWidth < 850;
 }
 
-// Function to disable scrolling
 function disableScroll() {
   document.body.style.overflow = 'hidden';
-  document.documentElement.style.overflow = 'hidden'; // Prevent scrolling on html element
+  document.documentElement.style.overflow = 'hidden';
 }
 
-// Function to enable scrolling
 function enableScroll() {
   document.body.style.overflow = 'auto';
-  document.documentElement.style.overflow = 'auto'; // Re-enable scrolling on html element
+  document.documentElement.style.overflow = 'auto';
 }
 
-
-// Function to close the menu (refactored for reuse)
 function closeMenu() {
   gsap.to(topLine, { rotation: 0, y: 0, duration: 0.15 });
   gsap.to(bottomLine, { rotation: 0, y: 0, duration: 0.15 });
-  
   gsap.to(topThingNav, { marginTop: "9px", duration: 0.3 });
   gsap.to(logoNav, { marginLeft: "14px", duration: 0.3 });
   gsap.to(nav, { height: "48px", duration: 0.15 });
   gsap.to(burgerContainer, { marginRight: "6px", duration: 0.3 });
-  
-  // Animate links to fly out and fade in reverse order
+
   gsap.to(linkElementsMobile, {
     x: -100,
     opacity: 0,
@@ -172,7 +147,6 @@ function closeMenu() {
     duration: 0.3,
   });
 
-  // Hide background blur on close
   gsap.to(backgroundBlur, {
     opacity: 0,
     duration: 0.2,
@@ -181,114 +155,79 @@ function closeMenu() {
     }
   });
 
-  // Animate button-nav-container-mobile to fly down and fade out
   gsap.to(buttonNavContainerMobile, {
-    y: 50, // Move down
+    y: 50,
     opacity: 0,
     duration: 0.3,
   });
 
-  enableScroll();  // Enable scroll when menu closes
-
+  enableScroll();
   isOpen = false;
 }
 
-// Open/close toggle for the burger menu button
 burgerContainer.addEventListener('click', () => {
   if (isMobile()) {
     if (isOpen) {
       closeMenu();
     } else {
-      // Open animations
       gsap.to(topLine, { rotation: 45, y: 4, duration: 0.15 });
       gsap.to(bottomLine, { rotation: -45, y: -4, duration: 0.15 });
-      
       gsap.to(topThingNav, { marginTop: "15px", duration: 0.3 });
       gsap.to(logoNav, { marginLeft: "20px", duration: 0.3 });
       gsap.to(nav, { height: "357px", duration: 0.15 });
       gsap.to(burgerContainer, { marginRight: "12px", duration: 0.3 });
 
-      // Animate links to fly in from the left
       gsap.fromTo(linkElementsMobile, 
         { x: -100, opacity: 0 },
         { x: 0, opacity: 1, stagger: 0.1, duration: 0.5, ease: "power2.out" }
       );
 
-      // Background blur jumps down instantly and fades in
       gsap.set(backgroundBlur, { top: "0" });
       gsap.to(backgroundBlur, { opacity: 1, duration: 0.3 });
 
-      // Animate button-nav-container-mobile to fly up and fade in with a 0.2s delay
       gsap.to(buttonNavContainerMobile, 
-        { y: 0, opacity: 1, delay: 0.2, duration: 0.5, ease: "power2.out" } // Fly up to initial position and fade in
+        { y: 0, opacity: 1, delay: 0.2, duration: 0.5, ease: "power2.out" }
       );
 
-      disableScroll();  // Disable scroll when menu opens
-
+      disableScroll();
       isOpen = true;
     }
   }
 });
 
-// Add click event to background blur, link elements, logo, and button to close the menu
 backgroundBlur.addEventListener('click', () => {
   if (isOpen) closeMenu();
 });
+
 linkElementsMobile.forEach(link => link.addEventListener('click', () => {
   if (isOpen) closeMenu();
 }));
+
 logoNav.addEventListener('click', () => {
   if (isOpen) closeMenu();
 });
 
-// Add event listeners for touch and mouse release to close menu
 buttonNavContainerMobile.addEventListener('mouseup', () => {
-  if (isOpen) closeMenu(); // Close the menu on mouse button release
+  if (isOpen) closeMenu();
 });
 
 buttonNavContainerMobile.addEventListener('touchend', () => {
-  if (isOpen) closeMenu(); // Close the menu on touch release
+  if (isOpen) closeMenu();
 });
 
-// Adding the correct link behavior for the button
 buttonNavContainerMobile.addEventListener('click', (event) => {
-  if (isOpen) closeMenu(); // Close the menu on click
-  // Allow the default link behavior (navigate to the href)
-  // event.preventDefault(); // Uncomment this if you want to stop the navigation
+  if (isOpen) closeMenu();
 });
 
 
 
 
 
-
-
-
-
-
-
-document.getElementById('button-nav-container-mobile').addEventListener('touchend', function(event) {
-  event.preventDefault();  // Prevent the default link behavior
-  window.location.href = "#"; // Replace with your custom link
-});
-
-document.getElementById('load-in-btn-hero').addEventListener('touchend', function(event) {
-  event.preventDefault();  // Prevent the default link behavior
-  window.location.href = "#"; // Replace with your custom link
-});
-
-
-
-
-
-
-
-
+// Advanced logo click animations
 
 const logoContainer = document.querySelector('.logo-container');
 const logoImgNav = document.querySelector('.logo-img-nav');
 
-// Apply active styles on pointerdown
 logoContainer.addEventListener('pointerdown', () => {
   logoImgNav.style.transform = 'scale(0.97) translateZ(0)';
   logoImgNav.style.opacity = '0.7';
@@ -302,8 +241,6 @@ logoContainer.addEventListener('mouseleave', () => {
   logoImgNav.style.transform = 'scale(1)';
 });
 
-
-// Revert to original state on pointerup
 logoContainer.addEventListener('pointerup', () => {
   logoImgNav.style.transform = 'scale(1)';
   logoImgNav.style.opacity = '1';
@@ -311,15 +248,17 @@ logoContainer.addEventListener('pointerup', () => {
 
 
 
+
+
+// Advanced burger menu click animations
+
 const burgerMenuContainer = document.querySelector('.burger-menu-container');
 
-// Apply active styles on pointerdown for burger menu
 burgerMenuContainer.addEventListener('pointerdown', () => {
   burgerMenuContainer.style.transform = 'scale(0.97) translateZ(0)';
   burgerMenuContainer.style.opacity = '0.7';
 });
 
-// Revert to original state on pointerup for burger menu
 burgerMenuContainer.addEventListener('pointerup', () => {
   burgerMenuContainer.style.transform = 'scale(1)';
   burgerMenuContainer.style.opacity = '1';
@@ -328,16 +267,17 @@ burgerMenuContainer.addEventListener('pointerup', () => {
 
 
 
+
+// Advanced links on mobile nav click animation
+
 const linkElements = document.querySelectorAll('.link-elements-mobile-nav a');
 
-// Apply active styles on pointerdown for each link
 linkElements.forEach(link => {
   link.addEventListener('pointerdown', () => {
     link.style.transform = 'scale(0.97) translateZ(0)';
     link.style.opacity = '0.7';
   });
 
-  // Revert to original state on pointerup for each link
   link.addEventListener('pointerup', () => {
     link.style.transform = 'scale(1)';
     link.style.opacity = '1';
@@ -348,7 +288,32 @@ linkElements.forEach(link => {
 
 
 
+// Preloader
 
+window.addEventListener("load", function() {
+  const preloader = document.getElementById("preloader");
 
+  disableScroll();
 
+  preloader.style.opacity = "0";
+  setTimeout(() => {
+    preloader.style.display = "none";
+    enableScroll();
+  }, 500);
+});
 
+setTimeout(function() {
+  const connectionMessage = document.getElementById("connectionMessage");
+  connectionMessage.style.display = "block";
+  connectionMessage.classList.add("show");
+}, 1500);
+
+function disableScroll() {
+  document.body.style.overflow = 'hidden';
+  document.documentElement.style.overflow = 'hidden';
+}
+
+function enableScroll() {
+  document.body.style.overflow = 'auto';
+  document.documentElement.style.overflow = 'auto';
+}
