@@ -200,24 +200,6 @@ document.getElementById('load-in-btn-hero').addEventListener('touchend', functio
 
 
 
-// Image slider
-
-var copy = document.querySelector(".logos-slide").cloneNode(true);
-document.querySelector(".logos").appendChild(copy);
-copy.offsetHeight;
-
-var copy = document.querySelector(".logos-slide-opp").cloneNode(true);
-document.querySelector(".logos-opp").appendChild(copy);
-copy.offsetHeight;
-
-var copy = document.querySelector(".logos-slide-dbb").cloneNode(true);
-document.querySelector(".logos-dbb").appendChild(copy);
-copy.offsetHeight;
-
-
-
-
-
 // Advanced image click on mobile aniamtion
 
 document.querySelectorAll('.logos-slide img, .logos-slide-opp img, .logos-slide-dbb img').forEach((img) => {

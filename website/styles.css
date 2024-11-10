@@ -801,7 +801,7 @@ nav {
 /* Image slider */
 
 .slider-container {
-  width: 100%;
+  width: 100vw;
   margin-top: 192px;
 }
 
@@ -877,7 +877,6 @@ nav {
 
 .logos-slide-opp {
   display: inline-block;
-  padding-right: 1px;
   animation: 35s slide-opp infinite linear;
   pointer-events: none;
 }
@@ -891,10 +890,6 @@ nav {
   border-radius: 20px;
   pointer-events: auto;
   transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.strange-copy {
-  margin-right: 7px !important;
 }
 
 .logos-slide img:hover,
@@ -987,10 +982,6 @@ nav {
     border-radius: 16px;
   }
 
-  .strange-copy {
-    margin-right: 5px !important;
-  }
-
   .slider-container {
     margin-top: 128px;
   }
@@ -1036,10 +1027,6 @@ nav {
   .logos-slide-dbb img {
     margin: 0 4px;
     border-radius: 12px;
-  }
-
-  .strange-copy {
-    margin-right: 3px !important;
   }
 
   .slider-container {

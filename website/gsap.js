@@ -128,9 +128,12 @@ function disableScroll() {
 }
 
 function enableScroll() {
-  document.body.style.overflow = 'auto';
-  document.documentElement.style.overflow = 'auto';
+  document.body.style.overflow = '';
+  document.documentElement.style.overflow = '';
+  document.body.style.overflowX = 'hidden';
+  document.documentElement.style.overflowX = 'hidden';
 }
+
 
 function closeMenu() {
   gsap.to(topLine, { rotation: 0, y: 0, duration: 0.15 });
@@ -288,6 +291,26 @@ linkElements.forEach(link => {
 
 
 
+// Image slider
+
+var copy = document.querySelector(".logos-slide").cloneNode(true);
+document.querySelector(".logos").appendChild(copy);
+copy.offsetHeight;
+
+var copy = document.querySelector(".logos-slide-opp").cloneNode(true);
+document.querySelector(".logos-opp").appendChild(copy);
+copy.offsetHeight;
+
+var copy = document.querySelector(".logos-slide-dbb").cloneNode(true);
+document.querySelector(".logos-dbb").appendChild(copy);
+copy.offsetHeight;
+
+
+
+
+
+
+
 // Preloader
 
 window.addEventListener("load", function() {
@@ -314,6 +337,8 @@ function disableScroll() {
 }
 
 function enableScroll() {
-  document.body.style.overflow = 'auto';
-  document.documentElement.style.overflow = 'auto';
+  document.body.style.overflow = '';
+  document.documentElement.style.overflow = '';
+  document.body.style.overflowX = 'hidden';
+  document.documentElement.style.overflowX = 'hidden';
 }
