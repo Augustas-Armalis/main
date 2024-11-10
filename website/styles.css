@@ -823,6 +823,10 @@ nav {
   }
 }
 
+.logos-opp {
+  transform: rotate(180deg);
+}
+
 .logos,
 .logos-opp,
 .logos-dbb {
@@ -869,17 +873,14 @@ nav {
 }
 
 .logos-slide,
-.logos-slide-dbb {
+.logos-slide-dbb,
+.logos-slide-opp {
   display: inline-block;
   animation: 35s slide infinite linear;
   pointer-events: none;
 }
 
-.logos-slide-opp {
-  display: inline-block;
-  animation: 35s slide-opp infinite linear;
-  pointer-events: none;
-}
+
 
 .logos-slide img,
 .logos-slide-opp img,
