@@ -830,6 +830,7 @@ nav {
   display: flex;
   align-items: center;
   z-index: 90;
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .logos:before,
