@@ -186,12 +186,12 @@ init();
 
 // Mobile button hrefs
 
-document.getElementById('button-nav-container-mobile').addEventListener('touchend', function(event) {
+document.getElementById('button-nav-container-mobile').addEventListener('touchend', function (event) {
   event.preventDefault();
   window.location.href = "#";
 });
 
-document.getElementById('load-in-btn-hero').addEventListener('touchend', function(event) {
+document.getElementById('load-in-btn-hero').addEventListener('touchend', function (event) {
   event.preventDefault();
   window.location.href = "#";
 });
@@ -202,18 +202,18 @@ document.getElementById('load-in-btn-hero').addEventListener('touchend', functio
 
 // Advanced image click on mobile aniamtion
 
-document.querySelectorAll('.logos-slide img, .logos-slide-opp img, .logos-slide-dbb img').forEach((img) => {
+// document.querySelectorAll('.logos-slide img, .logos-slide-opp img, .logos-slide-dbb img').forEach((img) => {
 
-  img.addEventListener('touchstart', () => {
-    img.style.opacity = '0.7';
-    img.style.transform = 'scale(0.99)';
-  });
+//   img.addEventListener('touchstart', () => {
+//     img.style.opacity = '0.7';
+//     img.style.transform = 'scale(0.99)';
+//   });
 
-  img.addEventListener('touchend', () => {
-    img.style.opacity = '';
-    img.style.transform = '';
-  });
-});
+//   img.addEventListener('touchend', () => {
+//     img.style.opacity = '';
+//     img.style.transform = '';
+//   });
+// });
 
 
 

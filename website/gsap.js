@@ -8,7 +8,7 @@ window.addEventListener('load', () => {
   const logosDbb = document.querySelector('.logos-dbb');
   const nav = document.querySelector('nav');
   const circle = document.querySelector('.circle');
-  
+
   const screenWidth = window.innerWidth;
   const moveDistance = screenWidth;
 
@@ -180,7 +180,7 @@ burgerContainer.addEventListener('click', () => {
       gsap.to(nav, { height: "357px", duration: 0.15 });
       gsap.to(burgerContainer, { marginRight: "12px", duration: 0.3 });
 
-      gsap.fromTo(linkElementsMobile, 
+      gsap.fromTo(linkElementsMobile,
         { x: -100, opacity: 0 },
         { x: 0, opacity: 1, stagger: 0.1, duration: 0.5, ease: "power2.out" }
       );
@@ -188,7 +188,7 @@ burgerContainer.addEventListener('click', () => {
       gsap.set(backgroundBlur, { top: "0" });
       gsap.to(backgroundBlur, { opacity: 1, duration: 0.3 });
 
-      gsap.to(buttonNavContainerMobile, 
+      gsap.to(buttonNavContainerMobile,
         { y: 0, opacity: 1, delay: 0.2, duration: 0.5, ease: "power2.out" }
       );
 
@@ -293,17 +293,15 @@ linkElements.forEach(link => {
 
 // Image slider
 
-var copy = document.querySelector(".logos-slide").cloneNode(true);
-document.querySelector(".logos").appendChild(copy);
-copy.offsetHeight;
 
-var copy = document.querySelector(".logos-slide-opp").cloneNode(true);
-document.querySelector(".logos-opp").appendChild(copy);
-copy.offsetHeight;
+// var copy = document.querySelector(".logos-slide").cloneNode(true);
+// document.querySelector(".logos").appendChild(copy);
 
-var copy = document.querySelector(".logos-slide-dbb").cloneNode(true);
-document.querySelector(".logos-dbb").appendChild(copy);
-copy.offsetHeight;
+// var copyOpp = document.querySelector(".logos-slide-opp").cloneNode(true);
+// document.querySelector(".logos-opp").appendChild(copyOpp);
+
+// var copyDbb = document.querySelector(".logos-slide-dbb").cloneNode(true);
+// document.querySelector(".logos-dbb").appendChild(copyDbb);
 
 
 
@@ -313,7 +311,7 @@ copy.offsetHeight;
 
 // Preloader
 
-window.addEventListener("load", function() {
+window.addEventListener("load", function () {
   const preloader = document.getElementById("preloader");
 
   disableScroll();
@@ -325,7 +323,7 @@ window.addEventListener("load", function() {
   }, 500);
 });
 
-setTimeout(function() {
+setTimeout(function () {
   const connectionMessage = document.getElementById("connectionMessage");
   connectionMessage.style.display = "block";
   connectionMessage.classList.add("show");
