@@ -211,7 +211,10 @@ nav {
   font-size: 20px;
   font-family: var(--ff-regular);
   color: var(--gray1);
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: all 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+
+
+
   cursor: pointer;
   display: flex;
   justify-content: center;
