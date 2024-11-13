@@ -382,7 +382,7 @@ document.addEventListener('DOMContentLoaded', () => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const counter = entry.target.querySelector('.count');
-        const duration = 2000; // Fixed duration for all counters to complete in 1 second
+        const duration = 1000; // Fixed duration for all counters to complete in 1 second
 
         startCounting(counter, duration);
         observer.unobserve(entry.target); // Stop observing after counting starts
@@ -399,3 +399,21 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+
+
+
+
+gsap.utils.toArray(".counter").forEach((counter, index) => {
+  gsap.fromTo(counter, {
+    y: 50, opacity: 0
+  }, {
+    y: 0, opacity: 1,
+    duration: 1, ease: "power4.out",
+    scrollTrigger: {
+      trigger: counter,
+      start: "top 90%",
+      toggleActions: "play none none none"
+    },
+    stagger: window.innerWidth < 830 ? 0.3 * index : 0  // stagger for smaller screens
+  });
+});
