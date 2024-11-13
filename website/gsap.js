@@ -291,43 +291,36 @@ linkElements.forEach(link => {
 
 
 
-// Image slider
-
-
-// var copy = document.querySelector(".logos-slide").cloneNode(true);
-// document.querySelector(".logos").appendChild(copy);
-
-// var copyOpp = document.querySelector(".logos-slide-opp").cloneNode(true);
-// document.querySelector(".logos-opp").appendChild(copyOpp);
-
-// var copyDbb = document.querySelector(".logos-slide-dbb").cloneNode(true);
-// document.querySelector(".logos-dbb").appendChild(copyDbb);
-
-
-
-
-
-
-
-// Preloader
-
 window.addEventListener("load", function () {
   const preloader = document.getElementById("preloader");
+  const connectionMessage = document.getElementById("connectionMessage");
 
-  disableScroll();
+  // Cancel the preloader display if the page has loaded before 1 second
+  clearTimeout(preloaderTimeout);
 
-  preloader.style.opacity = "0";
+  // Hide the preloader after a short delay
+  preloader.style.opacity = "0"; // Start fading out the preloader
   setTimeout(() => {
-    preloader.style.display = "none";
+    preloader.style.display = "none"; // Hide the preloader completely after fade out
     enableScroll();
-  }, 500);
+  }, 200); // Time for fading out
+
+  // Display the connection message after 1.5 seconds
+  setTimeout(function () {
+    connectionMessage.style.display = "block";
+    connectionMessage.classList.add("show");
+  }, 1500);
+
+  // Disable scrolling while the preloader is active
+  disableScroll();
 });
 
-setTimeout(function () {
-  const connectionMessage = document.getElementById("connectionMessage");
-  connectionMessage.style.display = "block";
-  connectionMessage.classList.add("show");
-}, 1500);
+// Set a timeout to show the preloader if the page takes longer than 1 second to load
+const preloaderTimeout = setTimeout(function () {
+  const preloader = document.getElementById("preloader");
+  preloader.style.display = "flex"; // Show preloader (as a flexbox)
+  preloader.style.opacity = "1"; // Trigger fade-in effect
+}, 1000); // Trigger preloader after 1 second if page hasn't finished loading
 
 function disableScroll() {
   document.body.style.overflow = 'hidden';
@@ -340,3 +333,69 @@ function enableScroll() {
   document.body.style.overflowX = 'hidden';
   document.documentElement.style.overflowX = 'hidden';
 }
+
+
+
+
+
+
+
+// stats counter
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const counters = document.querySelectorAll('.counter .count');
+
+  // Function to handle the counting effect with the same duration (1 second)
+  const startCounting = (counter, duration) => {
+    const target = +counter.parentElement.getAttribute('data-target');
+    const start = 0;
+
+    // We calculate how much we should increase per frame to finish in the given duration
+    const incrementPerFrame = target / (duration / 16); // ~60 FPS, so 1000ms / 16ms = approx. 60 frames per second
+
+    let current = start;
+
+    const updateCount = () => {
+      current += incrementPerFrame;
+      // Set the rounded value
+      counter.querySelector('.counter-number').innerText = Math.round(current);
+
+      // If the current number hasn't reached the target yet, continue updating
+      if (current < target) {
+        requestAnimationFrame(updateCount); // Using requestAnimationFrame for smoother animation
+      } else {
+        // Ensure the number is exactly equal to the target at the end
+        counter.querySelector('.counter-number').innerText = target;
+      }
+    };
+
+    updateCount(); // Start the animation
+  };
+
+  // IntersectionObserver to trigger when counter enters the viewport
+  const observerOptions = {
+    threshold: 0.2, // Trigger when 10% of the element is visible
+  };
+
+  const observerCallback = (entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const counter = entry.target.querySelector('.count');
+        const duration = 2000; // Fixed duration for all counters to complete in 1 second
+
+        startCounting(counter, duration);
+        observer.unobserve(entry.target); // Stop observing after counting starts
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+  // Observe each counter
+  counters.forEach(counter => {
+    const counterContainer = counter.parentElement;
+    observer.observe(counterContainer);
+  });
+});
+

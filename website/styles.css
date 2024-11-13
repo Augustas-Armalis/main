@@ -440,7 +440,7 @@ nav {
   width: 100%;
   height: 200vh;
   border: 0;
-  opacity: 0.7;
+  opacity: 0.5;
   z-index: 1;
 }
 
@@ -931,6 +931,7 @@ nav {
   z-index: 90;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.00) 0%, #000 100%);
   position: absolute;
+  pointer-events: none;
 }
 
 .black-bottom-content-container {
@@ -992,7 +993,6 @@ nav {
 
   .black-bottom-fade-out-container {
     height: 130px;
-    pointer-events: none;
   }
 
   .black-bottom-content-container {
@@ -1071,7 +1071,9 @@ nav {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  transition: opacity 0.5s ease;
+  transition: all 0.5s ease;
+  opacity: 0;
+  /* Initially hidden */
 }
 
 .dot-cont {
@@ -1127,4 +1129,118 @@ nav {
 
 #connectionMessage.show {
   opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* counter */
+
+.container-for-the-counter {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.counter-container {
+  display: flex;
+  gap: 30px;
+  margin-top: 192px;
+  justify-content: space-between;
+  width: 1000px;
+}
+
+.counter {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: fit-content;
+  align-items: start;
+}
+
+.count {
+  position: relative;
+}
+
+.count:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  bottom: 0;
+  background: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0));
+  pointer-events: none;
+  z-index: 3;
+}
+
+.counter:nth-child(1) {
+  width: 346px;
+}
+
+.counter:nth-child(2) {
+  width: 250px;
+}
+
+.counter:nth-child(3) {
+  width: 200px;
+}
+
+
+
+.counter p {
+  font-size: 128px;
+  font-family: var(--ff-bold);
+  letter-spacing: -1.28px;
+  line-height: 128px;
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+}
+
+.counter .counter-number {
+  margin-right: 5px;
+}
+
+.counter .plus-sign {
+  font-size: 128px;
+  background: linear-gradient(180deg, #FFF 73.89%, #54555D 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-left: -5px;
+  z-index: 2;
+}
+
+.counter h5 {
+  color: var(--gray1);
+  width: fit-content;
 }
