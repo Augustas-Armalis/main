@@ -309,7 +309,7 @@ window.addEventListener("load", function () {
   setTimeout(function () {
     connectionMessage.style.display = "block";
     connectionMessage.classList.add("show");
-  }, 1500);
+  }, 1000);
 
   // Disable scrolling while the preloader is active
   disableScroll();
@@ -487,3 +487,19 @@ if (window.innerWidth > 830) {
 }
 
 
+
+function animateFloating(container) {
+  gsap.to(container, {
+    x: "+=" + (Math.random() * 10 - 10),  // Random X movement (-10 to 10px)
+    y: "+=" + (Math.random() * 10 - 10),  // Random Y movement (-10 to 10px)
+    rotation: "+=" + (Math.random() * 2 - 1), // Slight random rotation
+    duration: 2 + Math.random() * 1, // Random duration between 2s and 4s
+    ease: "sine.inOut",  // Smooth easing effect
+    repeat: -1, // Infinite loop
+    yoyo: true // Alternate direction to make it more fluid
+  });
+}
+
+// Apply the animation to both containers
+animateFloating(document.querySelector('.floating-augustas-container'));
+animateFloating(document.querySelector('.floating-daniel-container'));

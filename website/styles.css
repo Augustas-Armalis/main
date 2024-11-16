@@ -1360,7 +1360,7 @@ nav {
 
 
 
-
+/* framework section */
 
 .framework-container{
   width: 100vw;
@@ -1384,6 +1384,7 @@ border-radius: 16px;
 border: 1px solid #252528;
 height: 400px;
 padding: 24px 30px 30px 30px;
+overflow: hidden;
 }
 
 .framework-top-box-container,
@@ -1412,10 +1413,192 @@ margin-bottom: 4px;
   color:var(--gray1);
 }
 
+
+
+
+
+.website-sketch-background{
+  width: 240px;
+  height: 250px;
+  border-radius: 8px;
+background: #D2D2D2;
+box-shadow: -5px 0px 14.4px 0px rgba(0, 0, 0, 0.25);
+position: absolute;
+left: 50%;
+transform: translateX(-50%);
+bottom: -20px;
+display: flex;
+align-items: center;
+z-index: -20;
+flex-shrink: 0;
+flex-direction: column;
+
+}
+
+.website-sketch-title-box{
+  width: 160px;
+height: 40px;
+flex-shrink: 0;
+border-radius: 5px;
+background: #545454;
+margin-top: 25px;
+}
+
+.website-sketch-alt-long{
+  width: 160px;
+height: 10px;
+flex-shrink: 0;
+border-radius: 5px;
+background: #999;
+margin-top: 14px;
+}
+
+.website-sketch-alt-short{
+  width: 120px;
+  height: 10px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  background: #999;
+  margin-top: 10px;
+}
+
+.website-sketch-cta{
+width: 70px;
+height: 25px;
+flex-shrink: 0;
+border-radius: 5px;
+background: #FFF;
+margin-top: 20px;
+}
+
+.website-sketch-image{
+  width: 160px;
+height: 110px;
+flex-shrink: 0;
+border-radius: 7px;
+background: #999;
+margin-top: 20px;
+}
+
+
+.floating-augustas-container{
+  position: absolute;
+  z-index: 20;
+  height: fit-content;
+  width: fit-content;
+  left: -45px;
+  bottom: 50px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.floating-daniel-container{
+  position: absolute;
+  z-index: 20;
+  height: fit-content;
+  width: fit-content;
+  right: -45px;
+  top:20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.floating-arrow-augustas{
+  position: absolute;
+  right: -15px;
+  top:-3px
+}
+
+.floating-arrow-daniel{
+  position: absolute;
+  left: -13px;
+  top:-8px
+}
+
+.augustas-vid-container{
+  overflow: hidden;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 69px;
+  height: 69px;
+}
+
+.augustas-vid-container video{
+  width: 100%;
+  height: 100%;
+}
+
+.little-card-augustas-floating{
+  width: 66px;
+height: 17px;
+flex-shrink: 0;
+border-radius: 3px;
+background: rgba(0, 0, 0, 0.52);
+backdrop-filter: blur(4.3px);
+text-align: center;
+padding-top: 1px;
+}
+
+.little-card-augustas-floating p{
+font-size: 12px;
+cursor:default;
+}
+
+.blob-blur-framework-box{
+  position: absolute;
+  width: 246px;
+height: 154px;
+flex-shrink: 0;
+background-color: #C7C7D4;
+filter: blur(67px);
+z-index: -30;
+bottom:-50px;
+left: 50%;
+transform: translateX(-50%);
+}
+
+.background-blur-planning-box-bottom {
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  bottom: -2px;
+  left: 0;
+  background: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0));
+  pointer-events: none;
+}
+
+.background-blur-planning-box-left {
+  position: absolute;
+  width: 50px;
+  height: 100%;
+  left: 0;
+  background: linear-gradient(to right, rgb(0, 0, 0), rgba(0, 0, 0, 0));
+  pointer-events: none;
+}
+
+.background-blur-planning-box-right {
+  position: absolute;
+  width: 50px;
+  height: 100%;
+  right: 0;
+  background: linear-gradient(to left, rgb(0, 0, 0), rgba(0, 0, 0, 0));
+  pointer-events: none;
+}
+
+
+
+
 @media (max-width: 1064px) {
   #framework-box{
   border-radius: 16px;
-  height: 350px;
+  height: 380px;
+  max-width: 400px;
   flex: 1;
   padding: 16px 24px 24px 24px;
   }
@@ -1428,13 +1611,15 @@ margin-bottom: 4px;
   .framework-bottom-box-container,
   .framework-sizer{
     gap: 12px;
+    align-items: center;
+    justify-content: center;
   }
 }
 
 @media (max-width: 830px) {
   #framework-box{
   border-radius: 16px;
-  height: 350px;
+  height: 370px;
   width: 420px;
   flex: none;
   }
@@ -1464,5 +1649,13 @@ align-items: center;
 
   .framework-sizer{
     margin: 0 16px;
+  }
+
+  .floating-augustas-container{
+    left: -35px;
+  }
+  
+  .floating-daniel-container{
+    right: -35px;
   }
 }
