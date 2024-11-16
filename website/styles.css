@@ -93,8 +93,23 @@ h1 {
   font-weight: var(--font-bold);
 }
 
+h2{
+  font-size: 48px;
+  letter-spacing: -0.48px;
+  font-family: var(--ff-bold);
+  font-weight: var(--font-bold);
+}
+
+h3{
+  font-size: 32px;
+  letter-spacing: -0.32px;
+  font-family: var(--ff-bold);
+  font-weight: var(--font-bold);
+  line-height: 130%;
+}
+
 h4 {
-  font-size: 24px;
+  font-size: 20px;
   font-family: var(--ff-regular);
   font-weight: var(--font-regular);
   line-height: 130%;
@@ -113,6 +128,14 @@ h5 {
     font-size: 50px;
   }
 
+  h2{
+    font-size: 40px;
+  }
+
+  h3{
+    font-size: 30px;
+  }
+
   h4 {
     font-size: 20px;
   }
@@ -122,6 +145,14 @@ h5 {
 @media (max-width: 555px) {
   h1 {
     font-size: 32px;
+  }
+
+  h2{
+    font-size: 30px;
+  }
+
+  h3{
+    font-size: 24px;
   }
 
   h4 {
@@ -148,6 +179,32 @@ h5 {
   background-color: var(--black);
 }
 
+
+.section-title-container{
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.title-text-title-section{
+margin-bottom: 8px;
+}
+
+.alt-text-title-section{
+  color:var(--gray1);
+}
+
+
+@media (max-width: 1064px) {
+  .section-title-container{
+    margin-bottom: 42px;
+  }
+}
+
+@media (max-width: 555) {
+  .section-title-container{
+    margin-bottom: 36px;
+  }
+}
 
 
 
@@ -709,7 +766,7 @@ nav {
 
 .white-mini-container {
   text-decoration: none;
-  padding: 10px 10px;
+  padding: 10px 0px 10px 10px;
   cursor: pointer;
   display: inline-block;
 }
@@ -732,6 +789,7 @@ nav {
 @media (max-width: 555px) {
   .white-mini-container {
     margin-top: 6px;
+    padding: 10px;
   }
 }
 
@@ -1177,6 +1235,7 @@ nav {
   gap: 30px;
   justify-content: space-between;
   width: 1000px;
+  margin-bottom: 128px;
 }
 
 .counter {
@@ -1196,9 +1255,9 @@ nav {
 .count:before {
   content: "";
   position: absolute;
-  width: 100%;
-  height: 50px;
-  bottom: 0;
+  width: 105%;
+  height: 30px;
+  bottom: 8px;
   background: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0));
   pointer-events: none;
   z-index: 3;
@@ -1232,12 +1291,8 @@ nav {
   margin-right: 5px;
 }
 
-.counter .plus-sign {
+ .plus-sign {
   font-size: 128px;
-  background: linear-gradient(180deg, #FFF 73.89%, #54555D 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   margin-left: -5px;
   z-index: 2;
 }
@@ -1248,10 +1303,11 @@ nav {
   text-align: start;
 }
 
+
 @media (max-width: 1064px) {
   .counter-container {
     gap: 0px;
-    margin: 0 32px;
+    margin: 0 32px 128px 32px;
   }
 }
 
@@ -1288,6 +1344,125 @@ nav {
   }
 
   .counter-container {
+    margin: 0 16px 92px 16px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.framework-container{
+  width: 100vw;
+  height: fit-content;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.framework-sizer{
+  width: 1000px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;  
+}
+
+#framework-box{
+background-color: black;
+border-radius: 16px;
+border: 1px solid #252528;
+height: 400px;
+padding: 24px 30px 30px 30px;
+}
+
+.framework-top-box-container,
+.framework-bottom-box-container{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  gap:16px
+}
+
+.planning-box,
+.management-box{
+  flex: 51;
+}
+
+.design-box,
+.development-box{
+  flex: 74;
+}
+
+.box-text-title{
+margin-bottom: 4px;
+}
+
+.box-text-alt{
+  color:var(--gray1);
+}
+
+@media (max-width: 1064px) {
+  #framework-box{
+  border-radius: 16px;
+  height: 350px;
+  flex: 1;
+  padding: 16px 24px 24px 24px;
+  }
+
+  .framework-sizer{
+    margin: 0 32px;
+  }
+
+  .framework-top-box-container,
+  .framework-bottom-box-container,
+  .framework-sizer{
+    gap: 12px;
+  }
+}
+
+@media (max-width: 830px) {
+  #framework-box{
+  border-radius: 16px;
+  height: 350px;
+  width: 420px;
+  flex: none;
+  }
+
+  .framework-top-box-container,
+.framework-bottom-box-container{
+  display: flex;
+flex-direction: column;
+align-items: center;
+}
+}
+
+@media (max-width: 555px) {
+  #framework-box{
+  border-radius: 12px;
+  height: 350px;
+  width: 100%;
+  flex: none;
+  padding: 14px 20px 20px 20px;
+  }
+
+  .framework-top-box-container,
+  .framework-bottom-box-container,
+  .framework-sizer{
+    gap: 8px;
+  }
+
+  .framework-sizer{
     margin: 0 16px;
   }
 }

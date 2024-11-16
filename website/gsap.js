@@ -21,7 +21,7 @@ window.addEventListener('load', () => {
   timeline.fromTo(logosOpp, { x: -moveDistance, opacity: 0 }, { x: 0, opacity: 1, duration: 1.8 }, "-=1.5");
   timeline.fromTo(logosDbb, { x: moveDistance, opacity: 0 }, { x: 0, opacity: 1, duration: 1.8 }, "-=1.5");
 
-  gsap.fromTo(".bck-container", { opacity: 0 }, { opacity: 1, duration: 2, delay: 0.2, ease: "power2.out" });
+  gsap.fromTo(".bck-container", { y: -100, opacity: 0 }, { y: 0, opacity: 1, duration: 1.8, delay: 0.2, ease: "power2.out" });
 
   gsap.fromTo(".black-bottom-content-container", {
     y: 50, opacity: 0
@@ -288,7 +288,7 @@ linkElements.forEach(link => {
 });
 
 
-
+// preloader
 
 
 window.addEventListener("load", function () {
@@ -320,7 +320,7 @@ const preloaderTimeout = setTimeout(function () {
   const preloader = document.getElementById("preloader");
   preloader.style.display = "flex"; // Show preloader (as a flexbox)
   preloader.style.opacity = "1"; // Trigger fade-in effect
-}, 1000); // Trigger preloader after 1 second if page hasn't finished loading
+}, 200); // Trigger preloader after 1 second if page hasn't finished loading
 
 function disableScroll() {
   document.body.style.overflow = 'hidden';
@@ -417,3 +417,73 @@ gsap.utils.toArray(".counter").forEach((counter, index) => {
     stagger: window.innerWidth < 830 ? 0.3 * index : 0  // stagger for smaller screens
   });
 });
+
+
+// GSAP animation for multiple `.section-title-container` elements
+document.querySelectorAll(".section-title-container").forEach(container => {
+  gsap.fromTo(container, {
+    y: 50,
+    opacity: 0
+  }, {
+    y: 0,
+    opacity: 1,
+    duration: 1,
+    ease: "power4.out",
+    scrollTrigger: {
+      trigger: container,
+      start: "top 90%",
+      toggleActions: "play none none none"
+    }
+  });
+});
+
+
+
+const frameworkBoxes = gsap.utils.toArray("#framework-box");
+
+if (window.innerWidth > 830) {
+  // Grouped animation with stagger for larger screens
+  gsap.fromTo(
+    frameworkBoxes,
+    {
+      y: 50,
+      opacity: 0
+    },
+    {
+      y: 0,
+      opacity: 1,
+      duration: 1,
+      ease: "power4.out",
+      scrollTrigger: {
+        trigger: ".framework-container", // Trigger animation when the container is in view
+        start: "top 90%",
+        toggleActions: "play none none none"
+      },
+      stagger: 0.15 // Stagger effect for larger screens
+    }
+  );
+} else {
+  // Individual animations for smaller screens
+  frameworkBoxes.forEach((box) => {
+    gsap.fromTo(
+      box,
+      {
+        y: 50,
+        opacity: 0
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: box, // Each box triggers its own animation
+          start: "top 90%", // Animation starts when the box enters the viewport
+          toggleActions: "play none none none"
+        }
+      }
+    );
+  });
+}
+
+
