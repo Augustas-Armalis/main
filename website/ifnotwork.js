@@ -6,7 +6,7 @@ function changeTextBasedOnWidth() {
   if (window.innerWidth < 1064) {
     // Change the text for small screens
     frameworkText.innerHTML = "Compelling website design, made<br>Exclusively for your business needs";
-    developmentText.innerHTML = "Custom-coded website ensures<br>Fast and secure performance";
+    developmentText.innerHTML = "Custom-coded website ensures<br>The best quality out of everyone";
   } else {
     // Reset the text for larger screens
     frameworkText.innerHTML = "Compelling website design, done according<br>To your business’s preferences and wants";
