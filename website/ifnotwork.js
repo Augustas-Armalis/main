@@ -17,3 +17,4 @@ function changeTextBasedOnWidth() {
 // Run the function on page load and on window resize
 window.addEventListener('load', changeTextBasedOnWidth);
 window.addEventListener('resize', changeTextBasedOnWidth);
+

@@ -503,3 +503,57 @@ function animateFloating(container) {
 // Apply the animation to both containers
 animateFloating(document.querySelector('.floating-augustas-container'));
 animateFloating(document.querySelector('.floating-daniel-container'));
+
+
+
+
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.to(".floating-augustas-container", {
+  scrollTrigger: {
+    trigger: ".floating-augustas-container",
+    start: "top bottom",
+    end: "top 30%",
+    scrub: 1, // Smooth scrub (in seconds)
+    markers: true,
+  },
+  bottom: 140, // Moves from 50px to 140px
+  duration: 1,
+  ease: "power1.inOut", // Smooth in-and-out motion
+});
+
+
+gsap.to(".floating-daniel-container", {
+  scrollTrigger: {
+    trigger: ".floating-daniel-container",
+    start: "top bottom",
+    end: "top 30%",
+    scrub: 1, // Smooth scrub (in seconds)
+    markers: true,
+  },
+  top: 110, // Moves from 50px to 140px
+  duration: 1,
+  ease: "power1.inOut", // Smooth in-and-out motion
+});
+
+
+
+gsap.registerPlugin(ScrollTrigger);
+
+  const timeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".website-sketch-title-box", // First element starts the animation
+      start: "top bottom", // Animation starts when the first element is 90% in the viewport
+      end: "top 30%",   // Ends when it's 50% in the viewport
+      scrub: 0.8,       // Smooth scrolling effect
+      markers: true,    // Debugging markers
+    },
+  });
+
+  // Fade in each element sequentially
+  timeline
+    .from(".website-sketch-title-box", { opacity: 0, y: -20, duration: 0.5 }) // Fades in from above
+    .from(".website-sketch-alt-long", { opacity: 0, y: -20, duration: 0.5 }, "-=0.3") // Starts slightly before the previous finishes
+    .from(".website-sketch-alt-short", { opacity: 0, y: -20, duration: 0.5 }, "-=0.3")
+    .from(".website-sketch-cta", { opacity: 0, y: -20, duration: 0.5 }, "-=0.3")
+    .from(".website-sketch-image", { opacity: 0, y: -20, duration: 0.5 }, "-=0.3");
