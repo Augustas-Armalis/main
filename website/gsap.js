@@ -566,7 +566,6 @@ gsap.registerPlugin(ScrollTrigger);
       start: "top bottom",  // Starts when the element enters the viewport
       end: "bottom top",    // Ends when the element exits the viewport
       scrub: 1,          // Smooth animation tied to scroll
-      markers: true,        // Debugging markers
     },
     y: -200, // Moves 200px upwards
   });
@@ -580,7 +579,6 @@ gsap.fromTo(".imgage-line-going-bottom", {
     start: "top bottom",  // Starts when the element enters the viewport
     end: "bottom top",    // Ends when the element exits the viewport
     scrub: 1,          // Smooth animation tied to scroll
-    markers: true,        // Debugging markers
   },
   y: -100,  // Ends at 100px downward (can adjust this value)
   duration: 1,
@@ -595,7 +593,6 @@ gsap.to(".coding-thingy-code-container pre", {
     start: "top bottom",  // Start animation when the container top hits the bottom of the viewport
     end: "bottom top",    // End animation when the container bottom exits the top of the viewport
     scrub: 1,          // Smoothly ties animation to scroll
-    markers: true,        // Optional: Shows debugging markers
   },
   y: -400, // Moves the text 200px downward
   ease: "power1.out", // Smooth easing for a natural feel
