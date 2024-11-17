@@ -515,7 +515,6 @@ gsap.to(".floating-augustas-container", {
     start: "top bottom",
     end: "top 30%",
     scrub: 1, // Smooth scrub (in seconds)
-    markers: true,
   },
   bottom: 140, // Moves from 50px to 140px
   duration: 1,
@@ -529,7 +528,6 @@ gsap.to(".floating-daniel-container", {
     start: "top bottom",
     end: "top 30%",
     scrub: 1, // Smooth scrub (in seconds)
-    markers: true,
   },
   top: 110, // Moves from 50px to 140px
   duration: 1,
@@ -546,7 +544,6 @@ gsap.registerPlugin(ScrollTrigger);
       start: "top bottom", // Animation starts when the first element is 90% in the viewport
       end: "top 30%",   // Ends when it's 50% in the viewport
       scrub: 0.8,       // Smooth scrolling effect
-      markers: true,    // Debugging markers
     },
   });
 
@@ -557,3 +554,34 @@ gsap.registerPlugin(ScrollTrigger);
     .from(".website-sketch-alt-short", { opacity: 0, y: -20, duration: 0.5 }, "-=0.3")
     .from(".website-sketch-cta", { opacity: 0, y: -20, duration: 0.5 }, "-=0.3")
     .from(".website-sketch-image", { opacity: 0, y: -20, duration: 0.5 }, "-=0.3");
+
+
+
+
+
+    // Animate `.imgage-line-going-top` upwards
+  gsap.to(".imgage-line-going-top", {
+    scrollTrigger: {
+      trigger: ".imgage-line-going-top",
+      start: "top bottom",  // Starts when the element enters the viewport
+      end: "bottom top",    // Ends when the element exits the viewport
+      scrub: true,          // Smooth animation tied to scroll
+      markers: true,        // Debugging markers
+    },
+    y: -200, // Moves 200px upwards
+  });
+
+// Initially position `.imgage-line-going-bottom` elements upwards
+gsap.fromTo(".imgage-line-going-bottom", {
+  y: -400, // Start from 400px above the normal position
+}, {
+  scrollTrigger: {
+    trigger: ".imgage-line-going-bottom",
+    start: "top bottom",  // Starts when the element enters the viewport
+    end: "bottom top",    // Ends when the element exits the viewport
+    scrub: true,          // Smooth animation tied to scroll
+    markers: true,        // Debugging markers
+  },
+  y: -100,  // Ends at 100px downward (can adjust this value)
+  duration: 1,
+});
