@@ -473,8 +473,6 @@ document.querySelectorAll(".section-title-container").forEach(container => {
 
 
 
-
-
 const frameworkBoxes = gsap.utils.toArray("#framework-box");
 
 if (window.innerWidth > 830) {

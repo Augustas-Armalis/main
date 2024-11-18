@@ -465,7 +465,7 @@
 
       <div class="framework-bottom-box-container">
 
-        <div class="development-box" id="framework-box">
+        <div class="development-box" id="framework-box" style="opacity: 0;">
 
           <div class="box-text-container">
             <h3 class="box-text-title">Development</h3>
@@ -481,78 +481,78 @@
 
             <div class="coding-thingy-code-container">
               <pre>
-  <span class="gray2">// Function to update the heading based on window width</span>
-  <span class="gray1">function</span> <span class="default">updateHeading</span>() {
-    
-    <span class="gray1">const</span> heading = document.<span class="default">getElementById</span>(<span class="gray2">'spartan'</span>);
-    
-    <span class="gray1">if</span> (window.innerWidth <= <span class="gray1">850</span>) {
-      heading.textContent = <span class="gray2">'Privileged Websites For Startups'</span>;
-    } 
-    <span class="gray1">else</span> {
-      heading.textContent = <span class="gray2">'Get yours build now!'</span>;
-    }
-  }
-  
-  updateHeading();
-  
-  <span class="gray2">// Update heading when the window is resized</span>
-  window.addEventListener(<span class="gray2">'resize'</span>, updateHeading);
-  
-  <span class="gray2">// Reset animation for logos-slide after DOM content is loaded</span>
-  document.addEventListener(<span class="gray2">'DOMContentLoaded'</span>, () => {
-    
-    <span class="gray1">const</span> logosSlide = document.querySelector(<span class="gray2">'.logos-slide'</span>);
-    
-    <span class="gray1">if</span> (logosSlide) {
-      logosSlide.style.animation = <span class="gray2">'none'</span>;
-      logosSlide.offsetHeight; <span class="gray2">// Trigger reflow</span>
-      logosSlide.style.animation = <span class="gray2">''</span>;
-    }
-  });
-  
-  document.addEventListener(<span class="gray2">'DOMContentLoaded'</span>, () => {
-    
-    <span class="gray1">const</span> logos = document.querySelector(<span class="gray2">'.logos'</span>);
-    <span class="gray1">const</span> original = document.querySelector(<span class="gray2">'.logos-slide'</span>);
-    <span class="gray1">const</span> copy = original.cloneNode(<span class="gray1">true</span>);
-    
-    logos.appendChild(copy);
-    logos.offsetHeight; <span class="gray2">// Trigger reflow</span>
-  
-    logos.querySelectorAll(<span class="gray2">'.logos-slide'</span>).forEach(slide => {
-      slide.style.animation = <span class="gray2">'none'</span>;
-      slide.offsetHeight; <span class="gray2">// Trigger reflow</span>
-      slide.style.animation = <span class="gray2">''</span>;
-    });
-  });
-  
-  <span class="gray2">// Hide or show nav based on scroll direction</span>
-  let lastScrollTop = <span class="gray1">0</span>;
-  <span class="gray1">const</span> nav = document.querySelector(<span class="gray2">'nav'</span>);
-  
-  <span class="gray2">// Function to show specific slides in a slideshow</span>
-  <span class="gray1">function</span> showSlides(n) {
-    <span class="gray1">let</span> i;
-    <span class="gray1">let</span> slides = document.getElementsByClassName(<span class="gray2">'slide'</span>);
-    <span class="gray1">let</span> dots = document.getElementsByClassName(<span class="gray2">'dot'</span>);
-    
-    <span class="gray1">if</span> (n > slides.length) { slideIndex = <span class="gray1">1</span> }
-    <span class="gray1">if</span> (n < <span class="gray1">1</span>) { slideIndex = slides.length }
-    
-    for (i = <span class="gray1">0</span>; i < slides.length; i++) {
-      slides[i].style.display = <span class="gray2">'none'</span>;
-    }
-    
-    for (i = <span class="gray1">0</span>; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(<span class="gray2">' actives'</span>, <span class="gray2">''</span>);
-    }
-    
-    slides[slideIndex - <span class="gray1">1</span>].style.display = <span class="gray2">'block'</span>;
-    dots[slideIndex - <span class="gray1">1</span>].className += <span class="gray2">' actives'</span>;
-  }
-  
-  gsap.registerPlugin(ScrollTrigger);
+<span class="gray2">// Function to update the heading based on window width</span>
+<span class="gray1">function</span> <span class="default">updateHeading</span>() {
+
+<span class="gray1">const</span> heading = document.<span class="default">getElementById</span>(<span class="gray2">'spartan'</span>);
+
+<span class="gray1">if</span> (window.innerWidth <= <span class="gray1">850</span>) {
+  heading.textContent = <span class="gray2">'Privileged Websites For Startups'</span>;
+} 
+<span class="gray1">else</span> {
+  heading.textContent = <span class="gray2">'Get yours build now!'</span>;
+}
+}
+
+updateHeading();
+
+<span class="gray2">// Update heading when the window is resized</span>
+window.addEventListener(<span class="gray2">'resize'</span>, updateHeading);
+
+<span class="gray2">// Reset animation for logos-slide after DOM content is loaded</span>
+document.addEventListener(<span class="gray2">'DOMContentLoaded'</span>, () => {
+
+<span class="gray1">const</span> logosSlide = document.querySelector(<span class="gray2">'.logos-slide'</span>);
+
+<span class="gray1">if</span> (logosSlide) {
+  logosSlide.style.animation = <span class="gray2">'none'</span>;
+  logosSlide.offsetHeight; <span class="gray2">// Trigger reflow</span>
+  logosSlide.style.animation = <span class="gray2">''</span>;
+}
+});
+
+document.addEventListener(<span class="gray2">'DOMContentLoaded'</span>, () => {
+
+<span class="gray1">const</span> logos = document.querySelector(<span class="gray2">'.logos'</span>);
+<span class="gray1">const</span> original = document.querySelector(<span class="gray2">'.logos-slide'</span>);
+<span class="gray1">const</span> copy = original.cloneNode(<span class="gray1">true</span>);
+
+logos.appendChild(copy);
+logos.offsetHeight; <span class="gray2">// Trigger reflow</span>
+
+logos.querySelectorAll(<span class="gray2">'.logos-slide'</span>).forEach(slide => {
+  slide.style.animation = <span class="gray2">'none'</span>;
+  slide.offsetHeight; <span class="gray2">// Trigger reflow</span>
+  slide.style.animation = <span class="gray2">''</span>;
+});
+});
+
+<span class="gray2">// Hide or show nav based on scroll direction</span>
+let lastScrollTop = <span class="gray1">0</span>;
+<span class="gray1">const</span> nav = document.querySelector(<span class="gray2">'nav'</span>);
+
+<span class="gray2">// Function to show specific slides in a slideshow</span>
+<span class="gray1">function</span> showSlides(n) {
+<span class="gray1">let</span> i;
+<span class="gray1">let</span> slides = document.getElementsByClassName(<span class="gray2">'slide'</span>);
+<span class="gray1">let</span> dots = document.getElementsByClassName(<span class="gray2">'dot'</span>);
+
+<span class="gray1">if</span> (n > slides.length) { slideIndex = <span class="gray1">1</span> }
+<span class="gray1">if</span> (n < <span class="gray1">1</span>) { slideIndex = slides.length }
+
+for (i = <span class="gray1">0</span>; i < slides.length; i++) {
+  slides[i].style.display = <span class="gray2">'none'</span>;
+}
+
+for (i = <span class="gray1">0</span>; i < dots.length; i++) {
+  dots[i].className = dots[i].className.replace(<span class="gray2">' actives'</span>, <span class="gray2">''</span>);
+}
+
+slides[slideIndex - <span class="gray1">1</span>].style.display = <span class="gray2">'block'</span>;
+dots[slideIndex - <span class="gray1">1</span>].className += <span class="gray2">' actives'</span>;
+}
+
+gsap.registerPlugin(ScrollTrigger);
               </pre>
             </div>
 
