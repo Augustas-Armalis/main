@@ -471,34 +471,16 @@ document.querySelectorAll(".section-title-container").forEach(container => {
 
 
 
+
+
+
+
 const frameworkBoxes = gsap.utils.toArray("#framework-box");
 
-
-// Grouped animation with stagger for larger screens
-gsap.fromTo(
-  frameworkBoxes,
-  {
-    y: 50,
-    opacity: 0
-  },
-  {
-    y: 0,
-    opacity: 1,
-    duration: 1,
-    ease: "power4.out",
-    scrollTrigger: {
-      trigger: ".framework-container", // Trigger animation when the container is in view
-      start: "top 90%",
-      toggleActions: "play none none none"
-    },
-    stagger: 0.15 // Stagger effect for larger screens
-  }
-);
-
-// Individual animations for smaller screens
-frameworkBoxes.forEach((box) => {
+if (window.innerWidth > 830) {
+  // Grouped animation with stagger for larger screens
   gsap.fromTo(
-    box,
+    frameworkBoxes,
     {
       y: 50,
       opacity: 0
@@ -509,14 +491,36 @@ frameworkBoxes.forEach((box) => {
       duration: 1,
       ease: "power4.out",
       scrollTrigger: {
-        trigger: box, // Each box triggers its own animation
-        start: "top 90%", // Animation starts when the box enters the viewport
+        trigger: ".framework-container", // Trigger animation when the container is in view
+        start: "top 90%",
         toggleActions: "play none none none"
-      }
+      },
+      stagger: 0.15 // Stagger effect for larger screens
     }
   );
-});
-
+} else {
+  // Individual animations for smaller screens
+  frameworkBoxes.forEach((box) => {
+    gsap.fromTo(
+      box,
+      {
+        y: 50,
+        opacity: 0
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: box, // Each box triggers its own animation
+          start: "top 90%", // Animation starts when the box enters the viewport
+          toggleActions: "play none none none"
+        }
+      }
+    );
+  });
+}
 
 
 
@@ -539,6 +543,7 @@ animateFloating(document.querySelector('.floating-daniel-container'));
 
 
 
+gsap.registerPlugin(ScrollTrigger);
 
 gsap.to(".floating-augustas-container", {
   scrollTrigger: {
@@ -567,7 +572,7 @@ gsap.to(".floating-daniel-container", {
 
 
 
-
+gsap.registerPlugin(ScrollTrigger);
 
 const timeline = gsap.timeline({
   scrollTrigger: {
@@ -620,11 +625,11 @@ gsap.fromTo(".imgage-line-going-bottom", {
 
 gsap.to(".coding-thingy-code-container pre", {
   scrollTrigger: {
-    trigger: ".coding-thingy-code-container", // No blobs here
-    start: "top bottom",
-    end: "bottom top",
-    scrub: 1,
+    trigger: ".coding-thingy-code-container", // Triggers when the container enters the viewport
+    start: "top bottom",  // Start animation when the container top hits the bottom of the viewport
+    end: "bottom top",    // End animation when the container bottom exits the top of the viewport
+    scrub: 1,          // Smoothly ties animation to scroll
   },
-  y: -400,
-  ease: "power1.out",
+  y: -400, // Moves the text 200px downward
+  ease: "power1.out", // Smooth easing for a natural feel
 });

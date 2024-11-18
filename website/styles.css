@@ -217,7 +217,8 @@ nav {
   z-index: 999;
   top: 24px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(-100px);
+  /* Add translateY(-100px) */
   border-radius: 999px;
   border: 1px solid #252528;
   background: rgba(0, 0, 0, 0.70);
@@ -230,6 +231,7 @@ nav {
   transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
   opacity: 0;
 }
+
 
 .inside-container-nav {
   width: 100%;
