@@ -309,39 +309,25 @@ linkElements.forEach(link => {
 });
 
 
-// preloader
+// Preloader
 
-
-window.addEventListener("load", function () {
+window.addEventListener("load", function() {
   const preloader = document.getElementById("preloader");
-  const connectionMessage = document.getElementById("connectionMessage");
 
-  // Cancel the preloader display if the page has loaded before 1 second
-  clearTimeout(preloaderTimeout);
-
-  // Hide the preloader after a short delay
-  preloader.style.opacity = "0"; // Start fading out the preloader
-  setTimeout(() => {
-    preloader.style.display = "none"; // Hide the preloader completely after fade out
-    enableScroll();
-  }, 200); // Time for fading out
-
-  // Display the connection message after 1.5 seconds
-  setTimeout(function () {
-    connectionMessage.style.display = "block";
-    connectionMessage.classList.add("show");
-  }, 1000);
-
-  // Disable scrolling while the preloader is active
   disableScroll();
+
+  preloader.style.opacity = "0";
+  setTimeout(() => {
+    preloader.style.display = "none";
+    enableScroll();
+  }, 500);
 });
 
-// Set a timeout to show the preloader if the page takes longer than 1 second to load
-const preloaderTimeout = setTimeout(function () {
-  const preloader = document.getElementById("preloader");
-  preloader.style.display = "flex"; // Show preloader (as a flexbox)
-  preloader.style.opacity = "1"; // Trigger fade-in effect
-}, 200); // Trigger preloader after 1 second if page hasn't finished loading
+setTimeout(function() {
+  const connectionMessage = document.getElementById("connectionMessage");
+  connectionMessage.style.display = "block";
+  connectionMessage.classList.add("show");
+}, 1500);
 
 function disableScroll() {
   document.body.style.overflow = 'hidden';
@@ -537,6 +523,8 @@ function animateFloating(container) {
 // Apply the animation to both containers
 animateFloating(document.querySelector('.floating-augustas-container'));
 animateFloating(document.querySelector('.floating-daniel-container'));
+animateFloating(document.querySelector('.ok-container-management'));
+animateFloating(document.querySelector('.change-it-container-management'));
 
 
 
@@ -576,7 +564,7 @@ const timeline = gsap.timeline({
   scrollTrigger: {
     trigger: ".website-sketch-title-box", // First element starts the animation
     start: "top bottom", // Animation starts when the first element is 90% in the viewport
-    end: "top 30%",   // Ends when it's 50% in the viewport
+    end: "top 40%",   // Ends when it's 50% in the viewport
     scrub: 0.8,       // Smooth scrolling effect
   },
 });
@@ -631,3 +619,53 @@ gsap.to(".coding-thingy-code-container pre", {
   y: -400, // Moves the text 200px downward
   ease: "power1.out", // Smooth easing for a natural feel
 });
+
+
+
+gsap.to(".focuss-liner-management", {
+  opacity: 0,
+  duration: 0.5, 
+  repeat: -1, 
+  yoyo: true,
+  ease: "power1.inOut"
+});
+
+
+
+gsap.registerPlugin(ScrollTrigger);
+
+// Animation for p-container-management and its children
+const managementTimeline = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".p-container-management", // Starts when this element enters the viewport
+    start: "top bottom", // Animation starts when the top of the element reaches the bottom of the viewport
+    end: "top 70%", // Ends when it's 30% from the top of the viewport
+    scrub: 0.8, // Smooth scroll effect
+  },
+});
+
+managementTimeline
+  .from(".p-container-management", { opacity: 0, x: -100, duration: 0.5 }) // Fades in from left
+  .from(".text-below-container", { opacity: 0, x: -100, duration: 0.5 }, "-=0.3") // Starts before the previous ends
+  .from(".image-container-beneath-management", { opacity: 0, x: -100, duration: 0.5 }, "-=0.3");
+
+
+
+
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Animation for ok-container-management and change-it-container-management
+  const okChangeTimeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".ok-container-management", // Trigger when .ok-container-management enters the viewport
+      start: "top bottom", // Animation starts when the top of the element reaches the bottom of the viewport
+      end: "top 70%", // Ends when it's 30% from the top of the viewport
+      scrub: 1.4, // Smooth scroll effect
+    },
+  });
+  
+  okChangeTimeline
+    .from(".ok-container-management", { opacity: 0, right: "-100%", duration: 1 }) // Fades in from right
+    .from(".change-it-container-management", { opacity: 0, right: "-100%", duration: 1 }, "-=0.6"); // Starts after .ok-container-management with a delay of 0.3 seconds
+  
