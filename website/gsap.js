@@ -111,12 +111,14 @@ const logoNav = document.querySelector('.logo-container');
 const linkElementsMobile = document.querySelectorAll('.link-elements-mobile-nav a');
 const backgroundBlur = document.querySelector('.background-blur-thing-nav-mobile');
 const buttonNavContainerMobile = document.querySelector('#button-nav-container-mobile');
+const firefliesEasterEgg = document.querySelector('.fireflies-easter-egg'); // Added reference
 
 let isOpen = false;
 
 gsap.set(topLine, { rotation: 0 });
 gsap.set(bottomLine, { rotation: 0, y: 0 });
 gsap.set(buttonNavContainerMobile, { y: 50, opacity: 0 });
+gsap.set(firefliesEasterEgg, { y: 50, opacity: 0 }); // Set initial state for the fireflies easter egg
 
 function isMobile() {
   return window.innerWidth < 850;
@@ -133,7 +135,6 @@ function enableScroll() {
   document.body.style.overflowX = 'hidden';
   document.documentElement.style.overflowX = 'hidden';
 }
-
 
 function closeMenu() {
   gsap.to(topLine, { rotation: 0, y: 0, duration: 0.15 });
@@ -161,7 +162,13 @@ function closeMenu() {
   gsap.to(buttonNavContainerMobile, {
     y: 50,
     opacity: 0,
-    duration: 0.3,
+    duration: 1,
+  });
+
+  gsap.to(firefliesEasterEgg, { // Close animation for fireflies easter egg
+    y: 50,
+    opacity: 0,
+    duration: 0.3
   });
 
   enableScroll();
@@ -192,6 +199,14 @@ burgerContainer.addEventListener('click', () => {
         { y: 0, opacity: 1, delay: 0.2, duration: 0.5, ease: "power2.out" }
       );
 
+      gsap.to(firefliesEasterEgg, { // Open animation for fireflies easter egg
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        delay: 1,
+        ease: "power2.out"
+      });
+
       disableScroll();
       isOpen = true;
     }
@@ -221,6 +236,12 @@ buttonNavContainerMobile.addEventListener('touchend', () => {
 buttonNavContainerMobile.addEventListener('click', (event) => {
   if (isOpen) closeMenu();
 });
+
+// Adding similar events for fireflies easter egg
+firefliesEasterEgg.addEventListener('click', () => {
+  if (isOpen) closeMenu();
+});
+
 
 
 
@@ -439,12 +460,45 @@ document.querySelectorAll(".section-title-container").forEach(container => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 const frameworkBoxes = gsap.utils.toArray("#framework-box");
 
-if (window.innerWidth > 830) {
-  // Grouped animation with stagger for larger screens
+
+// Grouped animation with stagger for larger screens
+gsap.fromTo(
+  frameworkBoxes,
+  {
+    y: 50,
+    opacity: 0
+  },
+  {
+    y: 0,
+    opacity: 1,
+    duration: 1,
+    ease: "power4.out",
+    scrollTrigger: {
+      trigger: ".framework-container", // Trigger animation when the container is in view
+      start: "top 90%",
+      toggleActions: "play none none none"
+    },
+    stagger: 0.15 // Stagger effect for larger screens
+  }
+);
+
+// Individual animations for smaller screens
+frameworkBoxes.forEach((box) => {
   gsap.fromTo(
-    frameworkBoxes,
+    box,
     {
       y: 50,
       opacity: 0
@@ -455,36 +509,14 @@ if (window.innerWidth > 830) {
       duration: 1,
       ease: "power4.out",
       scrollTrigger: {
-        trigger: ".framework-container", // Trigger animation when the container is in view
-        start: "top 90%",
+        trigger: box, // Each box triggers its own animation
+        start: "top 90%", // Animation starts when the box enters the viewport
         toggleActions: "play none none none"
-      },
-      stagger: 0.15 // Stagger effect for larger screens
+      }
     }
   );
-} else {
-  // Individual animations for smaller screens
-  frameworkBoxes.forEach((box) => {
-    gsap.fromTo(
-      box,
-      {
-        y: 50,
-        opacity: 0
-      },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: box, // Each box triggers its own animation
-          start: "top 90%", // Animation starts when the box enters the viewport
-          toggleActions: "play none none none"
-        }
-      }
-    );
-  });
-}
+});
+
 
 
 
@@ -507,7 +539,6 @@ animateFloating(document.querySelector('.floating-daniel-container'));
 
 
 
-gsap.registerPlugin(ScrollTrigger);
 
 gsap.to(".floating-augustas-container", {
   scrollTrigger: {
@@ -536,39 +567,39 @@ gsap.to(".floating-daniel-container", {
 
 
 
-gsap.registerPlugin(ScrollTrigger);
-
-  const timeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".website-sketch-title-box", // First element starts the animation
-      start: "top bottom", // Animation starts when the first element is 90% in the viewport
-      end: "top 30%",   // Ends when it's 50% in the viewport
-      scrub: 0.8,       // Smooth scrolling effect
-    },
-  });
-
-  // Fade in each element sequentially
-  timeline
-    .from(".website-sketch-title-box", { opacity: 0, y: -20, duration: 0.5 }) // Fades in from above
-    .from(".website-sketch-alt-long", { opacity: 0, y: -20, duration: 0.5 }, "-=0.3") // Starts slightly before the previous finishes
-    .from(".website-sketch-alt-short", { opacity: 0, y: -20, duration: 0.5 }, "-=0.3")
-    .from(".website-sketch-cta", { opacity: 0, y: -20, duration: 0.5 }, "-=0.3")
-    .from(".website-sketch-image", { opacity: 0, y: -20, duration: 0.5 }, "-=0.3");
 
 
+const timeline = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".website-sketch-title-box", // First element starts the animation
+    start: "top bottom", // Animation starts when the first element is 90% in the viewport
+    end: "top 30%",   // Ends when it's 50% in the viewport
+    scrub: 0.8,       // Smooth scrolling effect
+  },
+});
+
+// Fade in each element sequentially
+timeline
+  .from(".website-sketch-title-box", { opacity: 0, y: -20, duration: 0.5 }) // Fades in from above
+  .from(".website-sketch-alt-long", { opacity: 0, y: -20, duration: 0.5 }, "-=0.3") // Starts slightly before the previous finishes
+  .from(".website-sketch-alt-short", { opacity: 0, y: -20, duration: 0.5 }, "-=0.3")
+  .from(".website-sketch-cta", { opacity: 0, y: -20, duration: 0.5 }, "-=0.3")
+  .from(".website-sketch-image", { opacity: 0, y: -20, duration: 0.5 }, "-=0.3");
 
 
 
-    // Animate `.imgage-line-going-top` upwards
-  gsap.to(".imgage-line-going-top", {
-    scrollTrigger: {
-      trigger: ".imgage-line-going-top",
-      start: "top bottom",  // Starts when the element enters the viewport
-      end: "bottom top",    // Ends when the element exits the viewport
-      scrub: 1,          // Smooth animation tied to scroll
-    },
-    y: -200, // Moves 200px upwards
-  });
+
+
+// Animate `.imgage-line-going-top` upwards
+gsap.to(".imgage-line-going-top", {
+  scrollTrigger: {
+    trigger: ".imgage-line-going-top",
+    start: "top bottom",  // Starts when the element enters the viewport
+    end: "bottom top",    // Ends when the element exits the viewport
+    scrub: 1,          // Smooth animation tied to scroll
+  },
+  y: -200, // Moves 200px upwards
+});
 
 // Initially position `.imgage-line-going-bottom` elements upwards
 gsap.fromTo(".imgage-line-going-bottom", {
@@ -589,11 +620,11 @@ gsap.fromTo(".imgage-line-going-bottom", {
 
 gsap.to(".coding-thingy-code-container pre", {
   scrollTrigger: {
-    trigger: ".coding-thingy-code-container", // Triggers when the container enters the viewport
-    start: "top bottom",  // Start animation when the container top hits the bottom of the viewport
-    end: "bottom top",    // End animation when the container bottom exits the top of the viewport
-    scrub: 1,          // Smoothly ties animation to scroll
+    trigger: ".coding-thingy-code-container", // No blobs here
+    start: "top bottom",
+    end: "bottom top",
+    scrub: 1,
   },
-  y: -400, // Moves the text 200px downward
-  ease: "power1.out", // Smooth easing for a natural feel
+  y: -400,
+  ease: "power1.out",
 });
