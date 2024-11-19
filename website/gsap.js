@@ -639,7 +639,7 @@ const managementTimeline = gsap.timeline({
   scrollTrigger: {
     trigger: ".p-container-management", // Starts when this element enters the viewport
     start: "top bottom", // Animation starts when the top of the element reaches the bottom of the viewport
-    end: "top 70%", // Ends when it's 30% from the top of the viewport
+    end: "top 40%", // Ends when it's 30% from the top of the viewport
     scrub: 0.8, // Smooth scroll effect
   },
 });
@@ -660,8 +660,8 @@ managementTimeline
     scrollTrigger: {
       trigger: ".ok-container-management", // Trigger when .ok-container-management enters the viewport
       start: "top bottom", // Animation starts when the top of the element reaches the bottom of the viewport
-      end: "top 70%", // Ends when it's 30% from the top of the viewport
-      scrub: 1.4, // Smooth scroll effect
+      end: "top 60%", // Ends when it's 30% from the top of the viewport
+      scrub: 1, // Smooth scroll effect
     },
   });
   
