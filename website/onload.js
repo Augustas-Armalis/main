@@ -11,8 +11,6 @@ timeline.fromTo('.logos', { x: moveDistance, opacity: 0 }, { x: 0, opacity: 1, d
 timeline.fromTo('.logos-opp', { x: -moveDistance, opacity: 0 }, { x: 0, opacity: 1, duration: 1.8 }, "-=1.5");
 timeline.fromTo('.logos-dbb', { x: moveDistance, opacity: 0 }, { x: 0, opacity: 1, duration: 1.8 }, "-=1.5");
 
-gsap.fromTo(".bck-container", { y: -100, opacity: 0 }, { y: 0, opacity: 1, duration: 1.8, delay: 0.2, ease: "power2.out" });
-
 gsap.fromTo(".black-bottom-content-container", {
     y: 50, opacity: 0
 }, {
