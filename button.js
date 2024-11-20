@@ -185,17 +185,6 @@ document.getElementById('load-in-btn-hero').addEventListener('touchend', functio
   window.location.href = "#";
 });
 
-const fadeOutContainer = document.querySelector('.black-bottom-fade-out-container');
-const logosDbb = document.querySelector('.logos-dbb');
-
-fadeOutContainer.addEventListener('mouseenter', () => {
-  logosDbb.style.opacity = '0.6';
-});
-
-fadeOutContainer.addEventListener('mouseleave', () => {
-  logosDbb.style.opacity = '1';
-});
-
 const button = document.querySelector('.white-btn-container');
 
 button.addEventListener('touchstart', function () {
