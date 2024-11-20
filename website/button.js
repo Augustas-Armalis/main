@@ -1,5 +1,3 @@
-// Button blobs movement and click animations
-
 gsap.registerPlugin(MotionPathPlugin);
 
 function random(min, max) {
@@ -175,16 +173,7 @@ buttons.forEach(button => {
   button.addEventListener('touchend', resetScale);
 });
 
-
-
-
 init();
-
-
-
-
-
-// Mobile button hrefs
 
 document.getElementById('button-nav-container-mobile').addEventListener('touchend', function (event) {
   event.preventDefault();
@@ -196,14 +185,6 @@ document.getElementById('load-in-btn-hero').addEventListener('touchend', functio
   window.location.href = "#";
 });
 
-
-
-
-
-
-
-// Black slider hover animation thing
-
 const fadeOutContainer = document.querySelector('.black-bottom-fade-out-container');
 const logosDbb = document.querySelector('.logos-dbb');
 
@@ -214,12 +195,6 @@ fadeOutContainer.addEventListener('mouseenter', () => {
 fadeOutContainer.addEventListener('mouseleave', () => {
   logosDbb.style.opacity = '1';
 });
-
-
-
-
-
-// White button advanced click animation
 
 const button = document.querySelector('.white-btn-container');
 
@@ -234,7 +209,3 @@ button.addEventListener('touchend', function () {
   button.style.transform = 'scale(1)';
   button.style.opacity = '1';
 });
-
-
-
-

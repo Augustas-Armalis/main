@@ -33,11 +33,13 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/x-icon" href="https://augustas.co/newsletter/images/favicon.ico">
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js" defer></script>
+  
 
+</head>
 
 <body>
 
@@ -155,7 +157,7 @@
 
   <!-- Hero section -->
 
-  <div class="hero-section-container">
+  <div class="hero-section-container" >
     <div class="hero-content-container">
       <div class="title-alt-container">
         <div class="title-container">
@@ -346,7 +348,7 @@
             <div class="website-sketch-image"></div>
 
             <div class="floating-augustas-container">
-              <img class="floating-arrow-augustas" src="images/arrow-augustas.svg">
+              <img class="floating-arrow-augustas" src="images/arrow-augustas.svg" alt="Cursor">
               <div class="augustas-vid-container">
                 <video src="videos/augis mini pfp.mp4" autoplay loop muted playsinline></video>
               </div>
@@ -356,7 +358,7 @@
             </div>
 
             <div class="floating-daniel-container">
-              <img class="floating-arrow-daniel" src="images/daniel-arrow.svg">
+              <img class="floating-arrow-daniel" src="images/daniel-arrow.svg" alt="Cursor">
               <div class="augustas-vid-container">
                 <video src="videos/danny fpp mini.mp4" autoplay loop muted playsinline></video>
               </div>
@@ -604,7 +606,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 
-
+<!-- Testimonial Section -->
 
   <div class="section-title-container">
     <h2 class="title-text-title-section">Testimonials</h2>
@@ -627,30 +629,21 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 
-  <div class="grain-overlay"></div>
-
-
+  <div class="development-container" style="width: 100vw; display: flex; align-items: center;
+  flex-direction: column;">
+  <p>The rest of the website is in the development, sorry :(</p>
+  <p>If you want me to build you a website, chat with me on X (Twitter) @AugustasWeb</p>
+  </div>
+  
 
   <div class="spacer"></div>
 
 
 
-
-
-
-
-
-
-
-
-
   <script src="onload.js" async></script>
+  <script src="animations.js" defer></script>
   <script src="button.js" defer></script>
-  <script src="mouse-follow.js" defer></script>
-  <script src="ifnotwork.js" defer></script>
-  
-
-  <script src="gsap.js"></script>
+  <script src="logic.js" defer></script>
 
 
 </body>
