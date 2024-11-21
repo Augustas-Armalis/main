@@ -178,76 +178,6 @@
 
 
 
-
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.157.0/three.min.js"></script>
-  <script>
-    // Set up Scene, Camera, and Renderer
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
-  
-    // Set the position of the canvas to be absolute, at the top of the screen, and behind other elements
-    renderer.domElement.style.position = 'absolute';
-    renderer.domElement.style.top = '0';
-    renderer.domElement.style.left = '0';
-    renderer.domElement.style.zIndex = '-1'; // This ensures it's behind other elements
-  
-    // Create a Cool Object (Torus Knot)
-    const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
-    const material = new THREE.MeshStandardMaterial({
-      color: 0x44aa88,
-      emissive: 0x112233,
-      metalness: 0.7,
-      roughness: 0.2,
-    });
-    const torusKnot = new THREE.Mesh(geometry, material);
-    scene.add(torusKnot);
-  
-    // Lighting
-    const pointLight = new THREE.PointLight(0xffffff, 1.5, 100);
-    pointLight.position.set(20, 20, 20);
-    scene.add(pointLight);
-  
-    const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
-    scene.add(ambientLight);
-  
-    // Camera Position
-    camera.position.z = 35;
-  
-    // Mouse Interactivity
-    const mouse = { x: 0, y: 0 };
-    document.addEventListener('mousemove', (event) => {
-      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-    });
-  
-    // Responsive Design
-    window.addEventListener('resize', () => {
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-    });
-  
-    // Animation Loop
-    function animate() {
-      requestAnimationFrame(animate);
-  
-      // Smoothly Rotate Object
-      torusKnot.rotation.x += 0.01;
-      torusKnot.rotation.y += 0.01;
-  
-      // Mouse-based Parallax Effect
-      torusKnot.rotation.x += (mouse.y * 0.5 - torusKnot.rotation.x) * 0.05;
-      torusKnot.rotation.y += (mouse.x * 0.5 - torusKnot.rotation.y) * 0.05;
-  
-      renderer.render(scene, camera);
-    }
-    animate();
-  </script>
   
 
   <!-- Hero section -->
@@ -709,13 +639,42 @@ gsap.registerPlugin(ScrollTrigger);
       <!-- Slide Wrapper -->
       <div class="carousel">
         <div class="slide active">
-          <div class="background-video-conatiner">
-
+          <div class="slide-activator-conatiner"></div>
+          <div class="background-video-container">
+            <div class="on-top-of-video-slider">
+              <div class="name-acc-container">
+                <h3>Ares</h3>
+                <h5>Founder of Sprout Marketing</h5>
+              </div>
+              <div class="play-button-container">
+                <!-- Both SVGs are here -->
+                <img id="svg1" src="images/play-btn-start.svg" alt="SVG 1" class="play-svg" />
+                <img id="svg2" src="images/play-btn-active.svg" alt="SVG 2" class="play-svg" />
+              </div>
+            </div>
+            <video src="videos/Ares-test.mp4" autoplay loop muted class="testimonial-video"></video>
           </div>
         </div>
-        <div class="slide active">Slide 2</div>
+        <div class="slide active">
+          <div class="slide-activator-conatiner"></div>
+          <div class="background-video-container">
+            <div class="on-top-of-video-slider">
+              <div class="name-acc-container">
+                <h3>Motiejus Varnauskas</h3>
+                <h5>Sales Funnel and SMM Consultant</h5>
+              </div>
+              <div class="play-button-container">
+                <!-- Both SVGs are here -->
+                <img id="svg1" src="images/play-btn-start.svg" alt="SVG 1" class="play-svg" />
+                <img id="svg2" src="images/play-btn-active.svg" alt="SVG 2" class="play-svg" />
+              </div>
+            </div>
+            <video src="videos/Motkes-test.mp4" autoplay loop muted class="testimonial-video"></video>
+          </div>
+        </div>
         <div class="slide">Slide 3</div>
       </div>
+      
 
     </div>
 

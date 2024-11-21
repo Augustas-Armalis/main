@@ -63,7 +63,7 @@ function executeAbove1064px() {
 
     tick();
 
-    const targetContainers = document.querySelectorAll('.under-rectangle-layer, .arrows-testimonials-container, .dots, nav');
+    const targetContainers = document.querySelectorAll('.under-rectangle-layer, .arrows-testimonials-container, .dots, nav, slide-activator-conatiner');
 
     // Add event listeners to handle mouse enter and leave for fade-in/out
     targetContainers.forEach(container => {
@@ -305,4 +305,55 @@ function updateCarousel() {
 // Make sure the carousel updates on window resize
 window.addEventListener('resize', () => {
   updateCarousel();
+});
+
+
+
+
+
+// Select all instances of the elements
+const playButtons = document.querySelectorAll(".slide-activator-conatiner");
+const svg1Elements = document.querySelectorAll("#svg1");
+const svg2Elements = document.querySelectorAll("#svg2");
+const videoSliders = document.querySelectorAll(".on-top-of-video-slider");
+const videos = document.querySelectorAll(".testimonial-video");
+
+// Function to change the SVG and slow down the video
+const changeSVG = (index) => {
+  svg1Elements[index].style.opacity = "0";  // Fade out the first SVG
+  svg2Elements[index].style.opacity = "1";  // Fade in the second SVG
+  videoSliders[index].classList.add("hovered"); // Add class for background change and height increase
+
+  // Slow down the video playback (transition it to a stop)
+  videos[index].style.transition = "playback-rate 0.3s ease"; // Transition for playbackRate
+  videos[index].playbackRate = 0;  // Slow down the video to a complete stop
+};
+
+// Function to restore to the first SVG and reset the video speed
+const restoreSVG = (index) => {
+  svg1Elements[index].style.opacity = "1";  // Fade in the first SVG
+  svg2Elements[index].style.opacity = "0";  // Fade out the second SVG
+  videoSliders[index].classList.remove("hovered"); // Remove class for background and height reset
+
+  // Gradually reset the video playback to normal speed
+  videos[index].style.transition = "playback-rate 0.3s ease"; // Transition for playbackRate
+  videos[index].playbackRate = 1;  // Reset the video speed to normal
+};
+
+// Add event listeners for hover and touch events for each element
+playButtons.forEach((playButton, index) => {
+  playButton.addEventListener("mouseover", () => changeSVG(index));
+  playButton.addEventListener("mouseout", () => restoreSVG(index));
+
+  playButton.addEventListener("touchstart", (event) => {
+    event.preventDefault();  // Prevent default action for touch events
+    changeSVG(index);
+  });
+  playButton.addEventListener("touchend", (event) => {
+    event.preventDefault();  // Prevent default action for touch events
+    restoreSVG(index);
+  });
+
+  // Optional: Handle touchcancel as a fallback
+  playButton.addEventListener("touchcancel", () => restoreSVG(index));
 });

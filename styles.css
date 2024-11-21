@@ -2431,10 +2431,97 @@ nav {
   gap: 8px;
 }
 
-.background-video-conatiner {
+.slide-activator-conatiner{
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  z-index: 20;
+  cursor: pointer;
+}
+
+.background-video-container {
   width: 100%;
   height: 100%;
-  background-color: #09F;
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Both SVG images are absolutely positioned and stack on top of each other */
+.play-svg {
+  position: absolute;
+  width: 50px;  /* Same width as the container */
+  height: 50px; /* Same height as the container */
+  transition: opacity 0.3s ease; /* Smooth fade-in and fade-out */
+  opacity: 0;  /* Start with the second SVG hidden */
+}
+
+/* Initially show the first SVG */
+#svg1 {
+  opacity: 1;
+}
+
+/* On hover/touch, swap visibility */
+.play-button-container:hover #svg1,
+.play-button-container:focus-within #svg1 {
+  opacity: 0;
+}
+
+.play-button-container:hover #svg2,
+.play-button-container:focus-within #svg2 {
+  opacity: 1;
+}
+
+/* Touch events should behave similarly */
+.play-button-container:active #svg1,
+.play-button-container:active #svg2 {
+  opacity: 1; /* Ensure both SVGs are properly handled on touch */
+}
+
+
+.on-top-of-video-slider {
+  width: 100%;
+  height: 33%;
+  position: absolute;
+  z-index: 2;
+  border-radius: 16px 16px 0px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  bottom: 0;
+  border: 1px solid rgba(37, 37, 40, 0.10);
+  background: rgba(0, 0, 0, 0.30); /* Initial background */
+  backdrop-filter: blur(10px);
+  padding: 0px 16px 0px 16px;
+  transition: background 0.3s ease, height 0.3s ease; /* Adding transition */
+}
+
+.on-top-of-video-slider.hovered {
+  background: var(--gray5); /* Change to the desired background color */
+  height: 36%; /* Increase height */
+}
+
+
+.name-acc-container{
+  height: fit-content;
+}
+
+.name-acc-container h5{
+color: var(--gray1);
+}
+
+.play-button-container{
+  width: 50px;
+  height: 50px;
 }
 
 /* For screens below 1064px, keep the original behavior */
