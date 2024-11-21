@@ -239,7 +239,7 @@ h5 {
   left: calc(var(--circle-size) / 2 * -1);
   pointer-events: none;
   z-index: 20;
-  transition: opacity 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1);
   opacity: 0;
 }
 
@@ -550,7 +550,7 @@ nav {
   justify-content: center;
   z-index: 40;
   position: relative;
-  margin-top: 192px;
+  height: 100vh;
 }
 
 .hero-content-container {
@@ -2253,14 +2253,222 @@ nav {
   }
 }
 
-width: 100px;
-height: 5px;
-background-color: hsla(235, 5%, 25%, 1);
-margin: auto;
-border-radius: 2.5px;
-transition: background-color 0.3s cubic-bezier(0.25, 1, 0.5, 1),
-width 0.3s cubic-bezier(0.25, 1, 0.5, 1),
-height 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-display: block;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Testimonial section */
+
+.testimonial-container {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 128px;
+  flex-direction: column;
 }
+
+.carousel-container {
+  position: relative;
+  width: 1000px;
+  /* Fixed width for the carousel */
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  /* Horizontally center the carousel */
+  /* padding: 0 16px; */
+  /* Add horizontal padding for spacing */
+}
+
+.carousel {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 200%;
+  gap: 16px;
+  /* Add a 16px gap between slides */
+}
+
+.slide {
+  flex: 0 0 calc(50% - 8px);
+  height: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--gray1);
+  font-size: 24px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  border-radius: 16px;
+  border: 1px solid var(--gray3);
+  overflow: hidden;
+}
+
+
+.slide:not(.active) {
+  opacity: 0.7;
+  transform: scale(0.97);
+}
+
+.arrow {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+/* Hover Effect */
+.arrow:hover {
+  background-color: white;
+}
+
+.arrow:active {
+  background-color: rgb(214, 214, 214);
+  /* Slight gray background when pressed */
+  transform: scale(0.95);
+  /* Slightly shrink the button when pressed */
+}
+
+.arrow.left,
+.arrow.right {
+  border: solid 1px var(--white);
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow-left-arrow-svg,
+.arrow-right-arrow-svg {
+  width: 7px;
+  height: auto;
+  transition: all 0.3s ease;
+}
+
+/* Apply filter to the arrow images when hovered */
+.arrow:hover .arrow-left-arrow-svg,
+.arrow:hover .arrow-right-arrow-svg {
+  filter: brightness(0);
+  /* Inverts the color to black */
+}
+
+
+.dots {
+  bottom: 10px;
+  display: flex;
+  gap: 5px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--gray3);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot:hover {
+  background-color: var(--gray25);
+}
+
+.dot.active {
+  background-color: var(--white);
+}
+
+.bottom-navigation-container-tesimonials {
+  width: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: fit-content;
+  margin-top: 16px;
+}
+
+.arrows-testimonials-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.background-video-conatiner {
+  width: 100%;
+  height: 100%;
+  background-color: #09F;
+}
+
+/* For screens below 1064px, keep the original behavior */
+@media (max-width: 1064px) {
+
+  .carousel-container {
+    position: relative;
+    width: fit-content;
+  }
+
+  .bottom-navigation-container-tesimonials {
+    width: 492px;
+  }
+
+  .carousel {
+    width: 492px;
+    /* Keep single slide visible */
+  }
+
+  .slide {
+    flex: 0 0 100%;
+    /* Each slide takes 100% width */
+  }
+
+
+}
+
+@media (max-width: 555px) {
+
+  .carousel-container {
+    position: relative;
+    width: 100vw;
+    padding: 0 16px 0 16px;
+  }
+
+  .bottom-navigation-container-tesimonials {
+    position: relative;
+    width: 100vw;
+    padding: 0 16px 0 16px;
+  }
+
+  .slide {
+    height: 230px;
+  }
+
 }

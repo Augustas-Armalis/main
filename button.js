@@ -185,16 +185,50 @@ document.getElementById('load-in-btn-hero').addEventListener('touchend', functio
   window.location.href = "#";
 });
 
-const button = document.querySelector('.white-btn-container');
+// const button = document.querySelector('.white-btn-container');
 
-button.addEventListener('touchstart', function () {
-  button.style.backgroundColor = 'hsla(235, 5%, 70%, 1)';
-  button.style.transform = 'scale(0.97) translateZ(0)';
-  button.style.opacity = '0.9';
-});
+// button.addEventListener('touchstart', function () {
+//   button.style.backgroundColor = 'hsla(235, 5%, 70%, 1)';
+//   button.style.transform = 'scale(0.97) translateZ(0)';
+//   button.style.opacity = '0.9';
+// });
 
-button.addEventListener('touchend', function () {
-  button.style.backgroundColor = 'rgb(255, 255, 255)';
-  button.style.transform = 'scale(1)';
-  button.style.opacity = '1';
+// button.addEventListener('touchend', function () {
+//   button.style.backgroundColor = 'rgb(255, 255, 255)';
+//   button.style.transform = 'scale(1)';
+//   button.style.opacity = '1';
+// });
+
+// Get all the arrow buttons
+const arrows = document.querySelectorAll('.arrow');
+
+// Add touchstart and touchend event listeners for each arrow button
+arrows.forEach(arrow => {
+  const arrowImage = arrow.querySelector('img'); // Get the SVG image inside the button
+
+  // Handle touchstart
+  arrow.addEventListener('touchstart', function () {
+    // Apply styles to the button when touched
+    arrow.style.backgroundColor = 'rgb(255, 255, 255)'; // Slight gray background
+    arrow.style.transform = 'scale(0.95) translateZ(0)'; // Slight shrink effect
+    arrow.style.opacity = '0.9'; // Dim the opacity slightly
+
+    // Apply styles to the SVG (image inside the button)
+    if (arrowImage) {
+      arrowImage.style.filter = 'brightness(0)'; // Change SVG color to black
+    }
+  });
+
+  // Handle touchend
+  arrow.addEventListener('touchend', function () {
+    // Reset button styles back to normal
+    arrow.style.backgroundColor = 'rgba(0, 0, 0, 0.5)'; // Original background color
+    arrow.style.transform = 'scale(1)'; // Reset the scale
+    arrow.style.opacity = '1'; // Reset the opacity
+
+    // Reset the SVG styles to normal
+    if (arrowImage) {
+      arrowImage.style.filter = 'none'; // Remove the filter, resetting the SVG color
+    }
+  });
 });

@@ -8,6 +8,31 @@ function executeAbove1064px() {
     let currentScale = 0;
     let currentAngle = 0;
 
+    // Customizable fade-in duration for page load (in seconds)
+    const fadeInOnLoadDuration = 1; // Change this value to adjust the fade speed on load (e.g., 0.5 for faster, 2 for slower)
+
+    // Customizable fade-in/fade-out duration for mouse hover (in seconds)
+    const fadeHoverDuration = 0.5; // Change this value to adjust the fade speed on mouse hover
+
+    // Apply the fade-in effect on page load with the custom duration
+    const fadeInCircleOnLoad = () => {
+      circleElement.style.transition = `opacity ${fadeInOnLoadDuration}s ease-in-out`; // Use the fadeInOnLoadDuration variable
+      circleElement.style.opacity = '1';
+    };
+
+    // Apply the fade-in effect with custom duration for mouse hover
+    const fadeInCircle = () => {
+      circleElement.style.transition = `opacity ${fadeHoverDuration}s ease-in-out`; // Use the fadeHoverDuration variable
+      circleElement.style.opacity = '1';
+    };
+
+    // Apply the fade-out effect with custom duration for mouse hover
+    const fadeOutCircle = () => {
+      circleElement.style.transition = `opacity ${fadeHoverDuration}s ease-in-out`; // Use the fadeHoverDuration variable
+      circleElement.style.opacity = '0';
+    };
+
+    // Track mouse movement to animate the circle
     window.addEventListener('mousemove', (e) => {
       mouse.x = e.x;
       mouse.y = e.y;
@@ -34,20 +59,19 @@ function executeAbove1064px() {
       const rotateTransform = `rotate(${currentAngle}deg)`;
       circleElement.style.transform = `${translateTransform} ${rotateTransform} ${scaleTransform}`;
       window.requestAnimationFrame(tick);
-    }
+    };
 
     tick();
 
-    const targetContainers = document.querySelectorAll('.under-rectangle-layer, .black-bottom-fade-out-container');
+    const targetContainers = document.querySelectorAll('.under-rectangle-layer, .arrows-testimonials-container, .dots, nav');
 
-    const fadeOutCircle = () => circleElement.style.opacity = '0';
-    const fadeInCircle = () => circleElement.style.opacity = '1';
-
+    // Add event listeners to handle mouse enter and leave for fade-in/out
     targetContainers.forEach(container => {
       container.addEventListener('mouseenter', fadeOutCircle);
       container.addEventListener('mouseleave', fadeInCircle);
     });
 
+    // Handle visibility change (when the page is hidden or visible)
     document.addEventListener('visibilitychange', () => {
       if (document.visibilityState === 'hidden') {
         fadeOutCircle();
@@ -58,11 +82,16 @@ function executeAbove1064px() {
 
     document.addEventListener("mouseenter", fadeInCircle);
     document.addEventListener("mouseleave", fadeOutCircle);
+
+    // Trigger fade-in on load with custom duration
+    fadeInCircleOnLoad();
   }
 }
 
+// Run the function when the page loads and on window resize
 executeAbove1064px();
 window.addEventListener('resize', executeAbove1064px);
+
 
 
 
@@ -189,3 +218,91 @@ animateFloating(document.querySelector('.ok-container-management'));
 animateFloating(document.querySelector('.change-it-container-management'));
 
 
+
+
+
+
+
+
+
+
+
+
+
+// Testimonials section
+
+document.addEventListener('DOMContentLoaded', () => {
+  updateCarousel(); // Ensure the carousel is set up correctly on page load
+});
+
+// Testimonials section
+let currentIndex = 0;
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+const carousel = document.querySelector('.carousel');
+
+// Adjust for two slides active above 1064px
+function isLargeScreen() {
+  return window.innerWidth > 1064;
+}
+
+function moveSlide(direction) {
+  if (isLargeScreen()) {
+    currentIndex += direction;
+    if (currentIndex < 0) currentIndex = slides.length - 2; // 2 because we are showing 2 slides
+    if (currentIndex >= slides.length - 1) currentIndex = 0; // Wrap to the first slide when you reach the end
+  } else {
+    currentIndex += direction;
+    if (currentIndex < 0) currentIndex = slides.length - 1;
+    if (currentIndex >= slides.length) currentIndex = 0;
+  }
+
+  updateCarousel();
+}
+
+function goToSlide(index) {
+  if (isLargeScreen()) {
+    currentIndex = index;
+  } else {
+    currentIndex = index % slides.length;
+  }
+  updateCarousel();
+}
+
+function updateCarousel() {
+  // Get the carousel's width in pixels
+  const carouselWidth = carousel.offsetWidth;
+
+  // Dynamically determine the gap size
+  const gap = isLargeScreen() ? 8 : 16;
+
+  // Calculate the new transform value dynamically
+  const slideWidth = isLargeScreen() ? carouselWidth / 2 : carouselWidth; // 50% or 100% of carousel width
+
+  // Calculate the transform value in pixels
+  const newTransform = -(currentIndex * (slideWidth + gap));
+
+  // Apply the transform
+  carousel.style.transform = `translateX(${newTransform}px)`;
+
+  // Update slide classes
+  slides.forEach((slide, index) => {
+    slide.classList.remove('active');
+    if (index === currentIndex || (isLargeScreen() && (index === currentIndex + 1))) {
+      slide.classList.add('active');
+    }
+  });
+
+  // Update dot classes
+  dots.forEach((dot, index) => {
+    dot.classList.remove('active');
+    if (index === currentIndex || (isLargeScreen() && (index === currentIndex + 1))) {
+      dot.classList.add('active');
+    }
+  });
+}
+
+// Make sure the carousel updates on window resize
+window.addEventListener('resize', () => {
+  updateCarousel();
+});
