@@ -181,12 +181,74 @@
 
 
 
-
-
-
-
-
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.157.0/three.min.js"></script>
+  <script>
+    // Set up Scene, Camera, and Renderer
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+  
+    // Set the position of the canvas to be absolute, at the top of the screen, and behind other elements
+    renderer.domElement.style.position = 'absolute';
+    renderer.domElement.style.top = '0';
+    renderer.domElement.style.left = '0';
+    renderer.domElement.style.zIndex = '-1'; // This ensures it's behind other elements
+  
+    // Create a Cool Object (Torus Knot)
+    const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
+    const material = new THREE.MeshStandardMaterial({
+      color: 0x44aa88,
+      emissive: 0x112233,
+      metalness: 0.7,
+      roughness: 0.2,
+    });
+    const torusKnot = new THREE.Mesh(geometry, material);
+    scene.add(torusKnot);
+  
+    // Lighting
+    const pointLight = new THREE.PointLight(0xffffff, 1.5, 100);
+    pointLight.position.set(20, 20, 20);
+    scene.add(pointLight);
+  
+    const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
+    scene.add(ambientLight);
+  
+    // Camera Position
+    camera.position.z = 35;
+  
+    // Mouse Interactivity
+    const mouse = { x: 0, y: 0 };
+    document.addEventListener('mousemove', (event) => {
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    });
+  
+    // Responsive Design
+    window.addEventListener('resize', () => {
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+    });
+  
+    // Animation Loop
+    function animate() {
+      requestAnimationFrame(animate);
+  
+      // Smoothly Rotate Object
+      torusKnot.rotation.x += 0.01;
+      torusKnot.rotation.y += 0.01;
+  
+      // Mouse-based Parallax Effect
+      torusKnot.rotation.x += (mouse.y * 0.5 - torusKnot.rotation.x) * 0.05;
+      torusKnot.rotation.y += (mouse.x * 0.5 - torusKnot.rotation.y) * 0.05;
+  
+      renderer.render(scene, camera);
+    }
+    animate();
+  </script>
+  
 
   <!-- Hero section -->
 
@@ -200,6 +262,7 @@
           <h4>We write, design & code Front-end websites<br>that shape the future of your business</h4>
         </div>
       </div>
+      
 
       <a class="under-rectangle-layer" href="#" id="load-in-btn-hero">
         <div class="rectangle">
@@ -712,6 +775,8 @@ gsap.registerPlugin(ScrollTrigger);
   <script src="animations.js"></script>
   <script src="button.js"></script>
   <script src="logic.js"></script>
+
+
 
 
 </body>

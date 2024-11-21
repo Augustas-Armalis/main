@@ -1,4 +1,13 @@
-html,
+html{
+  scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
+  font-family: 'SF Pro Display Regular';
+  color: var(--white);
+  overflow-x: hidden;
+  width: 100%;
+}
+
+
 body {
   scroll-behavior: smooth;
   scroll-padding-top: 4rem;
