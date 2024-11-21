@@ -63,7 +63,7 @@ function executeAbove1064px() {
 
     tick();
 
-    const targetContainers = document.querySelectorAll('.under-rectangle-layer, .arrows-testimonials-container, .dots, nav, slide-activator-conatiner');
+    const targetContainers = document.querySelectorAll('.under-rectangle-layer, .arrows-testimonials-container, .dots, nav, .slide');
 
     // Add event listeners to handle mouse enter and leave for fade-in/out
     targetContainers.forEach(container => {
@@ -345,15 +345,19 @@ playButtons.forEach((playButton, index) => {
   playButton.addEventListener("mouseover", () => changeSVG(index));
   playButton.addEventListener("mouseout", () => restoreSVG(index));
 
+  // For touch interactions (touchstart and touchend) on each play button
   playButton.addEventListener("touchstart", (event) => {
-    event.preventDefault();  // Prevent default action for touch events
     changeSVG(index);
-  });
-  playButton.addEventListener("touchend", (event) => {
-    event.preventDefault();  // Prevent default action for touch events
-    restoreSVG(index);
+    // Prevent only the default action of touchstart if necessary, to avoid conflicting behavior.
+    event.stopPropagation(); // Stop event from bubbling, but don't prevent default
   });
 
-  // Optional: Handle touchcancel as a fallback
+  playButton.addEventListener("touchend", (event) => {
+    restoreSVG(index);
+    // Prevent only the default action of touchend if necessary, to avoid conflicting behavior.
+    event.stopPropagation(); // Stop event from bubbling, but don't prevent default
+  });
+
+  // Optional: Handle touchcancel as a fallback (e.g., when touch is interrupted)
   playButton.addEventListener("touchcancel", () => restoreSVG(index));
 });

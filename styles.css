@@ -2328,7 +2328,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--gray1);
+  background-color: var(--gray4);
   font-size: 24px;
   transition: opacity 0.3s ease, transform 0.3s ease;
   border-radius: 16px;
@@ -2344,7 +2344,7 @@ nav {
 
 .arrow {
   background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+  color: var(--white);
   border: none;
   font-size: 24px;
   cursor: pointer;
@@ -2355,11 +2355,11 @@ nav {
 
 /* Hover Effect */
 .arrow:hover {
-  background-color: white;
+  background-color: var(--white);
 }
 
 .arrow:active {
-  background-color: rgb(214, 214, 214);
+  background-color: var(--white);
   /* Slight gray background when pressed */
   transform: scale(0.95);
   /* Slightly shrink the button when pressed */
@@ -2526,6 +2526,9 @@ color: var(--gray1);
 
 /* For screens below 1064px, keep the original behavior */
 @media (max-width: 1064px) {
+  .slide-activator-conatiner{
+    width: 100%;
+  }
 
   .carousel-container {
     position: relative;
