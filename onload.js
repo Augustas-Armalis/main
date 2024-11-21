@@ -1,51 +1,51 @@
 // Hero Section
 
-window.addEventListener('load', () => {
-const timeline = gsap.timeline({ defaults: { ease: "power4.out", duration: 2 } });
-const moveDistance = window.innerWidth;
+// window.addEventListener('load', () => {
+//   const timeline = gsap.timeline({ defaults: { ease: "power4.out", duration: 2 } });
+//   const moveDistance = window.innerWidth;
 
-timeline.fromTo('.alt-container', { y: 100, opacity: 0 }, { y: 0, opacity: 1 });
-timeline.fromTo('nav', { y: -100, opacity: 0 }, { y: 0, opacity: 1 }, "-=2");
-timeline.fromTo('#load-in-btn-hero', { y: 100, opacity: 0 }, { y: 0, opacity: 1 }, "-=1.8");
-timeline.fromTo('.logos', { x: moveDistance, opacity: 0 }, { x: 0, opacity: 1, duration: 1.8 }, "-=1.8");
-timeline.fromTo('.logos-opp', { x: -moveDistance, opacity: 0 }, { x: 0, opacity: 1, duration: 1.8 }, "-=1.5");
-timeline.fromTo('.logos-dbb', { x: moveDistance, opacity: 0 }, { x: 0, opacity: 1, duration: 1.8 }, "-=1.5");
+//   timeline.fromTo('.alt-container', { y: 100, opacity: 0 }, { y: 0, opacity: 1 });
+//   timeline.fromTo('nav', { y: -100, opacity: 0 }, { y: 0, opacity: 1 }, "-=2");
+//   timeline.fromTo('#load-in-btn-hero', { y: 100, opacity: 0 }, { y: 0, opacity: 1 }, "-=1.8");
+//   timeline.fromTo('.logos', { x: moveDistance, opacity: 0 }, { x: 0, opacity: 1, duration: 1.8 }, "-=1.8");
+//   timeline.fromTo('.logos-opp', { x: -moveDistance, opacity: 0 }, { x: 0, opacity: 1, duration: 1.8 }, "-=1.5");
+//   timeline.fromTo('.logos-dbb', { x: moveDistance, opacity: 0 }, { x: 0, opacity: 1, duration: 1.8 }, "-=1.5");
 
-gsap.fromTo(".black-bottom-content-container", {
-    y: 50, opacity: 0
-}, {
-    y: 0, opacity: 1, duration: 1, ease: "power4.out",
-    scrollTrigger: {
-    trigger: ".black-bottom-content-container",
-    start: "top 90%",
-    toggleActions: "play none none none"
-    }
-});
+//   gsap.fromTo(".black-bottom-content-container", {
+//     y: 50, opacity: 0
+//   }, {
+//     y: 0, opacity: 1, duration: 1, ease: "power4.out",
+//     scrollTrigger: {
+//       trigger: ".black-bottom-content-container",
+//       start: "top 90%",
+//       toggleActions: "play none none none"
+//     }
+//   });
 
-gsap.fromTo('.circle', { opacity: 0 }, { opacity: 1, duration: 1, delay: 1, ease: "power2.out" });
-});
+//   gsap.fromTo('.circle', { opacity: 0 }, { opacity: 1, duration: 1, delay: 1, ease: "power2.out" });
+// });
 
-window.onload = () => {
-const textElement = document.querySelector('.title-container h1');
-textElement.style.visibility = 'visible';
-const letters = textElement.innerText.split('');
+// window.onload = () => {
+//   const textElement = document.querySelector('.title-container h1');
+//   textElement.style.visibility = 'visible';
+//   const letters = textElement.innerText.split('');
 
-textElement.innerHTML = '';
-letters.forEach((letter, index) => {
-    const span = document.createElement('span');
-    span.innerText = letter;
-    textElement.appendChild(span);
+//   textElement.innerHTML = '';
+//   letters.forEach((letter, index) => {
+//     const span = document.createElement('span');
+//     span.innerText = letter;
+//     textElement.appendChild(span);
 
-    setTimeout(() => {
-    span.style.opacity = 1;
-    span.style.filter = 'blur(0)';
-    span.style.transform = 'translateY(0)';
-    }, index * 20);
-});
-};
-  
-  
-  
+//     setTimeout(() => {
+//       span.style.opacity = 1;
+//       span.style.filter = 'blur(0)';
+//       span.style.transform = 'translateY(0)';
+//     }, index * 20);
+//   });
+// };
+
+
+
 
 
 
