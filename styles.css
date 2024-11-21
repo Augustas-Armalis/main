@@ -1386,6 +1386,7 @@ nav {
 
 .box-text-alt {
   color: var(--gray1);
+  white-space: nowrap;
 }
 
 .design-box-black-thingy {
