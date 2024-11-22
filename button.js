@@ -177,12 +177,12 @@ init();
 
 document.getElementById('button-nav-container-mobile').addEventListener('touchend', function (event) {
   event.preventDefault();
-  window.location.href = "#";
+  window.location.href = "#pricing-section-href";
 });
 
 document.getElementById('load-in-btn-hero').addEventListener('touchend', function (event) {
   event.preventDefault();
-  window.location.href = "#";
+  window.location.href = "#pricing-section-href";
 });
 
 // const button = document.querySelector('.white-btn-container');

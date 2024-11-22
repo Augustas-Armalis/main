@@ -115,7 +115,7 @@ window.addEventListener('scroll', () => {
   let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
   if (currentScroll > lastScrollTop) {
-    gsap.to(navis, { y: -navis.offsetHeight, opacity: 0, duration: 0.6, ease: "power4.out" });
+    gsap.to(navis, { y: -100, opacity: 0, duration: 0.6, ease: "power4.out" });
   } else {
     gsap.to(navis, { y: 0, opacity: 1, duration: 0.6, ease: "power4.out" });
   }
