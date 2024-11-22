@@ -184,3 +184,23 @@ const okChangeTimeline = gsap.timeline({
 okChangeTimeline
   .from(".ok-container-management", { opacity: 0, right: "-100%", duration: 1 })
   .from(".change-it-container-management", { opacity: 0, right: "-100%", duration: 1 }, "-=0.6");
+
+
+
+
+
+
+
+
+
+
+
+
+  gsap.to(".pumping-circle", {
+    scale: 3.2, // Expands to match 16px (16px / 6px)
+    opacity: 0, // Fades out
+    duration: 1.5, // Animation duration
+    repeat: -1, // Infinite loop
+    ease: "power1.out",
+    transformOrigin: "center", // Keeps the scaling centered
+  });
