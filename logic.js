@@ -101,13 +101,13 @@ let lastScrollTop = 0;
 const navis = document.querySelector('nav');
 let isScrollingEnabled = false;
 
-window.addEventListener('load', () => {
-  gsap.fromTo(navis, { y: -100, opacity: 0 }, { y: 0, opacity: 1, duration: 2, ease: "power4.out" });
 
-  setTimeout(() => {
-    isScrollingEnabled = true;
-  }, 3000);
-});
+gsap.fromTo(navis, { y: -100, opacity: 0 }, { y: 0, opacity: 1, duration: 2, ease: "power4.out" });
+
+setTimeout(() => {
+  isScrollingEnabled = true;
+}, 3000);
+
 
 window.addEventListener('scroll', () => {
   if (!isScrollingEnabled) return;
@@ -311,6 +311,17 @@ window.addEventListener('resize', () => {
 
 
 
+
+
+
+
+
+
+
+// Testimonials
+
+
+
 // Select all instances of the elements
 const playButtons = document.querySelectorAll(".slide-activator-conatiner");
 const svg1Elements = document.querySelectorAll("#svg1");
@@ -361,3 +372,66 @@ playButtons.forEach((playButton, index) => {
   // Optional: Handle touchcancel as a fallback (e.g., when touch is interrupted)
   playButton.addEventListener("touchcancel", () => restoreSVG(index));
 });
+
+
+
+
+
+
+
+
+// Testimonials
+
+const videoContainer = document.querySelector(".video-container");
+const closeButton = document.querySelector(".close-button");
+const youtubePlayer = document.querySelector("#ytplayer");
+const activators = document.querySelectorAll(".slide-activator-conatiner");
+
+// Mapping of slide activator IDs to YouTube URLs
+const videoUrls = {
+  "ares-testimonial": "https://www.youtube.com/embed/G7qvBdtHAO4",
+  "motiejus-testimonial": "https://www.youtube.com/embed/kZNutM6e_9c?si=hz6tP-eboCXjWzKp",
+  "rick-testimonial": "https://www.youtube.com/embed/5sbWbfe_4XU?si=c2RrfDYKn9kWqz7f",
+};
+
+// Function to disable scrolling
+function disableScroll() {
+  document.body.style.overflow = "hidden";
+  document.documentElement.style.overflow = "hidden";
+}
+
+// Function to enable scrolling
+function enableScroll() {
+  document.body.style.overflow = "";
+  document.documentElement.style.overflow = "";
+  document.body.style.overflowX = "hidden";
+  document.documentElement.style.overflowX = "hidden";
+}
+
+// Function to show the video container and set the video URL
+const showVideoContainer = (videoId) => {
+  const videoUrl = videoUrls[videoId];
+  if (videoUrl) {
+    youtubePlayer.src = `${videoUrl}?autoplay=1`; // Set video URL and autoplay
+    videoContainer.style.display = "inherit"; // Show video container
+    disableScroll(); // Disable scrolling
+  }
+};
+
+// Function to hide the video container
+const hideVideoContainer = () => {
+  youtubePlayer.src = ""; // Clear the video URL
+  videoContainer.style.display = "none"; // Hide video container
+  enableScroll(); // Enable scrolling
+};
+
+// Event listener for each activator container
+activators.forEach((activator) => {
+  activator.addEventListener("click", () => {
+    const activatorId = activator.id; // Get the ID of the clicked activator
+    showVideoContainer(activatorId); // Show the video container with the corresponding video
+  });
+});
+
+// Event listener for the close button
+closeButton.addEventListener("click", hideVideoContainer);
