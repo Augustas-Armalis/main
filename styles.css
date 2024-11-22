@@ -2300,7 +2300,44 @@ nav {
   align-items: center;
   margin-bottom: 128px;
   flex-direction: column;
+  position: relative;
+  /* Added this */
 }
+
+.testimonial-container:before {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 100%;
+  top: 0;
+  left: -15px;
+  background: linear-gradient(to right, rgb(0, 0, 0), rgba(0, 0, 0, 0));
+  pointer-events: none;
+  z-index: 30;
+}
+
+.testimonial-container:after {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 100%;
+  top: 0;
+  right: -15px;
+  background: linear-gradient(to left, rgb(0, 0, 0), rgba(0, 0, 0, 0));
+  pointer-events: none;
+  z-index: 30;
+}
+
+@media (max-width: 1350px) {
+
+  .testimonial-container:before,
+  .testimonial-container:after {
+    display: none;
+  }
+
+
+}
+
 
 .carousel-container {
   position: relative;
@@ -2312,6 +2349,7 @@ nav {
   /* Horizontally center the carousel */
   /* padding: 0 16px; */
   /* Add horizontal padding for spacing */
+
 }
 
 .carousel {
@@ -2338,8 +2376,13 @@ nav {
 
 
 .slide:not(.active) {
-  opacity: 0.7;
+  opacity: 0.6;
   transform: scale(0.97);
+}
+
+
+.slide:not(.active) .slide-activator-conatiner {
+  display: none;
 }
 
 .arrow {
