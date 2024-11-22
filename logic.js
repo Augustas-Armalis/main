@@ -125,6 +125,59 @@ window.addEventListener('scroll', () => {
 
 
 
+
+// Select all links in the links-container
+const links = document.querySelectorAll('.links-container a');
+
+// Map each link to its corresponding section
+const sectionLinkMap = {};
+links.forEach(link => {
+  const href = link.getAttribute('href');
+  const sectionId = href.startsWith('#') ? href.slice(1) : null;
+  if (sectionId) {
+    sectionLinkMap[sectionId] = link;
+  }
+});
+
+// Intersection Observer to track section visibility
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      const link = sectionLinkMap[entry.target.id];
+      if (link) {
+        if (entry.isIntersecting) {
+          // Add active class immediately when the section is in view
+          link.classList.add('active');
+        } else {
+          // Remove active class immediately when the section is out of view
+          link.classList.remove('active');
+        }
+      }
+    });
+  },
+  { threshold: 0.1, rootMargin: '0px' } // Adjusted to trigger as soon as 10% of section is in view
+);
+
+// Observe sections corresponding to the links
+Object.keys(sectionLinkMap).forEach(sectionId => {
+  const section = document.getElementById(sectionId);
+  if (section) {
+    observer.observe(section);
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Counter Section
 
 document.addEventListener('DOMContentLoaded', () => {

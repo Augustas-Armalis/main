@@ -278,7 +278,7 @@ nav {
   left: 50%;
   transform: translateX(-50%) translateY(-100px);
   border-radius: 999px;
-  border: 1px solid #252528;
+  border: 1px solid var(--gray3);
   background: rgba(0, 0, 0, 0.70);
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(10px);
@@ -327,7 +327,7 @@ nav {
   font-size: 20px;
   font-family: var(--ff-regular);
   color: var(--gray1);
-  transition: all 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+  transition: color 0.3s ease, transform 0.3s ease;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -336,8 +336,14 @@ nav {
   text-decoration: none;
 }
 
+.links-container a.active {
+  color: var(--white);
+  /* This will be applied when the section is in view */
+}
+
 .links-container a:hover {
   color: var(--white);
+  /* Color change on hover */
   transform: scale(1.05);
 }
 
@@ -345,6 +351,7 @@ nav {
   transform: scale(1) translateZ(0);
   opacity: 0.7;
 }
+
 
 .logo-container {
   height: 100%;
@@ -543,8 +550,16 @@ nav {
 
 
 
-
 /* Hero Section */
+
+.nav-thing-for-hero-section {
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  z-index: -9999;
+  height: 100%;
+  top: -20rem;
+}
 
 
 #load-in-btn-hero {
@@ -2681,6 +2696,153 @@ iframe#ytplayer {
   .close-button {
     right: 16px;
     top: 16px;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Pricing Section */
+
+.pricing-section-container {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 128px;
+  flex-direction: column;
+  position: relative;
+  background-color: rgb(0, 255, 42);
+}
+
+.pricing-holder {
+  width: 1000px;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  position: relative;
+  background-color: #09F;
+}
+
+.main-prices {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.first-pricing-container,
+.second-pricing-container {
+  width: 323px;
+  height: 300px;
+  border-radius: 16px;
+  border: 1px solid var(--gray3);
+  background: var(--black);
+}
+
+.contact-near-pricing {
+  width: 323px;
+  height: 300px;
+  border-radius: 16px;
+  border: 1px solid var(--gray3);
+  background: var(--black);
+}
+
+.pricing-boxes-holder {
+  width: fit-content;
+  align-items: center;
+  gap: 16px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+@media (max-width: 1064px) {
+
+  .pricing-boxes-holder {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .pricing-holder {
+    width: 100%;
+    flex-direction: column;
+    position: relative;
+    background-color: rgb(0, 153, 255);
+  }
+
+  .main-prices {
+    flex-wrap: wrap;
+    width: fit-content;
+    gap: 12px;
+  }
+
+  .contact-near-pricing {
+    width: 100%;
+  }
+
+  .pricing-section-container {
+    padding: 0px 32px;
+  }
+
+
+}
+
+@media (max-width: 742px) {
+  .contact-near-pricing {
+    width: 323px;
+  }
+}
+
+@media (max-width: 555px) {
+  .pricing-section-container {
+    padding: 0px 16px;
+  }
+
+  .pricing-boxes-holder,
+  .main-prices {
+    gap: 8px;
+  }
+
+}
+
+@media (max-width: 450px) {
+
+  .main-prices {
+    width: 100%;
+  }
+
+  .first-pricing-container,
+  .second-pricing-container,
+  .contact-near-pricing {
+    width: 100%;
+  }
+
+  .pricing-boxes-holder {
+    width: 100%;
   }
 
 }
