@@ -182,7 +182,7 @@ document.getElementById('button-nav-container-mobile').addEventListener('touchen
 
 document.getElementById('button-nav-container-pricing').addEventListener('touchend', function (event) {
   event.preventDefault();
-  window.location.href = "#pricing-section-href";
+  window.location.href = "https://buy.stripe.com/6oEeX5c719sU2ME9AQ";
 });
 
 document.getElementById('load-in-btn-hero').addEventListener('touchend', function (event) {
