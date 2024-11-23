@@ -63,7 +63,7 @@ function executeAbove1064px() {
 
     tick();
 
-    const targetContainers = document.querySelectorAll('.under-rectangle-layer, .arrows-testimonials-container, .dots, nav, .slide, .offer-main-button');
+    const targetContainers = document.querySelectorAll('.under-rectangle-layer, .arrows-testimonials-container, .dots, nav, .slide, .offer-main-button, #button-nav-container-pricing');
 
     // Add event listeners to handle mouse enter and leave for fade-in/out
     targetContainers.forEach(container => {
