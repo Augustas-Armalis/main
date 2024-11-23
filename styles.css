@@ -2809,6 +2809,7 @@ iframe#ytplayer {
   justify-content: center;
   border-radius: 10px;
   border: 1px solid var(--gray2);
+  flex-shrink: 0;
 }
 
 .pricing-top-lineris{
@@ -2865,7 +2866,6 @@ padding: 4px 8px;
 width: fit-content;
 border: 1px solid rgba(0, 157, 255, 0.50);
 background: rgba(45, 122, 172, 0.07);
-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
 border-radius: 10px;
 display: flex;
 align-items: center;
@@ -2878,6 +2878,26 @@ margin-top: 12px;
 .software-thing-priciing-container h5{
   color: #009DFF;
 }
+
+.software-thing-priciing-container-dev{
+  border: 1px solid rgba(155, 105, 255, 0.50);
+  background: rgba(155, 105, 255, 0.07);
+  height: fit-content;
+  width: fit-content;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 8px;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.software-thing-priciing-container-dev{
+  color: #9B69FF;
+}
+
+
 
 .price-container{
   width: 100%;
@@ -2970,13 +2990,58 @@ margin-top: 12px;
 
 .bottom-dev-container{
   width: 100%;
-  height: 200px;
+  height: fit-content;
   border-radius: 12px;
-border: 1px dashed #62606C;
+  border: 1px dashed #62606C;
+  padding: 16px;
 }
 
+.bottom-design-top-lineris{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.btn-text-container-pricing {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: fit-content;
+  height: 100%;
+  width: 100%;
+}
+
+.pricing-button-text{
+color: var(--white);
+font-size: 20px;
+font-family: var(--ff-medium);
+font-weight: var(--font-medium);
+}
+
+#pricing-spec-button {
+  border-radius: 12px;
+  height: 36px;
+  color: var(--white);
+  margin-top: 16px;
+}
+
+#pricing-spec-button:hover {
+  border: 1px solid var(--gray25);
+}
+
+#pricing-spec-button:active {
+  transform: scale(0.97) translateZ(0);
+  opacity: 0.7;
+}
 
 @media (max-width: 1064px) {
+
+  #pricing-spec-button.active {
+    transform: scale(0.97) translateZ(0);
+    opacity: 0.7;
+  }
 
   .pricing-boxes-holder {
     flex-direction: column;
@@ -3000,8 +3065,13 @@ border: 1px dashed #62606C;
   .pricing-section-container {
     padding: 0px 32px;
   }
+}
 
+@media (max-width: 850px) {
 
+  #button-nav-container-pricing {
+    display: auto;
+  }
 }
 
 @media (max-width: 727px) {
