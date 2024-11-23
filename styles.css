@@ -2749,7 +2749,7 @@ iframe#ytplayer {
 .main-prices {
   width: fit-content;
   display: flex;
-  align-items: center;
+  align-items: top;
   justify-content: center;
   gap: 8px;
 }
@@ -2762,6 +2762,9 @@ iframe#ytplayer {
   border: 1px solid var(--gray3);
   background: var(--black);
   padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .contact-near-pricing {
@@ -2775,7 +2778,7 @@ iframe#ytplayer {
 
 .pricing-boxes-holder {
   width: fit-content;
-  align-items: center;
+  align-items: top;
   gap: 8px;
   display: flex;
   justify-content: center;
@@ -2927,11 +2930,50 @@ margin-top: 12px;
 }
 
 .whats-inside-line img{
-height: 20px;
-width: 20px;
+  height: 20px;
+  width: 20px;
 }
 
+.white-button-offer-container{
+  width: 100%;
+  height: fit-content;
+  background-color: var(--white);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  margin-top: 16px;
+  transition: all 0.3s ease;
+}
 
+.white-button-offer-container:hover{
+  background-color: var(--gray1);
+}
+
+.white-button-offer-container:active{
+  background-color: var(--gray1);
+  scale: 0.97;
+}
+
+.offer-main-button{
+  text-decoration: none;
+}
+
+.white-button-offer-container h5{
+  color: var(--black);
+  font-size: 20px;
+  font-family: var(--ff-medium);
+  font-weight: var(--font-medium);
+
+}
+
+.bottom-dev-container{
+  width: 100%;
+  height: 200px;
+  border-radius: 12px;
+border: 1px dashed #62606C;
+}
 
 
 @media (max-width: 1064px) {
@@ -2962,9 +3004,12 @@ width: 20px;
 
 }
 
-@media (max-width: 742px) {
+@media (max-width: 727px) {
   .contact-near-pricing {
     width: 323px;
+  }
+  .pricing-boxes-holder{
+    align-items: center;
   }
 }
 
