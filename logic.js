@@ -488,3 +488,28 @@ activators.forEach((activator) => {
 
 // Event listener for the close button
 closeButton.addEventListener("click", hideVideoContainer);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Accordion
+
