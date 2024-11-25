@@ -42,22 +42,17 @@ function initializeBlobs(rectangle) {
     moveBlob(blob, width - size, height - size);
   });
 
-  // if (window.innerWidth >= 768) {
-  //   rectangle.addEventListener('mouseenter', () => moveToCursor(blobs, rectangle));
-  //   rectangle.addEventListener('mouseleave', () => continueAnimation(blobs, rectangle));
-  // } else {
-  //   rectangle.addEventListener('touchstart', (event) => {
-  //     event.preventDefault();
-  //     rectangle.classList.add('active');
-  //     moveToCursor(blobs, rectangle);
-  //   });
+  if (window.innerWidth >= 768) {
+    rectangle.addEventListener('mouseenter', () => moveToCursor(blobs, rectangle));
+    rectangle.addEventListener('mouseleave', () => continueAnimation(blobs, rectangle));
+  } 
 
-  //   rectangle.addEventListener('touchend', () => {
-  //     rectangle.classList.remove('active');
-  //     continueAnimation(blobs, rectangle);
-  //   });
-  // }
-}
+    rectangle.addEventListener('touchend', () => {
+      rectangle.classList.remove('active');
+      continueAnimation(blobs, rectangle);
+    });
+  }
+
 
 function moveToCursor(blobs, rectangle) {
   rectangle.addEventListener('mousemove', (event) => {
