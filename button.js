@@ -42,21 +42,21 @@ function initializeBlobs(rectangle) {
     moveBlob(blob, width - size, height - size);
   });
 
-  if (window.innerWidth >= 768) {
-    rectangle.addEventListener('mouseenter', () => moveToCursor(blobs, rectangle));
-    rectangle.addEventListener('mouseleave', () => continueAnimation(blobs, rectangle));
-  } else {
-    rectangle.addEventListener('touchstart', (event) => {
-      event.preventDefault();
-      rectangle.classList.add('active');
-      moveToCursor(blobs, rectangle);
-    });
+  // if (window.innerWidth >= 768) {
+  //   rectangle.addEventListener('mouseenter', () => moveToCursor(blobs, rectangle));
+  //   rectangle.addEventListener('mouseleave', () => continueAnimation(blobs, rectangle));
+  // } else {
+  //   rectangle.addEventListener('touchstart', (event) => {
+  //     event.preventDefault();
+  //     rectangle.classList.add('active');
+  //     moveToCursor(blobs, rectangle);
+  //   });
 
-    rectangle.addEventListener('touchend', () => {
-      rectangle.classList.remove('active');
-      continueAnimation(blobs, rectangle);
-    });
-  }
+  //   rectangle.addEventListener('touchend', () => {
+  //     rectangle.classList.remove('active');
+  //     continueAnimation(blobs, rectangle);
+  //   });
+  // }
 }
 
 function moveToCursor(blobs, rectangle) {
@@ -175,20 +175,20 @@ buttons.forEach(button => {
 
 init();
 
-document.getElementById('button-nav-container-mobile').addEventListener('touchend', function (event) {
-  event.preventDefault();
-  window.location.href = "#pricing-section-href";
-});
+// document.getElementById('button-nav-container-mobile').addEventListener('touchend', function (event) {
+//   event.preventDefault();
+//   window.location.href = "#pricing-section-href";
+// });
 
-document.getElementById('button-nav-container-pricing').addEventListener('touchend', function (event) {
-  event.preventDefault();
-  window.location.href = "https://buy.stripe.com/6oEeX5c719sU2ME9AQ";
-});
+// document.getElementById('button-nav-container-pricing').addEventListener('touchend', function (event) {
+//   event.preventDefault();
+//   window.location.href = "https://buy.stripe.com/6oEeX5c719sU2ME9AQ";
+// });
 
-document.getElementById('load-in-btn-hero').addEventListener('touchend', function (event) {
-  event.preventDefault();
-  window.location.href = "#pricing-section-href";
-});
+// document.getElementById('load-in-btn-hero').addEventListener('touchend', function (event) {
+//   event.preventDefault();
+//   window.location.href = "#pricing-section-href";
+// });
 
 // const button = document.querySelector('.white-btn-container');
 
@@ -241,16 +241,16 @@ arrows.forEach(arrow => {
 
 
 
-const button = document.querySelector('.white-button-offer-container');
+// const button = document.querySelector('.white-button-offer-container');
 
-button.addEventListener('touchstart', function () {
-  button.style.backgroundColor = 'hsla(235, 5%, 70%, 1)';
-  button.style.transform = 'scale(0.97) translateZ(0)';
-  button.style.opacity = '0.9';
-});
+// button.addEventListener('touchstart', function () {
+//   button.style.backgroundColor = 'hsla(235, 5%, 70%, 1)';
+//   button.style.transform = 'scale(0.97) translateZ(0)';
+//   button.style.opacity = '0.9';
+// });
 
-button.addEventListener('touchend', function () {
-  button.style.backgroundColor = 'rgb(255, 255, 255)';
-  button.style.transform = 'scale(1)';
-  button.style.opacity = '1';
-});
+// button.addEventListener('touchend', function () {
+//   button.style.backgroundColor = 'rgb(255, 255, 255)';
+//   button.style.transform = 'scale(1)';
+//   button.style.opacity = '1';
+// });

@@ -3025,6 +3025,7 @@ iframe#ytplayer {
   font-size: 20px;
   font-family: var(--ff-medium);
   font-weight: var(--font-medium);
+  margin: 5px 16px;
 }
 
 #pricing-spec-button {
@@ -3032,7 +3033,6 @@ iframe#ytplayer {
   height: fit-content;
   color: var(--white);
   margin-top: 16px;
-  padding: 5px 16px;
 }
 
 #pricing-spec-button:hover {
@@ -3195,7 +3195,7 @@ iframe#ytplayer {
   border-radius: 12px;
   height: fit-content;
   color: var(--white);
-  padding: 5px 16px;
+
 }
 
 #pricing-chat-button:hover {
