@@ -513,3 +513,43 @@ closeButton.addEventListener("click", hideVideoContainer);
 
 // Accordion
 
+document.querySelectorAll('.question').forEach((question, index) => {
+  const questionContainer = question.querySelector('.the-question-itself-container');
+  const answerContainer = question.querySelector('.the-answer-itself-container');
+  const arrow = question.querySelector('.faq-arrow');
+
+  const initialHeight = questionContainer.scrollHeight;
+  question.style.height = `${initialHeight}px`;
+
+  // Make the first question open by default
+  if (index === 0) {
+    question.classList.add('active');  // Open the first question
+    const contentHeight = initialHeight + answerContainer.scrollHeight;
+    question.style.height = `${contentHeight}px`;  // Adjust height for the open state
+    if (arrow) {
+      arrow.style.transform = 'rotate(180deg)';
+      arrow.style.filter = 'brightness(200%)'; // Brighten the arrow
+    }
+  }
+
+  questionContainer.addEventListener('click', () => {
+    const isOpen = question.classList.toggle('active');
+    const contentHeight = initialHeight + answerContainer.scrollHeight;
+
+    if (isOpen) {
+      question.style.height = `${contentHeight}px`;
+      question.style.transition = `height 0.5s cubic-bezier(0.22, 1, 0.36, 1)`;
+      if (arrow) {
+        arrow.style.transform = 'rotate(180deg)';
+        arrow.style.filter = 'brightness(200%)'; // Brightens the arrow
+      }
+    } else {
+      question.style.height = `${initialHeight}px`;
+      question.style.transition = `height 0.5s cubic-bezier(0.22, 1, 0.36, 1)`;
+      if (arrow) {
+        arrow.style.transform = 'rotate(0deg)';
+        arrow.style.filter = 'brightness(100%)'; // Resets to dimmer style
+      }
+    }
+  });
+});

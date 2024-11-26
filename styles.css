@@ -3339,7 +3339,6 @@ iframe#ytplayer {
   margin-bottom: 128px;
   justify-content: center;
   position: relative;
-  background-color: rgb(0, 255, 42);
 }
 
 .accordions-container{
@@ -3349,14 +3348,15 @@ iframe#ytplayer {
 
   flex-direction: row;
   justify-content: space-between;
-  background-color: #009DFF;
 }
 
 .question{
   width: 570px;
   border-radius: 16px;
-  border: 1px solid #54555D;
-  background: #161618;
+  border: 1px solid var(--gray3);
+  background: var(--gray5);
+  overflow: hidden;
+  transition: height 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .the-question-itself-container{
@@ -3365,7 +3365,28 @@ iframe#ytplayer {
   padding: 12px 16px;
   /* background-color: rgba(255, 0, 0, 0.323); */
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  border-radius: 16px;
+  background-color: var(--gray5);
+  transition: all 0.2s ease;
 }
+
+.the-question-itself-container:hover{
+  background-color: var(--gray3);
+}
+
+/* When the question is open, disable hover effect */
+.question.active .the-question-itself-container {
+  background-color: var(--gray4); /* Background color when opened */
+}
+
+.question.active .the-question-itself-container:hover {
+  background-color: var(--gray3); /* Disable hover color change when open */
+}
+
 
 .the-question-itself-container h4{
 font-family: var(--ff-bold);
@@ -3383,6 +3404,12 @@ font-weight: var(--font-bold);
   gap: 8px;
 }
 
+.questin-thingy-container{
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  justify-content: center;
+}
 
 
 .the-answer-itself-container{
@@ -3392,11 +3419,22 @@ font-weight: var(--font-bold);
   color: var(--gray1);
 }
 
+.faq-arrow{
+  transition: all 0.3s ease;
+}
 
 
 
 
 @media (max-width: 1064px) {
+
+
+.questin-thingy-container{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+}
 
   #for-faq-special{
     text-align: center;
