@@ -3415,7 +3415,7 @@ font-weight: var(--font-bold);
 .the-answer-itself-container{
   width: 100%;
   height: fit-content;
-  padding: 4px 16px 12px 16px;
+  padding: 12px 16px 12px 16px;
   color: var(--gray1);
 }
 
