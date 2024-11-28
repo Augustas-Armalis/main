@@ -3477,3 +3477,398 @@ iframe#ytplayer {
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Testimonial section */
+
+.blog-testimonial-container {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 128px;
+  flex-direction: column;
+  position: relative;
+  /* Added this */
+}
+
+.blog-testimonial-container:before {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 100%;
+  top: 0;
+  left: -15px;
+  background: linear-gradient(to right, rgb(0, 0, 0), rgba(0, 0, 0, 0));
+  pointer-events: none;
+  z-index: 30;
+}
+
+.blog-testimonial-container:after {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 100%;
+  top: 0;
+  right: -15px;
+  background: linear-gradient(to left, rgb(0, 0, 0), rgba(0, 0, 0, 0));
+  pointer-events: none;
+  z-index: 30;
+}
+
+@media (max-width: 1350px) {
+
+  .blog-testimonial-container:before,
+  .blog-testimonial-container:after {
+    display: none;
+  }
+}
+
+.blog-carousel-container {
+  position: relative;
+  width: 1000px;
+  /* Fixed width for the carousel */
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  /* Horizontally center the carousel */
+  /* padding: 0 16px; */
+  /* Add horizontal padding for spacing */
+}
+
+.blog-carousel {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 200%;
+  gap: 16px;
+  /* Add a 16px gap between slides */
+}
+
+.blog-slide {
+  flex: 0 0 calc(33% - 8px);
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--gray4);
+  font-size: 24px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  border-radius: 16px;
+  border: 1px solid var(--gray3);
+  overflow: hidden;
+}
+
+.blog-slide:not(.active) {
+  opacity: 0.6;
+  transform: scale(0.97);
+}
+
+.blog-slide:not(.active) .blog-slide-activator-container {
+  display: none;
+}
+
+.blog-arrow {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: var(--white);
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+/* Hover Effect */
+.blog-arrow:hover {
+  background-color: var(--white);
+}
+
+.blog-arrow:active {
+  background-color: var(--white);
+  /* Slight gray background when pressed */
+  transform: scale(0.95);
+  /* Slightly shrink the button when pressed */
+}
+
+.blog-arrow.left,
+.blog-arrow.right {
+  border: solid 1px var(--white);
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blog-arrow-left-arrow-svg,
+.blog-arrow-right-arrow-svg {
+  width: 7px;
+  height: auto;
+  transition: all 0.3s ease;
+}
+
+/* Apply filter to the arrow images when hovered */
+.blog-arrow:hover .blog-arrow-left-arrow-svg,
+.blog-arrow:hover .blog-arrow-right-arrow-svg {
+  filter: brightness(0);
+  /* Inverts the color to black */
+}
+
+.blog-dots {
+  bottom: 10px;
+  display: flex;
+  gap: 5px;
+}
+
+.blog-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--gray3);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.blog-dot:hover {
+  background-color: var(--gray25);
+}
+
+.blog-dot.active {
+  background-color: var(--white);
+}
+
+.blog-bottom-navigation-container-testimonials {
+  width: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: fit-content;
+  margin-top: 16px;
+}
+
+.blog-arrows-testimonials-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.blog-slide-activator-container {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  z-index: 20;
+  cursor: pointer;
+}
+
+.blog-background-video-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.blog-testimonial-video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Both SVG images are absolutely positioned and stack on top of each other */
+.blog-play-svg {
+  position: absolute;
+  width: 50px;
+  /* Same width as the container */
+  height: 50px;
+  /* Same height as the container */
+  transition: opacity 0.3s ease;
+  /* Smooth fade-in and fade-out ```css
+  opacity: 0;
+  /* Start with the second SVG hidden */
+}
+
+/* Initially show the first SVG */
+#blog-svg1 {
+  opacity: 1;
+}
+
+/* On hover/touch, swap visibility */
+.blog-play-button-container:hover #blog-svg1,
+.blog-play-button-container:focus-within #blog-svg1 {
+  opacity: 0;
+}
+
+.blog-play-button-container:hover #blog-svg2,
+.blog-play-button-container:focus-within #blog-svg2 {
+  opacity: 1;
+}
+
+/* Touch events should behave similarly */
+.blog-play-button-container:active #blog-svg1,
+.blog-play-button-container:active #blog-svg2 {
+  opacity: 1;
+  /* Ensure both SVGs are properly handled on touch */
+}
+
+.blog-on-top-of-video-slider {
+  width: 100%;
+  height: 33%;
+  position: absolute;
+  z-index: 2;
+  border-radius: 16px 16px 0px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  bottom: 0;
+  border: 1px solid rgba(37, 37, 40, 0.10);
+  background: rgba(0, 0, 0, 0.30);
+  /* Initial background */
+  backdrop-filter: blur(10px);
+  padding: 0px 16px 0px 16px;
+  transition: background 0.3s ease, height 0.3s ease;
+  /* Adding transition */
+}
+
+.blog-on-top-of-video-slider.hovered {
+  background: var(--gray5);
+  /* Change to the desired background color */
+  height: 36%;
+  /* Increase height */
+}
+
+.blog-name-acc-container {
+  height: fit-content;
+}
+
+.blog-name-acc-container h5 {
+  color: var(--gray1);
+}
+
+.blog-play-button-container {
+  width: 50px;
+  height: 50px;
+}
+
+.blog-video-container {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 80000;
+  display: none;
+  background: hsla(0, 0%, 0%, 0.7);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(3px);
+}
+
+
+
+.blog-close-button {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  right: 32px;
+  top: 32px;
+  border-radius: 12px;
+  cursor: pointer;
+  z-index: 81000;
+  background: hsla(0, 0%, 0%, 0.7);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(3px);
+  border: 1px solid var(--gray3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blog-close-button img {
+  width: 25px;
+}
+
+.blog-close-button:hover {
+  background: hsla(235, 5%, 6%, 0.7);
+}
+
+/* For screens below 1064px, keep the original behavior */
+@media (max-width: 1064px) {
+  .blog-slide-activator-container {
+    width: 100%;
+  }
+
+  .blog-carousel-container {
+    position: relative;
+    width: fit-content;
+  }
+
+  .blog-bottom-navigation-container-testimonials {
+    width: 492px;
+  }
+
+  .blog-carousel {
+    width: 492px;
+    /* Keep single slide visible */
+  }
+
+  .blog-slide {
+    flex: 0 0 100%;
+    /* Each slide takes 100% width */
+  }
+}
+
+@media (max-width: 555px) {
+  .blog-carousel-container {
+    position: relative;
+    width: 100vw;
+    padding: 0 16px 0 16px;
+  }
+
+  .blog-bottom-navigation-container-testimonials {
+    position: relative;
+    width: 100vw;
+    padding: 0 16px 0 16px;
+  }
+
+  .blog-slide {
+    height: 230px;
+  }
+
+  .blog-close-button {
+    right: 16px;
+    top: 16px;
+  }
+}

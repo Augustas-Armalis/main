@@ -599,3 +599,167 @@ document.querySelectorAll('.question').forEach((question, index) => {
 
 
 
+// Testimonials section
+
+document.addEventListener('DOMContentLoaded', () => {
+  updateBlogCarousel(); // Ensure the carousel is set up correctly on page load
+});
+
+// Testimonials section
+let currentBlogIndex = 0;
+const blogSlides = document.querySelectorAll('.blog-slide');
+const blogDots = document.querySelectorAll('.blog-dot');
+const blogCarousel = document.querySelector('.blog-carousel');
+
+// Adjust for two slides active above 1064px
+function isLargeBlogScreen() {
+  return window.innerWidth > 1064;
+}
+
+function moveBlogSlide(direction) {
+  if (isLargeBlogScreen()) {
+    currentBlogIndex += direction;
+    if (currentBlogIndex < 0) currentBlogIndex = blogSlides.length - 2; // 2 because we are showing 2 slides
+    if (currentBlogIndex >= blogSlides.length - 1) currentBlogIndex = 0; // Wrap to the first slide when you reach the end
+  } else {
+    currentBlogIndex += direction;
+    if (currentBlogIndex < 0) currentBlogIndex = blogSlides.length - 1;
+    if (currentBlogIndex >= blogSlides.length) currentBlogIndex = 0;
+  }
+
+  updateBlogCarousel();
+}
+
+function goToBlogSlide(index) {
+  if (isLargeBlogScreen()) {
+    currentBlogIndex = index;
+  } else {
+    currentBlogIndex = index % blogSlides.length;
+  }
+  updateBlogCarousel();
+}
+
+function updateBlogCarousel() {
+  // Get the carousel's width in pixels
+  const blogCarouselWidth = blogCarousel.offsetWidth;
+
+  // Dynamically determine the gap size
+  const gap = isLargeBlogScreen() ? 8 : 16;
+
+  // Calculate the new transform value dynamically
+  const slideWidth = isLargeBlogScreen() ? blogCarouselWidth / 2 : blogCarouselWidth; // 50% or 100% of carousel width
+
+  // Calculate the transform value in pixels
+  const newTransform = -(currentBlogIndex * (slideWidth + gap));
+
+  // Apply the transform
+  blogCarousel.style.transform = `translateX(${newTransform}px)`;
+
+  // Update slide classes
+  blogSlides.forEach((slide, index) => {
+    slide.classList.remove('active');
+    if (index === currentBlogIndex || (isLargeBlogScreen() && (index === currentBlogIndex + 1))) {
+      slide.classList.add('active');
+    }
+  });
+
+  // Update dot classes
+  blogDots.forEach((dot, index) => {
+    dot.classList.remove('active');
+    if (index === currentBlogIndex || (isLargeBlogScreen() && (index === currentBlogIndex + 1))) {
+      dot.classList.add('active');
+    }
+  });
+}
+
+// Make sure the carousel updates on window resize
+window.addEventListener('resize', () => {
+  updateBlogCarousel();
+});
+
+// Testimonials
+
+// Select all instances of the elements
+const blogPlayButtons = document.querySelectorAll(".blog-slide-activator-container");
+const blogSvg1Elements = document.querySelectorAll("#blog-svg1");
+const blogSvg2Elements = document.querySelectorAll("#blog-svg2");
+const blogVideoSliders = document.querySelectorAll(".blog-on-top-of-video-slider");
+const blogVideos = document.querySelectorAll(".blog-testimonial-video");
+
+// Function to change the SVG and slow down the video
+const changeBlogSVG = (index) => {
+  blogSvg1Elements[index].style.opacity = "0";  // Fade out the first SVG
+  blogSvg2Elements[index].style.opacity = "1";  // Fade in the second SVG
+  blogVideoSliders[index].classList.add("hovered"); // Add class for background change and height increase
+
+  // Slow down the video playback (transition it to a stop)
+  blogVideos[index].style.transition = "playback-rate 0.3s ease"; // Transition for playbackRate
+  blogVideos[index].playbackRate = 0;  // Slow down the video to a complete stop
+};
+
+// Function to restore to the first SVG and reset the video speed
+const restoreBlogSVG = (index) => {
+  blogSvg1Elements[index].style.opacity = "1";  // Fade in the first SVG
+  blogSvg2Elements[index].style.opacity = "0";  // Fade out the second SVG
+  blogVideoSliders[index].classList.remove("hovered"); // Remove class for background and height reset
+
+  // Gradually reset the video playback to normal speed
+  blogVideos[index].style.transition = "playback-rate 0 .3s ease"; // Transition for playbackRate
+  blogVideos[index].playbackRate = 1;  // Reset the video speed to normal
+};
+
+// Add event listeners for hover and touch events for each element
+blogPlayButtons.forEach((playButton, index) => {
+  playButton.addEventListener("mouseover", () => changeBlogSVG(index));
+  playButton.addEventListener("mouseout", () => restoreBlogSVG(index));
+
+  // For touch interactions (touchstart and touchend) on each play button
+  playButton.addEventListener("touchstart", (event) => {
+    changeBlogSVG(index);
+    // Prevent only the default action of touchstart if necessary, to avoid conflicting behavior.
+    event.stopPropagation(); // Stop event from bubbling, but don't prevent default
+  });
+
+  playButton.addEventListener("touchend", (event) => {
+    restoreBlogSVG(index);
+    // Prevent only the default action of touchend if necessary, to avoid conflicting behavior.
+    event.stopPropagation(); // Stop event from bubbling, but don't prevent default
+  });
+
+  // Optional: Handle touchcancel as a fallback (e.g., when touch is interrupted)
+  playButton.addEventListener("touchcancel", () => restoreBlogSVG(index));
+});
+
+// Get all the arrow buttons
+const blogArrows = document.querySelectorAll('.blog-arrow');
+
+// Add touchstart and touchend event listeners for each arrow button
+blogArrows.forEach(arrow => {
+  const arrowImage = arrow.querySelector('img'); // Get the SVG image inside the button
+
+  // Handle touchstart
+  arrow.addEventListener('touchstart', function () {
+    // Apply styles to the button when touched
+    arrow.style.backgroundColor = 'rgb(255, 255, 255)'; // Slight gray background
+    arrow.style.transform = 'scale(0.95) translateZ(0)'; // Slight shrink effect
+    arrow.style.opacity = '0.9'; // Dim the opacity slightly
+
+    // Apply styles to the SVG (image inside the button)
+    if (arrowImage) {
+      arrowImage.style.filter = 'brightness(0)'; // Change SVG color to black
+    }
+  });
+
+  // Handle touchend
+  arrow.addEventListener('touchend', function () {
+    // Reset button styles back to normal
+    arrow.style.backgroundColor = 'rgba(0, 0, 0, 0.5)'; // Original background color
+    arrow.style.transform = 'scale(1)'; // Reset the scale
+    arrow.style.opacity = '1'; // Reset the opacity
+
+    // Reset the SVG styles to normal
+    if (arrowImage) {
+      arrowImage.style.filter = 'none'; // Remove the filter, resetting the SVG color
+    }
+  });
+});
