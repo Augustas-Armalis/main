@@ -45,13 +45,13 @@ function initializeBlobs(rectangle) {
   if (window.innerWidth >= 768) {
     rectangle.addEventListener('mouseenter', () => moveToCursor(blobs, rectangle));
     rectangle.addEventListener('mouseleave', () => continueAnimation(blobs, rectangle));
-  } 
-
-    rectangle.addEventListener('touchend', () => {
-      rectangle.classList.remove('active');
-      continueAnimation(blobs, rectangle);
-    });
   }
+
+  rectangle.addEventListener('touchend', () => {
+    rectangle.classList.remove('active');
+    continueAnimation(blobs, rectangle);
+  });
+}
 
 
 function moveToCursor(blobs, rectangle) {
@@ -249,3 +249,14 @@ arrows.forEach(arrow => {
 //   button.style.transform = 'scale(1)';
 //   button.style.opacity = '1';
 // });
+
+
+
+
+
+
+
+
+
+
+
