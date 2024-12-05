@@ -1367,7 +1367,7 @@ nav {
 
 #framework-box {
   background-color: black;
-  border-radius: 16px;
+  border-radius: 17px;
   border: 1px solid #252528;
   height: 400px;
   padding: 24px 30px 30px 30px;
@@ -2083,7 +2083,7 @@ nav {
 
 @media (max-width: 1064px) {
   #framework-box {
-    border-radius: 16px;
+    border-radius: 17px;
     height: 380px;
     max-width: 400px;
     flex: 1;
@@ -2109,7 +2109,7 @@ nav {
 
 @media (max-width: 830px) {
   #framework-box {
-    border-radius: 16px;
+    border-radius: 17px;
     height: 370px;
     width: 420px;
     flex: none;
@@ -2159,7 +2159,7 @@ nav {
   }
 
   #framework-box {
-    border-radius: 12px;
+    border-radius: 17px;
     height: 350px;
     width: 100%;
     padding: 14px 20px 20px;
@@ -2385,7 +2385,7 @@ nav {
   background-color: var(--gray4);
   font-size: 24px;
   transition: opacity 0.3s ease, transform 0.3s ease;
-  border-radius: 16px;
+  border-radius: 17px;
   border: 1px solid var(--gray3);
   overflow: hidden;
 }
@@ -2759,7 +2759,7 @@ iframe#ytplayer {
 .second-pricing-container {
   width: 328px;
   height: fit-content;
-  border-radius: 24px;
+  border-radius: 27px;
   border: 1px solid var(--gray3);
   background: var(--black);
   padding: 8px;
@@ -2998,7 +2998,7 @@ iframe#ytplayer {
 .bottom-dev-container {
   width: 100%;
   height: fit-content;
-  border-radius: 12px;
+  border-radius: 17px;
   border: 1px dashed #62606C;
   padding: 16px;
 }
@@ -3048,7 +3048,7 @@ iframe#ytplayer {
 
 
 #pricing-spec-button-big {
-  border-radius: 12px;
+  border-radius: 17px;
   height: fit-content;
   color: var(--white);
   cursor: default;
@@ -3353,7 +3353,7 @@ iframe#ytplayer {
 
 .question {
   width: 570px;
-  border-radius: 16px;
+  border-radius: 17px;
   border: 1px solid var(--gray3);
   background: var(--gray5);
   overflow: hidden;
@@ -3583,7 +3583,7 @@ iframe#ytplayer {
   background-color: var(--gray4);
   font-size: 24px;
   transition: opacity 0.3s ease, transform 0.3s ease;
-  border-radius: 16px;
+  border-radius: 17px;
   border: 1px solid var(--gray3);
   overflow: hidden;
 }
@@ -3858,6 +3858,7 @@ iframe#ytplayer {
     flex: 0 0 100%;
     /* Each slide takes 100% width */
   }
+
   .blog-carousel-container {
     position: relative;
     width: 100vw;
@@ -3891,4 +3892,29 @@ iframe#ytplayer {
   }
 
 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.centerer-tester {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
 }

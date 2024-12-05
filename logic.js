@@ -282,19 +282,15 @@ animateFloating(document.querySelector('.change-it-container-management'));
 
 
 
-// Testimonials section
-
 document.addEventListener('DOMContentLoaded', () => {
   updateCarousel(); // Ensure the carousel is set up correctly on page load
 });
 
-// Testimonials section
 let currentIndex = 0;
 const slides = document.querySelectorAll('.slide');
 const dots = document.querySelectorAll('.dot');
 const carousel = document.querySelector('.carousel');
 
-// Adjust for two slides active above 1064px
 function isLargeScreen() {
   return window.innerWidth > 1064;
 }
@@ -302,63 +298,46 @@ function isLargeScreen() {
 function moveSlide(direction) {
   if (isLargeScreen()) {
     currentIndex += direction;
-    if (currentIndex < 0) currentIndex = slides.length - 2; // 2 because we are showing 2 slides
-    if (currentIndex >= slides.length - 1) currentIndex = 0; // Wrap to the first slide when you reach the end
+    if (currentIndex < 0) currentIndex = slides.length - 2; // Show 2 slides on large screens
+    if (currentIndex >= slides.length - 1) currentIndex = 0;
   } else {
     currentIndex += direction;
     if (currentIndex < 0) currentIndex = slides.length - 1;
     if (currentIndex >= slides.length) currentIndex = 0;
   }
-
   updateCarousel();
 }
 
 function goToSlide(index) {
-  if (isLargeScreen()) {
-    currentIndex = index;
-  } else {
-    currentIndex = index % slides.length;
-  }
+  currentIndex = index % slides.length;
   updateCarousel();
 }
 
 function updateCarousel() {
-  // Get the carousel's width in pixels
   const carouselWidth = carousel.offsetWidth;
-
-  // Dynamically determine the gap size
   const gap = isLargeScreen() ? 8 : 16;
-
-  // Calculate the new transform value dynamically
-  const slideWidth = isLargeScreen() ? carouselWidth / 2 : carouselWidth; // 50% or 100% of carousel width
-
-  // Calculate the transform value in pixels
+  const slideWidth = isLargeScreen() ? carouselWidth / 2 : carouselWidth;
   const newTransform = -(currentIndex * (slideWidth + gap));
 
-  // Apply the transform
   carousel.style.transform = `translateX(${newTransform}px)`;
 
-  // Update slide classes
   slides.forEach((slide, index) => {
     slide.classList.remove('active');
-    if (index === currentIndex || (isLargeScreen() && (index === currentIndex + 1))) {
+    if (index === currentIndex || (isLargeScreen() && index === currentIndex + 1)) {
       slide.classList.add('active');
     }
   });
 
-  // Update dot classes
   dots.forEach((dot, index) => {
     dot.classList.remove('active');
-    if (index === currentIndex || (isLargeScreen() && (index === currentIndex + 1))) {
+    if (index === currentIndex || (isLargeScreen() && index === currentIndex + 1)) {
       dot.classList.add('active');
     }
   });
 }
 
-// Make sure the carousel updates on window resize
-window.addEventListener('resize', () => {
-  updateCarousel();
-});
+window.addEventListener('resize', updateCarousel);
+
 
 
 
@@ -635,7 +614,14 @@ function updateBlogCarousel() {
   const blogCarouselWidth = blogCarousel.offsetWidth;
 
   // Dynamically determine the gap size
-  const gap = 16;
+  let gap; // Use 'let' so the value can change dynamically
+  if (window.innerWidth > 1064) {
+    gap = 4; // Gap for large screens (adjust as needed)
+  } else if (window.innerWidth > 700) {
+    gap = 8; // Gap for medium screens
+  } else {
+    gap = 16; // Gap for small screens
+  }
 
   // Get the number of active slides
   const activeSlideCount = getActiveSlideCount();
