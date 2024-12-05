@@ -596,11 +596,6 @@ document.querySelectorAll('.question').forEach((question, index) => {
 
 
 
-
-
-
-// Testimonials section
-
 document.addEventListener('DOMContentLoaded', () => {
   updateBlogCarousel(); // Ensure the carousel is set up correctly on page load
 });
@@ -611,31 +606,27 @@ const blogSlides = document.querySelectorAll('.blog-slide');
 const blogDots = document.querySelectorAll('.blog-dot');
 const blogCarousel = document.querySelector('.blog-carousel');
 
-// Adjust for two slides active above 1064px
-function isLargeBlogScreen() {
-  return window.innerWidth > 1064;
+// Determine active slide count based on screen width
+function getActiveSlideCount() {
+  if (window.innerWidth > 1064) return 3; // 3 slides for large screens
+  if (window.innerWidth > 700) return 2;  // 2 slides for medium screens
+  return 1; // 1 slide for small screens
 }
 
 function moveBlogSlide(direction) {
-  if (isLargeBlogScreen()) {
-    currentBlogIndex += direction;
-    if (currentBlogIndex < 0) currentBlogIndex = blogSlides.length - 2; // 2 because we are showing 2 slides
-    if (currentBlogIndex >= blogSlides.length - 1) currentBlogIndex = 0; // Wrap to the first slide when you reach the end
-  } else {
-    currentBlogIndex += direction;
-    if (currentBlogIndex < 0) currentBlogIndex = blogSlides.length - 1;
-    if (currentBlogIndex >= blogSlides.length) currentBlogIndex = 0;
-  }
+  const activeSlideCount = getActiveSlideCount();
+  currentBlogIndex += direction;
+
+  // Wrap around logic for different active slide counts
+  if (currentBlogIndex < 0) currentBlogIndex = blogSlides.length - activeSlideCount;
+  if (currentBlogIndex >= blogSlides.length - (activeSlideCount - 1)) currentBlogIndex = 0;
 
   updateBlogCarousel();
 }
 
 function goToBlogSlide(index) {
-  if (isLargeBlogScreen()) {
-    currentBlogIndex = index;
-  } else {
-    currentBlogIndex = index % blogSlides.length;
-  }
+  const activeSlideCount = getActiveSlideCount();
+  currentBlogIndex = index % (blogSlides.length - (activeSlideCount - 1));
   updateBlogCarousel();
 }
 
@@ -644,10 +635,13 @@ function updateBlogCarousel() {
   const blogCarouselWidth = blogCarousel.offsetWidth;
 
   // Dynamically determine the gap size
-  const gap = isLargeBlogScreen() ? 8 : 16;
+  const gap = 16;
 
-  // Calculate the new transform value dynamically
-  const slideWidth = isLargeBlogScreen() ? blogCarouselWidth / 2 : blogCarouselWidth; // 50% or 100% of carousel width
+  // Get the number of active slides
+  const activeSlideCount = getActiveSlideCount();
+
+  // Calculate the slide width based on active slide count
+  const slideWidth = blogCarouselWidth / activeSlideCount;
 
   // Calculate the transform value in pixels
   const newTransform = -(currentBlogIndex * (slideWidth + gap));
@@ -658,7 +652,10 @@ function updateBlogCarousel() {
   // Update slide classes
   blogSlides.forEach((slide, index) => {
     slide.classList.remove('active');
-    if (index === currentBlogIndex || (isLargeBlogScreen() && (index === currentBlogIndex + 1))) {
+    if (
+      index >= currentBlogIndex &&
+      index < currentBlogIndex + activeSlideCount
+    ) {
       slide.classList.add('active');
     }
   });
@@ -666,7 +663,10 @@ function updateBlogCarousel() {
   // Update dot classes
   blogDots.forEach((dot, index) => {
     dot.classList.remove('active');
-    if (index === currentBlogIndex || (isLargeBlogScreen() && (index === currentBlogIndex + 1))) {
+    if (
+      index >= currentBlogIndex &&
+      index < currentBlogIndex + activeSlideCount
+    ) {
       dot.classList.add('active');
     }
   });
@@ -676,6 +676,11 @@ function updateBlogCarousel() {
 window.addEventListener('resize', () => {
   updateBlogCarousel();
 });
+
+
+
+
+
 
 // Testimonials
 

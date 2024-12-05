@@ -3826,6 +3826,9 @@ iframe#ytplayer {
 
 /* For screens below 1064px, keep the original behavior */
 @media (max-width: 1064px) {
+
+
+
   .blog-slide-activator-container {
     width: 100%;
   }
@@ -3836,39 +3839,56 @@ iframe#ytplayer {
   }
 
   .blog-bottom-navigation-container-testimonials {
-    width: 492px;
+    width: 662px;
   }
 
   .blog-carousel {
-    width: 492px;
-    /* Keep single slide visible */
+    width: 662px;
+
   }
 
   .blog-slide {
-    flex: 0 0 100%;
+    flex: 0 0 calc(50% - 8px);
     /* Each slide takes 100% width */
   }
 }
 
-@media (max-width: 555px) {
+@media (max-width: 700px) {
+  .blog-slide {
+    flex: 0 0 100%;
+    /* Each slide takes 100% width */
+  }
   .blog-carousel-container {
     position: relative;
     width: 100vw;
-    padding: 0 16px 0 16px;
+    padding: 0 24px 0 24px;
   }
 
   .blog-bottom-navigation-container-testimonials {
     position: relative;
     width: 100vw;
-    padding: 0 16px 0 16px;
+    padding: 0 24px 0 24px;
   }
 
   .blog-slide {
-    height: 230px;
+    height: 380px;
   }
 
   .blog-close-button {
     right: 16px;
     top: 16px;
   }
+}
+
+@media (max-width: 555px) {
+
+  .blog-carousel-container {
+    padding: 0 16px 0 16px;
+  }
+
+  .blog-bottom-navigation-container-testimonials {
+    padding: 0 16px 0 16px;
+  }
+
+
 }
