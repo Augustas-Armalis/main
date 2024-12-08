@@ -2561,7 +2561,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  bottom: 0;
+  bottom: -2px;
   border: 1px solid rgba(37, 37, 40, 0.10);
   background: rgba(0, 0, 0, 0.30);
   /* Initial background */
@@ -3581,10 +3581,11 @@ iframe#ytplayer {
   background-color: var(--gray4);
   font-size: 24px;
   transition: opacity 0.3s ease, transform 0.3s ease;
-  border-radius: 17px;
+  border-radius: 16.5px;
   border: 1px solid var(--gray3);
   position: relative;
   overflow: hidden;
+  background-clip: padding-box;
 }
 
 .blog-slide:not(.active) {
@@ -3833,6 +3834,7 @@ iframe#ytplayer {
   z-index: 1;
   cursor: pointer;
   transition: all 0.3s ease;
+  filter: brightness(100%);
 }
 
 .blog-slide:not(.active):hover .image-blog-container {
@@ -3894,6 +3896,7 @@ iframe#ytplayer {
   margin: 24px;
   pointer-events: none;
   gap: 12px;
+
 }
 
 .cta-arrow-blog {
