@@ -125,7 +125,6 @@ window.addEventListener('scroll', () => {
 
 
 
-
 // Select all links in the links-container
 const links = document.querySelectorAll('.links-container a');
 
@@ -146,16 +145,17 @@ const observer = new IntersectionObserver(
       const link = sectionLinkMap[entry.target.id];
       if (link) {
         if (entry.isIntersecting) {
-          // Add active class immediately when the section is in view
-          link.classList.add('active');
+          link.classList.add('active'); // Add active class when section is in view
         } else {
-          // Remove active class immediately when the section is out of view
-          link.classList.remove('active');
+          link.classList.remove('active'); // Remove active class when section is out of view
         }
       }
     });
   },
-  { threshold: 0.1, rootMargin: '0px' } // Adjusted to trigger as soon as 10% of section is in view
+  {
+    threshold: [0], // Trigger when any part of the section crosses into the viewport
+    rootMargin: '-5% 0px -50% 0px' // Adjust the root margin for top and bottom thresholds
+  }
 );
 
 // Observe sections corresponding to the links
