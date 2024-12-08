@@ -63,7 +63,7 @@ function executeAbove1064px() {
 
     tick();
 
-    const targetContainers = document.querySelectorAll('.under-rectangle-layer, .arrows-testimonials-container, .dots, nav, .slide, .offer-main-button, #button-nav-container-pricing, .call-main-button, #button-nav-container-chat, .image-blog-container, .blog-dots, .blog-arrows-testimonials-container, input');
+    const targetContainers = document.querySelectorAll('.under-rectangle-layer, .arrows-testimonials-container, .dots, nav, .slide, .offer-main-button, #button-nav-container-pricing, .call-main-button, #button-nav-container-chat, .image-blog-container, .blog-dots, .blog-arrows-testimonials-container, input, .button-container-news');
 
     // Add event listeners to handle mouse enter and leave for fade-in/out
     targetContainers.forEach(container => {
@@ -506,7 +506,7 @@ document.querySelectorAll('.question').forEach((question, index) => {
     const contentHeight = initialHeight + answerContainer.scrollHeight;
     question.style.height = `${contentHeight}px`;  // Adjust height for the open state
     if (arrow) {
-      arrow.style.transform = 'rotate(180deg)';
+      arrow.style.transform = 'rotate(-180deg)';
       arrow.style.filter = 'brightness(200%)'; // Brighten the arrow
     }
   }
@@ -519,7 +519,7 @@ document.querySelectorAll('.question').forEach((question, index) => {
       question.style.height = `${contentHeight}px`;
       question.style.transition = `height 0.5s cubic-bezier(0.22, 1, 0.36, 1)`;
       if (arrow) {
-        arrow.style.transform = 'rotate(180deg)';
+        arrow.style.transform = 'rotate(-180deg)';
         arrow.style.filter = 'brightness(200%)'; // Brightens the arrow
       }
     } else {
