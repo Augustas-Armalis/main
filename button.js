@@ -236,19 +236,23 @@ arrows.forEach(arrow => {
 
 
 
-// const button = document.querySelector('.white-button-offer-container');
+const buttonsas = document.querySelectorAll('.white-button-offer-container, .call-button-offer-container, .white-button-news-container');
 
-// button.addEventListener('touchstart', function () {
-//   button.style.backgroundColor = 'hsla(235, 5%, 70%, 1)';
-//   button.style.transform = 'scale(0.97) translateZ(0)';
-//   button.style.opacity = '0.9';
-// });
+buttonsas.forEach(button => {
+  button.addEventListener('touchstart', function () {
+    button.style.backgroundColor = 'hsla(235, 5%, 70%, 1)';
+    button.style.transform = 'scale(0.99) translateZ(0)';
+    button.style.opacity = '0.9';
+  });
 
-// button.addEventListener('touchend', function () {
-//   button.style.backgroundColor = 'rgb(255, 255, 255)';
-//   button.style.transform = 'scale(1)';
-//   button.style.opacity = '1';
-// });
+  button.addEventListener('touchend', function () {
+    button.style.backgroundColor = 'rgb(255, 255, 255)';
+    button.style.transform = 'scale(1)';
+    button.style.opacity = '1';
+  });
+});
+
+
 
 
 
