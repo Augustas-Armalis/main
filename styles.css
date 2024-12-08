@@ -3996,6 +3996,90 @@ iframe#ytplayer {
 
 
 
+/* newsletter login */
+
+.newsletter-sub-container {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 128px;
+  flex-direction: column;
+  position: relative;
+}
+
+form {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+}
+
+input {
+  width: 430px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(181, 184, 208, 0.15);
+  background: #161618;
+  color: white;
+  outline: none;
+  transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+  font-size: 16px;
+}
+
+/* Styling for invalid fields */
+
+
+/* Styling for valid fields */
+input:valid {
+  border: 1px solid var(--gray2);
+}
+
+
+
+@media (max-width: 462px) {
+  input {
+    width: calc(100vw - 32px);
+  }
+
+  form {
+    width: 100vw;
+  }
+
+  .newsletter-sub-container {
+    padding: 0px 16px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+#newsletter-section-href {
+  margin-bottom: 42px;
+}
+
+@media (max-width: 555) {
+  #newsletter-section-href {
+    margin-bottom: 36px;
+  }
+}
+
+
+
+
+
+
+
 
 .centerer-tester {
   width: 100%;
