@@ -196,11 +196,19 @@ okChangeTimeline
 
 
 
-  gsap.to(".pumping-circle", {
-    scale: 3.2, // Expands to match 16px (16px / 6px)
-    opacity: 0, // Fades out
-    duration: 1.5, // Animation duration
-    repeat: -1, // Infinite loop
-    ease: "power1.out",
-    transformOrigin: "center", // Keeps the scaling centered
-  });
+gsap.to(".pumping-circle", {
+  scale: 3.2, // Expands to match 16px (16px / 6px)
+  opacity: 0, // Fades out
+  duration: 1.5, // Animation duration
+  repeat: -1, // Infinite loop
+  ease: "power1.out",
+  transformOrigin: "center", // Keeps the scaling centered
+});
+
+
+
+
+
+
+
+

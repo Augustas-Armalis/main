@@ -260,3 +260,45 @@ arrows.forEach(arrow => {
 
 
 
+// blog for finger
+
+// Get the elements
+// Get the elements
+// Select all the elements with the specified classes
+const imageBlogContainers = document.querySelectorAll('.image-blog-container');
+
+// Loop through each .image-blog-container element
+imageBlogContainers.forEach(function (imageBlogContainer) {
+  // Get the corresponding .text-bottom-blog-container and .cta-arrow-blog
+  const textBottomBlogContainer = imageBlogContainer.nextElementSibling; // Assuming it's the next sibling
+  const ctaArrowBlog = textBottomBlogContainer ? textBottomBlogContainer.querySelector('.cta-arrow-blog') : null;
+  const textBlog = textBottomBlogContainer ? textBottomBlogContainer.querySelector('.text-blog') : null;
+
+  // Add touchstart event listener for each .image-blog-container
+  imageBlogContainer.addEventListener('touchstart', function () {
+    // Change brightness for .image-blog-container and .text-blog
+    imageBlogContainer.style.filter = 'brightness(60%)';
+    if (textBlog) {
+      textBlog.style.filter = 'brightness(60%)';
+    }
+
+    // Change gap for .cta-arrow-blog
+    if (ctaArrowBlog) {
+      ctaArrowBlog.style.gap = '12px';  // Adjust gap as needed
+    }
+  });
+
+  // Add touchend event listener for each .image-blog-container
+  imageBlogContainer.addEventListener('touchend', function () {
+    // Reset brightness for .image-blog-container and .text-blog
+    imageBlogContainer.style.filter = 'brightness(100%)';
+    if (textBlog) {
+      textBlog.style.filter = 'brightness(100%)';
+    }
+
+    // Reset gap for .cta-arrow-blog
+    if (ctaArrowBlog) {
+      ctaArrowBlog.style.gap = '';  // Reset to the original gap value
+    }
+  });
+});
