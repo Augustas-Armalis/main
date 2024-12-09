@@ -4194,6 +4194,7 @@ input:valid {
   z-index: 1;
   position: absolute;
   top: 0;
+  display: none;
 }
 
 .god-ray-bck {
