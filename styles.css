@@ -277,7 +277,7 @@ nav {
   top: 24px;
   left: 50%;
   transform: translateX(-50%) translateY(-100px);
-  border-radius: 999px;
+  border-radius: 9999px;
   border: 1px solid var(--gray3);
   background: rgba(0, 0, 0, 0.70);
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.35);
@@ -571,7 +571,8 @@ nav {
   height: fit-content;
   width: 100%;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
+  padding-top: 192px;
   justify-content: center;
   z-index: 40;
   position: relative;
@@ -594,12 +595,10 @@ nav {
 .title-container h1 {
   text-align: center;
   display: inline-block;
-}
-
-.title-container h1 span {
-  filter: blur(10px);
-  transform: translateY(20px);
-  transition: opacity 0.3s ease-out, filter 0.3s ease-out, transform 0.3s ease-
+  background: linear-gradient(180deg, #FFF 74.67%, #AFAFB6 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .alt-container h4 {
@@ -4170,3 +4169,87 @@ input:valid {
   flex-direction: column;
   gap: 10px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Background top godrays */
+
+.bck-container {
+  width: 100%;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+}
+
+.god-ray-bck {
+  width: 100%;
+  height: 200vh;
+  border: 0;
+  opacity: 0.7;
+  z-index: 1;
+}
+
+.god-ray-container {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.grain-overlay {
+  background: url(images/graineris-herois.png);
+    mix-blend-mode: overlay;
+  background-size: fill;
+  background-position: center;
+  width: 100%; /* 100% of viewport width */
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  /* opacity: 0.4; */
+  filter:brightness(110%);
+  
+  /* Maintain aspect ratio */
+  height: 800px;
+
+}
+
+
+
+.black-fade-thing {
+  height: 30vh;
+  width: 100vw;
+  position: absolute;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000 100%);
+  z-index: 3;
+}
+
+@media (max-width: 1064px) {
+  .god-ray-bck {
+    height: 140vh;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 555px) {
+  .god-ray-bck {
+    height: 100vh;
+    opacity: 1;
+  }
+}
+
+
