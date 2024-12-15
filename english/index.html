@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download Page</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #333;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      color: #000000;
+      background-color: #ffffff;
+      border: 1px solid gray;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>Download a Virus</h1>
+  <button id="downloadButton">Download</button>
+
+  <script>
+    document.getElementById('downloadButton').addEventListener('click', function() {
+      // Specify the file path (must be in the project folder)
+      const filePath = 'files/No Social Media Experiment.pptx'; // Replace with your file name
+      
+      // Create an anchor element to trigger download
+      const link = document.createElement('a');
+      link.href = filePath;
+      link.download = filePath;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+  </script>
+</body>
+</html>
