@@ -689,7 +689,7 @@ nav {
   width: fit-content;
   height: fit-content;
   padding: 5px;
-  border-radius: 19px;
+  border-radius: 20px;
   border: 1px solid var(--gray3);
   background: rgba(0, 0, 0, 0.01);
   box-shadow: 0px 0px 8px 3px rgba(175, 175, 182, 0.20) inset;
