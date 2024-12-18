@@ -2576,7 +2576,7 @@ nav {
   justify-content: space-between;
   bottom: -2px;
   border: 1px solid rgba(37, 37, 40, 0.10);
-  background: rgba(0, 0, 0, 0.30);
+  background: rgba(0, 0, 0, 0.60);
   /* Initial background */
   backdrop-filter: blur(10px);
   padding: 0px 16px 0px 16px;
