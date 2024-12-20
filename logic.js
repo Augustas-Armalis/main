@@ -81,7 +81,7 @@ function executeAbove1064px() {
 
     fadeInCircleOnLoad();
 
-    const morphingContainers = document.querySelectorAll('.planning-box, .design-box');
+    const morphingContainers = document.querySelectorAll('.slide-hero');
 
     morphingContainers.forEach(container => {
       container.addEventListener('mouseenter', () => {
@@ -197,7 +197,133 @@ window.addEventListener('resize', executeAbove1064px);
 
 
 
+// slider
+const sliderContainerHero = document.querySelector('.slider-container-hero');
+const sliderHero = document.querySelector('.slider-hero');
 
+let isDragging = false;
+let startX;
+let translateX = 0;
+let velocity = 0;
+let animationFrame;
+
+sliderContainerHero.addEventListener('mousedown', (e) => startDrag(e));
+sliderContainerHero.addEventListener('mouseup', stopDrag);
+sliderContainerHero.addEventListener('mouseleave', stopDrag);
+sliderContainerHero.addEventListener('mousemove', (e) => drag(e));
+
+sliderContainerHero.addEventListener('touchstart', (e) => startDrag(e));
+sliderContainerHero.addEventListener('touchend', stopDrag);
+sliderContainerHero.addEventListener('touchmove', (e) => drag(e));
+
+function startDrag(e) {
+
+    isDragging = true;
+    startX = getPositionX(e) - translateX;
+    sliderContainerHero.style.cursor = 'grabbing';
+    sliderHero.style.transition = 'none';
+    cancelAnimationFrame(animationFrame);
+}
+
+function stopDrag() {
+    if (!isDragging) return;
+    isDragging = false;
+    sliderContainerHero.style.cursor = 'grab';
+    applyInertia();
+}
+
+function drag(e) {
+    if (!isDragging) return;
+    const currentPosition = getPositionX(e);
+    velocity = currentPosition - startX - translateX; // Track velocity
+    translateX = currentPosition - startX;
+    
+    // Prevent dragging past the bounds (left and right)
+    const maxMove = Math.min(0, sliderContainerHero.offsetWidth - sliderHero.scrollWidth);
+    translateX = Math.min(Math.max(translateX, maxMove), 0);
+
+    sliderHero.style.transform = `translateX(${translateX}px)`;
+}
+
+function applyInertia() {
+    const damping = 0.92;  // Higher damping for more sensitive inertia
+    const minVelocity = 0.2; // Minimum velocity before inertia stops
+
+    function animate() {
+        velocity *= damping;
+        translateX += velocity;
+
+        // Boundaries
+        const maxMove = Math.min(0, sliderContainerHero.offsetWidth - sliderHero.scrollWidth);
+
+        // Prevent going past bounds during inertia
+        if (translateX > 0 || translateX < maxMove) {
+            velocity = 0;  // Stop inertia when boundaries are reached
+        }
+
+        if (Math.abs(velocity) > minVelocity) {
+            sliderHero.style.transform = `translateX(${translateX}px)`;
+            animationFrame = requestAnimationFrame(animate);
+        } else {
+            cancelAnimationFrame(animationFrame);
+            applyBounds();
+        }
+    }
+
+    animate();
+}
+
+function applyBounds() {
+    const maxMove = Math.min(0, sliderContainerHero.offsetWidth - sliderHero.scrollWidth);
+
+    // Ensure the slider stops at the boundaries
+    if (translateX > 0) {
+        translateX = 0;
+    } else if (translateX < maxMove) {
+        translateX = maxMove;
+    }
+
+    sliderHero.style.transition = 'transform 0.3s cubic-bezier(0.25, 1, 0.5, 1)';
+    sliderHero.style.transform = `translateX(${translateX}px)`;
+}
+
+function getPositionX(e) {
+    return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+}
+
+
+
+
+
+// Rename slides to slideElements
+const slideElements = document.querySelectorAll('.slide-hero');
+
+slideElements.forEach(slide => {
+  let isMouseDown = false;
+  let startX = 0;
+
+  // Detect mouse down event
+  slide.addEventListener('mousedown', (e) => {
+    isMouseDown = true;
+    startX = e.pageX;
+  });
+
+  // Detect mouse up event
+  slide.addEventListener('mouseup', (e) => {
+    if (isMouseDown && Math.abs(startX - e.pageX) < 10) {  // check if mouse moved less than 10px
+      const link = slide.getAttribute('data-link');
+      if (link) {
+        window.location.href = link;
+      }
+    }
+    isMouseDown = false;
+  });
+
+  // Optional: Reset mouse down state if mouse leaves the slide
+  slide.addEventListener('mouseleave', () => {
+    isMouseDown = false;
+  });
+});
 
 
 
