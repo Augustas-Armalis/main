@@ -47,7 +47,7 @@ a:active {
 
 /* select color */
 
-img::selection{
+img::selection {
   background-color: rgba(0, 0, 0, 0);
 }
 
@@ -282,7 +282,7 @@ h5 {
   top: calc(var(--circle-size) / 2 * -1);
   left: calc(var(--circle-size) / 2 * -1);
   pointer-events: none;
-  z-index: 40;
+  z-index: 99999;
   opacity: 0;
   /* Circle starts as invisible */
   display: flex;
@@ -322,25 +322,27 @@ h5 {
 /* slider */
 
 .slider-container-hero {
-  width: calc(100vw - 100px); /* Subtract 50px from the full viewport width */
+  width: calc(100vw - 100px);
+  /* Subtract 50px from the full viewport width */
   height: fit-content;
   display: flex;
   align-items: center;
   position: relative;
   transition: all 0.3s ease-out;
   margin-left: 50px;
-  margin-right: 50px; /* This should work with the width adjustment */
+  margin-right: 50px;
+  /* This should work with the width adjustment */
 }
 
 
 .slider-hero {
   display: flex;
-  gap:8px;
+  gap: 8px;
   cursor: pointer;
-  
+
 }
 
-.slide-image-hero{
+.slide-image-hero {
   width: 100%;
   height: 100%;
   border-radius: 17px;
@@ -350,7 +352,7 @@ h5 {
   background-color: var(--gray5);
 }
 
-.slider-hero:active{
+.slider-hero:active {
   cursor: grabbing;
 }
 
@@ -362,10 +364,10 @@ h5 {
   transition: all 0.15s ease-out;
   cursor: pointer;
   border-radius: 24px;
-border: 1px solid #252528;
-background: #000;
-padding: 8px;
-overflow: hidden;
+  border: 1px solid #252528;
+  background: #000;
+  padding: 8px;
+  overflow: hidden;
 }
 
 
@@ -376,10 +378,29 @@ overflow: hidden;
 
 /* Active effect for individual slides */
 .slider-hero .slide-hero:active {
-  transform: scale(0.99);  /* Scale down the clicked slide */
+  transform: scale(0.99);
+  /* Scale down the clicked slide */
   cursor: grabbing;
 }
 
+/* Disable text selection */
+.slider-container-hero,
+.slider-hero,
+.slide-hero,
+.slide-image-hero {
+  user-select: none;
+  /* Prevent text/image selection */
+  -webkit-user-drag: none;
+  /* Disable image dragging on WebKit browsers */
+  pointer-events: none;
+  /* Optional: Disable interaction with the element if needed */
+}
+
+.slide-image-hero,
+.slider-hero {
+  pointer-events: auto;
+  /* Re-enable interaction specifically for clicks, etc. */
+}
 
 
 
@@ -414,7 +435,7 @@ nav {
   width: 1000px;
   height: 53px;
   position: fixed;
-  z-index: 999;
+  z-index: 999999;
   top: 24px;
   left: 50%;
   transform: translateX(-50%) translateY(-100px);
@@ -706,6 +727,7 @@ nav {
 
 #load-in-btn-hero {
   margin-top: 42px;
+  margin-bottom: 64px;
 }
 
 .hero-section-container {
@@ -718,6 +740,7 @@ nav {
   z-index: 40;
   position: relative;
   height: 100vh;
+  margin-bottom: 192px;
 }
 
 .hero-content-container {
@@ -729,8 +752,15 @@ nav {
   flex-direction: column;
 }
 
+.title-alt-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .title-container {
   margin-bottom: 16px;
+  max-width: 1000px;
 }
 
 .title-container h1 {
@@ -740,6 +770,10 @@ nav {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.alt-container {
+  max-width: 600px;
 }
 
 .alt-container h4 {
@@ -770,6 +804,25 @@ nav {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+.nav-lottie-drag {
+  height: 42px !important;
+  /* Ensures the height is applied */
+  width: auto !important;
+  /* Maintains aspect ratio */
+
+
+}
 
 
 
