@@ -202,10 +202,11 @@ const sliderContainerHero = document.querySelector('.slider-container-hero');
 const sliderHero = document.querySelector('.slider-hero');
 
 let isDragging = false;
-let startX;
+let startX, startY;
 let translateX = 0;
 let velocity = 0;
 let animationFrame;
+let isVerticalDrag = false;
 
 sliderContainerHero.addEventListener('mousedown', (e) => startDrag(e));
 sliderContainerHero.addEventListener('mouseup', stopDrag);
@@ -217,9 +218,10 @@ sliderContainerHero.addEventListener('touchend', stopDrag);
 sliderContainerHero.addEventListener('touchmove', (e) => drag(e));
 
 function startDrag(e) {
-
     isDragging = true;
+    isVerticalDrag = false; // Reset for new gesture
     startX = getPositionX(e) - translateX;
+    startY = getPositionY(e);
     sliderContainerHero.style.cursor = 'grabbing';
     sliderHero.style.transition = 'none';
     cancelAnimationFrame(animationFrame);
@@ -229,24 +231,42 @@ function stopDrag() {
     if (!isDragging) return;
     isDragging = false;
     sliderContainerHero.style.cursor = 'grab';
-    applyInertia();
+    if (!isVerticalDrag) {
+        applyInertia();
+    }
 }
 
 function drag(e) {
     if (!isDragging) return;
-    const currentPosition = getPositionX(e);
-    velocity = currentPosition - startX - translateX; // Track velocity
-    translateX = currentPosition - startX;
-    
-    // Prevent dragging past the bounds (left and right)
-    const maxMove = Math.min(0, sliderContainerHero.offsetWidth - sliderHero.scrollWidth);
-    translateX = Math.min(Math.max(translateX, maxMove), 0);
 
-    sliderHero.style.transform = `translateX(${translateX}px)`;
+    const currentX = getPositionX(e);
+    const currentY = getPositionY(e);
+    const deltaX = Math.abs(currentX - startX);
+    const deltaY = Math.abs(currentY - startY);
+
+    // Detect vertical dragging with a threshold
+    const angleThreshold = 20; // Allow a small horizontal tolerance (in degrees)
+    const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
+
+    if (angle > angleThreshold && angle < 90) {
+        isVerticalDrag = true; // Mark as vertical drag
+        return; // Stop slider interaction
+    }
+
+    if (!isVerticalDrag) {
+        velocity = currentX - startX - translateX; // Track velocity
+        translateX = currentX - startX;
+
+        // Prevent dragging past the bounds (left and right)
+        const maxMove = Math.min(0, sliderContainerHero.offsetWidth - sliderHero.scrollWidth);
+        translateX = Math.min(Math.max(translateX, maxMove), 0);
+
+        sliderHero.style.transform = `translateX(${translateX}px)`;
+    }
 }
 
 function applyInertia() {
-    const damping = 0.92;  // Higher damping for more sensitive inertia
+    const damping = 0.92; // Higher damping for more sensitive inertia
     const minVelocity = 0.2; // Minimum velocity before inertia stops
 
     function animate() {
@@ -258,7 +278,7 @@ function applyInertia() {
 
         // Prevent going past bounds during inertia
         if (translateX > 0 || translateX < maxMove) {
-            velocity = 0;  // Stop inertia when boundaries are reached
+            velocity = 0; // Stop inertia when boundaries are reached
         }
 
         if (Math.abs(velocity) > minVelocity) {
@@ -289,6 +309,10 @@ function applyBounds() {
 
 function getPositionX(e) {
     return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+}
+
+function getPositionY(e) {
+    return e.type.includes('mouse') ? e.pageY : e.touches[0].clientY;
 }
 
 
