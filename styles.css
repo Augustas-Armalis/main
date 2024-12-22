@@ -28,6 +28,7 @@ video {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-font-smoothing: inherit;
 }
 
 
@@ -322,17 +323,30 @@ h5 {
 /* slider */
 
 .slider-container-hero {
-  width: calc(100vw - 100px);
+  width: 100%;
   /* Subtract 50px from the full viewport width */
   height: fit-content;
   display: flex;
   align-items: center;
   position: relative;
   transition: all 0.3s ease-out;
-  margin-left: 50px;
-  margin-right: 50px;
+  /* margin-left: 50px;
+  margin-right: 50px; */
+  padding-left: 50px;
+  padding-right: 50px;
+  overflow: auto ;
   /* This should work with the width adjustment */
 }
+/* Hide scrollbar for the slider container */
+.slider-container-hero {
+  scrollbar-width: 100%; /* For Firefox */
+}
+
+.slider-container-hero::-webkit-scrollbar {
+  display: auto; /* For Chrome, Safari, and Edge */
+}
+
+
 
 
 .slider-hero {
@@ -391,9 +405,9 @@ h5 {
   /* Prevent text/image selection */
   -webkit-user-drag: none;
   /* Disable image dragging on WebKit browsers */
-  pointer-events: none;
-  /* Optional: Disable interaction with the element if needed */
 }
+
+
 
 .slide-image-hero,
 .slider-hero {

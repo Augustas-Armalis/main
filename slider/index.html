@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smooth Drag Slider</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #111;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .slider-container {
+            width: 500px;
+            overflow: hidden;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .slider {
+            display: flex;
+            gap: 10px;
+            cursor: grab;
+            user-select: none;
+        }
+
+        .slider:active {
+            cursor: grabbing;
+        }
+
+        .slide {
+            flex: 0 0 auto;
+            width: 500px;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide-1 { height: 300px; width:500px; background-color: rebeccapurple; }
+        .slide-2 { height: 300px; width:500px; background-color: rebeccapurple;  }
+        .slide-3 { height: 300px; width:500px; background-color: rebeccapurple;  }
+        .slide-4 { height: 300px; width:500px; background-color: rebeccapurple;  }
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slide slide-1"></div>
+            <div class="slide slide-2"></div>
+            <div class="slide slide-3"></div>
+            <div class="slide slide-4"></div>
+        </div>
+    </div>
+
+    <script>
+        const slider = document.querySelector('.slider');
+        let isDragging = false, startX = 0, scrollLeft = 0, velocity = 0;
+
+        // Start dragging
+        slider.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            slider.style.cursor = 'grabbing';
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+
+        slider.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            startX = e.touches[0].pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+
+        // While dragging
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX); // The distance moved
+            velocity = walk - scrollLeft; // Track velocity
+            slider.scrollLeft = scrollLeft - walk;
+        });
+
+        slider.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            const x = e.touches[0].pageX - slider.offsetLeft;
+            const walk = (x - startX);
+            velocity = walk - scrollLeft;
+            slider.scrollLeft = scrollLeft - walk;
+        });
+
+        // End dragging
+        const stopDragging = () => {
+            isDragging = false;
+            slider.style.cursor = 'grab';
+            // Add smooth inertia effect
+            let inertia = velocity;
+            const slide = () => {
+                inertia *= 0.95; // Reduce inertia over time
+                slider.scrollLeft -= inertia;
+
+                if (Math.abs(inertia) > 0.5) {
+                    requestAnimationFrame(slide);
+                }
+            };
+            slide();
+        };
+
+        slider.addEventListener('mouseup', stopDragging);
+        slider.addEventListener('touchend', stopDragging);
+        slider.addEventListener('mouseleave', () => {
+            if (isDragging) stopDragging();
+        });
+    </script>
+</body>
+</html>
