@@ -193,10 +193,7 @@ window.addEventListener('resize', executeAbove1064px);
 
 
 
-
-
-
-
+// SLider
 const sliderContainerHero = document.querySelector('.slider-container-hero');
 const sliderHero = document.querySelector('.slider-hero');
 
@@ -328,6 +325,7 @@ slideElements.forEach(slide => {
         isMouseDown = false;
     });
 });
+
 
 
 
