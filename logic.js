@@ -263,9 +263,8 @@ function drag(e) {
         return;
     }
 
-    if (isVerticalScroll) {
-        return; // Allow vertical scrolling when detected
-    }
+    // If vertical scroll is detected, prevent horizontal drag
+    if (isVerticalScroll) return;
 
     // Track horizontal velocity
     velocity = deltaX - translateX;
