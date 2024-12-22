@@ -190,9 +190,6 @@ window.addEventListener('resize', executeAbove1064px);
 
 
 
-
-
-
 const sliderContainerHero = document.querySelector('.slider-container-hero');
 const sliderHero = document.querySelector('.slider-hero');
 
@@ -201,7 +198,7 @@ let startX, startY;
 let translateX = 0;
 let velocity = 0;
 let animationFrame;
-let isTouch = false;  // Flag to check if it's a touch interaction
+let isVerticalScroll = false;
 
 sliderContainerHero.addEventListener('mousedown', startDrag);
 sliderContainerHero.addEventListener('mouseup', stopDrag);
@@ -215,31 +212,23 @@ sliderContainerHero.addEventListener('touchmove', drag, { passive: false });
 
 function startDrag(e) {
     isDragging = true;
-    isTouch = e.type === 'touchstart';  // Check if the interaction is a touch event
-
     startX = getPositionX(e) - translateX;
     startY = getPositionY(e);
-
-    // Lock page scroll for touch interactions (especially vertical scroll)
-    if (isTouch) {
-        e.preventDefault();  // Prevent the default behavior (page scroll)
-        document.body.style.overflow = 'hidden';  // Disable page scrolling while dragging
-    }
-
+    
     sliderContainerHero.style.cursor = 'grabbing';
-    sliderHero.style.transition = 'none';
+    sliderHero.style.transition = 'none'; // Disable transition during dragging
     cancelAnimationFrame(animationFrame);
+    isVerticalScroll = false; // Reset vertical scroll detection
 }
 
 function stopDrag() {
     if (!isDragging) return;
+
     isDragging = false;
-
     sliderContainerHero.style.cursor = 'grab';
-    applyInertia();  // Apply inertia when drag ends
 
-    // Re-enable scrolling after dragging ends
-    document.body.style.overflow = '';  // Allow page scroll again
+    // Apply inertia effect after dragging
+    applyInertia();
 }
 
 function drag(e) {
@@ -248,24 +237,26 @@ function drag(e) {
     const currentX = getPositionX(e);
     const currentY = getPositionY(e);
 
-    const deltaX = currentX - startX;
-    const deltaY = currentY - startY;
+    // Check if moving vertically more than horizontally
+    if (!isVerticalScroll && Math.abs(currentY - startY) > Math.abs(currentX - startX)) {
+        // Start vertical scrolling
+        isVerticalScroll = true;
 
-    // Prevent slider movement if the user is scrolling vertically
-    if (Math.abs(deltaY) > Math.abs(deltaX) && isTouch) {
-        e.preventDefault(); // Prevent the page from scrolling if dragging vertically
-        return;
+        // Allow page scroll, but prevent the slider from moving
+        e.preventDefault();
+        return; // Exit early to allow vertical scroll
     }
 
-    // Handle horizontal drag movement (slider movement)
-    velocity = deltaX - translateX;
-    translateX = deltaX;
+    if (isVerticalScroll) return; // Don't allow horizontal drag if vertical scroll is detected
 
-    // Prevent dragging past the bounds of the slider container
+    // Handle horizontal drag (slider movement)
+    velocity = currentX - startX - translateX;
+    translateX = currentX - startX;
+
+    // Prevent going past bounds
     const maxMove = Math.min(0, sliderContainerHero.offsetWidth - sliderHero.scrollWidth);
     translateX = Math.min(Math.max(translateX, maxMove), 0);
 
-    // Move the slider based on the drag movement
     sliderHero.style.transform = `translateX(${translateX}px)`;
 
     // Prevent vertical scrolling while dragging horizontally
@@ -273,8 +264,8 @@ function drag(e) {
 }
 
 function applyInertia() {
-    const damping = 0.92; // Smooth inertia effect
-    const minVelocity = 0.2; // Minimum velocity to stop inertia
+    const damping = 0.92; // Smooth inertia
+    const minVelocity = 0.2; // Stop inertia if velocity is below this threshold
 
     function animate() {
         velocity *= damping;
