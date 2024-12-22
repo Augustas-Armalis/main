@@ -231,6 +231,9 @@ function startDrag(e) {
 
     cancelAnimationFrame(animationFrame);
     isDragging = true;
+
+    // Prevent the default scroll behavior when dragging
+    document.body.style.overflow = 'hidden'; // Disable vertical scroll during drag
 }
 
 function stopDrag() {
@@ -239,6 +242,9 @@ function stopDrag() {
     isDragging = false;
     sliderContainerHero.style.cursor = 'grab'; // Restore cursor
     applyInertia(); // Apply inertia after dragging ends
+
+    // Re-enable scrolling when drag is finished
+    document.body.style.overflow = ''; // Re-enable scroll after drag
 }
 
 function drag(e) {
@@ -263,8 +269,9 @@ function drag(e) {
         return;
     }
 
-    // If vertical scroll is detected, prevent horizontal drag
-    if (isVerticalScroll) return;
+    if (isVerticalScroll) {
+        return; // Allow vertical scrolling when detected
+    }
 
     // Track horizontal velocity
     velocity = deltaX - translateX;
@@ -355,6 +362,7 @@ slideElements.forEach(slide => {
         isMouseDown = false;
     });
 });
+
 
 
 
