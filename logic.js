@@ -208,6 +208,7 @@ sliderContainerHero.addEventListener('mouseup', stopDrag);
 sliderContainerHero.addEventListener('mouseleave', stopDrag);
 sliderContainerHero.addEventListener('mousemove', drag);
 
+// Touch events for mobile devices
 sliderContainerHero.addEventListener('touchstart', startDrag, { passive: false });
 sliderContainerHero.addEventListener('touchend', stopDrag);
 sliderContainerHero.addEventListener('touchmove', drag, { passive: false });
@@ -219,7 +220,7 @@ function startDrag(e) {
     startX = getPositionX(e) - translateX;
     startY = getPositionY(e);
 
-    // Lock page scroll for touch interactions
+    // Lock page scroll for touch interactions (especially vertical scroll)
     if (isTouch) {
         e.preventDefault();  // Prevent the default behavior (page scroll)
     }
@@ -248,7 +249,7 @@ function drag(e) {
 
     // Prevent slider movement if the user is scrolling vertically
     if (Math.abs(deltaY) > Math.abs(deltaX) && isTouch) {
-        e.preventDefault(); // Prevent the page from scrolling
+        e.preventDefault(); // Prevent the page from scrolling if dragging vertically
         return;
     }
 
