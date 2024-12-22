@@ -306,3 +306,66 @@ imageBlogContainers.forEach(function (imageBlogContainer) {
     }
   });
 });
+
+
+
+
+
+
+
+
+
+
+
+document.querySelectorAll('.slide-hero').forEach(slide => {
+  // For touch events
+  slide.addEventListener('touchstart', function () {
+    // Apply styles when touch starts (similar to hover)
+    this.querySelector('.slide-image-hero').style.filter = 'brightness(70%)';
+    this.style.transform = 'scale(0.99)';
+    this.style.cursor = 'grabbing';
+  });
+
+  slide.addEventListener('touchend', function () {
+    // Reset styles when touch ends (similar to hover reset)
+    this.querySelector('.slide-image-hero').style.filter = '';
+    this.style.transform = '';
+
+  });
+
+  slide.addEventListener('touchcancel', function () {
+    // Reset styles if touch is canceled
+    this.querySelector('.slide-image-hero').style.filter = '';
+    this.style.transform = '';
+    this.style.cursor = '';
+  });
+
+  // For mouse events to replicate hover and active states
+  slide.addEventListener('mouseenter', function () {
+    // Apply styles when mouse enters (hover)
+    this.querySelector('.slide-image-hero').style.filter = 'brightness(70%)';
+  });
+
+  slide.addEventListener('mouseleave', function () {
+    // Reset styles when mouse leaves (hover reset)
+    this.querySelector('.slide-image-hero').style.filter = '';
+  });
+
+  slide.addEventListener('mousedown', function () {
+    // Apply styles when mouse is pressed (active)
+    this.style.transform = 'scale(0.99)';
+    this.style.cursor = 'grabbing';
+  });
+
+  slide.addEventListener('mouseup', function () {
+    // Reset styles when mouse is released (active reset)
+    this.style.transform = '';
+    this.style.cursor = '';
+  });
+
+  // Optional: Reset when mouse is canceled (e.g., drag out of the element)
+  slide.addEventListener('mouseleave', function () {
+    this.style.transform = '';
+    this.style.cursor = '';
+  });
+});
