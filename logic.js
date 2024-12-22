@@ -245,7 +245,7 @@ function drag(e) {
     const deltaY = Math.abs(currentY - startY);
 
     // Detect vertical dragging with a threshold
-    const angleThreshold = 20; // Allow a small horizontal tolerance (in degrees)
+    const angleThreshold = 40; // Allow a small horizontal tolerance (in degrees)
     const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
 
     if (angle > angleThreshold && angle < 90) {
