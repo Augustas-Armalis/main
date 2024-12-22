@@ -870,6 +870,14 @@ nav {
   }
 }
 
+@media (max-width: 566px) {
+  .title-container h1 {
+    width: 492px;
+    
+  }
+}
+
+
 @media (max-width: 555px) {
   .hero-content-container {
     margin: 0 16px;
@@ -889,21 +897,19 @@ nav {
   }
 
   .title-container h1 {
-    width: 458px;
+    width: 452px;
   }
 }
 
-@media (max-width: 566px) {
-  .title-container h1 {
-    width: 492px;
-  }
-}
 
 @media (max-width: 484px) {
 
   .title-container h1 {
-    width: 374px;
+    /* width: 374px; */
+    width: auto;
   }
+
+  
 }
 
 @media (max-width: 410px) {
@@ -917,6 +923,13 @@ nav {
 
 
 @media (max-width: 406px) {
+
+  /* .title-container h1 {
+    width: 242px;
+  } */
+}
+
+@media (max-width: 372px) {
 
   .title-container h1 {
     width: 242px;
