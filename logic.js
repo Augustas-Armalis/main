@@ -423,38 +423,40 @@ slideElements.forEach(slide => {
 
 
 
-
+// Hide/show the nav if scrolling
 let lastScrollTop = 0;
-let scrollThreshold = 100; // Scroll threshold for hiding nav
-let navVisibleAt = null; // Track the scroll position when nav first becomes visible
 const navis = document.querySelector('nav');
+const heroSection = document.getElementById('hero-section-href');
 
 // Initial animation for the nav
 gsap.fromTo(navis, { y: -100, opacity: 0 }, { y: 0, opacity: 1, duration: 2, ease: "power4.out" });
 
-// Function to check the scroll position
+// Check if the hero section is in the viewport
+function isHeroSectionVisible() {
+  const rect = heroSection.getBoundingClientRect();
+  return rect.top <= window.innerHeight && rect.bottom >= 0;
+}
+
 window.addEventListener('scroll', () => {
   let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
-  // Set navVisibleAt when nav first appears
-  if (navVisibleAt === null && currentScroll > 0) {
-    navVisibleAt = currentScroll; // Track the scroll position when the nav appears
-  }
-
-  if (navVisibleAt !== null) {
-    // Hide nav after scrolling 500px down from where it first appeared
-    if (currentScroll - navVisibleAt >= scrollThreshold) {
+  if (isHeroSectionVisible()) {
+    // Keep the nav visible
+    gsap.to(navis, { y: 0, opacity: 1, duration: 0.6, ease: "power4.out" });
+  } else {
+    // Hide the nav if scrolling
+    if (currentScroll > lastScrollTop) {
       gsap.to(navis, { y: -100, opacity: 0, duration: 0.6, ease: "power4.out" });
-    }
-    // Show nav instantly if scrolling up (no distance threshold)
-    else if (currentScroll < lastScrollTop) {
+    } else {
       gsap.to(navis, { y: 0, opacity: 1, duration: 0.6, ease: "power4.out" });
     }
   }
 
-  // Update the last scroll position
   lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
 });
+
+
+
 
 
 
