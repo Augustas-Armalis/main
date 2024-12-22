@@ -193,136 +193,154 @@ window.addEventListener('resize', executeAbove1064px);
 
 
 
-
-
-// slider
 const sliderContainerHero = document.querySelector('.slider-container-hero');
 const sliderHero = document.querySelector('.slider-hero');
 
 let isDragging = false;
-let startX;
+let startX, startY;
 let translateX = 0;
 let velocity = 0;
 let animationFrame;
+let isTouch = false;  // Flag to check if it's a touch interaction
 
-sliderContainerHero.addEventListener('mousedown', (e) => startDrag(e));
+sliderContainerHero.addEventListener('mousedown', startDrag);
 sliderContainerHero.addEventListener('mouseup', stopDrag);
 sliderContainerHero.addEventListener('mouseleave', stopDrag);
-sliderContainerHero.addEventListener('mousemove', (e) => drag(e));
+sliderContainerHero.addEventListener('mousemove', drag);
 
-sliderContainerHero.addEventListener('touchstart', (e) => startDrag(e));
+sliderContainerHero.addEventListener('touchstart', startDrag, { passive: false });
 sliderContainerHero.addEventListener('touchend', stopDrag);
-sliderContainerHero.addEventListener('touchmove', (e) => drag(e));
+sliderContainerHero.addEventListener('touchmove', drag, { passive: false });
 
 function startDrag(e) {
+    isDragging = true;
+    isTouch = e.type === 'touchstart';  // Check if the interaction is a touch event
 
-  isDragging = true;
-  startX = getPositionX(e) - translateX;
-  sliderContainerHero.style.cursor = 'grabbing';
-  sliderHero.style.transition = 'none';
-  cancelAnimationFrame(animationFrame);
+    startX = getPositionX(e) - translateX;
+    startY = getPositionY(e);
+
+    // Lock page scroll for touch interactions
+    if (isTouch) {
+        e.preventDefault();  // Prevent the default behavior (page scroll)
+    }
+
+    sliderContainerHero.style.cursor = 'grabbing';
+    sliderHero.style.transition = 'none';
+    cancelAnimationFrame(animationFrame);
 }
 
 function stopDrag() {
-  if (!isDragging) return;
-  isDragging = false;
-  sliderContainerHero.style.cursor = 'grab';
-  applyInertia();
+    if (!isDragging) return;
+    isDragging = false;
+
+    sliderContainerHero.style.cursor = 'grab';
+    applyInertia();  // Apply inertia when drag ends
 }
 
 function drag(e) {
-  if (!isDragging) return;
-  const currentPosition = getPositionX(e);
-  velocity = currentPosition - startX - translateX; // Track velocity
-  translateX = currentPosition - startX;
+    if (!isDragging) return;
 
-  // Prevent dragging past the bounds (left and right)
-  const maxMove = Math.min(0, sliderContainerHero.offsetWidth - sliderHero.scrollWidth);
-  translateX = Math.min(Math.max(translateX, maxMove), 0);
+    const currentX = getPositionX(e);
+    const currentY = getPositionY(e);
 
-  sliderHero.style.transform = `translateX(${translateX}px)`;
+    const deltaX = currentX - startX;
+    const deltaY = currentY - startY;
+
+    // Prevent slider movement if the user is scrolling vertically
+    if (Math.abs(deltaY) > Math.abs(deltaX) && isTouch) {
+        e.preventDefault(); // Prevent the page from scrolling
+        return;
+    }
+
+    // Handle horizontal drag movement (slider movement)
+    velocity = deltaX - translateX;
+    translateX = deltaX;
+
+    // Prevent dragging past the bounds of the slider container
+    const maxMove = Math.min(0, sliderContainerHero.offsetWidth - sliderHero.scrollWidth);
+    translateX = Math.min(Math.max(translateX, maxMove), 0);
+
+    // Move the slider based on the drag movement
+    sliderHero.style.transform = `translateX(${translateX}px)`;
+
+    // Prevent vertical scrolling while dragging horizontally
+    if (e.cancelable) e.preventDefault();
 }
 
 function applyInertia() {
-  const damping = 0.92;  // Higher damping for more sensitive inertia
-  const minVelocity = 0.2; // Minimum velocity before inertia stops
+    const damping = 0.92; // Smooth inertia effect
+    const minVelocity = 0.2; // Minimum velocity to stop inertia
 
-  function animate() {
-    velocity *= damping;
-    translateX += velocity;
+    function animate() {
+        velocity *= damping;
+        translateX += velocity;
 
-    // Boundaries
-    const maxMove = Math.min(0, sliderContainerHero.offsetWidth - sliderHero.scrollWidth);
+        // Prevent going past bounds
+        const maxMove = Math.min(0, sliderContainerHero.offsetWidth - sliderHero.scrollWidth);
+        if (translateX > 0 || translateX < maxMove) velocity = 0;
 
-    // Prevent going past bounds during inertia
-    if (translateX > 0 || translateX < maxMove) {
-      velocity = 0;  // Stop inertia when boundaries are reached
+        if (Math.abs(velocity) > minVelocity) {
+            sliderHero.style.transform = `translateX(${translateX}px)`;
+            animationFrame = requestAnimationFrame(animate);
+        } else {
+            cancelAnimationFrame(animationFrame);
+            applyBounds();
+        }
     }
 
-    if (Math.abs(velocity) > minVelocity) {
-      sliderHero.style.transform = `translateX(${translateX}px)`;
-      animationFrame = requestAnimationFrame(animate);
-    } else {
-      cancelAnimationFrame(animationFrame);
-      applyBounds();
-    }
-  }
-
-  animate();
+    animate();
 }
 
 function applyBounds() {
-  const maxMove = Math.min(0, sliderContainerHero.offsetWidth - sliderHero.scrollWidth);
+    const maxMove = Math.min(0, sliderContainerHero.offsetWidth - sliderHero.scrollWidth);
 
-  // Ensure the slider stops at the boundaries
-  if (translateX > 0) {
-    translateX = 0;
-  } else if (translateX < maxMove) {
-    translateX = maxMove;
-  }
+    if (translateX > 0) translateX = 0;
+    else if (translateX < maxMove) translateX = maxMove;
 
-  sliderHero.style.transition = 'transform 0.3s cubic-bezier(0.25, 1, 0.5, 1)';
-  sliderHero.style.transform = `translateX(${translateX}px)`;
+    sliderHero.style.transition = 'transform 0.3s cubic-bezier(0.25, 1, 0.5, 1)';
+    sliderHero.style.transform = `translateX(${translateX}px)`;
 }
 
 function getPositionX(e) {
-  return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+    return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
 }
 
+function getPositionY(e) {
+    return e.type.includes('mouse') ? e.pageY : e.touches[0].clientY;
+}
 
+// Stop slider interaction when scrolling outside it
+document.addEventListener('scroll', () => {
+    if (!isDragging) return;
+    stopDrag();
+});
 
-
-
-// Rename slides to slideElements
+// Handle slide click events (same behavior across all slides)
 const slideElements = document.querySelectorAll('.slide-hero');
 
 slideElements.forEach(slide => {
-  let isMouseDown = false;
-  let startX = 0;
+    let isMouseDown = false;
+    let startX = 0;
 
-  // Detect mouse down event
-  slide.addEventListener('mousedown', (e) => {
-    isMouseDown = true;
-    startX = e.pageX;
-  });
+    slide.addEventListener('mousedown', (e) => {
+        isMouseDown = true;
+        startX = e.pageX;
+    });
 
-  // Detect mouse up event
-  slide.addEventListener('mouseup', (e) => {
-    if (isMouseDown && Math.abs(startX - e.pageX) < 10) {  // check if mouse moved less than 10px
-      const link = slide.getAttribute('data-link');
-      if (link) {
-        window.location.href = link;
-      }
-    }
-    isMouseDown = false;
-  });
+    slide.addEventListener('mouseup', (e) => {
+        if (isMouseDown && Math.abs(startX - e.pageX) < 10) {
+            const link = slide.getAttribute('data-link');
+            if (link) {
+                window.location.href = link;
+            }
+        }
+        isMouseDown = false;
+    });
 
-  // Optional: Reset mouse down state if mouse leaves the slide
-  slide.addEventListener('mouseleave', () => {
-    isMouseDown = false;
-  });
+    slide.addEventListener('mouseleave', () => {
+        isMouseDown = false;
+    });
 });
-
 
 
 
