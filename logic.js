@@ -223,6 +223,7 @@ function startDrag(e) {
     // Lock page scroll for touch interactions (especially vertical scroll)
     if (isTouch) {
         e.preventDefault();  // Prevent the default behavior (page scroll)
+        document.body.style.overflow = 'hidden';  // Disable page scrolling while dragging
     }
 
     sliderContainerHero.style.cursor = 'grabbing';
@@ -236,6 +237,9 @@ function stopDrag() {
 
     sliderContainerHero.style.cursor = 'grab';
     applyInertia();  // Apply inertia when drag ends
+
+    // Re-enable scrolling after dragging ends
+    document.body.style.overflow = '';  // Allow page scroll again
 }
 
 function drag(e) {
