@@ -424,13 +424,10 @@ slideElements.forEach(slide => {
 
 
 
-
-// Hide/show the nav if scrolling
-
 let lastScrollTop = 0;
 const navis = document.querySelector('nav');
 let isScrollingEnabled = false;
-
+const scrollThreshold = window.innerHeight * 0.25; // 25% of the viewport height
 
 gsap.fromTo(navis, { y: -100, opacity: 0 }, { y: 0, opacity: 1, duration: 2, ease: "power4.out" });
 
@@ -438,20 +435,22 @@ setTimeout(() => {
   isScrollingEnabled = true;
 }, 3000);
 
-
 window.addEventListener('scroll', () => {
   if (!isScrollingEnabled) return;
 
   let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
-  if (currentScroll > lastScrollTop) {
+  if (currentScroll > lastScrollTop + scrollThreshold) {
     gsap.to(navis, { y: -100, opacity: 0, duration: 0.6, ease: "power4.out" });
-  } else {
+  } else if (currentScroll < lastScrollTop - scrollThreshold) {
     gsap.to(navis, { y: 0, opacity: 1, duration: 0.6, ease: "power4.out" });
   }
 
   lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
 });
+
+
+
 
 
 

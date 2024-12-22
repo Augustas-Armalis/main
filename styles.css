@@ -323,27 +323,46 @@ h5 {
 /* slider */
 
 .slider-container-hero {
-  width: 100%;
-  /* Subtract 50px from the full viewport width */
   height: fit-content;
   display: flex;
   align-items: center;
   position: relative;
   transition: all 0.3s ease-out;
-  /* margin-left: 50px;
-  margin-right: 50px; */
   padding-left: 50px;
   padding-right: 50px;
-  overflow: auto ;
-  /* This should work with the width adjustment */
-}
-/* Hide scrollbar for the slider container */
-.slider-container-hero {
-  scrollbar-width: 100%; /* For Firefox */
+  overflow: scroll;
+  overflow-y: hidden;
+  scrollbar-width: none;
 }
 
+
+.slider-hero-container{
+  width: 100%;
+  overflow: hidden;
+  height: fit-content;
+}
+
+.slider-hero-container:before {
+content: "";
+position: absolute;
+height: 40%;
+width: 100px;
+flex-shrink: 0;
+bottom: 0;
+right: 0;
+background: linear-gradient(to left, rgb(0, 0, 0), rgba(0, 0, 0, 0));
+pointer-events: none;
+z-index: 3;
+}
+
+
+
 .slider-container-hero::-webkit-scrollbar {
-  display: auto; /* For Chrome, Safari, and Edge */
+  display: none;
+}
+
+.slider-container-hero {
+  scrollbar-width: none;
 }
 
 
@@ -353,14 +372,14 @@ h5 {
   display: flex;
   gap: 8px;
   cursor: pointer;
-
+  
 }
 
 .slide-image-hero {
   width: 100%;
   height: 100%;
-  border-radius: 17px;
-  object-fit: contain;
+  border-radius: 12px;
+  object-fit: fill;
   object-position: top;
   transition: all 0.15s ease-out;
   background-color: var(--gray5);
@@ -370,29 +389,25 @@ h5 {
   cursor: grabbing;
 }
 
-.slider-hero .slide-hero {
+.slide-hero {
   width: 550px;
   height: 387px;
-  border-radius: 10px;
   transition: all 0.15s ease-out;
   cursor: pointer;
-  border-radius: 24px;
   border: 1px solid #252528;
   background: #000;
   padding: 8px;
   overflow: hidden;
+  border-radius: 17px;
 }
 
 
-/* Hover effect for individual slides */
 .slide-hero:hover .slide-image-hero {
   filter: brightness(70%);
 }
 
-/* Active effect for individual slides */
 .slider-hero .slide-hero:active {
   transform: scale(0.99);
-  /* Scale down the clicked slide */
   cursor: grabbing;
 }
 
@@ -418,17 +433,30 @@ h5 {
 
 @media (max-width: 1064px) {
   .slider-hero .slide-hero {
-    width: 550px;
-    height: 387px;
-  
+    width: 444px;
+    height:316px;
+  }
+
+  .slider-hero-container:before {
+    width: 70px;
   }
 }
 
 @media (max-width: 555px) {
+
+  .slider-container-hero {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+
   .slider-hero .slide-hero {
-    width: 320px;
-    height: 230px;
-  
+    width: 350px;
+    height: 249px;
+  }
+
+  .slider-hero-container:before {
+display: none;
   }
 }
 
@@ -817,6 +845,10 @@ nav {
   .alt-container h4 {
     font-size: 20px;
   }
+
+  .title-alt-container {
+    padding: 0 32px;
+  }
 }
 
 @media (max-width: 555px) {
@@ -826,6 +858,14 @@ nav {
 
   .alt-container h4 {
     font-size: 16px;
+  }
+
+  .title-alt-container {
+    padding: 0 16px;
+  }
+
+  .title-container h1 {
+    font-size: 30px;
   }
 }
 
