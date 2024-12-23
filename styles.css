@@ -345,7 +345,7 @@ h5 {
 .slider-hero-container:before {
   content: "";
   position: absolute;
-  height: 40%;
+  height: 100%;
   width: 100px;
   flex-shrink: 0;
   bottom: 0;
