@@ -873,7 +873,7 @@ nav {
 @media (max-width: 566px) {
   .title-container h1 {
     width: 492px;
-    
+
   }
 }
 
@@ -909,7 +909,7 @@ nav {
     width: auto;
   }
 
-  
+
 }
 
 @media (max-width: 410px) {
@@ -1043,7 +1043,8 @@ nav {
 }
 
 .under-rectangle-layer {
-  position: relative; /* Ensure the element can be moved */
+  position: relative;
+  /* Ensure the element can be moved */
   text-decoration: none;
   color: white;
   width: fit-content;
@@ -1056,8 +1057,10 @@ nav {
   backdrop-filter: blur(5px);
   cursor: pointer;
   touch-action: manipulation;
-  opacity: 0; /* Initial state for animation */
-  transform: translateY(50px); /* Initial state for animation */
+  opacity: 0;
+  /* Initial state for animation */
+  transform: translateY(50px);
+  /* Initial state for animation */
   transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
@@ -4562,6 +4565,7 @@ input:valid {
   z-index: 1;
   position: absolute;
   top: -10vh;
+  opacity: 0;
 }
 
 .god-ray-bck {
