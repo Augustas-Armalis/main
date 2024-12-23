@@ -44,6 +44,21 @@ gsap.fromTo(
   }
 );
 
+gsap.fromTo(
+  ".nav-lottie-drag",
+  {
+    y: 20,
+    opacity: 0
+  },
+  {
+    y: 0,
+    opacity: 1,
+    duration: 1,
+    ease: "power2.out",// Custom easing curve
+    delay: 2, // Adjusted delay
+  }
+);
+
 
 gsap.fromTo(
   ".slider-hero-container",
