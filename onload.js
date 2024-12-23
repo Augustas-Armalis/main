@@ -60,9 +60,6 @@
 
 
 
-
-
-
 // Navigation Bar
 
 const burgerContainer = document.querySelector('.burger-menu-container');

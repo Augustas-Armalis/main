@@ -429,7 +429,7 @@ const navis = document.querySelector('nav');
 const heroSection = document.getElementById('hero-section-href');
 
 // Initial animation for the nav
-gsap.fromTo(navis, { y: -100, opacity: 0 }, { y: 0, opacity: 1, duration: 2, ease: "power4.out" });
+// gsap.fromTo(navis, { y: -100, opacity: 0 }, { y: 0, opacity: 1, duration: 2, ease: "power4.out" });
 
 // Check if the hero section is in the viewport
 function isHeroSectionVisible() {

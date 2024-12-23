@@ -1,3 +1,69 @@
+// load in
+
+
+gsap.from(".title-container", {
+  y: 100,
+  opacity: 0,
+  duration: 2,
+  ease: "expo.out",
+  delay: 0.1,
+});
+
+gsap.from(".alt-container", {
+  y: 100,
+  opacity: 0,
+  duration: 2,
+  ease: "expo.out",
+  delay: 0.2,
+});
+
+gsap.fromTo(
+  ".under-rectangle-layer",
+  { y: 50, opacity: 0 }, // Starting position and opacity
+  {
+    y: 0, 
+    opacity: 1,
+    duration: 2,
+    ease: "expo.out",
+    delay: 0.3, // Adjusted delay
+  }
+);
+
+gsap.fromTo(
+  "nav", 
+  { 
+    y: -100, 
+    opacity: 0 
+  }, 
+  { 
+    y: 0, 
+    opacity: 1, 
+    duration: 2, 
+    ease: "expo.out",// Custom easing curve
+  }
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Counter Section
 
 gsap.utils.toArray(".counter").forEach((counter, index) => {
