@@ -1,21 +1,28 @@
 // load in
 
 
-gsap.from(".title-container", {
-  y: 100,
-  opacity: 0,
-  duration: 1,
-  ease: "power2.out",
-  delay: 0.1,
-});
+gsap.fromTo(".title-container",
+  { y: 100, opacity: 0 }, // Starting position and opacity
+  {
+    y: 0,
+    opacity: 1,
+    duration: 1,
+    ease: "power2.out",
+    delay: 0.1, // Adjusted delay
+  }
+);
 
-gsap.from(".alt-container", {
-  y: 100,
-  opacity: 0,
-  duration: 1,
-  ease: "power2.out",
-  delay: 0.2,
-});
+
+gsap.fromTo(".alt-container",
+  { y: 100, opacity: 0 }, // Starting position and opacity
+  {
+    y: 0,
+    opacity: 1,
+    duration: 1,
+    ease: "power2.out",
+    delay: 0.2, // Adjusted delay
+  }
+);
 
 gsap.fromTo(
   ".under-rectangle-layer",

@@ -340,6 +340,7 @@ h5 {
   width: 100%;
   overflow: hidden;
   height: fit-content;
+  opacity: 0;
 }
 
 .slider-hero-container:before {
