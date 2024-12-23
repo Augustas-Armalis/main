@@ -1,0 +1,246 @@
+html, body{
+display: flex;
+align-items: flex-start;
+justify-content: center;
+width: 100%;
+height: 100%;
+}
+
+
+
+
+
+.video-container {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: 80000;
+    display: none;
+    background: hsla(0, 0%, 0%, 0.7);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(3px);
+  }
+  
+  iframe#ytplayer {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  
+  .close-button {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: 32px;
+    top: 32px;
+    border-radius: 12px;
+    cursor: pointer;
+    z-index: 81000;
+    background: hsla(0, 0%, 0%, 0.7);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(3px);
+    border: 1px solid var(--gray3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .close-button img {
+    width: 25px;
+  }
+  
+  .close-button:hover {
+    background: hsla(235, 5%, 6%, 0.7);
+  }
+
+
+
+
+
+.back-home-buttom-container {
+    width: 100%;
+    height: 40px;
+    position: fixed;
+    max-width: 1000px;
+    left: 50%;
+    top: 24px;
+    transform: translateX(-50%);
+    z-index: 9999;
+}
+
+
+.main-content-container{
+    display: flex;
+    align-items: start;
+    margin-top: 128px;
+    width: 1000px;
+    height: fit-content;
+    justify-content: space-between;
+    margin-bottom: 128px;
+}
+
+
+.back-home-button-holder{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease; 
+    color: white;
+}
+
+.back-home-button-holder h4{
+    transition: 0.3s ease-out;
+    font-size: 20px;
+}
+
+.back-home-button-holder:hover{
+    gap: 18px;
+}
+
+.back-home-button-holder:hover h4{
+    color: var(--gray1);
+}
+
+.back-home-button-holder img{
+height: 14px;
+width: auto;
+}
+
+.left-content-container {
+    max-width: 400px;
+    position: sticky;
+    height: fit-content;
+    top:128px;
+}
+
+.right-content-container{
+    width: 558px;
+    height: fit-content;
+    background-color: bisque;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+}
+
+.desktop-or-mobile-container{
+    width: 100%;
+    height: fit-content;
+    background-color: aquamarine;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 42px;
+}
+
+#change-button{
+    width: 40px;
+    /* height: fit-content; */
+    height: 30px;
+    background-color: fuchsia;
+}
+
+.website-view-container{
+    width: 100%;
+    /* height: fit-content; */
+    height: 1500px;
+    background-color: blue;
+}
+
+.buttons-below-container{
+    width: 100%;
+    /* height: fit-content; */
+    height: 36px;
+    background-color: darksalmon;
+    margin-bottom: 64px;
+}
+
+.video-testimonial-container{
+    width: 100%;
+    height: fit-content;
+    background-color: aquamarine;
+}
+
+
+.video-itself-container {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: gray;
+    cursor: pointer;
+}
+
+.title-holder{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 42px;
+}
+
+.title-holder h4{
+    color: var(--gray1)
+}
+
+
+
+/* Disable stickiness on devices smaller than 1064px */
+@media (max-width: 1064px) {
+    .left-content-container {
+        position: relative; /* Removes stickiness */
+        top:0;
+        width: 100%;
+    }
+
+    .main-content-container{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        padding: 0px 32px;
+        gap: 42px;
+    }
+
+    .back-home-button-holder{
+        margin-left: 32px;
+    }
+
+    .right-content-container{
+        width: 600px;
+    }
+
+    .left-content-container{
+        max-width: 450px;
+    }
+}
+
+@media (max-width: 664px) {
+
+    .right-content-container{
+        width: 100%;
+    }
+}
+
+@media (max-width: 555px) {
+
+    .back-home-button-holder{
+        margin-left: 16px;
+
+    }
+
+     .main-content-container{
+        padding: 0px 16px;
+        margin-top: 92px;
+    }
+
+    .title-holder{
+        gap: 8px;
+        margin-bottom: 24px;
+    }
+
+    .buttons-below-container{
+        margin-bottom: 32px;
+    }
+
+}
