@@ -857,6 +857,12 @@ nav {
   .title-container h1 {
     width: 793px;
   }
+
+  .hero-section-container {
+
+    padding-top: 164px;
+  }
+  
 }
 
 @media (max-width: 831px) {
@@ -899,6 +905,11 @@ nav {
 
   .title-container h1 {
     width: 452px;
+  }
+
+  .hero-section-container {
+
+    padding-top: 128px;
   }
 }
 
