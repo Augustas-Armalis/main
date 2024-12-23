@@ -1,96 +1,45 @@
-// load in
-
-
+// load inwindow.onload = function () {
+// Hiding the preloader after page load
+window.addEventListener('load', function () {
+  document.querySelector('.preloader').className += ' hidden';
+});
+// Your GSAP animations
 gsap.fromTo(".title-container",
-  { y: 100, opacity: 0 }, // Starting position and opacity
-  {
-    y: 0,
-    opacity: 1,
-    duration: 1,
-    ease: "power2.out",
-    delay: 0.1, // Adjusted delay
-  }
+  { y: 100, opacity: 0 },
+  { y: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 0.1 }
 );
-
 
 gsap.fromTo(".alt-container",
-  { y: 100, opacity: 0 }, // Starting position and opacity
-  {
-    y: 0,
-    opacity: 1,
-    duration: 1,
-    ease: "power2.out",
-    delay: 0.2, // Adjusted delay
-  }
+  { y: 100, opacity: 0 },
+  { y: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 0.2 }
 );
 
-gsap.fromTo(
-  ".under-rectangle-layer",
-  { y: 50, opacity: 0 }, // Starting position and opacity
-  {
-    y: 0,
-    opacity: 1,
-    duration: 1,
-    ease: "power2.out",
-    delay: 0.3, // Adjusted delay
-  }
+gsap.fromTo(".under-rectangle-layer",
+  { y: 50, opacity: 0 },
+  { y: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 0.3 }
 );
 
-gsap.fromTo(
-  "nav",
-  {
-    y: -90,
-    opacity: 0
-  },
-  {
-    y: 0,
-    opacity: 1,
-    duration: 1,
-    ease: "power2.out",// Custom easing curve
-    delay: 0.2, // Adjusted delay
-  }
+gsap.fromTo("nav",
+  { y: -40, opacity: 0 },
+  { y: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 0.2 }
 );
 
-gsap.fromTo(
-  ".nav-lottie-drag",
-  {
-    y: 20,
-    opacity: 0
-  },
-  {
-    y: 0,
-    opacity: 1,
-    duration: 1,
-    ease: "power2.out",// Custom easing curve
-    delay: 2, // Adjusted delay
-  }
+gsap.fromTo(".nav-lottie-drag",
+  { y: 20, opacity: 0 },
+  { y: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 2 }
+);
+
+gsap.fromTo(".slider-hero-container",
+  { x: 200, opacity: 0 },
+  { x: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 0.3 }
+);
+
+gsap.fromTo(".bck-container",
+  { y: -window.innerHeight * 0.5, opacity: 0 },
+  { y: 0, opacity: 1, duration: 0.6, ease: "expo.Out" }
 );
 
 
-gsap.fromTo(
-  ".slider-hero-container",
-  { x: 200, opacity: 0 }, // Starting position and opacity
-  {
-    x: 0,
-    opacity: 1,
-    duration: 1,
-    ease: "power2.out",
-    delay: 0.3, // Adjusted delay
-  }
-);
-
-window.onload = function () {
-  gsap.fromTo(
-    ".bck-container",
-    { y: -window.innerHeight * 0.5, opacity: 0 }, // Starting position as -70vh
-    {
-      y: 0,
-      opacity: 1,
-      duration: 0.6,
-      ease: "expo.Out",
-    }
-  );
-};
 
 
 

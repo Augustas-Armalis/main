@@ -194,6 +194,22 @@ h5 {
 }
 
 
+.preloader {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 9999999;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+}
+
+#check-connection {
+  color: var(--gray2);
+}
 
 
 
@@ -816,6 +832,8 @@ nav {
 .title-container {
   margin-bottom: 16px;
   max-width: 1000px;
+  opacity: 0;
+  transform: translateY(100px);
 }
 
 .title-container h1 {
@@ -831,6 +849,8 @@ nav {
 
 .alt-container {
   max-width: 600px;
+  opacity: 0;
+  transform: translateY(100px);
 }
 
 .alt-container h4 {
@@ -862,7 +882,7 @@ nav {
 
     padding-top: 164px;
   }
-  
+
 }
 
 @media (max-width: 831px) {
@@ -892,7 +912,8 @@ nav {
 
   .alt-container h4 {
     font-size: 16px;
-    width: 388px;
+    width: 381px;
+
   }
 
   .title-alt-container {
@@ -901,11 +922,9 @@ nav {
 
   .title-container h1 {
     font-size: 30px;
+    width: auto;
   }
 
-  .title-container h1 {
-    width: 452px;
-  }
 
   .hero-section-container {
 
@@ -914,72 +933,41 @@ nav {
 }
 
 
-@media (max-width: 484px) {
-
-  .title-container h1 {
-    /* width: 374px; */
-    width: auto;
-  }
 
 
-}
 
 @media (max-width: 410px) {
 
   .alt-container h4 {
-    width: 266px;
+    width: 324px;
+
   }
-
 }
 
-
-
-@media (max-width: 406px) {
-
-  /* .title-container h1 {
-    width: 242px;
-  } */
-}
 
 @media (max-width: 372px) {
 
   .title-container h1 {
-    width: 242px;
+    width: 246px;
   }
+
+
 }
 
-@media (max-width: 290px) {
+@media (max-width: 348px) {
 
   .alt-container h4 {
-    width: 194px;
+    width: auto;
   }
+
 
 }
 
-@media (max-width: 250px) {
-
+@media (max-width: 292px) {
   .title-container h1 {
     width: auto;
   }
 }
-
-
-@media (max-width: 220px) {
-
-  .alt-container h4 {
-    width: 166px;
-  }
-
-}
-
-@media (max-width: 196px) {
-
-  .alt-container h4 {
-    width: auto;
-  }
-
-}
-
 
 
 
@@ -991,6 +979,9 @@ nav {
   /* Ensures the height is applied */
   width: auto !important;
   /* Maintains aspect ratio */
+
+  opacity: 0;
+  transform: translateY(100px);
 
 
 }
@@ -1070,10 +1061,7 @@ nav {
   cursor: pointer;
   touch-action: manipulation;
   opacity: 0;
-  /* Initial state for animation */
   transform: translateY(50px);
-  /* Initial state for animation */
-  transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 
