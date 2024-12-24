@@ -110,3 +110,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
+
+window.onload = function() {
+  gsap.fromTo(".left-content-container",
+    { y: 100, opacity: 0 },
+    { y: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 0.1 }
+  );
+
+  gsap.fromTo(".right-content-container",
+    { y: 100, opacity: 0 },
+    { y: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 0.2 }
+  );
+
+  gsap.fromTo(".back-home-buttom-container",
+    { y: -60, opacity: 0 },
+    { y: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 0.2 }
+  );
+};
