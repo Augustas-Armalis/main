@@ -128,3 +128,60 @@ window.onload = function() {
     { y: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 0.2 }
   );
 };
+
+
+
+
+// GSAP animation for hover and touchstart
+gsap.utils.toArray('.video-itself-container').forEach((container) => {
+  const thumbnail = container.querySelector('.video-thumbnail');
+  const playButton = container.querySelector('.play-button-cont');
+  const playButtonImg = playButton.querySelector('img');
+
+  // Mouseover and touchstart trigger
+  const triggerEnter = () => {
+      gsap.to(thumbnail, {
+          opacity: 0.7,
+          duration: 0,
+          ease: "none"  // Smooth and fast ease
+      });
+      gsap.to(playButton, {
+          backgroundColor: 'white',
+          borderColor: 'white',
+          duration: 0,
+          ease: "none"  // Smooth and fast ease
+      });
+      gsap.to(playButtonImg, {
+          filter: 'brightness(0%)',
+          duration: 0,
+          ease: "none"  // Smooth and fast ease
+      });
+  };
+
+  // Mouseleave and touchend trigger
+  const triggerLeave = () => {
+      gsap.to(thumbnail, {
+          opacity: 1,
+          duration: 0,
+          ease: "none"  // Smooth and fast ease
+      });
+      gsap.to(playButton, {
+          backgroundColor: 'rgba(0, 0, 0, 0.70)',
+          borderColor: 'var(--gray2)',
+          duration: 0,
+          ease: "none"  // Smooth and fast ease
+      });
+      gsap.to(playButtonImg, {
+          filter: 'brightness(100%)',
+          duration: 0,
+          ease: "none"  // Smooth and fast ease
+      });
+  };
+
+  // Add event listeners
+  container.addEventListener('mouseover', triggerEnter);
+  container.addEventListener('touchstart', triggerEnter);
+  container.addEventListener('mouseleave', triggerLeave);
+  container.addEventListener('touchend', triggerLeave);
+});
+
