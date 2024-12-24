@@ -37,17 +37,16 @@ const toggleScroll = (disable) => {
   document.body.style.overflowX = overflowValue;
   document.documentElement.style.overflowX = overflowValue;
 };
-// Function to load the YouTube API script only when needed
+
 function loadYouTubeAPI() {
   if (!window.YT) {
     const script = document.createElement('script');
     script.src = "https://www.youtube.com/iframe_api";
-    script.defer = true; // This ensures the script doesn't block the page load
+    script.defer = true;
     document.head.appendChild(script);
   }
 }
 
-// Toggle the video container and load the YouTube video iframe when shown
 const toggleVideoContainer = (show) => {
   videoContainer.style.display = show ? "inherit" : "none";
   toggleScroll(show);
@@ -55,39 +54,32 @@ const toggleVideoContainer = (show) => {
   const iframe = videoContainer.querySelector('iframe');
 
   if (show) {
-    // If the iframe is not yet loaded, create a new iframe element
     if (!iframe) {
-      loadYouTubeAPI(); // Load YouTube API only when needed
-
+      loadYouTubeAPI();
       const newIframe = document.createElement('iframe');
       newIframe.id = "ytplayer";
       newIframe.type = "text/html";
       newIframe.frameborder = "0";
       newIframe.allowfullscreen = true;
       newIframe.ariaLabel = "YouTube video player";
-      newIframe.src = youtubeVideo; // Set the YouTube video URL
-      videoContainer.appendChild(newIframe); // Append the new iframe to the container
+      newIframe.src = youtubeVideo;
+      videoContainer.appendChild(newIframe);
     }
   } else {
-    // If the video container is closed, remove the iframe to unload it
     if (iframe) {
-      iframe.remove(); // Remove the iframe completely when closing the container
+      iframe.remove();
     }
   }
 };
 
-// Event listener for closing the video container
 closeButton.addEventListener("click", () => toggleVideoContainer(false));
 
-// Event listener for opening the video container
 document.querySelectorAll(".video-itself-container").forEach((videoElement) => {
   videoElement.addEventListener("click", () => toggleVideoContainer(true));
 });
 
-// Event listener for the back home button
 backHomeButton.addEventListener('click', () => window.location.href = 'https://augustas.co/');
 
-// Activate/deactivate buttons with images for the given action
 const activateButton = (activeBtn, inactiveBtn, showImg, hideImg) => {
   activeBtn.classList.add("active");
   inactiveBtn.classList.remove("active");
@@ -162,10 +154,10 @@ function executeAbove1064px() {
     let rotationTimeout = null;
     let hoverTimeoutActive = false;
 
-    const fadeInOnLoadDuration = 0.2; // Shortened fade-in time
-    const fadeHoverDuration = 0.2; // Shortened fade-in/out time
-    const rectangleShowUpTo = '.video-itself-container, .desktop-button, .mobile-button';  // Renamed variable
-    const circleDissapearTo = document.querySelectorAll('.visit-button, .template-button, .website-view-container, .back-home-button-holder');  // Renamed variable
+    const fadeInOnLoadDuration = 0.2;
+    const fadeHoverDuration = 0.2;
+    const rectangleShowUpTo = '.video-itself-container, .desktop-button, .mobile-button';
+    const circleDissapearTo = document.querySelectorAll('.visit-button, .template-button, .website-view-container, .back-home-button-holder');
 
     const fadeInCircleOnLoad = () => {
       circleElement.style.transition = `opacity ${fadeInOnLoadDuration}s ease-in-out`;
@@ -214,7 +206,6 @@ function executeAbove1064px() {
 
     tick();
 
-    // Reuse the rectangleShowUpTo variable here
     circleDissapearTo.forEach(container => {
       container.addEventListener('mouseenter', fadeOutCircle);
       container.addEventListener('mouseleave', fadeInCircle);
@@ -233,7 +224,7 @@ function executeAbove1064px() {
 
     fadeInCircleOnLoad();
 
-    const morphingContainers = document.querySelectorAll(rectangleShowUpTo);  // Reuse again
+    const morphingContainers = document.querySelectorAll(rectangleShowUpTo);
     morphingContainers.forEach(container => {
       container.addEventListener('mouseenter', () => {
         const hoverText = container.getAttribute('data-hover-text');
@@ -274,42 +265,31 @@ function executeAbove1064px() {
           borderRadius: "50%",
           duration: 0.2,
           ease: "power2.inOut",
-          top: -6,
-          left: -6,
+          top: 0,
+          left: 0,
         });
 
         const textElement = circleElement.querySelector('.circle-text');
+        textElement.textContent = "";
         gsap.to(textElement, {
           opacity: 0,
-          scale: 0,
+          scale: 0.8,
+          margin: "0",
           duration: 0.2
         });
 
-        if (rotationTimeout) {
-          clearTimeout(rotationTimeout);
-        }
+        rotationEnabled = true;
 
-        rotationTimeout = setTimeout(() => {
-          rotationEnabled = true;
-          hoverTimeoutActive = false;
-        }, 200);
-      });
-    });
-
-    // Prevent re-enabling rotation if hovering again before timeout is finished
-    document.querySelectorAll(rectangleShowUpTo).forEach(container => {
-      container.addEventListener('mouseenter', () => {
         if (hoverTimeoutActive) {
-          clearTimeout(rotationTimeout);
-          hoverTimeoutActive = false;
+          rotationTimeout = setTimeout(() => rotationEnabled = true, 0);
         }
       });
     });
   }
 }
 
-executeAbove1064px();
 window.addEventListener('resize', executeAbove1064px);
+executeAbove1064px();
 
 function updateClock() {
   const now = new Date();
