@@ -383,8 +383,13 @@ footer{
         margin-left: 16px;
     }
 
+    .buttons-below-container {
+        margin-bottom: 42px;
+    }
+
     .main-content-container {
-        gap: 10px;
-        margin-top: 112px;
+        gap: 32px;
+        margin-top: 100px;
+        padding: 0px 16px;
     }
 }

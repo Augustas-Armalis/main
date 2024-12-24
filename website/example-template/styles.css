@@ -386,5 +386,6 @@ footer{
     .main-content-container {
         gap: 10px;
         margin-top: 112px;
+        padding: 0px 16px;
     }
 }
