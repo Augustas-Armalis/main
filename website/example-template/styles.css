@@ -274,7 +274,7 @@ width: auto;
 }
 
 .video-thumbnail {
-    position: absolute; /* Allows it to fill the container */
+    position: absolute;
     width: 100%;
     height: 100%;
     object-fit: cover; /* Prevents distortion */
