@@ -32,19 +32,45 @@ const toggleScroll = (disable) => {
   document.documentElement.style.overflowX = overflowValue;
 };
 
+// Toggle the video container and load the YouTube video iframe when shown
 const toggleVideoContainer = (show) => {
   videoContainer.style.display = show ? "inherit" : "none";
   toggleScroll(show);
+
+  const iframe = videoContainer.querySelector('iframe');
+
+  if (show) {
+    // If the iframe is not yet loaded, create a new iframe element
+    if (!iframe) {
+      const newIframe = document.createElement('iframe');
+      newIframe.id = "ytplayer";
+      newIframe.type = "text/html";
+      newIframe.frameborder = "0";
+      newIframe.allowfullscreen = true;
+      newIframe.ariaLabel = "YouTube video player";
+      newIframe.src = youtubeVideo; // Set the YouTube video URL
+      videoContainer.appendChild(newIframe); // Append the new iframe to the container
+    }
+  } else {
+    // If the video container is closed, remove the iframe to unload it
+    if (iframe) {
+      iframe.remove(); // Remove the iframe completely when closing the container
+    }
+  }
 };
 
+// Event listener for closing the video container
 closeButton.addEventListener("click", () => toggleVideoContainer(false));
 
+// Event listener for opening the video container
 document.querySelectorAll(".video-itself-container").forEach((videoElement) => {
   videoElement.addEventListener("click", () => toggleVideoContainer(true));
 });
 
+// Event listener for the back home button
 backHomeButton.addEventListener('click', () => window.location.href = 'https://augustas.co/');
 
+// Activate/deactivate buttons with images for the given action
 const activateButton = (activeBtn, inactiveBtn, showImg, hideImg) => {
   activeBtn.classList.add("active");
   inactiveBtn.classList.remove("active");
