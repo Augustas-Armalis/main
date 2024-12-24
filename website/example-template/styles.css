@@ -278,7 +278,7 @@ width: auto;
     width: 100%;
     height: 100%;
     object-fit: cover; /* Prevents distortion */
-    z-index: 1; /* Below the play button */
+    z-index: 4; /* Below the play button */
     transition: 0.3s all ease;
 }
 
