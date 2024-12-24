@@ -31,6 +31,15 @@ const toggleScroll = (disable) => {
   document.body.style.overflowX = overflowValue;
   document.documentElement.style.overflowX = overflowValue;
 };
+// Function to load the YouTube API script only when needed
+function loadYouTubeAPI() {
+  if (!window.YT) {
+    const script = document.createElement('script');
+    script.src = "https://www.youtube.com/iframe_api";
+    script.defer = true; // This ensures the script doesn't block the page load
+    document.head.appendChild(script);
+  }
+}
 
 // Toggle the video container and load the YouTube video iframe when shown
 const toggleVideoContainer = (show) => {
@@ -42,6 +51,8 @@ const toggleVideoContainer = (show) => {
   if (show) {
     // If the iframe is not yet loaded, create a new iframe element
     if (!iframe) {
+      loadYouTubeAPI(); // Load YouTube API only when needed
+
       const newIframe = document.createElement('iframe');
       newIframe.id = "ytplayer";
       newIframe.type = "text/html";
