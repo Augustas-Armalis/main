@@ -40,3 +40,73 @@ document.querySelectorAll(".video-itself-container").forEach((videoElement) => {
 document.querySelector('.back-home-button-holder').addEventListener('click', function() {
     window.location.href = 'https://augustas.co/';
 });
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const desktopButton = document.getElementById("desktop-button");
+  const mobileButton = document.getElementById("mobile-button");
+  const desktopImage = document.querySelector(".website-desktop");
+  const mobileImage = document.querySelector(".website-mobile");
+
+  const activateButton = (buttonToActivate, buttonToDeactivate, imageToShow, imageToHide) => {
+    buttonToActivate.classList.add("active");
+    buttonToDeactivate.classList.remove("active");
+    imageToShow.style.display = "block";
+    imageToHide.style.display = "none";
+  };
+
+  // Check initial window width and set initial state
+  if (window.innerWidth < 555) {
+    activateButton(mobileButton, desktopButton, mobileImage, desktopImage);
+  } else {
+    activateButton(desktopButton, mobileButton, desktopImage, mobileImage);
+  }
+
+  desktopButton.addEventListener("click", () => {
+    activateButton(desktopButton, mobileButton, desktopImage, mobileImage);
+  });
+
+  mobileButton.addEventListener("click", () => {
+    activateButton(mobileButton, desktopButton, mobileImage, desktopImage);
+  });
+});
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const desktopButton = document.getElementById("desktop-button");
+  const mobileButton = document.getElementById("mobile-button");
+
+  // Add hover effect using pure JavaScript (only for mouse, not touch)
+  const addMouseHoverEffect = (element) => {
+    element.addEventListener("mouseenter", () => {
+      if (!('ontouchstart' in window)) {  // Ensure it's not a touch device
+        element.style.backgroundColor = "var(--gray3)"; // On mouse enter, change background color
+      }
+    });
+
+    element.addEventListener("mouseleave", () => {
+      element.style.backgroundColor = "transparent"; // On mouse leave, revert background color
+    });
+  };
+
+  // Apply hover effect to both buttons
+  addMouseHoverEffect(desktopButton);
+  addMouseHoverEffect(mobileButton);
+});
+
+
+
+
+
+
+
+

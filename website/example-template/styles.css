@@ -59,13 +59,15 @@ height: 100%;
 
 .back-home-buttom-container {
     width: 100%;
-    height: 40px;
+    height: fit-content;
     position: fixed;
     max-width: 1000px;
     left: 50%;
     top: 24px;
     transform: translateX(-50%);
     z-index: 9999;
+
+
 }
 
 
@@ -89,6 +91,15 @@ height: 100%;
     cursor: pointer;
     transition: all 0.3s ease; 
     color: white;
+    user-select: none;
+
+    border-radius: 12px;
+    cursor: pointer;
+    background: hsla(0, 0%, 0%, 0.7);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(3px);
+    border: 1px solid var(--gray3);
+    padding: 3px 12px;
 }
 
 .back-home-button-holder h4{
@@ -119,7 +130,6 @@ width: auto;
 .right-content-container{
     width: 558px;
     height: fit-content;
-    background-color: bisque;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -129,47 +139,131 @@ width: auto;
 .desktop-or-mobile-container{
     width: 100%;
     height: fit-content;
-    background-color: aquamarine;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 42px;
 }
 
-#change-button{
+#desktop-button, #mobile-button {
     width: 40px;
-    /* height: fit-content; */
-    height: 30px;
-    background-color: fuchsia;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--gray2);
+    border-radius: 8px 8px 0px 0px;
+    transition: border-bottom 0.3s ease;
 }
+
+
+#desktop-button.active, #mobile-button.active {
+    border-bottom: 1px solid var(--white);
+}
+
+#desktop-icon, #mobile-icon {
+    width: 27px;
+    height: 27px;
+    filter: brightness(35%);
+    transition: all 0.3s ease;
+}
+
+#desktop-button.active #desktop-icon, 
+#mobile-button.active #mobile-icon {
+    filter: brightness(100%);
+}
+
+
 
 .website-view-container{
     width: 100%;
-    /* height: fit-content; */
-    height: 1500px;
-    background-color: blue;
+    height: fit-content;
+    overflow: hidden;
+    border-radius: 24px;
+    background-color: var(--gray3);
 }
+
+.website-desktop,
+.website-mobile {
+    width: 100%;
+    height: auto;
+}
+
+
 
 .buttons-below-container{
     width: 100%;
-    /* height: fit-content; */
-    height: 36px;
-    background-color: darksalmon;
+    height: fit-content;
     margin-bottom: 64px;
+    display: flex;
+    gap: 12px;
 }
 
 .video-testimonial-container{
     width: 100%;
     height: fit-content;
-    background-color: aquamarine;
 }
 
 
 .video-itself-container {
     width: 100%;
     aspect-ratio: 16 / 9;
-    background-color: gray;
     cursor: pointer;
+    overflow: hidden;
+    border-radius: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    position: relative;
+}
+
+.video-thumbnail {
+    position: absolute; /* Allows it to fill the container */
+    width: 100%; /* Ensures it covers the entire container */
+    height: 100%;
+    object-fit: cover; /* Prevents distortion */
+    z-index: 1; /* Below the play button */
+    transition: 0.3s all ease;
+}
+
+.play-button-cont img{
+    transition: 0.3s all ease;
+}
+
+
+.play-button-cont{
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 1px solid var(--gray2);
+    position: absolute;
+    background: rgba(0, 0, 0, 0.70);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 5px;
+    z-index: 90;
+    transition: 0.3s all ease;
+}
+
+.text-below-vid{
+    color: var(--gray2)
+}
+
+.video-itself-container:hover .video-thumbnail {
+    opacity: 0.7;
+}
+
+.video-itself-container:hover .play-button-cont {
+    background-color: white;
+    border: 1px solid white;
+}
+
+.video-itself-container:hover .play-button-cont img {
+filter: brightness(0%);
 }
 
 .title-holder{
@@ -182,6 +276,50 @@ width: auto;
 .title-holder h4{
     color: var(--gray1)
 }
+
+
+.visit-button h4,
+.template-button h4{
+    font-size: 20px;
+}
+
+.visit-button{
+    width: fit-content;
+    height: 36px;
+    padding: 5px 20px;
+    background-color: black;
+    display: flex;
+    border-radius: 12px;
+    border: 1px solid var(--gray2);
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.visit-button:hover{
+    border: 1px solid var(--gray1);
+}
+
+.template-button{
+    width: fit-content;
+    height: 36px;
+    padding: 5px 20px;
+    background-color: white;
+    display: flex;
+    border-radius: 12px;
+    cursor: pointer;
+    color: black;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.template-button:hover{
+    background-color: var(--gray1);
+}
+
+
+
 
 
 
@@ -223,6 +361,11 @@ width: auto;
 }
 
 @media (max-width: 555px) {
+
+    .back-home-button-holder img{
+        height: 12px;
+        width: auto;
+        }
 
     .back-home-button-holder{
         margin-left: 16px;

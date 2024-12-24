@@ -36,7 +36,6 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
 
 </head>
@@ -77,11 +76,28 @@
 
     <div class="buttons-below-container">
 
+      <a href="https://example.com" class="visit-button">
+        <h4>Visit</h4>
+      </a>
+
+      <a href="https://example.com" class="template-button">
+        <h4>Get template</h4>
+      </a>
+
     </div>
 
     <div class="video-testimonial-container">
 
-      <div class="video-itself-container"></div>
+      <div class="video-itself-container">
+
+        <div class="play-button-cont">
+          <img src="images/Polygon 8.svg">
+        </div>
+
+        <img class="video-thumbnail" src="images/fuckeris.png">
+
+      </div>
+
       <div class="text-below-vid">
         <h5>Client's name</h5>
       </div>
@@ -97,15 +113,21 @@
 
   <div class="right-content-container">
 
-
     <div class="desktop-or-mobile-container">
-      <div class="desktop-button" id="change-button"></div>
-      <div class="mobile-button" id="change-button"></div>
+      <div class="desktop-button" id="desktop-button">
+        <img src="images/Desktop-icon.svg" id="desktop-icon">
+      </div>
+    
+      <div class="mobile-button" id="mobile-button">
+        <img src="images/Mobile-icon.svg" id="mobile-icon">
+      </div>
     </div>
-
+    
     <div class="website-view-container">
-
+      <img src="images/Desktop.svg" class="website-desktop">
+      <img src="images/Mobile.svg" class="website-mobile">
     </div>
+    
 
   </div>
 
