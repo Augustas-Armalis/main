@@ -24,7 +24,6 @@ const desktopImage = document.querySelector(".website-desktop");
 const mobileImage = document.querySelector(".website-mobile");
 const backHomeButton = document.querySelector('.back-home-button-holder');
 
-// Function to toggle scrolling
 const toggleScroll = (disable) => {
   const overflowValue = disable ? "hidden" : "";
   document.body.style.overflow = overflowValue;
@@ -33,24 +32,19 @@ const toggleScroll = (disable) => {
   document.documentElement.style.overflowX = overflowValue;
 };
 
-// Function to toggle video container visibility
 const toggleVideoContainer = (show) => {
   videoContainer.style.display = show ? "inherit" : "none";
   toggleScroll(show);
 };
 
-// Event listener for closing the video container
 closeButton.addEventListener("click", () => toggleVideoContainer(false));
 
-// Event listeners for showing the video container
 document.querySelectorAll(".video-itself-container").forEach((videoElement) => {
   videoElement.addEventListener("click", () => toggleVideoContainer(true));
 });
 
-// Event listener for the back home button
 backHomeButton.addEventListener('click', () => window.location.href = 'https://augustas.co/');
 
-// Function to activate mobile/desktop buttons
 const activateButton = (activeBtn, inactiveBtn, showImg, hideImg) => {
   activeBtn.classList.add("active");
   inactiveBtn.classList.remove("active");
@@ -58,7 +52,6 @@ const activateButton = (activeBtn, inactiveBtn, showImg, hideImg) => {
   hideImg.style.display = "none";
 };
 
-// Function to handle button activation on page load and resize
 const setupButtons = () => {
   if (window.innerWidth < 555) {
     activateButton(mobileButton, desktopButton, mobileImage, desktopImage);
@@ -70,7 +63,6 @@ const setupButtons = () => {
   mobileButton.addEventListener("click", () => activateButton(mobileButton, desktopButton, mobileImage, desktopImage));
 };
 
-// Hover effect function
 const addHoverEffect = (element) => {
   const hoverIn = () => element.style.backgroundColor = "var(--gray3)";
   const hoverOut = () => element.style.backgroundColor = "transparent";
@@ -81,12 +73,10 @@ const addHoverEffect = (element) => {
   element.addEventListener("touchend", hoverOut);
 };
 
-// GSAP Animations for content and buttons
 gsap.fromTo(".left-content-container", { y: 100, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: "power2.out" });
 gsap.fromTo(".right-content-container", { y: 100, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 0.1 });
 gsap.fromTo(".back-home-buttom-container", { y: -60, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 0.1 });
 
-// GSAP animations for video thumbnail hover/touch
 gsap.utils.toArray('.video-itself-container').forEach((container) => {
   const thumbnail = container.querySelector('.video-thumbnail');
   const playButton = container.querySelector('.play-button-cont');
@@ -115,17 +105,6 @@ document.addEventListener("DOMContentLoaded", () => {
   addHoverEffect(desktopButton);
   addHoverEffect(mobileButton);
 });
-
-
-
-
-
-
-
-
-
-
-
 
 function executeAbove1064px() {
   if (window.innerWidth > 1064) {
@@ -288,3 +267,16 @@ function executeAbove1064px() {
 
 executeAbove1064px();
 window.addEventListener('resize', executeAbove1064px);
+
+function updateClock() {
+  const now = new Date();
+  const hours = now.getHours().toString().padStart(2, '0');
+  const minutes = now.getMinutes().toString().padStart(2, '0');
+  const seconds = now.getSeconds().toString().padStart(2, '0');
+  document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+}
+
+setInterval(updateClock, 1000);
+updateClock();
+
+document.getElementById('year').textContent = new Date().getFullYear();
