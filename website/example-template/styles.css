@@ -320,6 +320,21 @@ iframe#ytplayer {
     background-color: var(--gray1);
 }
 
+footer{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+    color: var(--gray2);
+}
+
+#clock{
+    color: var(--gray1);
+}
+
 @media (max-width: 1064px) {
     .left-content-container {
         position: relative;
