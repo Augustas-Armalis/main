@@ -15,6 +15,12 @@ document.querySelector('#ytplayer').src = youtubeVideo;
 
 // ---------------------------------------------------------------------
 
+window.onload = function() {
+  var script = document.createElement('script');
+  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js';
+  document.head.appendChild(script);
+};
+
 const videoContainer = document.querySelector(".video-container");
 const closeButton = document.querySelector(".close-button");
 const youtubePlayer = document.querySelector("#ytplayer");
