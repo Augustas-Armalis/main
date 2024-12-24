@@ -1,26 +1,3 @@
-const imageSources = {
-  desktop: 'images/desktop.webp',
-  mobile: 'images/mobile.webp',
-  thumbnail: 'images/thumbnail.webp'
-};
-
-const visitLink = 'https://example.com';
-const youtubeVideo = 'https://www.youtube.com/embed/5sbWbfe_4XU?si=c2RrfDYKn9kWqz7f';
-
-document.querySelector('.website-desktop').src = imageSources.desktop;
-document.querySelector('.website-mobile').src = imageSources.mobile;
-document.querySelector('.video-thumbnail').src = imageSources.thumbnail;
-document.querySelector('.visit-button').href = visitLink;
-document.querySelector('#ytplayer').src = youtubeVideo;
-
-// ---------------------------------------------------------------------
-
-window.onload = function() {
-  var script = document.createElement('script');
-  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js';
-  document.head.appendChild(script);
-};
-
 const videoContainer = document.querySelector(".video-container");
 const closeButton = document.querySelector(".close-button");
 const youtubePlayer = document.querySelector("#ytplayer");
