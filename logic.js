@@ -11,8 +11,8 @@ function executeAbove1064px() {
     let rotationTimeout = null;  // To hold the timeout for resetting the rotation
     let hoverTimeoutActive = false; // To track whether the hover timeout is currently active
 
-    const fadeInOnLoadDuration = 1;
-    const fadeHoverDuration = 0.5;
+    const fadeInOnLoadDuration = 0.2;
+    const fadeHoverDuration = 0.2;
 
     const fadeInCircleOnLoad = () => {
       circleElement.style.transition = `opacity ${fadeInOnLoadDuration}s ease-in-out`;
@@ -184,6 +184,10 @@ window.addEventListener('resize', executeAbove1064px);
 // function executeAbove1064px() {
 //   if (window.innerWidth > 1064) {
 //     console.clear();
+
+//     const circleDissapearTo = document.querySelectorAll('.visit-button, .template-button, .website-view-container, .back-home-button-holder');
+//     const rectangleMorphTo = document.querySelectorAll('.video-itself-container, .desktop-button, .mobile-button');
+    
 //     const circleElement = document.querySelector('.circle');
 //     const mouse = { x: 0, y: 0 };
 //     const previousMouse = { x: 0, y: 0 };
@@ -194,10 +198,8 @@ window.addEventListener('resize', executeAbove1064px);
 //     let rotationTimeout = null;
 //     let hoverTimeoutActive = false;
 
-//     const fadeInOnLoadDuration = 0.2; // Shortened fade-in time
-//     const fadeHoverDuration = 0.2; // Shortened fade-in/out time
-//     const rectangleShowUpTo = '.video-itself-container, .desktop-button, .mobile-button';  // Renamed variable
-//     const circleDissapearTo = document.querySelectorAll('.visit-button, .template-button, .website-view-container, .back-home-button-holder');  // Renamed variable
+//     const fadeInOnLoadDuration = 0.2;
+//     const fadeHoverDuration = 0.2;
 
 //     const fadeInCircleOnLoad = () => {
 //       circleElement.style.transition = `opacity ${fadeInOnLoadDuration}s ease-in-out`;
@@ -214,7 +216,14 @@ window.addEventListener('resize', executeAbove1064px);
 //       circleElement.style.opacity = '0';
 //     };
 
+//     let mouseMoved = false;
+
 //     window.addEventListener('mousemove', (e) => {
+//       if (!mouseMoved) {
+//         fadeInCircle();
+//         mouseMoved = true;
+//       }
+
 //       mouse.x = e.x;
 //       mouse.y = e.y;
 //     });
@@ -246,7 +255,6 @@ window.addEventListener('resize', executeAbove1064px);
 
 //     tick();
 
-//     // Reuse the rectangleShowUpTo variable here
 //     circleDissapearTo.forEach(container => {
 //       container.addEventListener('mouseenter', fadeOutCircle);
 //       container.addEventListener('mouseleave', fadeInCircle);
@@ -265,8 +273,7 @@ window.addEventListener('resize', executeAbove1064px);
 
 //     fadeInCircleOnLoad();
 
-//     const morphingContainers = document.querySelectorAll(rectangleShowUpTo);  // Reuse again
-//     morphingContainers.forEach(container => {
+//     rectangleMorphTo.forEach(container => {
 //       container.addEventListener('mouseenter', () => {
 //         const hoverText = container.getAttribute('data-hover-text');
 //         const circleWidth = circleElement.Width;
@@ -328,8 +335,7 @@ window.addEventListener('resize', executeAbove1064px);
 //       });
 //     });
 
-//     // Prevent re-enabling rotation if hovering again before timeout is finished
-//     document.querySelectorAll(rectangleShowUpTo).forEach(container => {
+//     rectangleMorphTo.forEach(container => {
 //       container.addEventListener('mouseenter', () => {
 //         if (hoverTimeoutActive) {
 //           clearTimeout(rotationTimeout);

@@ -144,6 +144,10 @@ document.addEventListener("DOMContentLoaded", () => {
 function executeAbove1064px() {
   if (window.innerWidth > 1064) {
     console.clear();
+
+    const circleDissapearTo = document.querySelectorAll('.visit-button, .template-button, .website-view-container, .back-home-button-holder');
+    const rectangleMorphTo = document.querySelectorAll('.video-itself-container, .desktop-button, .mobile-button');
+    
     const circleElement = document.querySelector('.circle');
     const mouse = { x: 0, y: 0 };
     const previousMouse = { x: 0, y: 0 };
@@ -156,8 +160,6 @@ function executeAbove1064px() {
 
     const fadeInOnLoadDuration = 0.2;
     const fadeHoverDuration = 0.2;
-    const rectangleShowUpTo = '.video-itself-container, .desktop-button, .mobile-button';
-    const circleDissapearTo = document.querySelectorAll('.visit-button, .template-button, .website-view-container, .back-home-button-holder');
 
     const fadeInCircleOnLoad = () => {
       circleElement.style.transition = `opacity ${fadeInOnLoadDuration}s ease-in-out`;
@@ -174,7 +176,14 @@ function executeAbove1064px() {
       circleElement.style.opacity = '0';
     };
 
+    let mouseMoved = false;
+
     window.addEventListener('mousemove', (e) => {
+      if (!mouseMoved) {
+        fadeInCircle();
+        mouseMoved = true;
+      }
+
       mouse.x = e.x;
       mouse.y = e.y;
     });
@@ -224,8 +233,7 @@ function executeAbove1064px() {
 
     fadeInCircleOnLoad();
 
-    const morphingContainers = document.querySelectorAll(rectangleShowUpTo);
-    morphingContainers.forEach(container => {
+    rectangleMorphTo.forEach(container => {
       container.addEventListener('mouseenter', () => {
         const hoverText = container.getAttribute('data-hover-text');
         const circleWidth = circleElement.Width;
@@ -265,31 +273,41 @@ function executeAbove1064px() {
           borderRadius: "50%",
           duration: 0.2,
           ease: "power2.inOut",
-          top: 0,
-          left: 0,
+          top: -6,
+          left: -6,
         });
 
         const textElement = circleElement.querySelector('.circle-text');
-        textElement.textContent = "";
         gsap.to(textElement, {
           opacity: 0,
-          scale: 0.8,
-          margin: "0",
+          scale: 0,
           duration: 0.2
         });
 
-        rotationEnabled = true;
+        if (rotationTimeout) {
+          clearTimeout(rotationTimeout);
+        }
 
+        rotationTimeout = setTimeout(() => {
+          rotationEnabled = true;
+          hoverTimeoutActive = false;
+        }, 200);
+      });
+    });
+
+    rectangleMorphTo.forEach(container => {
+      container.addEventListener('mouseenter', () => {
         if (hoverTimeoutActive) {
-          rotationTimeout = setTimeout(() => rotationEnabled = true, 0);
+          clearTimeout(rotationTimeout);
+          hoverTimeoutActive = false;
         }
       });
     });
   }
 }
 
-window.addEventListener('resize', executeAbove1064px);
 executeAbove1064px();
+window.addEventListener('resize', executeAbove1064px);
 
 function updateClock() {
   const now = new Date();
