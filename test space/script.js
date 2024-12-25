@@ -3,7 +3,6 @@ function executeAbove1064px() {
         console.clear();
 
         const circleDissapearTo = document.querySelectorAll('.dissapear-container'); // Elements that make the circle disappear
-        const rectangleMorphTo = document.querySelectorAll('.rectangle-container, .change-container-two'); // Elements to morph the circle into a rectangle
 
         const circleElement = document.querySelector('.circle');
         const circleText = circleElement.querySelector('.circle-text');
@@ -13,8 +12,6 @@ function executeAbove1064px() {
         let currentScale = 0;
         let currentAngle = 0;
         let rotationEnabled = true;
-        let rotationTimeout = null;
-        let hoverTimeoutActive = false;
 
         const fadeInOnLoadDuration = 0.2;
         const fadeHoverDuration = 0.2;
@@ -91,68 +88,6 @@ function executeAbove1064px() {
         document.addEventListener("mouseleave", fadeOutCircle);
 
         fadeInCircleOnLoad();
-
-        rectangleMorphTo.forEach(container => {
-            container.addEventListener('mouseenter', () => {
-                const hoverText = container.getAttribute('data-hover-text');
-                const circleWidth = circleElement.Width;
-
-                gsap.to(circleElement, {
-                    width: "auto",
-                    height: "auto",
-                    borderRadius: "8px",
-                    duration: 0.2,
-                    ease: "power2.inOut",
-                    top: -20,
-                    left: 10,
-                });
-
-                const textElement = circleElement.querySelector('.circle-text');
-                textElement.textContent = hoverText;
-
-                gsap.to(textElement, {
-                    opacity: 1,
-                    scale: 1,
-                    margin: "5px",
-                    duration: 0.2
-                });
-
-                rotationEnabled = false;
-
-                if (rotationTimeout) {
-                    clearTimeout(rotationTimeout);
-                }
-                hoverTimeoutActive = true;
-            });
-
-            container.addEventListener('mouseleave', () => {
-                gsap.to(circleElement, {
-                    width: "12px",
-                    height: "12px",
-                    borderRadius: "50%",
-                    duration: 0.2,
-                    ease: "power2.inOut",
-                    top: -6,
-                    left: -6,
-                });
-
-                const textElement = circleElement.querySelector('.circle-text');
-                gsap.to(textElement, {
-                    opacity: 0,
-                    scale: 0,
-                    duration: 0.2
-                });
-
-                if (rotationTimeout) {
-                    clearTimeout(rotationTimeout);
-                }
-
-                rotationTimeout = setTimeout(() => {
-                    rotationEnabled = true;
-                    hoverTimeoutActive = false;
-                }, 200);
-            });
-        });
 
         document.querySelectorAll('[data-color], [data-text-color]').forEach(container => {
             container.addEventListener('mouseenter', () => {
