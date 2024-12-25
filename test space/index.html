@@ -29,9 +29,9 @@
 
   <title>AWeb</title> <!-- Change the title -->
   <link rel="canonical" href="https://augustas.co"> <!-- Change the domain -->
-  <link rel="stylesheet" href="https://augustas.co/essentials.css">
+  <link rel="stylesheet" href="https://augustas.co/essentials.css"> <!-- Change the backend css -->
   <link rel="stylesheet" href="styles.css">
-  <link rel="icon" type="image/x-icon" href="https://augustas.co/newsletter/images/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="https://augustas.co/newsletter/images/favicon.ico"> <!-- Change the favicon -->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -40,7 +40,38 @@
 
 <body>
 
-    ...
+  <div class="circle">
+      <span class="circle-text"></span>
+  </div>
+
+  data-hover-text="Text" <!-- What to write inside the rectangle -->
+  data-color="#HEX" <!-- Color of rectangle -->
+  data-text-color="#HEX" <!-- Color of text iniside the rectangle -->
+
+
+  <div class="lolis">
+
+    <div class="pom">
+    <div class="dissapear-container">
+      dissapear
+    </div>
+
+    <div class="rectangle-container" data-hover-text="Text">
+      show text
+    </div>
+    </div>
+
+    <div class="pom">
+    <div class="change-container-one" data-color="#FF0000">
+      change color 1
+    </div>
+
+    <div class="change-container-two" data-hover-text="Text" data-color="#0009FF" data-text-color="#DDFFCE">
+      change color 2
+    </div>
+    </div>
+
+  </div>
 
 <script src="script.js"></script>
 

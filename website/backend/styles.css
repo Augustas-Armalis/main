@@ -339,6 +339,10 @@ footer{
 }
 
 @media (max-width: 1064px) {
+    .circle{
+        display: none;
+    }
+
     .left-content-container {
         position: relative;
         top: 0;
