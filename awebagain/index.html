@@ -42,12 +42,27 @@
 
 <body>
 
+  <!-- Grain texture -->
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="position: absolute; width: 0; height: 0;">
+    <defs>
+      <filter id="grain-filter">
+        <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch" />
+        <feColorMatrix type="saturate" values="0" />
+        <feComponentTransfer>
+          <feFuncA type="linear" slope="0.5" />
+        </feComponentTransfer>
+        <feBlend mode="overlay" in2="SourceGraphic" />
+      </filter>
+    </defs>
+  </svg>
+
+
   <!-- Circle following mouse -->
 
   <div class="circle">
     <span class="circle-text"></span>
   </div>
-
 
 
   <!-- Navigation bar -->
@@ -65,15 +80,11 @@
         </a>
 
         <div class="burger-menu-container">
-
           <div id="burger-line" class="top-burger-line"></div>
           <div id="burger-line" class="bottom-burger-line"></div>
-
         </div>
 
-
         <a href="#" id="button-nav-container">
-
           <div class="rectangle" id="nav-button">
 
             <div class="grain-overlay-button"></div>
@@ -91,7 +102,6 @@
             </div>
 
           </div>
-
         </a>
 
         <div class="mobile-links-container">
@@ -99,41 +109,23 @@
           <div class="divider-mobile-menu"></div>
 
           <div class="link-elements-mobile-nav">
-
             <a href="#">Lorem</a>
             <a href="#">Lorem</a>
             <a href="#">Lorem</a>
             <a href="#">Lorem</a>
             <a href="#">Lorem</a>
-
           </div>
 
           <div class="divider-mobile-menu"></div>
 
-          <a href="#pricing-section-href" id="button-nav-container-mobile">
-
-
-
+          <a href="#" id="button-nav-container-mobile">
             <div class="rectangle" id="nav-button">
-
-              <svg xmlns="http://www.w3.org/2000/svg" style="position: absolute; width: 0; height: 0;">
-                <defs>
-                  <filter id="grain-filter">
-                    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch" />
-                    <feColorMatrix type="saturate" values="0" />
-                    <feComponentTransfer>
-                      <feFuncA type="linear" slope="0.5" />
-                    </feComponentTransfer>
-                    <feBlend mode="overlay" in2="SourceGraphic" />
-                  </filter>
-                </defs>
-              </svg>
 
               <div class="grain-overlay-button"></div>
 
               <div class="btn-text-container">
                 <div class="btn-text">
-                  <h4 style="font-size: 23px;">Loddrem</h4>
+                  <h4 style="font-size: 23px;">Lorem</h4>
                 </div>
               </div>
 
@@ -146,32 +138,23 @@
               </div>
 
             </div>
-
-
-
           </a>
 
-          <!-- <p class="fireflies-easter-egg">Real fireflies live in this button ⤴︎</p> -->
-
         </div>
-
-
 
       </div>
 
       <div class="links-container">
-
         <a href="#" id="home-link">Lorem</a>
         <a href="#" id="testimonials-link">Lorem</a>
         <a href="#" id="newsletter-link">Lorem</a>
         <a href="#" id="hiring-link">Lorem</a>
         <a href="#" id="contacts-link">Lorem</a>
-
       </div>
-
 
     </nav>
   </div>
+
 
 
 
