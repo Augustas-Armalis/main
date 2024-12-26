@@ -28,7 +28,7 @@
 
   <link rel="alternate" href="https://augustas.co" hreflang="en">
 
-  <title>AWeb</title>
+  <title>Lorem</title>
   <link rel="canonical" href="https://augustas.co">
   <link rel="stylesheet" href="css/essentials.css">
   <link rel="stylesheet" href="css/styles.css">
@@ -42,20 +42,7 @@
 
 <body>
 
-
-
-
-
-  <div class="video-container">
-    <div class="close-button">
-      <img src="images/close-x.svg">
-    </div>
-    <iframe id="ytplayer" type="text/html" frameborder="0" allowfullscreen></iframe>
-  </div>
-
-
-  <!-- Moving Circle -->
-
+  <!-- Circle following mouse -->
 
   <div class="circle">
     <span class="circle-text"></span>
@@ -63,75 +50,29 @@
 
 
 
-
-
-
-
-
-
-
-
   <!-- Navigation bar -->
 
   <div class="background-blur-thing-nav-mobile"></div>
 
-  <nav>
+  <div class="nav-wrapper">
 
-    <div class="inside-container-nav">
+    <nav>
 
-      <a class="logo-container" href="#">
-        <img src="images/Logo.svg" class="logo-img-nav">
-      </a>
+      <div class="inside-container-nav">
 
-      <div class="burger-menu-container">
+        <a class="logo-container" href="#">
+          <img src="images/svgs/logo.svg" class="logo-img-nav">
+        </a>
 
-        <div id="burger-line" class="top-burger-line"></div>
-        <div id="burger-line" class="bottom-burger-line"></div>
+        <div class="burger-menu-container">
 
-      </div>
-
-
-      <a href="#pricing-section-href" id="button-nav-container">
-
-        <div class="rectangle" id="nav-button">
-
-          <div class="grain-overlay-button"></div>
-
-          <div class="btn-text-container">
-            <div class="btn-text">
-              <h4 style="font-size: 23px;">Pricing</h4>
-            </div>
-          </div>
-
-          <div class="blob-container">
-            <div class="blob"></div>
-            <div class="blob"></div>
-            <div class="blob"></div>
-          </div>
+          <div id="burger-line" class="top-burger-line"></div>
+          <div id="burger-line" class="bottom-burger-line"></div>
 
         </div>
 
-      </a>
 
-      <div class="mobile-links-container">
-
-        <div class="divider-mobile-menu"></div>
-
-        <div class="link-elements-mobile-nav">
-
-          <a href="#">Home</a>
-          <a href="#testimonials-section-href">Testimonials</a>
-          <a href="#newsletter-section-href">Newsletter</a>
-          <a href="#">Hiring</a>
-          <a href="#">Contacts</a>
-
-        </div>
-
-        <div class="divider-mobile-menu"></div>
-
-        <a href="#pricing-section-href" id="button-nav-container-mobile">
-
-
+        <a href="#" id="button-nav-container">
 
           <div class="rectangle" id="nav-button">
 
@@ -139,7 +80,7 @@
 
             <div class="btn-text-container">
               <div class="btn-text">
-                <h4 style="font-size: 23px;">Pricing</h4>
+                <h4 style="font-size: 23px;">Lorem</h4>
               </div>
             </div>
 
@@ -147,132 +88,186 @@
               <div class="blob"></div>
               <div class="blob"></div>
               <div class="blob"></div>
-              <div class="blob"></div>
-              <div class="blob"></div>
             </div>
 
           </div>
-
-
 
         </a>
 
-        <p class="fireflies-easter-egg">Real fireflies live in this button ⤴︎</p>
+        <div class="mobile-links-container">
+
+          <div class="divider-mobile-menu"></div>
+
+          <div class="link-elements-mobile-nav">
+
+            <a href="#">Lorem</a>
+            <a href="#">Lorem</a>
+            <a href="#">Lorem</a>
+            <a href="#">Lorem</a>
+            <a href="#">Lorem</a>
+
+          </div>
+
+          <div class="divider-mobile-menu"></div>
+
+          <a href="#pricing-section-href" id="button-nav-container-mobile">
+
+
+
+            <div class="rectangle" id="nav-button">
+
+              <svg xmlns="http://www.w3.org/2000/svg" style="position: absolute; width: 0; height: 0;">
+                <defs>
+                  <filter id="grain-filter">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch" />
+                    <feColorMatrix type="saturate" values="0" />
+                    <feComponentTransfer>
+                      <feFuncA type="linear" slope="0.5" />
+                    </feComponentTransfer>
+                    <feBlend mode="overlay" in2="SourceGraphic" />
+                  </filter>
+                </defs>
+              </svg>
+
+              <div class="grain-overlay-button"></div>
+
+              <div class="btn-text-container">
+                <div class="btn-text">
+                  <h4 style="font-size: 23px;">Loddrem</h4>
+                </div>
+              </div>
+
+              <div class="blob-container">
+                <div class="blob"></div>
+                <div class="blob"></div>
+                <div class="blob"></div>
+                <div class="blob"></div>
+                <div class="blob"></div>
+              </div>
+
+            </div>
+
+
+
+          </a>
+
+          <!-- <p class="fireflies-easter-egg">Real fireflies live in this button ⤴︎</p> -->
+
+        </div>
+
+
+
+      </div>
+
+      <div class="links-container">
+
+        <a href="#" id="home-link">Lorem</a>
+        <a href="#" id="testimonials-link">Lorem</a>
+        <a href="#" id="newsletter-link">Lorem</a>
+        <a href="#" id="hiring-link">Lorem</a>
+        <a href="#" id="contacts-link">Lorem</a>
 
       </div>
 
 
-
-    </div>
-
-    <div class="links-container">
-
-      <a href="#hero-section-href" id="home-link">Home</a>
-      <a href="#testimonials-section-href" id="testimonials-link">Testimonials</a>
-      <a href="#newsletter-section-href" id="newsletter-link">Newsletter</a>
-      <a href="#" id="hiring-link">Hiring</a>
-      <a href="#" id="contacts-link">Contacts</a>
-
-    </div>
-
-
-  </nav>
-
-
-
-
-
-
-
-
-
-
-  <!-- Hero section -->
-
-  <div class="hero-section-container">
-
-    <div class="nav-thing-for-hero-section" id="hero-section-href"></div>
-
-    <div class="hero-content-container">
-      <div class="title-alt-container">
-        <div class="title-container">
-          <h1>Are you a start-up, looking to reach 6 Figs/mo without lifting a finger?</h1>
-        </div>
-        <div class="alt-container">
-          <h4>"Look no more" because we know how to make websites that not only look good, but also convert like a charm
-          </h4>
-        </div>
-      </div>
-
-
-      <a class="under-rectangle-layer" href="#pricing-section-href" id="load-in-btn-hero">
-        <div class="rectangle">
-          <div class="grain-overlay-button"></div>
-          <div class="btn-text-container">
-            <div class="btn-text">
-              <h4 class="btnh4">Get Started</h4>
-            </div>
-          </div>
-          <div class="blob-container">
-            <div class="blob"></div>
-            <div class="blob"></div>
-            <div class="blob"></div>
-          </div>
-        </div>
-      </a>
-
-
-      <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module">
-      </script>
-      <dotlottie-player src="https://lottie.host/cf444793-4fd2-493c-afba-c3b35b631efb/pBeTEWcIV9.lottie"
-        background="transparent" style="width: 300px; height: 300px;" speed="1" playMode="normal" direction="1" loop
-        autoplay class="nav-lottie-drag">
-      </dotlottie-player>
-
-
-      <div class="slider-hero-container">
-        <div class="slider-container-hero">
-
-          <div class="slider-hero">
-
-            <div class="slide-hero" data-hover-text="view" data-link="https://augustas.co/website/copywiz">
-              <img src="images/websites/copywiz-web.webp" class="slide-image-hero">
-            </div>
-
-            <div class="slide-hero" data-hover-text="visit" data-link="https://augustas.co/website/sprout">
-              <img src="images/websites/sprout-web.webp" class="slide-image-hero">
-            </div>
-
-            <div class="slide-hero" data-hover-text="visit" data-link="https://augustas.co/website/example-template">
-              <img src="images/image.png" class="slide-image-hero">
-            </div>
-
-            <div class="slide-hero" data-hover-text="view" data-link="https://augustas.co/website/example-template">
-              <img src="images/image.png" class="slide-image-hero">
-            </div>
-
-            <div class="slide-hero" data-hover-text="visit" data-link="https://augustas.co/website/example-template">
-              <img src="images/image.png" class="slide-image-hero">
-            </div>
-
-            <div class="slide-hero" data-hover-text="view" data-link="https://augustas.co/website/example-template">
-              <img src="images/image.png" class="slide-image-hero">
-            </div>
-
-
-
-
-
-          </div>
-        </div>
-      </div>
-
-
-
-    </div>
+    </nav>
   </div>
 
 
+
+
+
+
+
+  <div class="hide-for-now" style="display: none;">
+
+    <!-- Hero section -->
+
+    <div class="hero-section-container">
+
+      <div class="nav-thing-for-hero-section" id="hero-section-href"></div>
+
+      <div class="hero-content-container">
+        <div class="title-alt-container">
+          <div class="title-container">
+            <h1>Are you a start-up, looking to reach 6 Figs/mo without lifting a finger?</h1>
+          </div>
+          <div class="alt-container">
+            <h4>"Look no more" because we know how to make websites that not only look good, but also convert like a
+              charm
+            </h4>
+          </div>
+        </div>
+
+
+        <a class="under-rectangle-layer" href="#pricing-section-href" id="load-in-btn-hero">
+          <div class="rectangle">
+            <div class="grain-overlay-button"></div>
+            <div class="btn-text-container">
+              <div class="btn-text">
+                <h4 class="btnh4">Get Started</h4>
+              </div>
+            </div>
+            <div class="blob-container">
+              <div class="blob"></div>
+              <div class="blob"></div>
+              <div class="blob"></div>
+            </div>
+          </div>
+        </a>
+
+
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module">
+        </script>
+        <dotlottie-player src="https://lottie.host/cf444793-4fd2-493c-afba-c3b35b631efb/pBeTEWcIV9.lottie"
+          background="transparent" style="width: 300px; height: 300px;" speed="1" playMode="normal" direction="1" loop
+          autoplay class="nav-lottie-drag">
+        </dotlottie-player>
+
+
+        <div class="slider-hero-container">
+          <div class="slider-container-hero">
+
+            <div class="slider-hero">
+
+              <div class="slide-hero" data-hover-text="view" data-link="https://augustas.co/website/copywiz">
+                <img src="images/websites/copywiz-web.webp" class="slide-image-hero">
+              </div>
+
+              <div class="slide-hero" data-hover-text="visit" data-link="https://augustas.co/website/sprout">
+                <img src="images/websites/sprout-web.webp" class="slide-image-hero">
+              </div>
+
+              <div class="slide-hero" data-hover-text="visit" data-link="https://augustas.co/website/example-template">
+                <img src="images/image.png" class="slide-image-hero">
+              </div>
+
+              <div class="slide-hero" data-hover-text="view" data-link="https://augustas.co/website/example-template">
+                <img src="images/image.png" class="slide-image-hero">
+              </div>
+
+              <div class="slide-hero" data-hover-text="visit" data-link="https://augustas.co/website/example-template">
+                <img src="images/image.png" class="slide-image-hero">
+              </div>
+
+              <div class="slide-hero" data-hover-text="view" data-link="https://augustas.co/website/example-template">
+                <img src="images/image.png" class="slide-image-hero">
+              </div>
+
+
+
+
+
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+
+  </div>
 
 
 
