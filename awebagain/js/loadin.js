@@ -44,6 +44,7 @@ gsap.fromTo(".bck-container",
 
 
 
+
 gsap.registerPlugin(MotionPathPlugin);
 
 function random(min, max) {
@@ -221,134 +222,11 @@ init();
 
 
 
-
-
-
-// Navigation Bar
-
-const burgerContainer = document.querySelector('.burger-menu-container');
-const topLine = document.querySelector('.top-burger-line');
-const bottomLine = document.querySelector('.bottom-burger-line');
-const nav = document.querySelector('nav');
-const topThingNav = document.querySelector('.inside-container-nav');
-const logoNav = document.querySelector('.logo-container');
-const linkElementsMobile = document.querySelectorAll('.link-elements-mobile-nav a');
-const backgroundBlur = document.querySelector('.background-blur-thing-nav-mobile');
-const buttonNavContainerMobile = document.querySelector('#button-nav-container-mobile');
-const firefliesEasterEgg = document.querySelector('.fireflies-easter-egg');
-const mobileLinksContainer = document.querySelector('.mobile-links-container');
-const navHeight = mobileLinksContainer.offsetHeight + 60;
-
-const smoothEase = "power3.out";
-const gentleEase = "circ.out";
-const smoothInOut = "expo.inOut";
-const ultraSmoothEase = "power4.out";
-const slowEase = "slowmo";
-
-let isOpen = false;
-
-gsap.set(topLine, { rotation: 0 });
-gsap.set(bottomLine, { rotation: 0, y: 0 });
-gsap.set(buttonNavContainerMobile, { y: 50, opacity: 0 });
-gsap.set(firefliesEasterEgg, { y: 50, opacity: 0 });
-
-function isMobile() {
-  return window.innerWidth < 850;
-}
-
-function disableScroll() {
-  document.body.style.overflow = 'hidden';
-  document.documentElement.style.overflow = 'hidden';
-}
-
-function enableScroll() {
-  document.body.style.overflow = '';
-  document.documentElement.style.overflow = '';
-  document.body.style.overflowX = 'hidden';
-  document.documentElement.style.overflowX = 'hidden';
-}
-
-function closeMenu() {
-  gsap.to(topLine, { rotation: 0, y: 0, duration: 0.15, ease: smoothEase });
-  gsap.to(bottomLine, { rotation: 0, y: 0, duration: 0.15, ease: smoothEase });
-  gsap.to(topThingNav, { marginTop: "9px", duration: 0.3, ease: gentleEase });
-  gsap.to(logoNav, { marginLeft: "14px", duration: 0.3, ease: gentleEase });
-  gsap.to(nav, { height: "48px", duration: 0.3, ease: smoothEase });
-  gsap.to(burgerContainer, { marginRight: "6px", duration: 0.3, ease: smoothEase });
-  gsap.to(linkElementsMobile, { x: -100, opacity: 0, stagger: -0.05, duration: 0.1, ease: smoothEase });
-  gsap.to(backgroundBlur, { opacity: 0, duration: 0.2, ease: smoothEase, onComplete: () => gsap.set(backgroundBlur, { top: "-100vh" }) });
-  gsap.to(buttonNavContainerMobile, { y: 50, opacity: 0, duration: 1, ease: smoothEase });
-  gsap.to(firefliesEasterEgg, { y: 50, opacity: 0, duration: 0.3, ease: smoothEase });
-  gsap.to('.divider-mobile-menu', { y: 0, opacity: 0, stagger: -0.1, duration: 0.3, ease: smoothEase });
-  enableScroll();
-  isOpen = false;
-}
-
-burgerContainer.addEventListener('click', () => {
-  if (isMobile()) {
-    if (isOpen) {
-      closeMenu();
-    } else {
-      gsap.to(topLine, { rotation: 45, y: 4, duration: 0.15, ease: smoothEase });
-      gsap.to(bottomLine, { rotation: -45, y: -4, duration: 0.15, ease: smoothEase });
-      gsap.to(topThingNav, { marginTop: "15px", duration: 0.3, ease: gentleEase });
-      gsap.to(logoNav, { marginLeft: "20px", duration: 0.3, ease: gentleEase });
-      gsap.to(nav, { height: `${navHeight}px`, duration: 0.15, ease: smoothEase });
-      gsap.to(burgerContainer, { marginRight: "12px", duration: 0.3, ease: smoothEase });
-      gsap.fromTo(linkElementsMobile, { x: -100, opacity: 0 }, { x: 0, opacity: 1, stagger: 0.05, duration: 0.3, ease: "power2.out" });
-      gsap.set(backgroundBlur, { top: "0" });
-      gsap.to(backgroundBlur, { opacity: 1, duration: 0.3, ease: smoothInOut });
-      gsap.to(buttonNavContainerMobile, { y: 0, opacity: 1, delay: 0.2, duration: 0.5, ease: ultraSmoothEase });
-      gsap.to(firefliesEasterEgg, { y: 0, opacity: 1, duration: 1, delay: 1, ease: ultraSmoothEase });
-      gsap.fromTo('.divider-mobile-menu', { y: 0, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.3, duration: 0.3, ease: smoothEase });
-      disableScroll();
-      isOpen = true;
-    }
-  }
-});
-
-backgroundBlur.addEventListener('click', () => {
-  if (isOpen) closeMenu();
-});
-
-linkElementsMobile.forEach(link => link.addEventListener('click', () => {
-  if (isOpen) closeMenu();
-}));
-
-logoNav.addEventListener('click', () => {
-  if (isOpen) closeMenu();
-});
-
-buttonNavContainerMobile.addEventListener('mouseup', () => {
-  if (isOpen) closeMenu();
-});
-
-buttonNavContainerMobile.addEventListener('touchend', () => {
-  if (isOpen) closeMenu();
-});
-
-buttonNavContainerMobile.addEventListener('click', () => {
-  if (isOpen) closeMenu();
-});
-
-firefliesEasterEgg.addEventListener('click', () => {
-  if (isOpen) closeMenu();
-});
-
-
-
-
-
-
-
-
-
-
 function executeAbove1064px() {
   if (window.innerWidth > 1064) {
     console.clear();
 
-    const circleDissapearTo = document.querySelectorAll('.under-rectangle-layer');
+    const circleDissapearTo = document.querySelectorAll('.under-rectangle-layer, nav');
     const rectangleMorphTo = document.querySelectorAll('.slide-hero');
 
     const circleElement = document.querySelector('.circle');
@@ -515,23 +393,6 @@ window.addEventListener('resize', executeAbove1064px);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const sliderHero = document.querySelector('.slider-container-hero');
 const slidesHero = document.querySelector('.slider-hero');
 let isDraggingHero = false;
@@ -602,8 +463,6 @@ function momentumHero() {
 
   momentumStepHero(); // Start the inertia
 }
-
-
 
 
 
@@ -701,6 +560,150 @@ document.querySelectorAll('.slide-hero').forEach(slide => {
     this.style.cursor = '';
   });
 });
+
+
+
+
+
+// Navigation Bar
+
+const burgerContainer = document.querySelector('.burger-menu-container');
+const topLine = document.querySelector('.top-burger-line');
+const bottomLine = document.querySelector('.bottom-burger-line');
+const nav = document.querySelector('nav');
+const topThingNav = document.querySelector('.inside-container-nav');
+const logoNav = document.querySelector('.logo-container');
+const linkElementsMobile = document.querySelectorAll('.link-elements-mobile-nav a');
+const backgroundBlur = document.querySelector('.background-blur-thing-nav-mobile');
+const buttonNavContainerMobile = document.querySelector('#button-nav-container-mobile');
+const firefliesEasterEgg = document.querySelector('.fireflies-easter-egg');
+const mobileLinksContainer = document.querySelector('.mobile-links-container');
+const navHeight = mobileLinksContainer.offsetHeight + 60;
+
+const smoothEase = "power3.out";
+const gentleEase = "circ.out";
+const smoothInOut = "expo.inOut";
+const ultraSmoothEase = "power4.out";
+const slowEase = "slowmo";
+
+let isOpen = false;
+
+gsap.set(topLine, { rotation: 0 });
+gsap.set(bottomLine, { rotation: 0, y: 0 });
+gsap.set(buttonNavContainerMobile, { y: 50, opacity: 0 });
+gsap.set(firefliesEasterEgg, { y: 50, opacity: 0 });
+
+function isMobile() {
+  return window.innerWidth < 850;
+}
+
+function disableScroll() {
+  document.body.style.overflow = 'hidden';
+  document.documentElement.style.overflow = 'hidden';
+}
+
+function enableScroll() {
+  document.body.style.overflow = '';
+  document.documentElement.style.overflow = '';
+  document.body.style.overflowX = 'hidden';
+  document.documentElement.style.overflowX = 'hidden';
+}
+
+function closeMenu() {
+  gsap.to(topLine, { rotation: 0, y: 0, duration: 0.15, ease: smoothEase });
+  gsap.to(bottomLine, { rotation: 0, y: 0, duration: 0.15, ease: smoothEase });
+  gsap.to(topThingNav, { marginTop: "9px", duration: 0.3, ease: gentleEase });
+  gsap.to(logoNav, { marginLeft: "14px", duration: 0.3, ease: gentleEase });
+  gsap.to(nav, { height: "48px", duration: 0.3, ease: smoothEase });
+  gsap.to(burgerContainer, { marginRight: "6px", duration: 0.3, ease: smoothEase });
+  gsap.to(linkElementsMobile, { x: -100, opacity: 0, stagger: -0.05, duration: 0.1, ease: smoothEase });
+  gsap.to(backgroundBlur, { opacity: 0, duration: 0.2, ease: smoothEase, onComplete: () => gsap.set(backgroundBlur, { top: "-100vh" }) });
+  gsap.to(buttonNavContainerMobile, { y: 50, opacity: 0, duration: 1, ease: smoothEase });
+  gsap.to(firefliesEasterEgg, { y: 50, opacity: 0, duration: 0.3, ease: smoothEase });
+  gsap.to('.divider-mobile-menu', { y: 0, opacity: 0, stagger: -0.1, duration: 0.3, ease: smoothEase });
+  enableScroll();
+  isOpen = false;
+}
+
+burgerContainer.addEventListener('click', () => {
+  if (isMobile()) {
+    if (isOpen) {
+      closeMenu();
+    } else {
+      gsap.to(topLine, { rotation: 45, y: 4, duration: 0.15, ease: smoothEase });
+      gsap.to(bottomLine, { rotation: -45, y: -4, duration: 0.15, ease: smoothEase });
+      gsap.to(topThingNav, { marginTop: "15px", duration: 0.3, ease: gentleEase });
+      gsap.to(logoNav, { marginLeft: "20px", duration: 0.3, ease: gentleEase });
+      gsap.to(nav, { height: `${navHeight}px`, duration: 0.15, ease: smoothEase });
+      gsap.to(burgerContainer, { marginRight: "12px", duration: 0.3, ease: smoothEase });
+      gsap.fromTo(linkElementsMobile, { x: -100, opacity: 0 }, { x: 0, opacity: 1, stagger: 0.05, duration: 0.3, ease: "power2.out" });
+      gsap.set(backgroundBlur, { top: "0" });
+      gsap.to(backgroundBlur, { opacity: 1, duration: 0.3, ease: smoothInOut });
+      gsap.to(buttonNavContainerMobile, { y: 0, opacity: 1, delay: 0.2, duration: 0.5, ease: ultraSmoothEase });
+      gsap.to(firefliesEasterEgg, { y: 0, opacity: 1, duration: 1, delay: 1, ease: ultraSmoothEase });
+      gsap.fromTo('.divider-mobile-menu', { y: 0, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.3, duration: 0.3, ease: smoothEase });
+      disableScroll();
+      isOpen = true;
+    }
+  }
+});
+
+backgroundBlur.addEventListener('click', () => {
+  if (isOpen) closeMenu();
+});
+
+linkElementsMobile.forEach(link => link.addEventListener('click', () => {
+  if (isOpen) closeMenu();
+}));
+
+logoNav.addEventListener('click', () => {
+  if (isOpen) closeMenu();
+});
+
+buttonNavContainerMobile.addEventListener('mouseup', () => {
+  if (isOpen) closeMenu();
+});
+
+buttonNavContainerMobile.addEventListener('touchend', () => {
+  if (isOpen) closeMenu();
+});
+
+buttonNavContainerMobile.addEventListener('click', () => {
+  if (isOpen) closeMenu();
+});
+
+firefliesEasterEgg.addEventListener('click', () => {
+  if (isOpen) closeMenu();
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
