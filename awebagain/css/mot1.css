@@ -1,0 +1,72 @@
+/* Counter up */
+
+.counter-holder {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.counter-card {
+  width: 323px;
+  height: 143px;
+  border-radius: 24px;
+  border: 1px solid var(--gray3);
+  background: var(--black);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  transform: translateY(100px);
+  opacity: 0;
+}
+
+.counter-card h4 {
+  font-size: 20px;
+}
+
+.counter-card:nth-child(2) {
+  width: 322px;
+}
+
+.odometer {
+  font-family: var(--ff-bold) !important;
+}
+
+.plus-container-counter {
+  display: flex;
+  gap: 3px;
+}
+
+
+@media (max-width: 1064px) {
+
+  .plus-container-counter h2 {
+    font-size: 48px;
+  }
+
+}
+
+
+@media (max-width: 555px) {
+
+  .plus-container-counter h2 {
+    font-size: 40px;
+  }
+
+  .counter-card h4 {
+    font-size: 18px;
+  }
+
+}
+
+@media (max-width: 355px) {
+
+  .counter-card {
+    margin: 0px 16px;
+  }
+
+}

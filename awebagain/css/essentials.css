@@ -1,182 +1,213 @@
 html {
-    scroll-behavior: smooth;
-    scroll-padding-top: calc(10rem - 32px);
-    font-family: 'SF Pro Display Regular';
-    color: var(--white);
-    overflow-x: hidden;
-    width: 100%;
-  }
-  
-  
-  body {
-    scroll-behavior: smooth;
-    scroll-padding-top: calc(10rem - 32px);
-    font-family: 'SF Pro Display Regular';
-    background-color: var(--black);
-    color: var(--white);
-    overflow-x: hidden;
-    width: 100%;
-  }
-  
-  img,
-  video {
-    pointer-events: none;
-  }
-  
-  * {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-font-smoothing: inherit;
-  }
-  
-  
-  input,
-  textarea,
-  button,
-  select,
-  a {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  }
-  
-  a:focus,
-  a:visited,
-  a:active {
-    outline: none;
-  }
-  
-  /* select color */
-  
-  img::selection {
-    background-color: rgba(0, 0, 0, 0);
-  }
-  
-  ::selection {
-    background-color: hsla(240, 2%, 90%, 0.1);
-  }
-  
-  ::-moz-selection {
-    background-color: hsla(240, 2%, 90%, 0.1);
-  }
-  
-  @font-face {
-    font-family: 'SF Pro Display Regular';
-    font-weight: 400;
-    src: url('https://augustas.co/fonts//Sf\ Pro\ Display\ REGULAR.OTF') format('truetype');
-  }
-  
-  @font-face {
-    font-family: 'SF Pro Display Medium';
-    font-weight: 500;
-    src: url('https://augustas.co/fonts/Sf\ Pro\ Display\ MEDIUM.OTF') format('truetype');
-  }
-  
-  @font-face {
-    font-family: 'SF Pro Display Bold';
-    font-weight: 700;
-    src: url('https://augustas.co/fonts/Sf\ Pro\ Display\ BOLD.OTF') format('truetype');
-  }
-  
-  :root {
-    --font-regular: 400;
-    --font-medium: 500;
-    --font-bold: 700;
-  
-  
-    --ff-regular: 'SF Pro Display Regular', arial;
-    --ff-medium: 'SF Pro Display Medium', arial;
-    --ff-bold: 'SF Pro Display Bold', arial;
-  
-  
-    --white: hsla(0, 0%, 100%, 1);
-    --gray1: hsla(235, 5%, 70%, 1);
-    --gray2: hsla(235, 5%, 35%, 1);
-    --gray25: hsla(235, 5%, 45%, 1);
-    --gray2: hsla(235, 5%, 35%, 1);
-    --gray3: hsla(235, 5%, 15%, 1);
-    --gray4: hsla(235, 5%, 9%, 1);
-    --gray5: hsla(235, 5%, 6%, 1);
-    --black: hsla(0, 0%, 0%, 1);
-  }
-  
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(10rem - 32px);
+  font-family: 'SF Pro Display Regular';
+  color: var(--white);
+  overflow-x: hidden;
+  width: 100%;
+}
+
+
+body {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(10rem - 32px);
+  font-family: 'SF Pro Display Regular';
+  background-color: var(--black);
+  color: var(--white);
+  overflow-x: hidden;
+  width: 100%;
+}
+
+img,
+video {
+  pointer-events: none;
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: inherit;
+}
+
+
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a:focus,
+a:visited,
+a:active {
+  outline: none;
+}
+
+/* select color */
+
+img::selection {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+::selection {
+  background-color: hsla(240, 2%, 90%, 0.1);
+}
+
+::-moz-selection {
+  background-color: hsla(240, 2%, 90%, 0.1);
+}
+
+@font-face {
+  font-family: 'SF Pro Display Regular';
+  font-weight: 400;
+  src: url('https://augustas.co/fonts//Sf\ Pro\ Display\ REGULAR.OTF') format('truetype');
+}
+
+@font-face {
+  font-family: 'SF Pro Display Medium';
+  font-weight: 500;
+  src: url('https://augustas.co/fonts/Sf\ Pro\ Display\ MEDIUM.OTF') format('truetype');
+}
+
+@font-face {
+  font-family: 'SF Pro Display Bold';
+  font-weight: 700;
+  src: url('https://augustas.co/fonts/Sf\ Pro\ Display\ BOLD.OTF') format('truetype');
+}
+
+:root {
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-bold: 700;
+
+
+  --ff-regular: 'SF Pro Display Regular', arial;
+  --ff-medium: 'SF Pro Display Medium', arial;
+  --ff-bold: 'SF Pro Display Bold', arial;
+
+
+  --white: hsla(0, 0%, 100%, 1);
+  --gray1: hsla(235, 5%, 70%, 1);
+  --gray2: hsla(235, 5%, 35%, 1);
+  --gray25: hsla(235, 5%, 45%, 1);
+  --gray2: hsla(235, 5%, 35%, 1);
+  --gray3: hsla(235, 5%, 15%, 1);
+  --gray4: hsla(235, 5%, 9%, 1);
+  --gray5: hsla(235, 5%, 6%, 1);
+  --black: hsla(0, 0%, 0%, 1);
+}
+
+.gray1 {
+  color: var(--gray1);
+}
+
+h1 {
+  font-size: 64px;
+  letter-spacing: -0.64px;
+  font-family: var(--ff-bold);
+  font-weight: var(--font-bold);
+}
+
+h2 {
+  font-size: 48px;
+  letter-spacing: -0.48px;
+  font-family: var(--ff-bold);
+  font-weight: var(--font-bold);
+}
+
+h3 {
+  font-size: 32px;
+  letter-spacing: -0.32px;
+  font-family: var(--ff-bold);
+  font-weight: var(--font-bold);
+  line-height: 130%;
+}
+
+h4 {
+  font-size: 20px;
+  font-family: var(--ff-regular);
+  font-weight: var(--font-regular);
+  line-height: 130%;
+}
+
+h5 {
+  font-size: 16px;
+  font-family: var(--ff-regular);
+  font-weight: var(--font-regular);
+  line-height: 130%;
+}
+
+@media (max-width: 1064px) {
+
   h1 {
-    font-size: 64px;
-    letter-spacing: -0.64px;
-    font-family: var(--ff-bold);
-    font-weight: var(--font-bold);
+    font-size: 50px;
   }
-  
+
   h2 {
-    font-size: 48px;
-    letter-spacing: -0.48px;
-    font-family: var(--ff-bold);
-    font-weight: var(--font-bold);
+    font-size: 40px;
   }
-  
+
   h3 {
-    font-size: 32px;
-    letter-spacing: -0.32px;
-    font-family: var(--ff-bold);
-    font-weight: var(--font-bold);
-    line-height: 130%;
+    font-size: 30px;
   }
-  
+
   h4 {
     font-size: 20px;
-    font-family: var(--ff-regular);
-    font-weight: var(--font-regular);
-    line-height: 130%;
   }
-  
-  h5 {
+
+}
+
+@media (max-width: 555px) {
+  h1 {
+    font-size: 32px;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+
+  h3 {
+    font-size: 24px;
+  }
+
+  h4 {
     font-size: 16px;
+  }
+
+  h5 {
+    font-size: 14px;
     font-family: var(--ff-regular);
     font-weight: var(--font-regular);
     line-height: 130%;
   }
-  
-  @media (max-width: 1064px) {
-  
-    h1 {
-      font-size: 50px;
-    }
-  
-    h2 {
-      font-size: 40px;
-    }
-  
-    h3 {
-      font-size: 30px;
-    }
-  
-    h4 {
-      font-size: 20px;
-    }
-  
+}
+
+
+.section-container {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+section {
+  width: 1000px;
+  height: fit-content;
+}
+
+@media (max-width: 1064px) {
+  section {
+    width: 100%;
+    margin: 0px 32px;
   }
-  
-  @media (max-width: 555px) {
-    h1 {
-      font-size: 32px;
-    }
-  
-    h2 {
-      font-size: 30px;
-    }
-  
-    h3 {
-      font-size: 24px;
-    }
-  
-    h4 {
-      font-size: 16px;
-    }
-  
-    h5 {
-      font-size: 14px;
-      font-family: var(--ff-regular);
-      font-weight: var(--font-regular);
-      line-height: 130%;
-    }
+}
+
+@media (max-width: 555px) {
+  section {
+    margin: 0px 16px;
   }
+}
