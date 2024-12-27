@@ -1,49 +1,54 @@
-// load inwindow.onload = function () {
-// Hiding the preloader after page load
-window.addEventListener('load', function () {
-  document.querySelector('.preloader').className += ' hidden';
+// Load in animations
+
+document.addEventListener("DOMContentLoaded", () => {
+  gsap.fromTo(".title-container",
+    { y: 100, opacity: 0 },
+    { y: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 0.1 }
+  );
+
+  gsap.fromTo(".alt-container",
+    { y: 100, opacity: 0 },
+    { y: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 0.2 }
+  );
+
+  gsap.fromTo(".under-rectangle-layer",
+    { y: 50, opacity: 0 },
+    { y: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 0.3 }
+  );
+
+  gsap.fromTo("nav",
+    { y: -40, opacity: 0 },
+    { y: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 0.2 }
+  );
+
+  gsap.fromTo(".nav-lottie-drag",
+    { y: 20, opacity: 0 },
+    { y: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 2 }
+  );
+
+  gsap.fromTo(".slider-hero-container",
+    { x: 200, opacity: 0 },
+    { x: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 0.3 }
+  );
+
+  gsap.fromTo(".bck-container",
+    { y: -window.innerHeight * 0.5, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.6, ease: "expo.out" }
+  );
+
+  gsap.fromTo(".circle",
+    { opacity: 0 },
+    { opacity: 1, duration: 1, ease: "power2.out", delay: 0.5 }
+  );
 });
-// Your GSAP animations
-gsap.fromTo(".title-container",
-  { y: 100, opacity: 0 },
-  { y: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 0.1 }
-);
-
-gsap.fromTo(".alt-container",
-  { y: 100, opacity: 0 },
-  { y: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 0.2 }
-);
-
-gsap.fromTo(".under-rectangle-layer",
-  { y: 50, opacity: 0 },
-  { y: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 0.3 }
-);
-
-gsap.fromTo("nav",
-  { y: -40, opacity: 0 },
-  { y: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 0.2 }
-);
-
-gsap.fromTo(".nav-lottie-drag",
-  { y: 20, opacity: 0 },
-  { y: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 2 }
-);
-
-gsap.fromTo(".slider-hero-container",
-  { x: 200, opacity: 0 },
-  { x: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 0.3 }
-);
-
-gsap.fromTo(".bck-container",
-  { y: -window.innerHeight * 0.5, opacity: 0 },
-  { y: 0, opacity: 1, duration: 0.6, ease: "expo.Out" }
-);
 
 
 
 
 
 
+
+// Fireflies button
 
 gsap.registerPlugin(MotionPathPlugin);
 
@@ -100,7 +105,6 @@ function initializeBlobs(rectangle) {
   });
 }
 
-
 function moveToCursor(blobs, rectangle) {
   rectangle.addEventListener('mousemove', (event) => {
     const { left, top } = rectangle.getBoundingClientRect();
@@ -151,7 +155,6 @@ const buttons = document.querySelectorAll('.under-rectangle-layer');
 buttons.forEach(button => {
   button.addEventListener('mouseenter', () => {
     gsap.to(button, {
-      border: '1px solid hsla(240, 4%, 13%, 1)',
       boxShadow: '0px 0px 8px 0px rgba(175, 175, 182, 0.20) inset',
       duration: 0.15,
       ease: 'power1.out'
@@ -160,7 +163,6 @@ buttons.forEach(button => {
 
   button.addEventListener('mouseleave', () => {
     gsap.to(button, {
-      border: '1px solid var(--gray3)',
       boxShadow: '0px 0px 8px 3px rgba(175, 175, 182, 0.20) inset',
       duration: 0.15,
       ease: 'power1.out'
@@ -169,27 +171,27 @@ buttons.forEach(button => {
 
   button.addEventListener('mousedown', () => {
     gsap.to(button, {
-      scale: 0.95,
+      scale: 0.98,
       duration: 0.15,
       ease: 'power2.out'
     });
 
     gsap.to(button.querySelector('.rectangle'), {
-      scale: 0.97,
+      scale: 0.99,
       opacity: 0.7,
       duration: 0.15,
-      ease: 'power2.out'
+      ease: 'power2.out',
     });
   });
 
   button.addEventListener('touchstart', () => {
     gsap.to(button, {
-      scale: 0.95,
+      scale: 0.98,
       duration: 0.15,
-      ease: 'power2.out'
+      ease: 'power2.out',
     });
     gsap.to(button.querySelector('.rectangle'), {
-      scale: 0.97,
+      scale: 0.99,
       opacity: 0.7,
       duration: 0.15,
       ease: 'power2.out'
@@ -221,6 +223,10 @@ init();
 
 
 
+
+
+
+// Circle following the mouse
 
 function executeAbove1064px() {
   if (window.innerWidth > 1064) {
@@ -393,96 +399,87 @@ window.addEventListener('resize', executeAbove1064px);
 
 
 
+
+
+
+
+// Image hero slider
+
 const sliderHero = document.querySelector('.slider-container-hero');
 const slidesHero = document.querySelector('.slider-hero');
 let isDraggingHero = false;
 let startXHero, scrollLeftHero, lastXHero, velocityHero, momentumIntervalHero;
 
-// Start dragging (mousedown event)
 sliderHero.addEventListener('mousedown', (e) => {
   isDraggingHero = true;
-  startXHero = e.pageX - sliderHero.offsetLeft; // Mouse's starting position
-  scrollLeftHero = sliderHero.scrollLeft; // Current scroll position
+  startXHero = e.pageX - sliderHero.offsetLeft;
+  scrollLeftHero = sliderHero.scrollLeft;
   lastXHero = startXHero;
   velocityHero = 0;
-  sliderHero.style.cursor = 'grabbing'; // Change cursor to grabbing while dragging
+  sliderHero.style.cursor = 'grabbing';
   sliderHero.classList.add('dragging-hero');
-  cancelAnimationFrame(momentumIntervalHero); // Cancel any momentum that might be active
+  cancelAnimationFrame(momentumIntervalHero);
 });
 
-// Stop dragging (mouseup event)
 sliderHero.addEventListener('mouseup', () => {
   if (isDraggingHero) {
     isDraggingHero = false;
-    sliderHero.style.cursor = 'grab'; // Change cursor back to grab
+    sliderHero.style.cursor = 'grab';
     sliderHero.classList.remove('dragging-hero');
-    // Start inertia after mouse release
     momentumHero();
   }
 });
 
-// Stop dragging when mouse leaves the container
 sliderHero.addEventListener('mouseleave', () => {
   if (isDraggingHero) {
     isDraggingHero = false;
-    sliderHero.style.cursor = 'grab'; // Change cursor back to grab
+    sliderHero.style.cursor = 'grab';
     sliderHero.classList.remove('dragging-hero');
-    // Start inertia after mouse leaves
     momentumHero();
   }
 });
 
-// Handle mouse move during dragging
 sliderHero.addEventListener('mousemove', (e) => {
   if (!isDraggingHero) return;
-
-  const xHero = e.pageX - sliderHero.offsetLeft; // Calculate the new mouse position
-  const walkHero = (xHero - startXHero); // Calculate how far the mouse has moved horizontally
-  sliderHero.scrollLeft = scrollLeftHero - walkHero; // Update the scroll position based on the mouse movement
-  velocityHero = xHero - lastXHero; // Calculate the speed of the movement
+  const xHero = e.pageX - sliderHero.offsetLeft;
+  const walkHero = xHero - startXHero;
+  sliderHero.scrollLeft = scrollLeftHero - walkHero;
+  velocityHero = xHero - lastXHero;
   lastXHero = xHero;
 });
 
-// Inertia simulation after mouse release (momentum)
 function momentumHero() {
   let lastTimeHero = Date.now();
-  let scrollSpeedHero = -velocityHero; // Reverse the direction of the inertia
+  let scrollSpeedHero = -velocityHero;
 
-  // Momentum function using requestAnimationFrame for smooth inertia
   function momentumStepHero() {
     const now = Date.now();
     const deltaTimeHero = now - lastTimeHero;
     lastTimeHero = now;
 
-    if (Math.abs(scrollSpeedHero) > 0.5) { // If the speed is significant enough to keep moving
-      sliderHero.scrollLeft += scrollSpeedHero; // Scroll based on current speed
-      scrollSpeedHero *= 0.95; // Gradually decrease the speed to simulate inertia (friction)
-      momentumIntervalHero = requestAnimationFrame(momentumStepHero); // Continue inertia
+    if (Math.abs(scrollSpeedHero) > 0.5) {
+      sliderHero.scrollLeft += scrollSpeedHero;
+      scrollSpeedHero *= 0.95;
+      momentumIntervalHero = requestAnimationFrame(momentumStepHero);
     }
   }
 
-  momentumStepHero(); // Start the inertia
+  momentumStepHero();
 }
 
-
-
-
-// Rename slides to slideElements
 const slideElements = document.querySelectorAll('.slide-hero');
 
 slideElements.forEach(slide => {
   let isMouseDown = false;
   let startX = 0;
 
-  // Detect mouse down event
   slide.addEventListener('mousedown', (e) => {
     isMouseDown = true;
     startX = e.pageX;
   });
 
-  // Detect mouse up event
   slide.addEventListener('mouseup', (e) => {
-    if (isMouseDown && Math.abs(startX - e.pageX) < 10) {  // check if mouse moved less than 10px
+    if (isMouseDown && Math.abs(startX - e.pageX) < 10) {
       const link = slide.getAttribute('data-link');
       if (link) {
         window.location.href = link;
@@ -491,75 +488,53 @@ slideElements.forEach(slide => {
     isMouseDown = false;
   });
 
-  // Optional: Reset mouse down state if mouse leaves the slide
   slide.addEventListener('mouseleave', () => {
     isMouseDown = false;
   });
 });
 
-
-
-
-
-
-
-
-
-
-
-
 document.querySelectorAll('.slide-hero').forEach(slide => {
-  // For touch events
   slide.addEventListener('touchstart', function () {
-    // Apply styles when touch starts (similar to hover)
-    this.querySelector('.slide-image-hero').style.filter = 'brightness(70%)';
+    this.querySelector('.slide-image-hero').style.filter = 'brightness(80%)';
     this.style.transform = 'scale(0.99)';
     this.style.cursor = 'grabbing';
   });
 
   slide.addEventListener('touchend', function () {
-    // Reset styles when touch ends (similar to hover reset)
     this.querySelector('.slide-image-hero').style.filter = '';
     this.style.transform = '';
-
   });
 
   slide.addEventListener('touchcancel', function () {
-    // Reset styles if touch is canceled
     this.querySelector('.slide-image-hero').style.filter = '';
     this.style.transform = '';
     this.style.cursor = '';
   });
 
-  // For mouse events to replicate hover and active states
   slide.addEventListener('mouseenter', function () {
-    // Apply styles when mouse enters (hover)
-    this.querySelector('.slide-image-hero').style.filter = 'brightness(70%)';
+    this.querySelector('.slide-image-hero').style.filter = 'brightness(80%)';
   });
 
   slide.addEventListener('mouseleave', function () {
-    // Reset styles when mouse leaves (hover reset)
     this.querySelector('.slide-image-hero').style.filter = '';
   });
 
   slide.addEventListener('mousedown', function () {
-    // Apply styles when mouse is pressed (active)
     this.style.transform = 'scale(0.99)';
     this.style.cursor = 'grabbing';
   });
 
   slide.addEventListener('mouseup', function () {
-    // Reset styles when mouse is released (active reset)
     this.style.transform = '';
     this.style.cursor = '';
   });
 
-  // Optional: Reset when mouse is canceled (e.g., drag out of the element)
   slide.addEventListener('mouseleave', function () {
     this.style.transform = '';
     this.style.cursor = '';
   });
 });
+
 
 
 
@@ -675,49 +650,3 @@ buttonNavContainerMobile.addEventListener('click', () => {
 firefliesEasterEgg.addEventListener('click', () => {
   if (isOpen) closeMenu();
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

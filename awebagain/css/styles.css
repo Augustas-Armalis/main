@@ -128,7 +128,7 @@ nav {
 }
 
 #nav-button:active {
-  transform: scale(0.97) translateZ(0);
+  transform: scale(0.98) translateZ(0);
   opacity: 0.7;
 }
 
@@ -329,25 +329,7 @@ nav {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* slider */
+/* Slider hero section */
 
 .slider-container-hero {
   height: fit-content;
@@ -361,7 +343,6 @@ nav {
   overflow-y: hidden;
   scrollbar-width: none;
 }
-
 
 .slider-hero-container {
   width: 100%;
@@ -383,8 +364,6 @@ nav {
   z-index: 3;
 }
 
-
-
 .slider-container-hero::-webkit-scrollbar {
   display: none;
 }
@@ -393,19 +372,15 @@ nav {
   scrollbar-width: none;
 }
 
-
-
-
 .slider-hero {
   display: flex;
   gap: 8px;
   cursor: pointer;
-
 }
 
 .slide-image-hero {
-  width: 100%;
-  height: 100%;
+  width: 532px;
+  height: 369px;
   border-radius: 12px;
   object-fit: fill;
   object-position: top;
@@ -429,35 +404,18 @@ nav {
   border-radius: 17px;
 }
 
-
-/* .slide-hero:hover .slide-image-hero {
-  filter: brightness(70%);
-}
-
-.slider-hero .slide-hero:active {
-  transform: scale(0.99);
-  cursor: grabbing;
-} */
-
-/* Disable text selection */
 .slider-container-hero,
 .slider-hero,
 .slide-hero,
 .slide-image-hero {
   user-select: none;
-  /* Prevent text/image selection */
   -webkit-user-drag: none;
-  /* Disable image dragging on WebKit browsers */
 }
-
-
 
 .slide-image-hero,
 .slider-hero {
   pointer-events: auto;
-  /* Re-enable interaction specifically for clicks, etc. */
 }
-
 
 @media (max-width: 1064px) {
   .slider-hero .slide-hero {
@@ -468,15 +426,18 @@ nav {
   .slider-hero-container:before {
     width: 70px;
   }
+
+  .slide-image-hero {
+    width: 426px;
+    height: 298px;
+  }
 }
 
 @media (max-width: 555px) {
-
   .slider-container-hero {
     padding-left: 16px;
     padding-right: 16px;
   }
-
 
   .slider-hero .slide-hero {
     width: 350px;
@@ -486,46 +447,12 @@ nav {
   .slider-hero-container:before {
     display: none;
   }
+
+  .slide-image-hero {
+    width: 332px;
+    height: 231px;
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -535,16 +462,6 @@ nav {
 
 
 /* Hero Section */
-
-.nav-thing-for-hero-section {
-  width: 100%;
-  height: 50px;
-  position: absolute;
-  z-index: -9999;
-  height: 100%;
-  top: -20rem;
-}
-
 
 #load-in-btn-hero {
   margin-top: 42px;
@@ -593,8 +510,6 @@ nav {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
-
 
 .alt-container {
   max-width: 600px;
@@ -761,7 +676,7 @@ nav {
 
 
 
-/* Main Button */
+/* Main fireflies Button */
 
 .rectangle {
   position: relative;
@@ -786,7 +701,6 @@ nav {
 
 .under-rectangle-layer {
   position: relative;
-  /* Ensure the element can be moved */
   text-decoration: none;
   color: white;
   width: fit-content;
@@ -801,7 +715,9 @@ nav {
   touch-action: manipulation;
   opacity: 0;
   transform: translateY(50px);
+  transition: border 0.15s ease;
 }
+
 
 
 .blob {

@@ -28,7 +28,7 @@
 
   <link rel="alternate" href="https://augustas.co" hreflang="en">
 
-  <title>Lorem</title>
+  <title>AWeb</title>
   <link rel="canonical" href="https://augustas.co">
   <link rel="stylesheet" href="css/essentials.css">
   <link rel="stylesheet" href="css/styles.css">
@@ -42,25 +42,10 @@
 
 <body>
 
-  <!-- Grain texture -->
-
-  <svg xmlns="http://www.w3.org/2000/svg" style="position: absolute; width: 0; height: 0;">
-    <defs>
-      <filter id="grain-filter">
-        <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch" />
-        <feColorMatrix type="saturate" values="0" />
-        <feComponentTransfer>
-          <feFuncA type="linear" slope="0.5" />
-        </feComponentTransfer>
-        <feBlend mode="overlay" in2="SourceGraphic" />
-      </filter>
-    </defs>
-  </svg>
-
 
   <!-- Circle following mouse -->
 
-  <div class="circle">
+  <div class="circle" >
     <span class="circle-text"></span>
   </div>
 
@@ -91,7 +76,7 @@
 
             <div class="btn-text-container">
               <div class="btn-text">
-                <h4 style="font-size: 23px;">Lorem</h4>
+                <h4 style="font-size: 23px;">Plans</h4>
               </div>
             </div>
 
@@ -125,7 +110,7 @@
 
               <div class="btn-text-container">
                 <div class="btn-text">
-                  <h4 style="font-size: 23px;">Lorem</h4>
+                  <h4 style="font-size: 23px;">Plans</h4>
                 </div>
               </div>
 
@@ -162,99 +147,100 @@
 
 
 
-  <div class="hide-for-now">
 
-    <!-- Hero section -->
+  <!-- Hero section -->
 
-    <div class="hero-section-container">
+  <div class="hero-section-container">
 
-      <div class="nav-thing-for-hero-section" id="hero-section-href"></div>
+    <div class="hero-content-container">
+      <div class="title-alt-container">
+        <div class="title-container">
+          <h1>Are you a start-up, looking to reach 6 Figs/mo without lifting a finger?</h1>
+        </div>
+        <div class="alt-container">
+          <h4>"Look no more" because we know how to make websites that not only look good, but also convert like a
+            charm
+          </h4>
+        </div>
+      </div>
 
-      <div class="hero-content-container">
-        <div class="title-alt-container">
-          <div class="title-container">
-            <h1>Are you a start-up, looking to reach 6 Figs/mo without lifting a finger?</h1>
+      <a class="under-rectangle-layer" href="#pricing-section-href" id="load-in-btn-hero">
+        <div class="rectangle">
+          <div class="grain-overlay-button"></div>
+          <div class="btn-text-container">
+            <div class="btn-text">
+              <h4 class="btnh4">Get Started</h4>
+            </div>
           </div>
-          <div class="alt-container">
-            <h4>"Look no more" because we know how to make websites that not only look good, but also convert like a
-              charm
-            </h4>
+          <div class="blob-container">
+            <div class="blob"></div>
+            <div class="blob"></div>
+            <div class="blob"></div>
           </div>
         </div>
+      </a>
 
+      <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module">
+      </script>
+      <dotlottie-player src="https://lottie.host/cf444793-4fd2-493c-afba-c3b35b631efb/pBeTEWcIV9.lottie"
+        background="transparent" style="width: 300px; height: 300px;" speed="1" playMode="normal" direction="1" loop
+        autoplay class="nav-lottie-drag">
+      </dotlottie-player>
 
-        <a class="under-rectangle-layer" href="#pricing-section-href" id="load-in-btn-hero">
-          <div class="rectangle">
-            <div class="grain-overlay-button"></div>
-            <div class="btn-text-container">
-              <div class="btn-text">
-                <h4 class="btnh4">Get Started</h4>
-              </div>
+      <div class="slider-hero-container">
+        <div class="slider-container-hero">
+
+          <div class="slider-hero">
+
+            <div class="slide-hero" data-hover-text="view" data-link="https://augustas.co/website/copywiz">
+              <img src="images/websites/copywiz-web.webp" class="slide-image-hero">
             </div>
-            <div class="blob-container">
-              <div class="blob"></div>
-              <div class="blob"></div>
-              <div class="blob"></div>
+
+            <div class="slide-hero" data-hover-text="visit" data-link="https://augustas.co/website/sprout">
+              <img src="images/websites/sprout-web.webp" class="slide-image-hero">
             </div>
-          </div>
-        </a>
 
-
-        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module">
-        </script>
-        <dotlottie-player src="https://lottie.host/cf444793-4fd2-493c-afba-c3b35b631efb/pBeTEWcIV9.lottie"
-          background="transparent" style="width: 300px; height: 300px;" speed="1" playMode="normal" direction="1" loop
-          autoplay class="nav-lottie-drag">
-        </dotlottie-player>
-
-
-        <div class="slider-hero-container">
-          <div class="slider-container-hero">
-
-            <div class="slider-hero">
-
-              <div class="slide-hero" data-hover-text="view" data-link="https://augustas.co/website/copywiz">
-                <img src="images/websites/copywiz-web.webp" class="slide-image-hero">
-              </div>
-
-              <div class="slide-hero" data-hover-text="visit" data-link="https://augustas.co/website/sprout">
-                <img src="images/websites/sprout-web.webp" class="slide-image-hero">
-              </div>
-
-              <div class="slide-hero" data-hover-text="visit" data-link="https://augustas.co/website/example-template">
-                <img src="images/image.png" class="slide-image-hero">
-              </div>
-
-              <div class="slide-hero" data-hover-text="view" data-link="https://augustas.co/website/example-template">
-                <img src="images/image.png" class="slide-image-hero">
-              </div>
-
-              <div class="slide-hero" data-hover-text="visit" data-link="https://augustas.co/website/example-template">
-                <img src="images/image.png" class="slide-image-hero">
-              </div>
-
-              <div class="slide-hero" data-hover-text="view" data-link="https://augustas.co/website/example-template">
-                <img src="images/image.png" class="slide-image-hero">
-              </div>
-
-
-
-
-
+            <div class="slide-hero" data-hover-text="visit" data-link="https://augustas.co/website/sprout">
+              <img src="images/websites/web-image.png" class="slide-image-hero">
             </div>
+
+            <div class="slide-hero" data-hover-text="visit" data-link="https://augustas.co/website/sprout">
+              <img src="images/websites/web-image.png" class="slide-image-hero">
+            </div>
+
+            <div class="slide-hero" data-hover-text="visit" data-link="https://augustas.co/website/sprout">
+              <img src="images/websites/web-image.png" class="slide-image-hero">
+            </div>
+
+            <div class="slide-hero" data-hover-text="visit" data-link="https://augustas.co/website/sprout">
+              <img src="images/websites/web-image.png" class="slide-image-hero">
+            </div>
+
+
           </div>
         </div>
-
-
-
       </div>
     </div>
-
   </div>
 
 
 
 
+
+<!-- Grain texture -->
+
+<svg xmlns="http://www.w3.org/2000/svg" style="position: absolute; width: 0; height: 0;">
+  <defs>
+    <filter id="grain-filter">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch" />
+      <feColorMatrix type="saturate" values="0" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.5" />
+      </feComponentTransfer>
+      <feBlend mode="overlay" in2="SourceGraphic" />
+    </filter>
+  </defs>
+</svg>
 
 
   <script src="js/loadin.js"></script>
