@@ -6,29 +6,10 @@ html {
   color: white;
 }
 
-
-
-.odometer.plus {
-  position: relative;
-}
-
-.odometer.plus::after {
-  content: "+";
-  position: absolute;
-  top: 0;
-  right: -24px;
-}
-
-.spacer {
-  height: 90vh;
-}
-
-
 .section-container {
   margin-top: 5vh;
   width: 100%;
   height: fit-content;
-  background-color: rgb(22, 22, 22);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -36,7 +17,6 @@ html {
 
 section {
   width: 1000px;
-  background-color: rgb(84, 84, 84);
   height: fit-content;
 }
 
@@ -51,4 +31,34 @@ section {
   section {
     margin: 0px 16px;
   }
+}
+
+/* --------------------------------------------------------------------- */
+
+
+.counter-holder {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.counter-card {
+  width: 323px;
+  height: 143px;
+  border-radius: 24px;
+  border: 1px solid var(--gray3);
+  background: var(--black);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.plus-container-counter {
+  display: flex;
+  gap: 3px;
 }
