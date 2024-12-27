@@ -22,6 +22,7 @@
   justify-content: center;
   transform: translateY(100px);
   opacity: 0;
+  gap: 8px;
 }
 
 .counter-card h4 {

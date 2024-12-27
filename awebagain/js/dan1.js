@@ -1,5 +1,3 @@
-
-
 // Counter up
 
 const firstCard = 10000;
@@ -57,7 +55,7 @@ const animateCards = (card, index) => {
       delay: isDesktop ? 0.1 * index : 0,
       scrollTrigger: {
         trigger: card,
-        start: "top 80%",
+        start: "top 100%",
         once: true
       }
     });
