@@ -35,30 +35,350 @@ section {
 
 /* --------------------------------------------------------------------- */
 
+/* Testimonial section */
 
-.counter-holder {
+/* Testimonial section */
+
+.testimonial-container {
   width: 100%;
   height: fit-content;
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.counter-card {
-  width: 323px;
-  height: 143px;
-  border-radius: 24px;
-  border: 1px solid var(--gray3);
-  background: var(--black);
-  display: flex;
   align-items: center;
+  margin-bottom: 128px;
   flex-direction: column;
+  position: relative;
+}
+
+.testimonial-container:before {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 100%;
+  top: 0;
+  left: -15px;
+  background: linear-gradient(to right, rgb(0, 0, 0), rgba(0, 0, 0, 0));
+  pointer-events: none;
+  z-index: 30;
+}
+
+.testimonial-container:after {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 100%;
+  top: 0;
+  right: -15px;
+  background: linear-gradient(to left, rgb(0, 0, 0), rgba(0, 0, 0, 0));
+  pointer-events: none;
+  z-index: 30;
+}
+
+@media (max-width: 1350px) {
+  .testimonial-container:before,
+  .testimonial-container:after {
+    display: none;
+  }
+}
+
+.carousel-container {
+  position: relative;
+  width: 1000px;
+  height: fit-content;
+  display: flex;
   justify-content: center;
 }
 
-.plus-container-counter {
+.carousel {
   display: flex;
-  gap: 3px;
+  transition: transform 0.5s ease;
+  width: 200%;
+  gap: 16px;
+}
+
+.slide {
+  flex: 0 0 calc(50% - 8px);
+  height: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--gray4);
+  font-size: 24px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  border-radius: 17px;
+  border: 1px solid var(--gray3);
+  overflow: hidden;
+}
+
+.slide:not(.active) {
+  opacity: 0.6;
+  transform: scale(0.97);
+  pointer-events: none;
+}
+
+.slide:not(.active) .slide-activator-conatiner {
+  display: none;
+}
+
+.arrow {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: var(--white);
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1;
+  transition: all 0.15s ease;
+}
+
+.arrow:hover {
+  background-color: var(--white);
+}
+
+.arrow:active {
+  background-color: var(--white);
+  transform: scale(0.95);
+}
+
+.arrow.left,
+.arrow.right {
+  border: solid 1px var(--white);
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow-left-arrow-svg,
+.arrow-right-arrow-svg {
+  width: 7px;
+  height: auto;
+  transition: all 0.15s ease;
+}
+
+.arrow:hover .arrow-left-arrow-svg,
+.arrow:hover .arrow-right-arrow-svg {
+  filter: brightness(0);
+}
+
+.arrow-right-arrow-svg {
+  transform: rotate(180deg);
+}
+
+.dots {
+  bottom: 10px;
+  display: flex;
+  gap: 5px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--gray3);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot:hover {
+  background-color: var(--gray25);
+}
+
+.dot.active {
+  background-color: var(--white);
+}
+
+.bottom-navigation-container-tesimonials {
+  width: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: fit-content;
+  margin-top: 16px;
+}
+
+.arrows-testimonials-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.slide-activator-conatiner {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  z-index: 20;
+  cursor: pointer;
+}
+
+.background-video-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.play-svg {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+#svg1 {
+  opacity: 1;
+}
+
+.play-button-container:hover #svg1,
+.play-button-container:focus-within #svg1 {
+  opacity: 0;
+}
+
+.play-button-container:hover #svg2,
+.play-button-container:focus-within #svg2 {
+  opacity: 1;
+}
+
+.play-button-container:active #svg1,
+.play-button-container:active #svg2 {
+  opacity: 1;
+}
+
+.on-top-of-video-slider {
+  width: 100%;
+  height: 33%;
+  position: absolute;
+  z-index: 2;
+  border-radius: 16px 16px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  bottom: -2px;
+  border: 1px solid rgba(37, 37, 40, 0.10);
+  background: rgba(0, 0, 0, 0.60);
+  backdrop-filter: blur(10px);
+  padding: 0 16px;
+  transition: background 0.3s ease, height 0.3s ease;
+}
+
+.on-top-of-video-slider.hovered {
+  background: var(--gray5);
+  height: 36%;
+}
+
+.name-acc-container {
+  height: fit-content;
+}
+
+.name-acc-container h5 {
+  color: var(--gray1);
+}
+
+.play-button-container {
+  width: 50px;
+  height: 50px;
+}
+
+.video-container {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 80000;
+  display: none;
+  background: hsla(0, 0%, 0%, 0.7);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(3px);
+}
+
+iframe#ytplayer {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.close-button {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  right: 32px;
+  top: 32px;
+  border-radius: 12px;
+  cursor: pointer;
+  z-index: 81000;
+  background: hsla(0, 0%, 0%, 0.7);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(3px);
+  border: 1px solid var(--gray3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-button img {
+  width: 25px;
+}
+
+.close-button:hover {
+  background: hsla(235, 5%, 6%, 0.7);
+}
+
+@media (max-width: 1064px) {
+  .slide-activator-conatiner {
+    width: 100%;
+  }
+
+  .carousel-container {
+    position: relative;
+    width: fit-content;
+  }
+
+  .bottom-navigation-container-tesimonials {
+    width: 492px;
+  }
+
+  .carousel {
+    width: 492px;
+  }
+
+  .slide {
+    flex: 0 0 100%;
+  }
+}
+
+@media (max-width: 555px) {
+  .carousel-container {
+    position: relative;
+    width: 100vw;
+    padding: 0 16px;
+  }
+
+  .bottom-navigation-container-tesimonials {
+    position: relative;
+    width: 100vw;
+    padding: 0 16px;
+  }
+
+  .slide {
+    height: 230px;
+  }
+
+  .close-button {
+    right: 16px;
+    top: 16px;
+  }
 }

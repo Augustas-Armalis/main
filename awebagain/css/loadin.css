@@ -331,6 +331,10 @@ nav {
 
 /* Slider hero section */
 
+.morph-home-web:hover{
+  cursor: pointer;
+}
+
 .slider-container-hero {
   height: fit-content;
   display: flex;
@@ -396,7 +400,7 @@ nav {
   width: 550px;
   height: 387px;
   transition: all 0.15s ease-out;
-  cursor: pointer;
+  cursor: ew-resize;
   border: 1px solid #252528;
   background: #000;
   padding: 8px;
@@ -468,7 +472,7 @@ nav {
   justify-content: center;
   z-index: 40;
   position: relative;
-  margin-bottom: 144px;
+  margin-bottom: 192px;
 }
 
 .hero-content-container {

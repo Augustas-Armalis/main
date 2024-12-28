@@ -232,8 +232,8 @@ function executeAbove1064px() {
   if (window.innerWidth > 1064) {
     console.clear();
 
-    const circleDissapearTo = document.querySelectorAll('.under-rectangle-layer, nav');
-    const rectangleMorphTo = document.querySelectorAll('.slide-hero');
+    const circleDissapearTo = document.querySelectorAll('.under-rectangle-layer, nav, .dots, .arrows-testimonials-container');
+    const rectangleMorphTo = document.querySelectorAll('.morph-home-web, .slide');
 
     const circleElement = document.querySelector('.circle');
     const mouse = { x: 0, y: 0 };

@@ -47,29 +47,113 @@
 
 <body>
 
-  <div class="section-container">
+  <!-- <div class="section-container">
     <section>
 
 
+    </section>
+  </div> -->
 
 
-      <div class="counter-card">
+  <div class="video-container">
+    <div class="close-button">
+      <img src="images/svgs/close-x.svg" loading="lazy">
+    </div>
+    <iframe id="ytplayer" type="text/html" frameborder="0" allowfullscreen></iframe>
+  </div>
 
-        <div class="plus-container-counter">
-          <h2 class="odometer">000</h2>
-          <h2>+</h2>
+  <div class="testimonial-container">
+    <div class="carousel-container">
+      <div class="carousel">
+        <div class="slide" data-hover-text="Watch">
+          <div class="slide-activator-conatiner" id="ares-testimonial"></div>
+          <div class="background-video-container">
+            <div class="on-top-of-video-slider">
+              <div class="name-acc-container">
+                <h3>Ares</h3>
+                <h5>Founder of Sprout</h5>
+              </div>
+              <div class="play-button-container">
+                <img id="svg1" src="images/svgs/play-btn-start.svg" alt="Play initial" class="play-svg" />
+                <img id="svg2" src="images/svgs/play-btn-active.svg" alt="Play hovered" class="play-svg" />
+              </div>
+            </div>
+            <video src="videos/Sprout-tes.mp4" autoplay loop muted class="testimonial-video"></video>
+          </div>
         </div>
 
-        <h4 class="gray1">Lorem blah blah</h4>
+        <div class="slide" data-hover-text="Watch">
+          <div class="slide-activator-conatiner" id="maj-testimonial"></div>
+          <div class="background-video-container">
+            <div class="on-top-of-video-slider">
+              <div class="name-acc-container">
+                <h3>Maj</h3>
+                <h5>Founder of CopyWiz</h5>
+              </div>
+              <div class="play-button-container">
+                <img id="svg1" src="images/svgs/play-btn-start.svg" alt="Play initial" class="play-svg" />
+                <img id="svg2" src="images/svgs/play-btn-active.svg" alt="Play hovered" class="play-svg" />
+              </div>
+            </div>
+            <video src="videos/CopyWiz-tes.mp4" autoplay loop muted class="testimonial-video"></video>
+          </div>
+        </div>
 
+        <div class="slide" data-hover-text="Watch">
+          <div class="slide-activator-conatiner" id="motiejus-testimonial"></div>
+          <div class="background-video-container">
+            <div class="on-top-of-video-slider">
+              <div class="name-acc-container">
+                <h3>Motiejus</h3>
+                <h5>Sales Funnel and SMM Consultant</h5>
+              </div>
+              <div class="play-button-container">
+                <img id="svg1" src="images/svgs/play-btn-start.svg" alt="Play initial" class="play-svg" />
+                <img id="svg2" src="images/svgs/play-btn-active.svg" alt="Play hovered" class="play-svg" />
+              </div>
+            </div>
+            <video src="videos/Motiejus-tes.mp4" autoplay loop muted class="testimonial-video"></video>
+          </div>
+        </div>
+
+        <div class="slide" data-hover-text="Soon...">
+          <div class="slide-activator-conatiner" id="rick-testimonial"></div>
+          <div class="background-video-container">
+            <div class="on-top-of-video-slider">
+              <div class="name-acc-container">
+                <h3>Coming Soon</h3>
+                <h5>Become my client below!</h5>
+              </div>
+              <div class="play-button-container">
+                <img id="svg1" src="images/svgs/play-btn-start.svg" alt="Play initial" class="play-svg" />
+                <img id="svg2" src="images/svgs/play-btn-active.svg" alt="Play hovered" class="play-svg" />
+              </div>
+            </div>
+            <video class="testimonial-video"></video>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-navigation-container-tesimonials">
+      <div class="dots">
+        <span class="dot active" onclick="goToSlide(0)"></span>
+        <span class="dot" onclick="goToSlide(1)"></span>
+        <span class="dot" onclick="goToSlide(2)"></span>
+        <span class="dot" onclick="goToSlide(3)"></span>
       </div>
 
-
-
-
-
-    </section>
+      <div class="arrows-testimonials-container">
+        <button class="arrow left" onclick="moveSlide(-1)">
+          <img src="images/svgs/arrow-left.svg" class="arrow-left-arrow-svg">
+        </button>
+        <button class="arrow left" onclick="moveSlide(1)">
+          <img src="images/svgs/arrow-left.svg" class="arrow-right-arrow-svg">
+        </button>
+      </div>
+    </div>
   </div>
+
 
   <script src="script.js"></script>
 

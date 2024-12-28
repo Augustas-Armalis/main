@@ -1170,7 +1170,7 @@ window.addEventListener('resize', () => {
 
 
 
-// Testimonials
+// blog
 
 // Select all instances of the elements
 const blogPlayButtons = document.querySelectorAll(".blog-slide-activator-container");
@@ -1256,3 +1256,5 @@ blogArrows.forEach(arrow => {
     }
   });
 });
+
+
