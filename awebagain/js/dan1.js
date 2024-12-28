@@ -325,3 +325,223 @@ const okChangeTimeline = gsap.timeline({
 okChangeTimeline
   .from(".ok-container-management", { opacity: 0, right: "-100%", duration: 1 })
   .from(".change-it-container-management", { opacity: 0, right: "-100%", duration: 1 }, "-=0.6");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Testimonials
+
+
+
+
+
+
+
+
+
+// Testimonials
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  updateCarousel(); // Ensure the carousel is set up correctly on page load
+});
+
+let currentIndex = 0;
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+const carousel = document.querySelector('.carousel');
+
+function isLargeScreen() {
+  return window.innerWidth > 1064;
+}
+
+function moveSlide(direction) {
+  if (isLargeScreen()) {
+    currentIndex += direction;
+    if (currentIndex < 0) currentIndex = slides.length - 2; // Show 2 slides on large screens
+    if (currentIndex >= slides.length - 1) currentIndex = 0;
+  } else {
+    currentIndex += direction;
+    if (currentIndex < 0) currentIndex = slides.length - 1;
+    if (currentIndex >= slides.length) currentIndex = 0;
+  }
+  updateCarousel();
+}
+
+function goToSlide(index) {
+  currentIndex = index % slides.length;
+  updateCarousel();
+}
+
+function updateCarousel() {
+  const carouselWidth = carousel.offsetWidth;
+  const gap = isLargeScreen() ? 8 : 16;
+  const slideWidth = isLargeScreen() ? carouselWidth / 2 : carouselWidth;
+  const newTransform = -(currentIndex * (slideWidth + gap));
+
+  carousel.style.transform = `translateX(${newTransform}px)`;
+
+  slides.forEach((slide, index) => {
+    slide.classList.remove('active');
+    if (index === currentIndex || (isLargeScreen() && index === currentIndex + 1)) {
+      slide.classList.add('active');
+    }
+  });
+
+  dots.forEach((dot, index) => {
+    dot.classList.remove('active');
+    if (index === currentIndex || (isLargeScreen() && index === currentIndex + 1)) {
+      dot.classList.add('active');
+    }
+  });
+}
+
+window.addEventListener('resize', updateCarousel);
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Testimonials
+
+
+// Testimonials
+
+const videoContainer = document.querySelector(".video-container");
+const closeButton = document.querySelector(".close-button");
+const youtubePlayer = document.querySelector("#ytplayer");
+const activators = document.querySelectorAll(".slide-activator-conatiner");
+
+// Mapping of slide activator IDs to YouTube URLs
+const videoUrls = {
+  "ares-testimonial": "https://www.youtube.com/embed/G7qvBdtHAO4?autoplay=1&modestbranding=1&rel=0&controls=1&color=white",
+  "motiejus-testimonial": "https://www.youtube.com/embed/kZNutM6e_9c?si=hz6tP-eboCXjWzKp?autoplay=1&modestbranding=1&rel=0&controls=1&color=white",
+  "rick-testimonial": "https://www.youtube.com/embed/5sbWbfe_4XU?si=c2RrfDYKn9kWqz7f?autoplay=1&modestbranding=1&rel=0&controls=1&color=white",
+  "maj-testimonial": "https://www.youtube.com/embed/dtAoDQiWrgA?si=tVTKCkIM7mMt13V9?autoplay=1&modestbranding=1&rel=0&controls=1&color=white",
+};
+
+// ?autoplay=1&modestbranding=1&rel=0&controls=1&color=white
+
+
+function disableScroll() {
+  document.body.style.overflow = "hidden";
+  document.documentElement.style.overflow = "hidden";
+}
+
+// Function to enable scrolling
+function enableScroll() {
+  document.body.style.overflow = "";
+  document.documentElement.style.overflow = "";
+  document.body.style.overflowX = "hidden";
+  document.documentElement.style.overflowX = "hidden";
+}
+
+// Function to show the video container and set the video URL
+const showVideoContainer = (videoId) => {
+  const videoUrl = videoUrls[videoId];
+  if (videoUrl) {
+    youtubePlayer.src = `${videoUrl}?autoplay=1`; // Set video URL and autoplay
+    videoContainer.style.display = "inherit"; // Show video container
+    disableScroll(); // Disable scrolling
+  }
+};
+
+// Function to hide the video container
+const hideVideoContainer = () => {
+  youtubePlayer.src = ""; // Clear the video URL
+  videoContainer.style.display = "none"; // Hide video container
+  enableScroll(); // Enable scrolling
+};
+
+// Event listener for each activator container
+activators.forEach((activator) => {
+  activator.addEventListener("click", () => {
+    const activatorId = activator.id; // Get the ID of the clicked activator
+    showVideoContainer(activatorId); // Show the video container with the corresponding video
+  });
+});
+
+// Event listener for the close button
+closeButton.addEventListener("click", hideVideoContainer);
+
+
+
+// Select all instances of the elements
+const playButtons = document.querySelectorAll(".slide-activator-conatiner");
+const svg1Elements = document.querySelectorAll("#svg1");
+const svg2Elements = document.querySelectorAll("#svg2");
+const videoSliders = document.querySelectorAll(".on-top-of-video-slider");
+const videos = document.querySelectorAll(".testimonial-video");
+
+// Function to change the SVG and slow down the video
+const changeSVG = (index) => {
+  svg1Elements[index].style.opacity = "0";  // Fade out the first SVG
+  svg2Elements[index].style.opacity = "1";  // Fade in the second SVG
+  videoSliders[index].classList.add("hovered"); // Add class for background change and height increase
+
+  // Slow down the video playback (transition it to a stop)
+  videos[index].style.transition = "playback-rate 0.3s ease"; // Transition for playbackRate
+  videos[index].playbackRate = 0;  // Slow down the video to a complete stop
+};
+
+// Function to restore to the first SVG and reset the video speed
+const restoreSVG = (index) => {
+  svg1Elements[index].style.opacity = "1";  // Fade in the first SVG
+  svg2Elements[index].style.opacity = "0";  // Fade out the second SVG
+  videoSliders[index].classList.remove("hovered"); // Remove class for background and height reset
+
+  // Gradually reset the video playback to normal speed
+  videos[index].style.transition = "playback-rate 0.3s ease"; // Transition for playbackRate
+  videos[index].playbackRate = 1;  // Reset the video speed to normal
+};
+
+// Add event listeners for hover and touch events for each element
+playButtons.forEach((playButton, index) => {
+  playButton.addEventListener("mouseover", () => changeSVG(index));
+  playButton.addEventListener("mouseout", () => restoreSVG(index));
+
+  // For touch interactions (touchstart and touchend) on each play button
+  playButton.addEventListener("touchstart", (event) => {
+    changeSVG(index);
+    // Prevent only the default action of touchstart if necessary, to avoid conflicting behavior.
+    event.stopPropagation(); // Stop event from bubbling, but don't prevent default
+  });
+
+  playButton.addEventListener("touchend", (event) => {
+    restoreSVG(index);
+    // Prevent only the default action of touchend if necessary, to avoid conflicting behavior.
+    event.stopPropagation(); // Stop event from bubbling, but don't prevent default
+  });
+
+  // Optional: Handle touchcancel as a fallback (e.g., when touch is interrupted)
+  playButton.addEventListener("touchcancel", () => restoreSVG(index));
+});
+
+
+
+
+
+
+
+
