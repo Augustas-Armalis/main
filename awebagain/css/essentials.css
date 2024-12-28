@@ -192,6 +192,7 @@ h5 {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 192px;
 }
 
 section {
@@ -204,10 +205,44 @@ section {
     width: 100%;
     margin: 0px 32px;
   }
+
+  .section-container {
+    margin-bottom: 128px;
+  }
 }
 
 @media (max-width: 555px) {
   section {
     margin: 0px 16px;
+  }
+}
+
+
+
+/* Title */
+
+.section-title-container {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.title-text-title-section {
+  margin-bottom: 8px;
+}
+
+.alt-text-title-section {
+  color: var(--gray1);
+}
+
+
+@media (max-width: 1064px) {
+  .section-title-container {
+    margin-bottom: 42px;
+  }
+}
+
+@media (max-width: 555) {
+  .section-title-container {
+    margin-bottom: 36px;
   }
 }

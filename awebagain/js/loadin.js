@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   gsap.fromTo(".under-rectangle-layer",
     { y: 50, opacity: 0 },
-    { y: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 0.3 }
+    { y: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 0.4 }
   );
 
   gsap.fromTo("nav",
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   gsap.fromTo(".nav-lottie-drag",
     { y: 20, opacity: 0 },
-    { y: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 2 }
+    { y: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 0.7 }
   );
 
   gsap.fromTo(".slider-hero-container",

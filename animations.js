@@ -250,13 +250,7 @@ okChangeTimeline
 
 
 
-
-
-
-
-
-
-
+  
 
 
 gsap.to(".pumping-circle", {
