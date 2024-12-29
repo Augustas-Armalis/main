@@ -388,7 +388,6 @@ nav {
 
 .links-container a.active {
   color: var(--white);
-  /* This will be applied when the section is in view */
 }
 
 .links-container a:hover {

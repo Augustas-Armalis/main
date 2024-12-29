@@ -67,6 +67,29 @@ counterCards.forEach((card, index) => {
   animateCards(card, index);
 });
 
+// Select all elements with the class .hover-touch-card
+const hoverTouchCards = document.querySelectorAll('.counter-card');
+
+// Function to apply the hover effect
+function addHoverEffect(event) {
+  event.currentTarget.style.transition = 'background-color 0.3s ease';
+  event.currentTarget.style.backgroundColor = 'var(--gray5)';
+}
+
+// Function to remove the hover effect
+function removeHoverEffect(event) {
+  event.currentTarget.style.backgroundColor = '';
+}
+
+// Add event listeners for mouseover, mouseout, touchstart, and touchend
+hoverTouchCards.forEach(card => {
+  card.addEventListener('mouseover', addHoverEffect);
+  card.addEventListener('mouseout', removeHoverEffect);
+  card.addEventListener('touchstart', addHoverEffect);
+  card.addEventListener('touchend', removeHoverEffect);
+});
+
+
 
 
 
@@ -76,7 +99,6 @@ counterCards.forEach((card, index) => {
 gsap.utils.toArray('.section-title-container').forEach(container => {
   const [title, subtitle] = container.querySelectorAll('h2, h4');
   
-  // Animate the container
   gsap.fromTo(container, 
     { y: 100, opacity: 0 }, 
     { 
@@ -86,22 +108,21 @@ gsap.utils.toArray('.section-title-container').forEach(container => {
       ease: "power2.out",  
       scrollTrigger: {
         trigger: container,
-        start: "top bottom", // Animation starts as soon as the element enters the viewport
+        start: "top bottom",
       }
     }
   );
 
-  // Stagger animation for h2 and h4
   gsap.fromTo([title, subtitle],
     { opacity: 0, y: 30 },
     { 
       opacity: 1, 
       y: 0, 
       duration: 0.5, 
-      stagger: 0.3, // Adds the stagger effect
+      stagger: 0.3,
       scrollTrigger: {
         trigger: container,
-        start: "top bottom", // Same start point for this animation
+        start: "top bottom",
       }
     }
   );
@@ -112,7 +133,6 @@ gsap.utils.toArray('.section-title-container').forEach(container => {
 
 // Framework Section
 
-
 function animateFloating(container) {
   const animation = gsap.to(container, {
     x: "+=" + (Math.random() * 10 - 10),
@@ -122,21 +142,20 @@ function animateFloating(container) {
     ease: "sine.inOut",
     repeat: -1,
     yoyo: true,
-    paused: true // Start the animation paused
+    paused: true
   });
 
-  // Observe the visibility of the container
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        animation.play(); // Play when visible
+        animation.play();
       } else {
-        animation.pause(); // Pause when not visible
+        animation.pause();
       }
     });
-  }, { threshold: 0.1 }); // Adjust threshold if needed
+  }, { threshold: 0.1 });
 
-  observer.observe(container); // Start observing the container
+  observer.observe(container);
 }
 
 animateFloating(document.querySelector('.floating-augustas-container'));
@@ -144,16 +163,13 @@ animateFloating(document.querySelector('.floating-daniel-container'));
 animateFloating(document.querySelector('.ok-container-management'));
 animateFloating(document.querySelector('.change-it-container-management'));
 
-
-
 const frameworkFirst = gsap.utils.toArray(".framework-box-first");
 const frameworkSecond = gsap.utils.toArray(".framework-box-second");
 const frameworkBoxes = gsap.utils.toArray("#framework-box");
 
 if (window.innerWidth > 830) {
-  // Desktop: Animate the first group with stagger
   gsap.fromTo(
-    frameworkFirst, // Only the first group
+    frameworkFirst,
     { y: 100, opacity: 0 },
     {
       y: 0,
@@ -162,16 +178,15 @@ if (window.innerWidth > 830) {
       ease: "power2.out",
       scrollTrigger: {
         trigger: ".framework-box-first",
-        start: "top bottom", // Animation starts when container top enters the bottom of the viewport
-        toggleActions: "play none none none",
+        start: "top bottom",
+        toggleActions: "play none none none"
       },
-      stagger: 0.1, // Stagger effect for the first group
+      stagger: 0.1
     }
   );
 
-  // Desktop: Animate the second group with stagger
   gsap.fromTo(
-    frameworkSecond, // Only the second group
+    frameworkSecond,
     { y: 100, opacity: 0 },
     {
       y: 0,
@@ -180,14 +195,13 @@ if (window.innerWidth > 830) {
       ease: "power2.out",
       scrollTrigger: {
         trigger: ".framework-box-second",
-        start: "top bottom", // Animation starts when container top enters the bottom of the viewport
-        toggleActions: "play none none none",
+        start: "top bottom",
+        toggleActions: "play none none none"
       },
-      stagger: 0.1, // Stagger effect for the second group
+      stagger: 0.1
     }
   );
 } else {
-  // Mobile: Each individual #framework-box animates separately
   frameworkBoxes.forEach((box) => {
     gsap.fromTo(
       box,
@@ -199,17 +213,13 @@ if (window.innerWidth > 830) {
         ease: "power2.out",
         scrollTrigger: {
           trigger: box,
-          start: "top bottom", // Animation starts when the box enters the viewport
-          toggleActions: "play none none none",
-        },
+          start: "top bottom",
+          toggleActions: "play none none none"
+        }
       }
     );
   });
 }
-
-
-
-
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -323,7 +333,6 @@ const okChangeTimeline = gsap.timeline({
 okChangeTimeline
 .from(".ok-container-management", { opacity: 0, right: "-100%", duration: 1 })
 .from(".change-it-container-management", { opacity: 0, right: "-100%", duration: 1 }, "-=0.6");
-
 
 
 
@@ -586,4 +595,38 @@ arrows.forEach(arrow => {
 });
 
 
+
+
+
+
+
+
+
+
+
+
+// Plans hover effect spec
+
+const grayPlansCards = document.querySelectorAll('.gray-plans-card');
+
+function addStarBrightness(event) {
+  const starPlans = event.currentTarget.querySelector('.star-plans');
+  if (starPlans) {
+    starPlans.style.filter = 'brightness(300%)';
+  }
+}
+
+function removeStarBrightness(event) {
+  const starPlans = event.currentTarget.querySelector('.star-plans');
+  if (starPlans) {
+    starPlans.style.filter = '';
+  }
+}
+
+grayPlansCards.forEach(card => {
+  card.addEventListener('mouseover', addStarBrightness);
+  card.addEventListener('mouseout', removeStarBrightness);
+  card.addEventListener('touchstart', addStarBrightness);
+  card.addEventListener('touchend', removeStarBrightness);
+});
 

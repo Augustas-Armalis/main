@@ -46,6 +46,10 @@
 
 /* Navigation Bar */
 
+.links-container a.active-nav {
+  color: white;
+}
+
 .nav-wrapper {
   display: flex;
   justify-content: center;
@@ -385,7 +389,7 @@ nav {
 .slide-image-hero {
   width: 100%;
   height: 100%;
-  border-radius: 12px;
+  border-radius: 17px;
   object-fit: fill;
   object-position: top;
   transition: all 0.15s ease-out;
@@ -400,12 +404,11 @@ nav {
   width: 550px;
   height: 387px;
   transition: all 0.15s ease-out;
-  cursor: ew-resize;
   border: 1px solid #252528;
   background: #000;
   padding: 8px;
   overflow: hidden;
-  border-radius: 17px;
+  border-radius: 24px;
 }
 
 .slider-container-hero,

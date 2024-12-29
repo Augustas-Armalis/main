@@ -41,11 +41,27 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.8/odometer.min.js"></script>
   <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.8/themes/odometer-theme-default.min.css" />
+  href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.8/themes/odometer-theme-default.min.css" />
+
 
 </head>
 
 <body>
+
+  <!-- Cal element-click embed code begins -->
+<script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", "15min", {origin:"https://cal.com"});
+
+  
+  // Important: Please add the following attributes to the element that should trigger the calendar to open upon clicking.
+  // `data-cal-link="augustas/15min"`
+  // data-cal-namespace="15min"
+  // `data-cal-config='{"layout":"month_view"}'`
+
+  Cal.ns["15min"]("ui", {"cssVarsPerTheme":{"light":{"cal-brand":"#000000"},"dark":{"cal-brand":"#ffffff"}},"hideEventTypeDetails":false,"layout":"month_view"});
+  </script>
+  <!-- Cal element-click embed code ends -->
 
   <div class="video-container">
     <div class="close-button">
@@ -72,8 +88,8 @@
 
       <div class="inside-container-nav">
 
-        <a class="logo-container" href="#">
-          <img src="images/svgs/logo.svg" class="logo-img-nav">
+        <a class="logo-container" href="#home">
+          <img src="images/svgs/logo.svg" class="logo-img-nav" alt="logo-svg">
         </a>
 
         <div class="burger-menu-container">
@@ -81,7 +97,7 @@
           <div id="burger-line" class="bottom-burger-line"></div>
         </div>
 
-        <a href="#" id="button-nav-container">
+        <a href="#plans" id="button-nav-container">
           <div class="rectangle" id="nav-button">
 
             <div class="grain-overlay-button"></div>
@@ -106,16 +122,16 @@
           <div class="divider-mobile-menu"></div>
 
           <div class="link-elements-mobile-nav">
-            <a href="#">Lorem</a>
-            <a href="#">Lorem</a>
-            <a href="#">Lorem</a>
-            <a href="#">Lorem</a>
-            <a href="#">Lorem</a>
+            <a href="#home">Home</a>
+            <a href="#framework">Framework</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="https://augustas.co/newsletter/" target="_blank">Newsletter</a>
+            <a href="#footer">Contacts</a>
           </div>
 
           <div class="divider-mobile-menu"></div>
 
-          <a href="#" id="button-nav-container-mobile">
+          <a href="#plans" id="button-nav-container-mobile">
             <div class="rectangle" id="nav-button">
 
               <div class="grain-overlay-button"></div>
@@ -142,12 +158,12 @@
       </div>
 
       <div class="links-container">
-        <a href="#" id="home-link">Lorem</a>
-        <a href="#" id="testimonials-link">Lorem</a>
-        <a href="#" id="newsletter-link">Lorem</a>
-        <a href="#" id="hiring-link">Lorem</a>
-        <a href="#" id="contacts-link">Lorem</a>
-      </div>
+        <a href="#home" data-nav-white=".nav-lottie-drag" id="home-link">Home</a>
+        <a href="#framework" data-nav-white=".framework-container" id="framework-link">Framework</a>
+        <a href="#testimonials" data-nav-white=".testimonial-container" id="testimonials-link">Testimonials</a>
+        <a href="https://augustas.co/newsletter/" id="newsletter-link" target="_blank">Newsletter</a>
+        <a href="#footer" data-nav-white="#footer" id="contacts-link">Contacts</a>
+      </div>      
 
     </nav>
   </div>
@@ -156,12 +172,9 @@
 
 
 
-
-
-
   <!-- Hero section -->
 
-  <div class="hero-section-container">
+  <div class="hero-section-container" id="home">
 
     <div class="hero-content-container">
       <div class="title-alt-container">
@@ -175,7 +188,7 @@
         </div>
       </div>
 
-      <a class="under-rectangle-layer" href="#pricing-section-href" id="load-in-btn-hero">
+      <a class="under-rectangle-layer" href="#plans" id="load-in-btn-hero">
         <div class="rectangle">
           <div class="grain-overlay-button"></div>
           <div class="btn-text-container">
@@ -281,7 +294,7 @@
 
 
 
-  <div class="section-title-container">
+  <div class="section-title-container" id="framework">
     <h2 class="title-text-title-section">Our "Time-Tested" Framework</h2>
     <h4 class="alt-text-title-section">Made according to world-class standards</h4>
   </div>
@@ -340,7 +353,7 @@
 
         </div>
 
-        <div class="design-box framework-box-first" id="framework-box" data-hover-text="NOOB">
+        <div class="design-box framework-box-first" id="framework-box">
 
           <div class="box-text-container">
             <h3 class="box-text-title">Designing</h3>
@@ -569,9 +582,9 @@
 
   <!-- Testimonial Section -->
    
-  <div class="section-title-container" id="testimonials-section-href">
+  <div class="section-title-container" id="testimonials">
     <h2 class="title-text-title-section">Testimonials</h2>
-    <h4 class="alt-text-title-section">Hear yourself what others thinks of us</h4>
+    <h4 class="alt-text-title-section">Hear what others say about us</h4>
   </div>
   
   <div class="testimonial-container">
@@ -665,8 +678,240 @@
       </div>
     </div>
   </div>
+
+
+
+
+
+
+  <!-- Plans section -->
+
+  <div class="section-title-container" id="plans">
+    <h2 class="title-text-title-section">Plans</h2>
+    <h4 class="alt-text-title-section">Choose the option that suits you best</h4>
+  </div>
   
 
+  <div class="section-container">
+    <section>
+      <div class="counter-holder plans-holder">
+
+        <div class="counter-card plans-card">
+
+         <div class="inside-card">
+
+          <div class="top-specify-cont figma-specify-cont">
+            <img src="images/svgs/figma-blue-icon.svg" class="spec-icon" alt="top icon">
+            <h5>Figma project</h5>
+          </div>
+
+          <div class="title-container-plans">
+            <p>Website Design</p>
+            <h5 class="gray1">Only custom web-copy &<br>landing page design</h5>
+          </div>
+
+          <div class="divider-plans"></div>
+
+          <div class="benefits-plans-container">
+
+            <div class="benefit-holder">
+              <img src="images/svgs/single-page-icon.svg" alt="benefit icon">
+              <p>Single page</p>
+            </div>
+
+            <div class="benefit-holder">
+              <img src="images/svgs/web-copywriting-icon.svg" alt="benefit icon">
+              <p>Web-copywriting</p>
+            </div>
+
+            <div class="benefit-holder">
+              <img src="images/svgs/custom-visuals-icon.svg" alt="benefit icon">
+              <p>Custom visuals</p>
+            </div>
+
+            <div class="benefit-holder">
+              <img src="images/svgs/full-design-icon.svg" alt="benefit icon">
+              <p>Full design</p>
+            </div>
+
+          </div>
+
+
+
+          <div class="white-cta-button" data-cal-link="augustas/15min">
+
+            <h4>Apply now</h4>
+
+          </div>
+
+
+
+         </div>
+
+        </div>
+
+        <div class="counter-card plans-card gray-plans-card">
+
+          <div class="inside-card gray5-card">
+
+            <img src="images/svgs/star-plans.svg" alt="star icon" class="star-plans">
+
+            <div class="top-specify-cont">
+              <img src="images/svgs/web-purple-icon.svg" class="spec-icon" alt="top icon">
+              <h5>Full web-development</h5>
+            </div>
+
+
+            <div class="title-container-plans">
+              <p>Landing Page</p>
+              <h5 class="gray1">Perfect for Start-ups. Everything<br>included, custom-code too.</h5>
+            </div>
+  
+            <div class="divider-plans"></div>
+  
+            <div class="benefits-plans-container">
+  
+              <div class="benefit-holder">
+                <img src="images/svgs/single-page-icon.svg" alt="benefit icon">
+                <p>Single page</p>
+              </div>
+  
+              <div class="benefit-holder">
+                <img src="images/svgs/custom-code-icon.svg" alt="benefit icon">
+                <p>Custom code</p>
+              </div>
+  
+              <div class="benefit-holder">
+                <img src="images/svgs/hosting-for-you-icon.svg" alt="benefit icon">
+                <p>Hosting for you</p>
+              </div>
+
+              <div class="benefit-holder">
+                <img src="images/svgs/custom-domain-icon.svg" alt="benefit icon">
+                <p>Custom domain</p>
+              </div>
+  
+              <div class="benefit-holder">
+                <img src="images/svgs/monthly-updates-icon.svg" alt="benefit icon">
+                <p>Monthly updates $+</p>
+              </div>
+
+              <div class="benefit-holder">
+                <img src="images/svgs/custom-animations-icon.svg" alt="benefit icon">
+                <p>Custom animations</p>
+              </div>
+
+              <div class="benefit-holder">
+                <img src="images/svgs/smooth-interactions-icon.svg" alt="benefit icon">
+                <p>Smooth interactions</p>
+              </div>
+  
+  
+            </div>
+
+
+            <a data-cal-link="augustas/15min" id="button-nav-container plans-firefly-cta">
+              <div class="rectangle" id="nav-button">
+        
+                <div class="grain-overlay-button"></div>
+        
+                <div class="btn-text-container plans-firefly-text-container">
+                  <div class="btn-text">
+                    <h4 style="font-size: 20px;">Apply now</h4>
+                  </div>
+                </div>
+        
+                <div class="blob-container">
+                  <div class="blob"></div>
+                  <div class="blob"></div>
+                  <div class="blob"></div>
+                </div>
+        
+              </div>
+            </a>
+
+  
+           </div>
+
+        </div>
+
+        <div class="counter-card plans-card">
+
+          <div class="inside-card">
+
+            <div class="top-specify-cont">
+              <img src="images/svgs/web-purple-icon.svg" class="spec-icon" alt="top icon">
+              <h5>Full web-development</h5>
+            </div>
+
+
+            <div class="title-container-plans">
+              <p>Full Business Site</p>
+              <h5 class="gray1">A bigger brand? No problem, your<br>big idea will need more than 1 page</h5>
+            </div>
+  
+            <div class="divider-plans"></div>
+  
+            <div class="benefits-plans-container">
+  
+              <div class="benefit-holder">
+                <img src="images/svgs/multiple-pages-icon.svg" alt="benefit icon">
+                <p>Multiple pages</p>
+              </div>
+  
+              <div class="benefit-holder">
+                <img src="images/svgs/seo-optimization.svg" alt="benefit icon">
+                <p>SEO optimization</p>
+              </div>
+  
+              <div class="benefit-holder">
+                <img src="images/svgs/custom-visuals-icon.svg" alt="benefit icon">
+                <p>Personal designer</p>
+              </div>
+
+              <div class="benefit-holder">
+                <img src="images/svgs/custom-animations-icon.svg" alt="benefit icon">
+                <p>Custom animations</p>
+              </div>
+
+              <div class="benefit-holder">
+                <img src="images/svgs/smooth-interactions-icon.svg" alt="benefit icon">
+                <p>Smooth interactions</p>
+              </div>
+
+              <div class="benefit-holder">
+                <img src="images/svgs/monthly-updates-icon.svg" alt="benefit icon">
+                <p>Monthly updates $+</p>
+              </div>
+
+              <div class="benefit-holder">
+                <img src="images/svgs/google-analytics-icon.svg" alt="benefit icon">
+                <p>Google analytics</p>
+              </div>
+
+
+              <div class="benefit-holder">
+                <img src="images/svgs/newsletter-integration-icon.svg" alt="benefit icon">
+                <p>API integrations</p>
+              </div>
+  
+            </div>
+
+            <div class="white-cta-button" data-cal-link="augustas/15min">
+
+              <h4>Apply now</h4>
+
+            </div>
+
+  
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+  </div>
 
 
   <div class="spacer"></div>

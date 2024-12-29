@@ -44,6 +44,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+// Hide the hrefs
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href').substring(1);
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+
+    window.history.replaceState(null, null, ' ');
+  });
+});
+
 
 
 
@@ -232,7 +250,7 @@ function executeAbove1064px() {
   if (window.innerWidth > 1064) {
     console.clear();
 
-    const circleDissapearTo = document.querySelectorAll('.under-rectangle-layer, nav, .dots, .arrows-testimonials-container');
+    const circleDissapearTo = document.querySelectorAll('.under-rectangle-layer, nav, .dots, .arrows-testimonials-container, .rectangle, .white-cta-button');
     const rectangleMorphTo = document.querySelectorAll('.morph-home-web, .slide');
 
     const circleElement = document.querySelector('.circle');
@@ -542,6 +560,35 @@ document.querySelectorAll('.slide-hero').forEach(slide => {
 
 // Navigation Bar
 
+function isInViewport(element) {
+  const rect = element.getBoundingClientRect();
+  const elementHeight = rect.height;
+
+  return (
+    rect.top < window.innerHeight * 0.8 &&
+    rect.bottom > window.innerHeight * 0.2
+  );
+}
+
+function updateActiveLink() {
+  const links = document.querySelectorAll('.links-container a');
+
+  links.forEach(link => {
+    const targetId = link.getAttribute('data-nav-white');
+    const targetElement = document.querySelector(targetId);
+    
+    if (targetElement && isInViewport(targetElement)) {
+      link.classList.add('active-nav');
+    } else {
+      link.classList.remove('active-nav');
+    }
+  });
+}
+
+window.addEventListener('scroll', updateActiveLink);
+window.addEventListener('load', updateActiveLink);
+updateActiveLink();
+
 const burgerContainer = document.querySelector('.burger-menu-container');
 const topLine = document.querySelector('.top-burger-line');
 const bottomLine = document.querySelector('.bottom-burger-line');
@@ -650,3 +697,7 @@ buttonNavContainerMobile.addEventListener('click', () => {
 firefliesEasterEgg.addEventListener('click', () => {
   if (isOpen) closeMenu();
 });
+
+
+
+

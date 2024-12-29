@@ -1,8 +1,8 @@
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(10rem - 32px);
   font-family: 'SF Pro Display Regular';
   color: var(--white);
+  scroll-padding-top: calc(8rem + 100px);
   overflow-x: hidden;
   width: 100%;
 }
@@ -10,7 +10,7 @@ html {
 
 body {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(10rem - 32px);
+  scroll-padding-top: calc(8rem + 100px);
   font-family: 'SF Pro Display Regular';
   background-color: var(--black);
   color: var(--white);
