@@ -31,11 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
     { x: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 0.3 }
   );
 
-  gsap.fromTo(".bck-container",
-    { y: -window.innerHeight * 0.5, opacity: 0 },
-    { y: 0, opacity: 1, duration: 0.6, ease: "expo.out" }
-  );
-
   gsap.fromTo(".circle",
     { opacity: 0 },
     { opacity: 1, duration: 1, ease: "power2.out", delay: 0.5 }
@@ -598,7 +593,6 @@ const logoNav = document.querySelector('.logo-container');
 const linkElementsMobile = document.querySelectorAll('.link-elements-mobile-nav a');
 const backgroundBlur = document.querySelector('.background-blur-thing-nav-mobile');
 const buttonNavContainerMobile = document.querySelector('#button-nav-container-mobile');
-const firefliesEasterEgg = document.querySelector('.fireflies-easter-egg');
 const mobileLinksContainer = document.querySelector('.mobile-links-container');
 const navHeight = mobileLinksContainer.offsetHeight + 60;
 
@@ -613,7 +607,6 @@ let isOpen = false;
 gsap.set(topLine, { rotation: 0 });
 gsap.set(bottomLine, { rotation: 0, y: 0 });
 gsap.set(buttonNavContainerMobile, { y: 50, opacity: 0 });
-gsap.set(firefliesEasterEgg, { y: 50, opacity: 0 });
 
 function isMobile() {
   return window.innerWidth < 850;
@@ -641,7 +634,6 @@ function closeMenu() {
   gsap.to(linkElementsMobile, { x: -100, opacity: 0, stagger: -0.05, duration: 0.1, ease: smoothEase });
   gsap.to(backgroundBlur, { opacity: 0, duration: 0.2, ease: smoothEase, onComplete: () => gsap.set(backgroundBlur, { top: "-100vh" }) });
   gsap.to(buttonNavContainerMobile, { y: 50, opacity: 0, duration: 1, ease: smoothEase });
-  gsap.to(firefliesEasterEgg, { y: 50, opacity: 0, duration: 0.3, ease: smoothEase });
   gsap.to('.divider-mobile-menu', { y: 0, opacity: 0, stagger: -0.1, duration: 0.3, ease: smoothEase });
   enableScroll();
   isOpen = false;
@@ -662,7 +654,6 @@ burgerContainer.addEventListener('click', () => {
       gsap.set(backgroundBlur, { top: "0" });
       gsap.to(backgroundBlur, { opacity: 1, duration: 0.3, ease: smoothInOut });
       gsap.to(buttonNavContainerMobile, { y: 0, opacity: 1, delay: 0.2, duration: 0.5, ease: ultraSmoothEase });
-      gsap.to(firefliesEasterEgg, { y: 0, opacity: 1, duration: 1, delay: 1, ease: ultraSmoothEase });
       gsap.fromTo('.divider-mobile-menu', { y: 0, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.3, duration: 0.3, ease: smoothEase });
       disableScroll();
       isOpen = true;
@@ -691,10 +682,6 @@ buttonNavContainerMobile.addEventListener('touchend', () => {
 });
 
 buttonNavContainerMobile.addEventListener('click', () => {
-  if (isOpen) closeMenu();
-});
-
-firefliesEasterEgg.addEventListener('click', () => {
   if (isOpen) closeMenu();
 });
 
