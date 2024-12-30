@@ -123,3 +123,31 @@ blogArrows.forEach(arrow => {
     }
   });
 });
+
+const imageBlogContainers = document.querySelectorAll('.image-blog-container');
+
+imageBlogContainers.forEach(function (imageBlogContainer) {
+  const textBottomBlogContainer = imageBlogContainer.nextElementSibling;
+  const ctaArrowBlog = textBottomBlogContainer ? textBottomBlogContainer.querySelector('.cta-arrow-blog') : null;
+  const textBlog = textBottomBlogContainer ? textBottomBlogContainer.querySelector('.text-blog') : null;
+
+  imageBlogContainer.addEventListener('touchstart', function () {
+    imageBlogContainer.style.filter = 'brightness(60%)';
+    if (textBlog) {
+      textBlog.style.filter = 'brightness(60%)';
+    }
+    if (ctaArrowBlog) {
+      ctaArrowBlog.style.gap = '12px';
+    }
+  });
+
+  imageBlogContainer.addEventListener('touchend', function () {
+    imageBlogContainer.style.filter = 'brightness(100%)';
+    if (textBlog) {
+      textBlog.style.filter = 'brightness(100%)';
+    }
+    if (ctaArrowBlog) {
+      ctaArrowBlog.style.gap = '';
+    }
+  });
+});

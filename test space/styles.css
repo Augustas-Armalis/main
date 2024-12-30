@@ -4,6 +4,7 @@ html {
   height: 100vh;
   display: flex;
   color: white;
+  margin-top: 200px;
 }
 
 .section-container {
@@ -343,7 +344,8 @@ section {
 
 .image-blog-container img {
   height: 100%;
-  width: auto;
+  width: 100%;
+  object-fit: cover;
 }
 
 .image-blog-container:hover+.text-bottom-blog-container .text-blog {
