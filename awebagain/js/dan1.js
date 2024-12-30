@@ -67,21 +67,17 @@ counterCards.forEach((card, index) => {
   animateCards(card, index);
 });
 
-// Select all elements with the class .hover-touch-card
 const hoverTouchCards = document.querySelectorAll('.counter-card');
 
-// Function to apply the hover effect
 function addHoverEffect(event) {
   event.currentTarget.style.transition = 'background-color 0.3s ease';
   event.currentTarget.style.backgroundColor = 'var(--gray5)';
 }
 
-// Function to remove the hover effect
 function removeHoverEffect(event) {
   event.currentTarget.style.backgroundColor = '';
 }
 
-// Add event listeners for mouseover, mouseout, touchstart, and touchend
 hoverTouchCards.forEach(card => {
   card.addEventListener('mouseover', addHoverEffect);
   card.addEventListener('mouseout', removeHoverEffect);
@@ -94,7 +90,11 @@ hoverTouchCards.forEach(card => {
 
 
 
-// Titles
+
+
+
+
+// Title load in animation
 
 gsap.utils.toArray('.section-title-container').forEach(container => {
   const [title, subtitle] = container.querySelectorAll('h2, h4');
@@ -127,6 +127,12 @@ gsap.utils.toArray('.section-title-container').forEach(container => {
     }
   );
 });
+
+
+
+
+
+
 
 
 
@@ -333,15 +339,6 @@ const okChangeTimeline = gsap.timeline({
 okChangeTimeline
   .from(".ok-container-management", { opacity: 0, right: "-100%", duration: 1 })
   .from(".change-it-container-management", { opacity: 0, right: "-100%", duration: 1 }, "-=0.6");
-
-
-
-
-
-
-
-
-
 
 
 
@@ -603,8 +600,6 @@ arrows.forEach(arrow => {
 
 
 
-
-
 // Plans hover effect spec
 
 const grayPlansCards = document.querySelectorAll('.gray-plans-card');
@@ -629,10 +624,6 @@ grayPlansCards.forEach(card => {
   card.addEventListener('touchstart', addStarBrightness);
   card.addEventListener('touchend', removeStarBrightness);
 });
-
-
-
-
 
 
 
@@ -713,3 +704,80 @@ gsap.utils.toArray(".question").forEach((question) => {
 
 
 
+
+// Year change
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Footer
+
+const animateListContainers = (container, index) => {
+  gsap.fromTo(container,
+    { y: 100, opacity: 0 },
+    {
+      y: 0,
+      opacity: 1,
+      duration: 1,
+      ease: "power2.out",
+      delay: isDesktopas ? 0.1 * index : 0,
+      scrollTrigger: {
+        trigger: container,
+        start: "top 100%",
+        once: true
+      }
+    });
+};
+
+const isDesktopas = window.innerWidth > 266;
+const listContainers = document.querySelectorAll('.list-container');
+
+listContainers.forEach((container, index) => {
+  animateListContainers(container, index);
+});
+
+gsap.utils.toArray('.left-aweb-container').forEach(container => {
+  const [logoLink, subtitle] = container.querySelectorAll('a, h4');
+
+  gsap.fromTo(container,
+    { y: 100, opacity: 0 },
+    {
+      y: 0,
+      opacity: 1,
+      duration: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: container,
+        start: "top bottom",
+      }
+    }
+  );
+
+  gsap.fromTo([logoLink, subtitle],
+    { opacity: 0, y: 30 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      stagger: 0.3,
+      scrollTrigger: {
+        trigger: container,
+        start: "top bottom",
+      }
+    }
+  );
+});
+
+gsap.fromTo('.bottom-footer-holder > *',
+  { y: 32, opacity: 0 },
+  {
+    y: 0,
+    opacity: 1,
+    duration: 1,
+    stagger: 0.3,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: '.bottom-footer-holder',
+      start: "top bottom",
+    }
+  }
+);

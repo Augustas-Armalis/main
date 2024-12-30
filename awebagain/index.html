@@ -91,6 +91,15 @@
     }
   </script>
 
+
+
+
+
+
+
+
+
+
   <!-- Cal -->
 
   <script type="text/javascript">
@@ -100,6 +109,17 @@
     Cal.ns["15min"]("ui", { "theme": "dark", "cssVarsPerTheme": { "light": { "cal-brand": "#000000" }, "dark": { "cal-brand": "#ffffff" } }, "hideEventTypeDetails": true, "layout": "month_view" });
   </script>
 
+
+
+
+
+
+
+
+
+
+  <!-- Video container -->
+
   <div class="video-container">
     <div class="close-button">
       <img src="images/svgs/close-x.svg" loading="lazy">
@@ -108,11 +128,28 @@
   </div>
 
 
+
+
+
+
+
+
+
+
   <!-- Circle following mouse -->
 
   <div class="circle">
     <span class="circle-text"></span>
   </div>
+
+
+
+
+
+
+
+
+
 
 
   <!-- Navigation bar -->
@@ -209,6 +246,11 @@
 
 
 
+
+
+
+
+
   <!-- Hero section -->
 
   <div class="hero-section-container" id="home">
@@ -275,7 +317,6 @@
               <img src="images/websites/web-image.png" class="slide-image-hero">
             </div>
 
-
           </div>
         </div>
       </div>
@@ -285,6 +326,13 @@
 
 
 
+
+
+
+
+
+
+  <!-- Counter up -->
 
   <div class="section-container">
     <section>
@@ -332,6 +380,13 @@
 
 
 
+
+
+
+
+
+
+  <!-- Framework section -->
 
   <div class="section-title-container" id="framework">
     <h2 class="title-text-title-section">Our "Time-Tested" Framework</h2>
@@ -619,6 +674,13 @@
 
 
 
+
+
+
+
+
+
+
   <!-- Testimonial Section -->
 
   <div class="section-title-container" id="testimonials">
@@ -723,6 +785,10 @@
 
 
 
+
+
+
+
   <!-- Plans section -->
 
   <div class="section-title-container" id="plans">
@@ -734,7 +800,7 @@
     <section>
       <div class="counter-holder plans-holder">
 
-        <div class="counter-card plans-card">
+        <div class="counter-card plans-card" id="website-design">
           <div class="inside-card">
 
             <div class="top-specify-cont figma-specify-cont">
@@ -778,7 +844,7 @@
           </div>
         </div>
 
-        <div class="counter-card plans-card gray-plans-card">
+        <div class="counter-card plans-card gray-plans-card" id="landing-page">
           <div class="inside-card gray5-card">
             <img src="images/svgs/star-plans.svg" alt="star icon" class="star-plans">
 
@@ -850,7 +916,7 @@
           </div>
         </div>
 
-        <div class="counter-card plans-card">
+        <div class="counter-card plans-card" id="full-biz-site">
           <div class="inside-card">
 
             <div class="top-specify-cont">
@@ -917,6 +983,10 @@
       </div>
     </section>
   </div>
+
+
+
+
 
 
 
@@ -1008,7 +1078,86 @@
 
 
 
-  <div class="spacer"></div>
+  <!-- Footer -->
+
+  <div class="section-container footer">
+    <section class="footer-holder">
+      <div class="top-footer-holder">
+        <div class="left-aweb-container">
+          <a href="#home">
+            <img src="images/svgs/logotip.svg" alt="footer logo">
+          </a>
+          <h4 class="gray1">Websites that make money<br>without you doing anything</h4>
+        </div>
+
+        <div class="right-navigation-container">
+          <div class="list-container">
+            <h4 class="list-title">Browse</h4>
+            <a href="#home">
+              <h4 class="list-element">Home</h4>
+            </a>
+            <a href="#framework">
+              <h4 class="list-element">Framework</h4>
+            </a>
+            <a href="#testimonials">
+              <h4 class="list-element">Testimonials</h4>
+            </a>
+            <a href="https://augustas.co/newsletter/" target="_blank">
+              <h4 class="list-element">Newsletter</h4>
+            </a>
+          </div>
+
+          <div class="list-container">
+            <h4 class="list-title">Services</h4>
+            <a href="#website-design">
+              <h4 class="list-element">Website design</h4>
+            </a>
+            <a href="#landing-page">
+              <h4 class="list-element">Landing page</h4>
+            </a>
+            <a href="#full-biz-site">
+              <h4 class="list-element">Full biz site</h4>
+            </a>
+          </div>
+
+          <div class="list-container">
+            <h4 class="list-title">Contacts</h4>
+            <div class="contacts-holder">
+              <a href="#" class="contact-icon">
+                <img src="images/svgs/twitter-icon.svg" alt="icon">
+              </a>
+              <a href="#" class="contact-icon">
+                <img src="images/svgs/email-icon.svg" alt="icon">
+              </a>
+              <a href="#" class="contact-icon">
+                <img src="images/svgs/linkedin-icon.svg" alt="icon">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-footer-holder">
+        <div class="copyright-container">
+          <h5 class="gray-dark">© <span id="year"></span> AWeb. All rights reserved</h5>
+        </div>
+
+        <div class="legal-container">
+          <a href="#" class="legal-link">
+            <h5 class="gray-dark">Terms & Conditions</h5>
+          </a>
+          <div class="divider-text-footer"></div>
+          <a href="#" class="legal-link">
+            <h5 class="gray-dark">Privacy Policy</h5>
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+
+
 
 
 
@@ -1029,7 +1178,6 @@
       </filter>
     </defs>
   </svg>
-
 
   <script src="js/loadin.js"></script>
   <script src="js/dan1.js"></script>

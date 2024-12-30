@@ -39,6 +39,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
+
+
+
+
+
+
 // Hide the hrefs
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -56,6 +63,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     window.history.replaceState(null, null, ' ');
   });
 });
+
+
+
+
+
 
 
 
@@ -239,13 +251,15 @@ init();
 
 
 
+
+
 // Circle following the mouse
 
 function executeAbove1064px() {
   if (window.innerWidth > 1064) {
     console.clear();
 
-    const circleDissapearTo = document.querySelectorAll('.under-rectangle-layer, nav, .dots, .arrows-testimonials-container, .rectangle, .white-cta-button');
+    const circleDissapearTo = document.querySelectorAll('.under-rectangle-layer, nav, .dots, .arrows-testimonials-container, .rectangle, .white-cta-button, .question, .list-element, .contact-icon, .legal-link');
     const rectangleMorphTo = document.querySelectorAll('.morph-home-web, .slide');
 
     const circleElement = document.querySelector('.circle');
@@ -416,6 +430,8 @@ window.addEventListener('resize', executeAbove1064px);
 
 
 
+
+
 // Image hero slider
 
 const sliderHero = document.querySelector('.slider-container-hero');
@@ -553,6 +569,10 @@ document.querySelectorAll('.slide-hero').forEach(slide => {
 
 
 
+
+
+
+
 // Navigation Bar
 
 function isInViewport(element) {
@@ -571,7 +591,7 @@ function updateActiveLink() {
   links.forEach(link => {
     const targetId = link.getAttribute('data-nav-white');
     const targetElement = document.querySelector(targetId);
-    
+
     if (targetElement && isInViewport(targetElement)) {
       link.classList.add('active-nav');
     } else {
@@ -684,7 +704,3 @@ buttonNavContainerMobile.addEventListener('touchend', () => {
 buttonNavContainerMobile.addEventListener('click', () => {
   if (isOpen) closeMenu();
 });
-
-
-
-
