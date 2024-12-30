@@ -758,7 +758,7 @@ gsap.utils.toArray('.left-aweb-container').forEach(container => {
       opacity: 1,
       y: 0,
       duration: 0.5,
-      stagger: 0.3,
+      stagger: 0.1,
       scrollTrigger: {
         trigger: container,
         start: "top bottom",
@@ -773,7 +773,7 @@ gsap.fromTo('.bottom-footer-holder > *',
     y: 0,
     opacity: 1,
     duration: 1,
-    stagger: 0.3,
+    stagger: 0.1,
     ease: "power2.out",
     scrollTrigger: {
       trigger: '.bottom-footer-holder',
