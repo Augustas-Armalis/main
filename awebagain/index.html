@@ -41,25 +41,64 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.8/odometer.min.js"></script>
   <link rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.8/themes/odometer-theme-default.min.css" />
+    href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.8/themes/odometer-theme-default.min.css" />
+
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css">
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
 
 
 </head>
 
 <body>
 
+  <script>
+    function isTouchDevice() {
+      return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    }
+
+    if (!isTouchDevice()) {
+      const lenis = new Lenis({
+        autoRaf: false,         // Disable auto RAF (manual control)
+        smoothWheel: true,      // Enable smooth scrolling for mouse wheel
+        orientation: 'vertical', // Restrict scrolling to vertical
+        gestureOrientation: 'vertical', // Restrict gestures to vertical scrolling
+      });
+
+      function raf(time) {
+        // Update Lenis with the current time for smooth scrolling
+        lenis.raf(time);
+        // Request the next animation frame
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+
+      lenis.on('scroll', (e) => {
+        // Optional: Log scroll events (remove if unnecessary)
+        console.log(e);
+      });
+    }
+  </script>
+
+
+
+
+
   <!-- Cal element-click embed code begins -->
-<script type="text/javascript">
-  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-Cal("init", "15min", {origin:"https://cal.com"});
+  <script type="text/javascript">
+    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+    Cal("init", "15min", { origin: "https://cal.com" });
 
-  
-  // Important: Please add the following attributes to the element that should trigger the calendar to open upon clicking.
-  // `data-cal-link="augustas/15min"`
-  // data-cal-namespace="15min"
-  // `data-cal-config='{"layout":"month_view"}'`
 
-  Cal.ns["15min"]("ui", {"cssVarsPerTheme":{"light":{"cal-brand":"#000000"},"dark":{"cal-brand":"#ffffff"}},"hideEventTypeDetails":false,"layout":"month_view"});
+    // Important: Please add the following attributes to the element that should trigger the calendar to open upon clicking.
+    // `data-cal-link="augustas/15min"`
+    // data-cal-namespace="15min"
+    // `data-cal-config='{"layout":"month_view","theme":"dark"}'`
+
+    Cal.ns["15min"]("ui", { "theme": "dark", "cssVarsPerTheme": { "light": { "cal-brand": "#000000" }, "dark": { "cal-brand": "#ffffff" } }, "hideEventTypeDetails": true, "layout": "month_view" });
+
+
   </script>
   <!-- Cal element-click embed code ends -->
 
@@ -163,7 +202,7 @@ Cal("init", "15min", {origin:"https://cal.com"});
         <a href="#testimonials" data-nav-white=".testimonial-container" id="testimonials-link">Testimonials</a>
         <a href="https://augustas.co/newsletter/" id="newsletter-link" target="_blank">Newsletter</a>
         <a href="#footer" data-nav-white="#footer" id="contacts-link">Contacts</a>
-      </div>      
+      </div>
 
     </nav>
   </div>
@@ -216,11 +255,13 @@ Cal("init", "15min", {origin:"https://cal.com"});
 
           <div class="slider-hero">
 
-            <div class="slide-hero morph-home-web" data-hover-text="view" data-link="https://augustas.co/website/copywiz">
+            <div class="slide-hero morph-home-web" data-hover-text="view"
+              data-link="https://augustas.co/website/copywiz">
               <img src="images/websites/copywiz-web.webp" class="slide-image-hero">
             </div>
 
-            <div class="slide-hero morph-home-web" data-hover-text="visit" data-link="https://augustas.co/website/sprout">
+            <div class="slide-hero morph-home-web" data-hover-text="visit"
+              data-link="https://augustas.co/website/sprout">
               <img src="images/websites/sprout-web.webp" class="slide-image-hero">
             </div>
 
@@ -258,7 +299,7 @@ Cal("init", "15min", {origin:"https://cal.com"});
             <h2 class="first-odometer odometer">00,000</h2>
             <h2>+</h2>
           </div>
-          
+
           <h4 class="gray1">Hours put into work</h4>
 
         </div>
@@ -499,7 +540,7 @@ Cal("init", "15min", {origin:"https://cal.com"});
           </div>
 
           <div class="blured-out-image"></div>
-          
+
 
         </div>
 
@@ -581,12 +622,12 @@ Cal("init", "15min", {origin:"https://cal.com"});
 
 
   <!-- Testimonial Section -->
-   
+
   <div class="section-title-container" id="testimonials">
     <h2 class="title-text-title-section">Testimonials</h2>
     <h4 class="alt-text-title-section">Hear what others say about us</h4>
   </div>
-  
+
   <div class="testimonial-container">
     <div class="carousel-container">
       <div class="carousel">
@@ -606,7 +647,7 @@ Cal("init", "15min", {origin:"https://cal.com"});
             <video src="videos/Sprout-tes.mp4" autoplay loop muted class="testimonial-video"></video>
           </div>
         </div>
-  
+
         <div class="slide" data-hover-text="Watch">
           <div class="slide-activator-conatiner" id="maj-testimonial"></div>
           <div class="background-video-container">
@@ -623,7 +664,7 @@ Cal("init", "15min", {origin:"https://cal.com"});
             <video src="videos/CopyWiz-tes.mp4" autoplay loop muted class="testimonial-video"></video>
           </div>
         </div>
-  
+
         <div class="slide" data-hover-text="Watch">
           <div class="slide-activator-conatiner" id="motiejus-testimonial"></div>
           <div class="background-video-container">
@@ -640,7 +681,7 @@ Cal("init", "15min", {origin:"https://cal.com"});
             <video src="videos/Motiejus-tes.mp4" autoplay loop muted class="testimonial-video"></video>
           </div>
         </div>
-  
+
         <div class="slide" data-hover-text="Soon...">
           <div class="slide-activator-conatiner" id="rick-testimonial"></div>
           <div class="background-video-container">
@@ -659,7 +700,7 @@ Cal("init", "15min", {origin:"https://cal.com"});
         </div>
       </div>
     </div>
-  
+
     <div class="bottom-navigation-container-tesimonials">
       <div class="dots">
         <span class="dot active" onclick="goToSlide(0)"></span>
@@ -667,7 +708,7 @@ Cal("init", "15min", {origin:"https://cal.com"});
         <span class="dot" onclick="goToSlide(2)"></span>
         <span class="dot" onclick="goToSlide(3)"></span>
       </div>
-  
+
       <div class="arrows-testimonials-container">
         <button class="arrow left" onclick="moveSlide(-1)">
           <img src="images/svgs/arrow-left.svg" class="arrow-left-arrow-svg">
@@ -690,7 +731,7 @@ Cal("init", "15min", {origin:"https://cal.com"});
     <h2 class="title-text-title-section">Plans</h2>
     <h4 class="alt-text-title-section">Choose the option that suits you best</h4>
   </div>
-  
+
 
   <div class="section-container">
     <section>
@@ -698,55 +739,55 @@ Cal("init", "15min", {origin:"https://cal.com"});
 
         <div class="counter-card plans-card">
 
-         <div class="inside-card">
+          <div class="inside-card">
 
-          <div class="top-specify-cont figma-specify-cont">
-            <img src="images/svgs/figma-blue-icon.svg" class="spec-icon" alt="top icon">
-            <h5>Figma project</h5>
-          </div>
-
-          <div class="title-container-plans">
-            <p>Website Design</p>
-            <h5 class="gray1">Only custom web-copy &<br>landing page design</h5>
-          </div>
-
-          <div class="divider-plans"></div>
-
-          <div class="benefits-plans-container">
-
-            <div class="benefit-holder">
-              <img src="images/svgs/single-page-icon.svg" alt="benefit icon">
-              <p>Single page</p>
+            <div class="top-specify-cont figma-specify-cont">
+              <img src="images/svgs/figma-blue-icon.svg" class="spec-icon" alt="top icon">
+              <h5>Figma project</h5>
             </div>
 
-            <div class="benefit-holder">
-              <img src="images/svgs/web-copywriting-icon.svg" alt="benefit icon">
-              <p>Web-copywriting</p>
+            <div class="title-container-plans">
+              <p>Website Design</p>
+              <h5 class="gray1">Only custom web-copy &<br>landing page design</h5>
             </div>
 
-            <div class="benefit-holder">
-              <img src="images/svgs/custom-visuals-icon.svg" alt="benefit icon">
-              <p>Custom visuals</p>
+            <div class="divider-plans"></div>
+
+            <div class="benefits-plans-container">
+
+              <div class="benefit-holder">
+                <img src="images/svgs/single-page-icon.svg" alt="benefit icon">
+                <p>Single page</p>
+              </div>
+
+              <div class="benefit-holder">
+                <img src="images/svgs/web-copywriting-icon.svg" alt="benefit icon">
+                <p>Web-copywriting</p>
+              </div>
+
+              <div class="benefit-holder">
+                <img src="images/svgs/custom-visuals-icon.svg" alt="benefit icon">
+                <p>Custom visuals</p>
+              </div>
+
+              <div class="benefit-holder">
+                <img src="images/svgs/full-design-icon.svg" alt="benefit icon">
+                <p>Full design</p>
+              </div>
+
             </div>
 
-            <div class="benefit-holder">
-              <img src="images/svgs/full-design-icon.svg" alt="benefit icon">
-              <p>Full design</p>
+
+
+            <div class="white-cta-button" data-cal-link="augustas/15min">
+
+              <h4>Apply now</h4>
+
             </div>
+
+
 
           </div>
-
-
-
-          <div class="white-cta-button" data-cal-link="augustas/15min">
-
-            <h4>Apply now</h4>
-
-          </div>
-
-
-
-         </div>
 
         </div>
 
@@ -766,21 +807,21 @@ Cal("init", "15min", {origin:"https://cal.com"});
               <p>Landing Page</p>
               <h5 class="gray1">Perfect for Start-ups. Everything<br>included, custom-code too.</h5>
             </div>
-  
+
             <div class="divider-plans"></div>
-  
+
             <div class="benefits-plans-container">
-  
+
               <div class="benefit-holder">
                 <img src="images/svgs/single-page-icon.svg" alt="benefit icon">
                 <p>Single page</p>
               </div>
-  
+
               <div class="benefit-holder">
                 <img src="images/svgs/custom-code-icon.svg" alt="benefit icon">
                 <p>Custom code</p>
               </div>
-  
+
               <div class="benefit-holder">
                 <img src="images/svgs/hosting-for-you-icon.svg" alt="benefit icon">
                 <p>Hosting for you</p>
@@ -790,7 +831,7 @@ Cal("init", "15min", {origin:"https://cal.com"});
                 <img src="images/svgs/custom-domain-icon.svg" alt="benefit icon">
                 <p>Custom domain</p>
               </div>
-  
+
               <div class="benefit-holder">
                 <img src="images/svgs/monthly-updates-icon.svg" alt="benefit icon">
                 <p>Monthly updates $+</p>
@@ -805,33 +846,33 @@ Cal("init", "15min", {origin:"https://cal.com"});
                 <img src="images/svgs/smooth-interactions-icon.svg" alt="benefit icon">
                 <p>Smooth interactions</p>
               </div>
-  
-  
+
+
             </div>
 
 
             <a data-cal-link="augustas/15min" id="button-nav-container plans-firefly-cta">
               <div class="rectangle" id="nav-button">
-        
+
                 <div class="grain-overlay-button"></div>
-        
+
                 <div class="btn-text-container plans-firefly-text-container">
                   <div class="btn-text">
                     <h4 style="font-size: 20px;">Apply now</h4>
                   </div>
                 </div>
-        
+
                 <div class="blob-container">
                   <div class="blob"></div>
                   <div class="blob"></div>
                   <div class="blob"></div>
                 </div>
-        
+
               </div>
             </a>
 
-  
-           </div>
+
+          </div>
 
         </div>
 
@@ -849,21 +890,21 @@ Cal("init", "15min", {origin:"https://cal.com"});
               <p>Full Business Site</p>
               <h5 class="gray1">A bigger brand? No problem, your<br>big idea will need more than 1 page</h5>
             </div>
-  
+
             <div class="divider-plans"></div>
-  
+
             <div class="benefits-plans-container">
-  
+
               <div class="benefit-holder">
                 <img src="images/svgs/multiple-pages-icon.svg" alt="benefit icon">
                 <p>Multiple pages</p>
               </div>
-  
+
               <div class="benefit-holder">
                 <img src="images/svgs/seo-optimization.svg" alt="benefit icon">
                 <p>SEO optimization</p>
               </div>
-  
+
               <div class="benefit-holder">
                 <img src="images/svgs/custom-visuals-icon.svg" alt="benefit icon">
                 <p>Personal designer</p>
@@ -894,7 +935,7 @@ Cal("init", "15min", {origin:"https://cal.com"});
                 <img src="images/svgs/newsletter-integration-icon.svg" alt="benefit icon">
                 <p>API integrations</p>
               </div>
-  
+
             </div>
 
             <div class="white-cta-button" data-cal-link="augustas/15min">
@@ -903,7 +944,7 @@ Cal("init", "15min", {origin:"https://cal.com"});
 
             </div>
 
-  
+
           </div>
 
         </div>
@@ -912,6 +953,115 @@ Cal("init", "15min", {origin:"https://cal.com"});
 
     </section>
   </div>
+
+
+
+
+
+
+  <!-- Testimonial section -->
+
+  <div class="faq-section-container">
+
+
+
+
+
+    <div class="accordions-container">
+
+      <div class="section-title-container" id="for-faq-special">
+        <h2 class="title-text-title-section">FAQ</h2>
+        <h4 class="alt-text-title-section">All of your questions answered</h4>
+      </div>
+
+      <div class="questin-thingy-container">
+
+        <div class="question-thingy">
+
+          <div class="question">
+            <div class="the-question-itself-container">
+
+              <h4>How much time it takes to develop a website?</h4>
+              <img class="faq-arrow" src="images/svgs/faq-arrow.svg">
+
+            </div>
+
+            <div class="the-answer-itself-container">
+              <h5>See & adjust the first design within 7 days. Developing your website might range from less than a
+                month to 2 or more, depending on your input, unique business needs & website complexity</h5>
+            </div>
+          </div>
+
+
+          <div class="question">
+            <div class="the-question-itself-container">
+
+              <h4>What if I don’t know anything about websites?</h4>
+              <img class="faq-arrow" src="images/svgs/faq-arrow.svg">
+
+            </div>
+
+            <div class="the-answer-itself-container">
+              <h5>AWeb professionals are here to consult & teach you until everything is clear. We always choose the
+                best option for you.</h5>
+            </div>
+          </div>
+
+          <div class="question">
+            <div class="the-question-itself-container">
+
+              <h4>Any info from me required to get started?</h4>
+              <img class="faq-arrow" src="images/svgs/faq-arrow.svg">
+
+            </div>
+
+            <div class="the-answer-itself-container">
+              <h5>Absolutely. We’ll ask you to provide us with your brand book (containing all of your business colors,
+                logos, fonts, ect.), if you appear to not have one, we’ll create it for you.<br><br>
+                The most important information we need from you is everything about your business. From the name to what
+                it offers and why. We expect that you have this ready, because we’ll turn it into a website!</h5>
+            </div>
+          </div>
+
+
+          <div class="question">
+            <div class="the-question-itself-container">
+
+              <h4>What if I don’t like the design?</h4>
+              <img class="faq-arrow" src="images/svgs/faq-arrow.svg">
+
+            </div>
+
+            <div class="the-answer-itself-container">
+              <h5>We’ll recreate the design until you will be 100% satisfied with the looks.<br><br>
+                Although if we already have written the code, future updates will come with an additional cost. (You can
+                get unlimited design & code updates for a monthly fee)</h5>
+            </div>
+          </div>
+
+
+
+        </div>
+
+      </div>
+
+
+
+
+
+
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
 
 
   <div class="spacer"></div>

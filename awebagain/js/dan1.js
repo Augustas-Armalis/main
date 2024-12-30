@@ -98,14 +98,14 @@ hoverTouchCards.forEach(card => {
 
 gsap.utils.toArray('.section-title-container').forEach(container => {
   const [title, subtitle] = container.querySelectorAll('h2, h4');
-  
-  gsap.fromTo(container, 
-    { y: 100, opacity: 0 }, 
-    { 
-      y: 0, 
-      opacity: 1, 
-      duration: 1, 
-      ease: "power2.out",  
+
+  gsap.fromTo(container,
+    { y: 100, opacity: 0 },
+    {
+      y: 0,
+      opacity: 1,
+      duration: 1,
+      ease: "power2.out",
       scrollTrigger: {
         trigger: container,
         start: "top bottom",
@@ -115,10 +115,10 @@ gsap.utils.toArray('.section-title-container').forEach(container => {
 
   gsap.fromTo([title, subtitle],
     { opacity: 0, y: 30 },
-    { 
-      opacity: 1, 
-      y: 0, 
-      duration: 0.5, 
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
       stagger: 0.3,
       scrollTrigger: {
         trigger: container,
@@ -331,8 +331,8 @@ const okChangeTimeline = gsap.timeline({
 });
 
 okChangeTimeline
-.from(".ok-container-management", { opacity: 0, right: "-100%", duration: 1 })
-.from(".change-it-container-management", { opacity: 0, right: "-100%", duration: 1 }, "-=0.6");
+  .from(".ok-container-management", { opacity: 0, right: "-100%", duration: 1 })
+  .from(".change-it-container-management", { opacity: 0, right: "-100%", duration: 1 }, "-=0.6");
 
 
 
@@ -364,58 +364,58 @@ const videoUrls = {
 // ?autoplay=1&modestbranding=1&rel=0&controls=1&color=white
 
 gsap.fromTo(
-  ".carousel-container", 
-  { x: 200, opacity: 0 }, 
-  { 
-    x: 0, 
-    opacity: 1, 
-    duration: 1, 
-    ease: "power2.out", 
-    stagger: 0.1, 
+  ".carousel-container",
+  { x: 200, opacity: 0 },
+  {
+    x: 0,
+    opacity: 1,
+    duration: 1,
+    ease: "power2.out",
+    stagger: 0.1,
     scrollTrigger: {
-      trigger: ".slide", 
-      start: "top 90%", 
-      once: true 
-    }
-  }
-);
-
-gsap.fromTo(
-  ".dot", 
-  { y: 50, opacity: 0 }, 
-  { 
-    y: 0, 
-    opacity: 1, 
-    duration: 1, 
-    ease: "power2.out", 
-    stagger: 0.1, 
-    scrollTrigger: {
-      trigger: ".bottom-navigation-container-tesimonials", 
-      start: "top bottom", 
+      trigger: ".slide",
+      start: "top 90%",
       once: true
     }
   }
 );
 
 gsap.fromTo(
-  ".arrow", 
-  { y: 50, opacity: 0 }, 
-  { 
-    y: 0, 
-    opacity: 1, 
-    duration: 1, 
-    ease: "power2.out", 
-    stagger: 0.1, 
+  ".dot",
+  { y: 50, opacity: 0 },
+  {
+    y: 0,
+    opacity: 1,
+    duration: 1,
+    ease: "power2.out",
+    stagger: 0.1,
     scrollTrigger: {
-      trigger: ".bottom-navigation-container-tesimonials", 
-      start: "top bottom", 
+      trigger: ".bottom-navigation-container-tesimonials",
+      start: "top bottom",
+      once: true
+    }
+  }
+);
+
+gsap.fromTo(
+  ".arrow",
+  { y: 50, opacity: 0 },
+  {
+    y: 0,
+    opacity: 1,
+    duration: 1,
+    ease: "power2.out",
+    stagger: 0.1,
+    scrollTrigger: {
+      trigger: ".bottom-navigation-container-tesimonials",
+      start: "top bottom",
       once: true
     }
   }
 );
 
 document.addEventListener('DOMContentLoaded', () => {
-  updateCarousel(); 
+  updateCarousel();
 });
 
 let currentIndex = 0;
@@ -430,7 +430,7 @@ function isLargeScreen() {
 function moveSlide(direction) {
   if (isLargeScreen()) {
     currentIndex += direction;
-    if (currentIndex < 0) currentIndex = slides.length - 2; 
+    if (currentIndex < 0) currentIndex = slides.length - 2;
     if (currentIndex >= slides.length - 1) currentIndex = 0;
   } else {
     currentIndex += direction;
@@ -629,4 +629,87 @@ grayPlansCards.forEach(card => {
   card.addEventListener('touchstart', addStarBrightness);
   card.addEventListener('touchend', removeStarBrightness);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// FAQ accordion
+
+document.querySelectorAll('.question').forEach((question, index) => {
+  const questionContainer = question.querySelector('.the-question-itself-container');
+  const answerContainer = question.querySelector('.the-answer-itself-container');
+  const arrow = question.querySelector('.faq-arrow');
+
+  const initialHeight = questionContainer.scrollHeight;
+  question.style.height = `${initialHeight}px`;
+
+  if (index === 0) {
+    question.classList.add('active');
+    const contentHeight = initialHeight + answerContainer.scrollHeight;
+    question.style.height = `${contentHeight}px`;
+    if (arrow) {
+      arrow.style.transform = 'rotate(-180deg)';
+      arrow.style.filter = 'brightness(200%)';
+    }
+  }
+
+  questionContainer.addEventListener('click', () => {
+    const isOpen = question.classList.toggle('active');
+    const contentHeight = initialHeight + answerContainer.scrollHeight;
+
+    if (isOpen) {
+      question.style.height = `${contentHeight}px`;
+      question.style.transition = `height 0.5s cubic-bezier(0.22, 1, 0.36, 1)`;
+      if (arrow) {
+        arrow.style.transform = 'rotate(-180deg)';
+        arrow.style.filter = 'brightness(200%)';
+      }
+    } else {
+      question.style.height = `${initialHeight}px`;
+      question.style.transition = `height 0.5s cubic-bezier(0.22, 1, 0.36, 1)`;
+      if (arrow) {
+        arrow.style.transform = 'rotate(0deg)';
+        arrow.style.filter = 'brightness(100%)';
+      }
+    }
+  });
+});
+
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.utils.toArray(".question").forEach((question) => {
+  gsap.fromTo(
+    question,
+    { y: 100, opacity: 0 },
+    {
+      y: 0,
+      opacity: 1,
+      duration: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: question,
+        start: "top bottom", // Start animation when the top of the element is 80% down the viewport
+        toggleActions: "play none none none", // Play animation on enter
+      },
+    }
+  );
+});
+
+
+
+
+
+
+
+
 
