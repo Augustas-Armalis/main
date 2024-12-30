@@ -698,8 +698,8 @@ gsap.utils.toArray(".question").forEach((question) => {
       ease: "power2.out",
       scrollTrigger: {
         trigger: question,
-        start: "top bottom", // Start animation when the top of the element is 80% down the viewport
-        toggleActions: "play none none none", // Play animation on enter
+        start: "top bottom",
+        toggleActions: "play none none none",
       },
     }
   );

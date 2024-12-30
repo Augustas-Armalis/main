@@ -1,231 +1,113 @@
-
-// Testimonial section
-
-const videoUrls = {
-  "ares-testimonial": "https://www.youtube.com/embed/G7qvBdtHAO4?autoplay=1&modestbranding=1&rel=0&controls=1&color=white",
-  "motiejus-testimonial": "https://www.youtube.com/embed/kZNutM6e_9c?si=hz6tP-eboCXjWzKp?autoplay=1&modestbranding=1&rel=0&controls=1&color=white",
-  "rick-testimonial": "https://www.youtube.com/embed/5sbWbfe_4XU?si=c2RrfDYKn9kWqz7f?autoplay=1&modestbranding=1&rel=0&controls=1&color=white",
-  "maj-testimonial": "https://www.youtube.com/embed/dtAoDQiWrgA?si=tVTKCkIM7mMt13V9?autoplay=1&modestbranding=1&rel=0&controls=1&color=white"
-};
-
-// ?autoplay=1&modestbranding=1&rel=0&controls=1&color=white
-
-gsap.fromTo(
-  ".carousel-container", 
-  { x: 200, opacity: 0 }, 
-  { 
-    x: 0, 
-    opacity: 1, 
-    duration: 1, 
-    ease: "power2.out", 
-    stagger: 0.1, 
-    scrollTrigger: {
-      trigger: ".slide", 
-      start: "top 90%", 
-      once: true 
-    }
-  }
-);
-
-gsap.fromTo(
-  ".dot", 
-  { y: 50, opacity: 0 }, 
-  { 
-    y: 0, 
-    opacity: 1, 
-    duration: 1, 
-    ease: "power2.out", 
-    stagger: 0.1, 
-    scrollTrigger: {
-      trigger: ".bottom-navigation-container-tesimonials", 
-      start: "top bottom", 
-      once: true
-    }
-  }
-);
-
-gsap.fromTo(
-  ".arrow", 
-  { y: 50, opacity: 0 }, 
-  { 
-    y: 0, 
-    opacity: 1, 
-    duration: 1, 
-    ease: "power2.out", 
-    stagger: 0.1, 
-    scrollTrigger: {
-      trigger: ".bottom-navigation-container-tesimonials", 
-      start: "top bottom", 
-      once: true
-    }
-  }
-);
-
 document.addEventListener('DOMContentLoaded', () => {
-  updateCarousel(); 
+  updateBlogCarousel();
 });
 
-let currentIndex = 0;
-const slides = document.querySelectorAll('.slide');
-const dots = document.querySelectorAll('.dot');
-const carousel = document.querySelector('.carousel');
+let currentBlogIndex = 0;
+const blogSlides = document.querySelectorAll('.blog-slide');
+const blogDots = document.querySelectorAll('.blog-dot');
+const blogCarousel = document.querySelector('.blog-carousel');
 
-function isLargeScreen() {
-  return window.innerWidth > 1064;
+function getActiveSlideCount() {
+  if (window.innerWidth > 1064) return 3;
+  if (window.innerWidth > 700) return 2;
+  return 1;
 }
 
-function moveSlide(direction) {
-  if (isLargeScreen()) {
-    currentIndex += direction;
-    if (currentIndex < 0) currentIndex = slides.length - 2; 
-    if (currentIndex >= slides.length - 1) currentIndex = 0;
+function moveBlogSlide(direction) {
+  const activeSlideCount = getActiveSlideCount();
+  currentBlogIndex += direction;
+
+  if (currentBlogIndex < 0) currentBlogIndex = blogSlides.length - activeSlideCount;
+  if (currentBlogIndex >= blogSlides.length - (activeSlideCount - 1)) currentBlogIndex = 0;
+
+  updateBlogCarousel();
+}
+
+function goToBlogSlide(index) {
+  const activeSlideCount = getActiveSlideCount();
+  currentBlogIndex = index % (blogSlides.length - (activeSlideCount - 1));
+  updateBlogCarousel();
+}
+
+function updateBlogCarousel() {
+  const blogCarouselWidth = blogCarousel.offsetWidth;
+  let gap;
+  if (window.innerWidth > 1064) {
+    gap = 4;
+  } else if (window.innerWidth > 700) {
+    gap = 8;
   } else {
-    currentIndex += direction;
-    if (currentIndex < 0) currentIndex = slides.length - 1;
-    if (currentIndex >= slides.length) currentIndex = 0;
+    gap = 16;
   }
-  updateCarousel();
-}
 
-function goToSlide(index) {
-  currentIndex = index % slides.length;
-  updateCarousel();
-}
+  const activeSlideCount = getActiveSlideCount();
+  const slideWidth = blogCarouselWidth / activeSlideCount;
+  const newTransform = -(currentBlogIndex * (slideWidth + gap));
 
-function updateCarousel() {
-  const carouselWidth = carousel.offsetWidth;
-  const gap = isLargeScreen() ? 8 : 16;
-  const slideWidth = isLargeScreen() ? carouselWidth / 2 : carouselWidth;
-  const newTransform = -(currentIndex * (slideWidth + gap));
+  blogCarousel.style.transform = `translateX(${newTransform}px)`;
 
-  carousel.style.transform = `translateX(${newTransform}px)`;
-
-  slides.forEach((slide, index) => {
+  blogSlides.forEach((slide, index) => {
     slide.classList.remove('active');
-    if (index === currentIndex || (isLargeScreen() && index === currentIndex + 1)) {
+    if (index >= currentBlogIndex && index < currentBlogIndex + activeSlideCount) {
       slide.classList.add('active');
     }
   });
 
-  dots.forEach((dot, index) => {
+  blogDots.forEach((dot, index) => {
     dot.classList.remove('active');
-    if (index === currentIndex || (isLargeScreen() && index === currentIndex + 1)) {
+    if (index >= currentBlogIndex && index < currentBlogIndex + activeSlideCount) {
       dot.classList.add('active');
     }
   });
 }
 
-window.addEventListener('resize', updateCarousel);
-
-const videoContainer = document.querySelector(".video-container");
-const closeButton = document.querySelector(".close-button");
-const youtubePlayer = document.querySelector("#ytplayer");
-const activators = document.querySelectorAll(".slide-activator-conatiner");
-
-function disableScroll() {
-  document.body.style.overflow = "hidden";
-  document.documentElement.style.overflow = "hidden";
-}
-
-function enableScroll() {
-  document.body.style.overflow = "";
-  document.documentElement.style.overflow = "";
-  document.body.style.overflowX = "hidden";
-  document.documentElement.style.overflowX = "hidden";
-}
-
-const showVideoContainer = (videoId) => {
-  const videoUrl = videoUrls[videoId];
-  if (videoUrl) {
-    youtubePlayer.src = `${videoUrl}?autoplay=1`;
-    videoContainer.style.display = "inherit";
-    disableScroll();
-  }
-};
-
-const hideVideoContainer = () => {
-  youtubePlayer.src = "";
-  videoContainer.style.display = "none";
-  enableScroll();
-};
-
-activators.forEach((activator) => {
-  activator.addEventListener("click", () => {
-    const activatorId = activator.id;
-    showVideoContainer(activatorId);
-  });
+window.addEventListener('resize', () => {
+  updateBlogCarousel();
 });
 
-closeButton.addEventListener("click", hideVideoContainer);
+const blogPlayButtons = document.querySelectorAll(".blog-slide-activator-container");
+const blogSvg1Elements = document.querySelectorAll("#blog-svg1");
+const blogSvg2Elements = document.querySelectorAll("#blog-svg2");
+const blogVideoSliders = document.querySelectorAll(".blog-on-top-of-video-slider");
+const blogVideos = document.querySelectorAll(".blog-testimonial-video");
 
-const playButtons = document.querySelectorAll(".slide-activator-conatiner");
-const svg1Elements = document.querySelectorAll("#svg1");
-const svg2Elements = document.querySelectorAll("#svg2");
-const videoSliders = document.querySelectorAll(".on-top-of-video-slider");
-const videos = document.querySelectorAll(".testimonial-video");
-
-const changeSVG = (index) => {
-  svg1Elements[index].style.opacity = "0";
-  svg2Elements[index].style.opacity = "1";
-  videoSliders[index].classList.add("hovered");
-  videos[index].style.transition = "playback-rate 0.3s ease";
-  videos[index].playbackRate = 0;
+const changeBlogSVG = (index) => {
+  blogSvg1Elements[index].style.opacity = "0";
+  blogSvg2Elements[index].style.opacity = "1";
+  blogVideoSliders[index].classList.add("hovered");
+  blogVideos[index].style.transition = "playback-rate 0.3s ease";
+  blogVideos[index].playbackRate = 0;
 };
 
-const restoreSVG = (index) => {
-  svg1Elements[index].style.opacity = "1";
-  svg2Elements[index].style.opacity = "0";
-  videoSliders[index].classList.remove("hovered");
-  videos[index].style.transition = "playback-rate 0.3s ease";
-  videos[index].playbackRate = 1;
+const restoreBlogSVG = (index) => {
+  blogSvg1Elements[index].style.opacity = "1";
+  blogSvg2Elements[index].style.opacity = "0";
+  blogVideoSliders[index].classList.remove("hovered");
+  blogVideos[index].style.transition = "playback-rate 0 .3s ease";
+  blogVideos[index].playbackRate = 1;
 };
 
-playButtons.forEach((playButton, index) => {
-  playButton.addEventListener("mouseover", () => changeSVG(index));
-  playButton.addEventListener("mouseout", () => restoreSVG(index));
-
+blogPlayButtons.forEach((playButton, index) => {
+  playButton.addEventListener("mouseover", () => changeBlogSVG(index));
+  playButton.addEventListener("mouseout", () => restoreBlogSVG(index));
   playButton.addEventListener("touchstart", (event) => {
-    changeSVG(index);
+    changeBlogSVG(index);
     event.stopPropagation();
   });
-
   playButton.addEventListener("touchend", (event) => {
-    restoreSVG(index);
+    restoreBlogSVG(index);
     event.stopPropagation();
   });
-
-  playButton.addEventListener("touchcancel", () => restoreSVG(index));
+  playButton.addEventListener("touchcancel", () => restoreBlogSVG(index));
 });
 
-const observerOptions = {
-  root: null,
-  threshold: 0
-};
+const blogArrows = document.querySelectorAll('.blog-arrow');
 
-const stopVideoWhenNotVisible = (entries, observer) => {
-  entries.forEach(entry => {
-    const video = entry.target;
-    if (entry.isIntersecting) {
-      video.play();
-    } else {
-      video.pause();
-    }
-  });
-};
-
-const observer = new IntersectionObserver(stopVideoWhenNotVisible, observerOptions);
-
-videos.forEach(video => {
-  observer.observe(video);
-});
-
-const arrows = document.querySelectorAll('.arrow');
-
-arrows.forEach(arrow => {
+blogArrows.forEach(arrow => {
   const arrowImage = arrow.querySelector('img');
-
   arrow.addEventListener('touchstart', function () {
     arrow.style.backgroundColor = 'rgb(255, 255, 255)';
+    arrow.style.transform = 'scale(0.95) translateZ(0)';
     arrow.style.opacity = '0.9';
     if (arrowImage) {
       arrowImage.style.filter = 'brightness(0)';
@@ -234,6 +116,7 @@ arrows.forEach(arrow => {
 
   arrow.addEventListener('touchend', function () {
     arrow.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+    arrow.style.transform = 'scale(1)';
     arrow.style.opacity = '1';
     if (arrowImage) {
       arrowImage.style.filter = 'none';

@@ -52,11 +52,13 @@
 
 <body>
 
+  <!-- Lenis -->
+
   <script>
     function isTouchDevice() {
       return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     }
-  
+
     if (!isTouchDevice()) {
       const lenis = new Lenis({
         autoRaf: false,
@@ -65,51 +67,38 @@
         gestureOrientation: 'vertical',
         lerp: 0.1,
       });
-  
+
       const scrollPosition = sessionStorage.getItem('scrollPosition') || 0;
-      
+
       window.addEventListener('beforeunload', () => {
         sessionStorage.setItem('scrollPosition', window.scrollY);
       });
-  
+
       window.addEventListener('load', () => {
         window.scrollTo(0, scrollPosition);
       });
-  
+
       function raf(time) {
         lenis.raf(time);
         requestAnimationFrame(raf);
       }
-  
+
       requestAnimationFrame(raf);
-  
+
       lenis.on('scroll', (e) => {
         console.log(e);
       });
     }
   </script>
-  
 
+  <!-- Cal -->
 
-
-
-
-  <!-- Cal element-click embed code begins -->
   <script type="text/javascript">
     (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
     Cal("init", "15min", { origin: "https://cal.com" });
 
-
-    // Important: Please add the following attributes to the element that should trigger the calendar to open upon clicking.
-    // `data-cal-link="augustas/15min"`
-    // data-cal-namespace="15min"
-    // `data-cal-config='{"layout":"month_view","theme":"dark"}'`
-
     Cal.ns["15min"]("ui", { "theme": "dark", "cssVarsPerTheme": { "light": { "cal-brand": "#000000" }, "dark": { "cal-brand": "#ffffff" } }, "hideEventTypeDetails": true, "layout": "month_view" });
-
-
   </script>
-  <!-- Cal element-click embed code ends -->
 
   <div class="video-container">
     <div class="close-button">
@@ -741,13 +730,11 @@
     <h4 class="alt-text-title-section">Choose the option that suits you best</h4>
   </div>
 
-
   <div class="section-container">
     <section>
       <div class="counter-holder plans-holder">
 
         <div class="counter-card plans-card">
-
           <div class="inside-card">
 
             <div class="top-specify-cont figma-specify-cont">
@@ -763,7 +750,6 @@
             <div class="divider-plans"></div>
 
             <div class="benefits-plans-container">
-
               <div class="benefit-holder">
                 <img src="images/svgs/single-page-icon.svg" alt="benefit icon">
                 <p>Single page</p>
@@ -783,34 +769,23 @@
                 <img src="images/svgs/full-design-icon.svg" alt="benefit icon">
                 <p>Full design</p>
               </div>
-
             </div>
-
-
 
             <div class="white-cta-button" data-cal-link="augustas/15min">
-
               <h4>Apply now</h4>
-
             </div>
 
-
-
           </div>
-
         </div>
 
         <div class="counter-card plans-card gray-plans-card">
-
           <div class="inside-card gray5-card">
-
             <img src="images/svgs/star-plans.svg" alt="star icon" class="star-plans">
 
             <div class="top-specify-cont">
               <img src="images/svgs/web-purple-icon.svg" class="spec-icon" alt="top icon">
               <h5>Full web-development</h5>
             </div>
-
 
             <div class="title-container-plans">
               <p>Landing Page</p>
@@ -820,7 +795,6 @@
             <div class="divider-plans"></div>
 
             <div class="benefits-plans-container">
-
               <div class="benefit-holder">
                 <img src="images/svgs/single-page-icon.svg" alt="benefit icon">
                 <p>Single page</p>
@@ -855,45 +829,34 @@
                 <img src="images/svgs/smooth-interactions-icon.svg" alt="benefit icon">
                 <p>Smooth interactions</p>
               </div>
-
-
             </div>
-
 
             <a data-cal-link="augustas/15min" id="button-nav-container plans-firefly-cta">
               <div class="rectangle" id="nav-button">
-
                 <div class="grain-overlay-button"></div>
-
                 <div class="btn-text-container plans-firefly-text-container">
                   <div class="btn-text">
                     <h4 style="font-size: 20px;">Apply now</h4>
                   </div>
                 </div>
-
                 <div class="blob-container">
                   <div class="blob"></div>
                   <div class="blob"></div>
                   <div class="blob"></div>
                 </div>
-
               </div>
             </a>
 
-
           </div>
-
         </div>
 
         <div class="counter-card plans-card">
-
           <div class="inside-card">
 
             <div class="top-specify-cont">
               <img src="images/svgs/web-purple-icon.svg" class="spec-icon" alt="top icon">
               <h5>Full web-development</h5>
             </div>
-
 
             <div class="title-container-plans">
               <p>Full Business Site</p>
@@ -903,7 +866,6 @@
             <div class="divider-plans"></div>
 
             <div class="benefits-plans-container">
-
               <div class="benefit-holder">
                 <img src="images/svgs/multiple-pages-icon.svg" alt="benefit icon">
                 <p>Multiple pages</p>
@@ -939,27 +901,20 @@
                 <p>Google analytics</p>
               </div>
 
-
               <div class="benefit-holder">
                 <img src="images/svgs/newsletter-integration-icon.svg" alt="benefit icon">
                 <p>API integrations</p>
               </div>
-
             </div>
 
             <div class="white-cta-button" data-cal-link="augustas/15min">
-
               <h4>Apply now</h4>
-
             </div>
 
-
           </div>
-
         </div>
 
       </div>
-
     </section>
   </div>
 
@@ -971,10 +926,6 @@
   <!-- Testimonial section -->
 
   <div class="faq-section-container">
-
-
-
-
 
     <div class="accordions-container">
 
@@ -989,79 +940,63 @@
 
           <div class="question">
             <div class="the-question-itself-container">
-
               <h4>How much time it takes to develop a website?</h4>
               <img class="faq-arrow" src="images/svgs/faq-arrow.svg">
-
             </div>
-
             <div class="the-answer-itself-container">
-              <h5>See & adjust the first design within 7 days. Developing your website might range from less than a
-                month to 2 or more, depending on your input, unique business needs & website complexity</h5>
+              <h5>See & adjust the first design within 4 days. It might take up to a couple of weeks to develop the
+                entire website after we get all the information from you.</h5>
             </div>
           </div>
 
-
           <div class="question">
             <div class="the-question-itself-container">
-
               <h4>What if I don’t know anything about websites?</h4>
               <img class="faq-arrow" src="images/svgs/faq-arrow.svg">
-
             </div>
-
             <div class="the-answer-itself-container">
-              <h5>AWeb professionals are here to consult & teach you until everything is clear. We always choose the
-                best option for you.</h5>
+              <h5>AWeb professionals are here to consult, if needed to teach you until everything is clear. Just us,
+                because we always choose the best option for you.</h5>
             </div>
           </div>
 
           <div class="question">
             <div class="the-question-itself-container">
-
               <h4>Any info from me required to get started?</h4>
               <img class="faq-arrow" src="images/svgs/faq-arrow.svg">
-
             </div>
-
             <div class="the-answer-itself-container">
-              <h5>Absolutely. We’ll ask you to provide us with your brand book (containing all of your business colors,
-                logos, fonts, ect.), if you appear to not have one, we’ll create it for you.<br><br>
-                The most important information we need from you is everything about your business. From the name to what
-                it offers and why. We expect that you have this ready, because we’ll turn it into a website!</h5>
+              <h5>Absolutely! In the start you’ll have to fill out an onboarding form, providing us with all of the
+                brand details, because we’ll turn it into a website!</h5>
             </div>
           </div>
 
-
           <div class="question">
             <div class="the-question-itself-container">
-
               <h4>What if I don’t like the design?</h4>
               <img class="faq-arrow" src="images/svgs/faq-arrow.svg">
-
             </div>
-
             <div class="the-answer-itself-container">
-              <h5>We’ll recreate the design until you will be 100% satisfied with the looks.<br><br>
+              <h5>We’ll recreate the design until you are 100% satisfied with the look.<br><br>
                 Although if we already have written the code, future updates will come with an additional cost. (You can
                 get unlimited design & code updates for a monthly fee)</h5>
             </div>
           </div>
 
-
+          <div class="question">
+            <div class="the-question-itself-container">
+              <h4>Why don’t we use no-code?</h4>
+              <img class="faq-arrow" src="images/svgs/faq-arrow.svg">
+            </div>
+            <div class="the-answer-itself-container">
+              <h5>No-code is the most popular website development way these days, but is it the best, the safest, the
+                fastest? No. That’s what custom code gives you: full control & professionalism amongst others.</h5>
+            </div>
+          </div>
 
         </div>
-
       </div>
-
-
-
-
-
-
-
     </div>
-
   </div>
 
 
