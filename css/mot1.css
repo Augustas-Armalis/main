@@ -1819,7 +1819,7 @@ iframe#ytplayer {
 
 @media (max-width: 470px) {
   .top-footer-holder {
-    gap: 32px;
+    gap: 64px;
   }
 
   .right-navigation-container {
