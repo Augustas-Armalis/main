@@ -56,30 +56,39 @@
     function isTouchDevice() {
       return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     }
-
+  
     if (!isTouchDevice()) {
       const lenis = new Lenis({
-        autoRaf: false,         // Disable auto RAF (manual control)
-        smoothWheel: true,      // Enable smooth scrolling for mouse wheel
-        orientation: 'vertical', // Restrict scrolling to vertical
-        gestureOrientation: 'vertical', // Restrict gestures to vertical scrolling
+        autoRaf: false,
+        smoothWheel: true,
+        orientation: 'vertical',
+        gestureOrientation: 'vertical',
+        lerp: 0.1,
       });
-
+  
+      const scrollPosition = sessionStorage.getItem('scrollPosition') || 0;
+      
+      window.addEventListener('beforeunload', () => {
+        sessionStorage.setItem('scrollPosition', window.scrollY);
+      });
+  
+      window.addEventListener('load', () => {
+        window.scrollTo(0, scrollPosition);
+      });
+  
       function raf(time) {
-        // Update Lenis with the current time for smooth scrolling
         lenis.raf(time);
-        // Request the next animation frame
         requestAnimationFrame(raf);
       }
-
+  
       requestAnimationFrame(raf);
-
+  
       lenis.on('scroll', (e) => {
-        // Optional: Log scroll events (remove if unnecessary)
         console.log(e);
       });
     }
   </script>
+  
 
 
 
