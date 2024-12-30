@@ -689,8 +689,6 @@ nav {
   transition: border 0.15s ease;
 }
 
-
-
 .blob {
   position: absolute;
   border-radius: 100px;
@@ -755,6 +753,11 @@ nav {
 
   .btnh4 {
     font-size: 16px;
+  }
+
+  #load-in-btn-hero {
+    margin-bottom: 42px;
+    margin-top: 32px;
   }
 }
 
