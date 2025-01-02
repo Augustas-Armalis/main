@@ -163,6 +163,10 @@ h5 {
     font-size: 20px;
   }
 
+  h5 {
+    font-size: 15px;
+  }
+
 }
 
 @media (max-width: 555px) {
@@ -184,9 +188,6 @@ h5 {
 
   h5 {
     font-size: 14px;
-    font-family: var(--ff-regular);
-    font-weight: var(--font-regular);
-    line-height: 130%;
   }
 }
 
