@@ -857,6 +857,10 @@
   .blur-top-development-black-fade {
     top: 80px;
   }
+
+  .mobile-invis {
+    opacity: 0;
+  }
 }
 
 @media (max-width: 830px) {
