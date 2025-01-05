@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <meta name="title" content="15 Min Call With AWeb">
+  <meta name="description" content="Let's discuss your website development plan & price">
+  <meta name="keywords" content="AWeb, Augustas Web, Augustas Websites, August Websites, website design, website development, web design agency, web development agency, custom websites, professional website design, responsive web design, e-commerce website design, business websites, digital agency, custom web solutions, website redesign, small business websites, SEO-friendly websites, affordable website design, custom web development for small businesses, responsive website development, web design for startups, SEO-friendly web design services, UX/UI design, corporate website design solutions, personalized website design agency, fast-loading websites, freelance website designer, mobile-friendly websites, branding and website design">
+  <meta property="og:title" content="15 Min Call With AWeb">
+  <meta property="og:description" content="Let's discuss your website development plan & price">
+  <meta property="og:image" content="https://augustas.co/image-domain">
+  <meta property="og:url" content="https://augustas.co/call">
+  <meta name="twitter:title" content="15 Min Call With AWeb">
+  <meta name="twitter:description" content="Let's discuss your website development plan & price">
+  <meta name="twitter:card" content="https://augustas.co/image-domain">
+  <meta name="twitter:image" content="https://augustas.co/image-domain">
+  <meta name="author" content="Augustas | AWeb">
+  <meta name="theme-color" content="#000000">
+  <link rel="alternate" href="https://augustas.co/call" hreflang="en">
+  <title>15 Min Call With AWeb</title>
+  <link rel="canonical" href="https://augustas.co/call">
+  <link rel="icon" type="image/x-icon" href="https://augustas.co/images/favicon.ico">
+
+  <style>
+    html {
+      background-color: black;
+      height: 100%;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: stretch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    html::-webkit-scrollbar {
+      display: none;
+    }
+
+    * {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      margin: 0;
+      padding: 0;
+    }
+
+    .slider-hider {
+      position: fixed;
+      height: 100vh;
+      z-index: 99999;
+      right: 0;
+      width: 20px;
+      background-color: #1F1F1F;
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      html {
+        height: fit-content;
+        background-color: #1F1F1F;
+      }
+
+      .slider-hider {
+        display: block;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="slider-hider"></div>
+  <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline"></div>
+  <script type="text/javascript">
+    (function (C, A, L) {
+      let p = function (a, ar) { a.q.push(ar); };
+      let d = C.document;
+      C.Cal = C.Cal || function () {
+        let cal = C.Cal;
+        let ar = arguments;
+        if (!cal.loaded) {
+          cal.ns = {};
+          cal.q = cal.q || [];
+          d.head.appendChild(d.createElement("script")).src = A;
+          cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          const api = function () { p(api, arguments); };
+          const namespace = ar[1];
+          api.q = api.q || [];
+          if (typeof namespace === "string") {
+            cal.ns[namespace] = cal.ns[namespace] || api;
+            p(cal.ns[namespace], ar);
+            p(cal, ["initNamespace", namespace]);
+          } else p(cal, ar);
+          return;
+        }
+        p(cal, ar);
+      };
+    })(window, "https://app.cal.com/embed/embed.js", "init");
+
+    Cal("init", "15min", { origin: "https://cal.com" });
+    Cal.ns["15min"]("inline", {
+      elementOrSelector: "#my-cal-inline",
+      config: { "layout": "month_view", "theme": "dark" },
+      calLink: "augustas/15min",
+    });
+
+    Cal.ns["15min"]("ui", {
+      "theme": "dark",
+      "cssVarsPerTheme": {
+        "light": { "cal-brand": "#000000" },
+        "dark": { "cal-brand": "#ffffff" }
+      },
+      "hideEventTypeDetails": false,
+      "layout": "month_view"
+    });
+  </script>
+
+  <style>
+    #my-cal-inline {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    #my-cal-inline::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+</body>
+
+</html>
