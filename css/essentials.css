@@ -248,7 +248,7 @@ section {
   }
 }
 
-@media (max-width: 555) {
+@media (max-width: 555px) {
   .section-title-container {
     margin-bottom: 36px;
   }

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+
+	<meta name="title" content="AWeb"> <!-- Change the title -->
+  <meta name="description" content="AWeb Newsletter"> <!-- Change the describtion -->
+  <meta name="keywords"
+    content="AWeb, Augustas Web, Augustas Websites, August Websites, website design, website development, web design agency, web development agency, custom websites, professional website design, responsive web design, e-commerce website design, business websites, digital agency, custom web solutions, website redesign, small business websites, SEO-friendly websites, affordable website design, custom web development for small businesses, responsive website development, web design for startups, SEO-friendly web design services, UX/UI design, corporate website design solutions, personalized website design agency, fast-loading websites, freelance website designer, mobile-friendly websites, branding and website design">
+
+  <meta property="og:title" content="AWeb"> <!-- Change the title -->
+  <meta property="og:description" content="The website is in development"> <!-- Change the describtion -->
+  <meta property="og:image" content="https://augustas.co/image-domain"> <!-- Change the image link -->
+  <meta property="og:url" content="https://augustas.co"> <!-- Change the domain -->
+
+  <meta name="twitter:title" content="AWeb"> <!-- Change the title -->
+  <meta name="twitter:description" content="The website is in development"> <!-- Change the describtion -->
+  <meta name="twitter:card" content="https://augustas.co/image-domain"> <!-- Change the image link -->
+  <meta name="twitter:image" content="https://augustas.co/image-domain"> <!-- Change the image link -->
+
+  <meta name="author" content="Augustas | AWeb">
+  <meta name="theme-color" content="#000000">
+
+  <link rel="alternate" href="https://augustas.co" hreflang="en"> <!-- Change the domain -->
+
+  <title>Privacy Policy</title> <!-- Change the title -->
+  <link rel="canonical" href="https://augustas.co"> <!-- Change the domain -->
+  <link rel="stylesheet" href="https://augustas.co/css/essentials.css">
+  <link rel="stylesheet" href="https://augustas.co/css/mot1.css">
+  <link rel="icon" type="image/x-icon" href="https://augustas.co/images/favicon.ico">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css">
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+
+    .bombastic-side-eye{
+      margin: 64px 0;
+    }
+
+    h5{
+      font-size: 20px;
+    }
+
+    @media (max-width: 555px) {
+      h1 {
+    font-size: 42px;
+  }
+  }
+
+  .titleras{
+    margin-bottom: 8px;
+  }
+
+  .section-container{
+    margin-bottom: 64px;
+  }
+
+  </style>
+  
+</head>
+
+<body>
+
+<!-- Lenis -->
+
+  <script>
+    function isTouchDevice() {
+      return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    }
+
+    if (!isTouchDevice()) {
+      const lenis = new Lenis({
+        autoRaf: false,
+        smoothWheel: true,
+        orientation: 'vertical',
+        gestureOrientation: 'vertical',
+        lerp: 0.1,
+      });
+
+      const scrollPosition = sessionStorage.getItem('scrollPosition') || 0;
+
+      window.addEventListener('beforeunload', () => {
+        sessionStorage.setItem('scrollPosition', window.scrollY);
+      });
+
+      window.addEventListener('load', () => {
+        window.scrollTo(0, scrollPosition);
+      });
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+
+      lenis.on('scroll', (e) => {
+        console.log(e);
+      });
+    }
+
+
+  </script>
+
+<div class="section-container" style="margin-top: 128px;">
+    <section>
+
+      <h1 style="margin-bottom: 8px;">Privacy Policy</h1>
+      <h5 class="gray1" style="margin-bottom: 64px;">Welcome to AWeb. We are committed to protecting your privacy and ensuring that your personal information is handled in a safe and responsible manner.</h5>
+
+      <div class="bombastic-side-eye">
+        <h3 class="titleras">1. Information We Collect</h3>
+        <h5 class="gray1">We may collect information about you in a variety of ways. The information we may collect on the Site includes:<br><br> Personal Data - Personally identifiable information, such as your name and email address, that you voluntarily give to us when you fill out forms.<br><br>Business data - Information about your business that you provide to us to fulfill our services, such as your business name and details about your business operations. This information is essential for us to create and manage your website.</h5>
+      </div>
+
+      <div class="bombastic-side-eye">
+        <h3 class="titleras">2. Methods of Data Collection</h3>
+        <h5 class="gray1">We collect information through forms you fill out, also through private chats with you.</h5>
+      </div>
+
+      <div class="bombastic-side-eye">
+        <h3 class="titleras">3. Purpose of Data Collection</h3>
+        <h5 class="gray1">We collect this data to provide our services to you. This includes:<br><br>&#8226; Creating and managing websites for your business<br>&#8226; Making case studies on social media platforms<br>&#8226; Improving our services<br></h5>
+      </div>
+
+      <div class="bombastic-side-eye">
+        <h3 class="titleras">4. Data Sharing and Disclosure</h3>
+        <h5 class="gray1">We do not share your data with third parties.</h5>
+      </div>
+
+      <div class="bombastic-side-eye">
+        <h3 class="titleras">5. Data Protection Measures</h3>
+        <h5 class="gray1">We use secure servers to protect your data. We implement various security measures to ensure the safety of your personal information on our side as well as your website.</h5>
+      </div>
+
+      <div class="bombastic-side-eye">
+        <h3 class="titleras">6. User Rights</h3>
+        <h5 class="gray1">You have the right to access, correct, or delete your personal data. If you wish to exercise these rights, please contact us at hello@augustas.co or personally, because updates on your website after it's built come with a cost.</h5>
+      </div>
+
+      <div class="bombastic-side-eye">
+        <h3 class="titleras">7. Contact Information</h3>
+        <h5 class="gray1">If you have any questions or concerns about this privacy policy, please contact us at hello@augustas.co</h5>
+      </div>
+
+      <div class="bombastic-side-eye">
+        <h3 class="titleras">8. Cookies and Tracking Technologies</h3>
+        <h5 class="gray1">We do not use cookies or other tracking technologies.</h5>
+      </div>
+
+      
+
+    </section>
+  </div>
+
+  <script>// Animation for h1
+
+    gsap.utils.toArray('h1').forEach((h1) => {
+      gsap.fromTo(h1,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.1, // stagger each h1 by 0.1s
+          scrollTrigger: {
+            trigger: h1,  // h1 triggers its own animation
+            start: "top bottom",
+          }
+        }
+      );
+    });
+    
+    // Animation for h2
+    
+    gsap.utils.toArray('h2').forEach((h2) => {
+      gsap.fromTo(h2,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.1, // stagger each h2 by 0.1s
+          scrollTrigger: {
+            trigger: h2,  // h2 triggers its own animation
+            start: "top bottom",
+          }
+        }
+      );
+    });
+    
+    // Animation for h3
+    
+    gsap.utils.toArray('h3').forEach((h3) => {
+      gsap.fromTo(h3,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.1, // stagger each h3 by 0.1s
+          scrollTrigger: {
+            trigger: h3,  // h3 triggers its own animation
+            start: "top bottom",
+          }
+        }
+      );
+    });
+    
+    // Animation for h4
+    
+    gsap.utils.toArray('h4').forEach((h4) => {
+      gsap.fromTo(h4,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.1, // stagger each h4 by 0.1s
+          scrollTrigger: {
+            trigger: h4,  // h4 triggers its own animation
+            start: "top bottom",
+          }
+        }
+      );
+    });
+    
+    // Animation for h5
+    
+    gsap.utils.toArray('h5').forEach((h5) => {
+      gsap.fromTo(h5,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.1, // stagger each h5 by 0.1s
+          scrollTrigger: {
+            trigger: h5,  // h5 triggers its own animation
+            start: "top bottom",
+          }
+        }
+      );
+    });
+    </script>
+
+
+  <!-- Footer -->
+
+  <div class="section-container footer" id="footer">
+    <section class="footer-holder">
+      <div class="top-footer-holder">
+        <div class="left-aweb-container">
+          <a href="https://augustas.co">
+            <img src="https://augustas.co/images/svgs/logotip.svg" alt="footer logo">
+          </a>
+          <h4 class="gray1">Websites that make money<br>without you doing anything</h4>
+        </div>
+
+        <div class="right-navigation-container">
+          <div class="list-container">
+            <h4 class="list-title">Browse</h4>
+            <a href="https://augustas.co/#home">
+              <h4 class="list-element">Home</h4>
+            </a>
+            <a href="https://augustas.co/#framework">
+              <h4 class="list-element">Framework</h4>
+            </a>
+            <a href="https://augustas.co/#testimonials">
+              <h4 class="list-element">Testimonials</h4>
+            </a>
+            <a href="https://augustas.co/newsletter/" target="_blank">
+              <h4 class="list-element">Newsletter</h4>
+            </a>
+          </div>
+
+          <div class="list-container">
+            <h4 class="list-title">Services</h4>
+            <a href="https://augustas.co/#website-design">
+              <h4 class="list-element">Website design</h4>
+            </a>
+            <a href="https://augustas.co/#landing-page">
+              <h4 class="list-element">Landing page</h4>
+            </a>
+            <a href="https://augustas.co/#full-biz-site">
+              <h4 class="list-element">Full biz site</h4>
+            </a>
+          </div>
+
+          <div class="list-container">
+            <h4 class="list-title">Contacts</h4>
+            <div class="contacts-holder">
+              <a href="https://x.com/AugustasWeb/" class="contact-icon" target="_blank">
+                <img src="https://augustas.co/images/svgs/twitter-icon.svg" alt="icon">
+              </a>
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hello@augustas.co" class="contact-icon" target="_blank"> 
+                <img src="https://augustas.co/images/svgs/email-icon.svg" alt="icon">
+              </a>
+              <a href="https://www.linkedin.com/in/augustas-web/" class="contact-icon" target="_blank">
+                <img src="https://augustas.co/images/svgs/linkedin-icon.svg" alt="icon">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-footer-holder">
+        <div class="copyright-container">
+          <h5 class="gray-dark">© <span id="year"></span> AWeb. All rights reserved</h5>
+        </div>
+
+        <div class="legal-container">
+          <a href="https://augustas.co/legal/terms" class="legal-link">
+            <h5 class="gray-dark">Terms & Conditions</h5>
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
