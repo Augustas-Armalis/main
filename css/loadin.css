@@ -405,7 +405,7 @@ nav {
 }
 
 .slide-hero {
-  width: 550px;
+  width: 626px;
   height: 387px;
   transition: all 0.15s ease-out;
   border: 1px solid #252528;
@@ -430,7 +430,7 @@ nav {
 
 @media (max-width: 1064px) {
   .slider-hero .slide-hero {
-    width: 444px;
+    width: 511px;
     height: 316px;
   }
 
@@ -448,7 +448,7 @@ nav {
 
   .slider-hero .slide-hero {
     width: 350px;
-    height: 249px;
+    height: 216px;
   }
 
   .slider-hero-container:before {
