@@ -420,7 +420,7 @@ nav {
 
   border-radius: 24px;
   border: 1px solid #252528;
-  background: rgba(0, 0, 0, 0.60);
+  background: rgba(0, 0, 0, 0.80);
   backdrop-filter: blur(10px);
   box-shadow: 0px 10px 35px 0px #000000;
 
@@ -878,6 +878,17 @@ nav {
 
   .background-image-container img {
     width: 230%;
+    height: auto;
+  }
+}
+
+@media (max-width: 411px) {
+  .bck-img-holder {
+    top: 300px;
+  }
+
+  .background-image-container img {
+    width: 280%;
     height: auto;
   }
 }
