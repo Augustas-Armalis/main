@@ -175,7 +175,7 @@
 .website-sketch-background {
   width: 240px;
   height: 250px;
-  border-radius: 8px;
+  border-radius: 11px;
   background: #D2D2D2;
   box-shadow: -5px 0px 14.4px 0px rgba(0, 0, 0, 0.25);
   position: absolute;
@@ -372,7 +372,7 @@
   width: 210px;
   height: 130px;
   flex-shrink: 0;
-  border-radius: 8px;
+  border-radius: 11px;
 }
 
 #box-black-design {
@@ -477,7 +477,7 @@
   text-align: start;
   padding-left: 16px;
   flex-shrink: 0;
-  border-radius: 8px 0px 0px 0px;
+  border-radius: 17px 0px 0px 0px;
   border-top: 1px solid #242424;
   border-right: 1px solid #242424;
   border-left: 1px solid #242424;
@@ -689,7 +689,7 @@
   width: 270px;
   height: 250px;
   flex-shrink: 0;
-  border-radius: 0 8px 0 0;
+  border-radius: 0 17px 0 0;
   border: 1px solid #242424;
   background: #161618;
   position: absolute;
@@ -942,7 +942,7 @@
   .website-sketch-background {
     width: 210px;
     height: 250px;
-    border-radius: 8px;
+    border-radius: 17px;
     background: #D2D2D2;
     box-shadow: -5px 0 14.4px rgba(0, 0, 0, 0.25);
     position: absolute;

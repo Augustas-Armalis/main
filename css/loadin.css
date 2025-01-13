@@ -647,7 +647,7 @@ nav {
 
   opacity: 0;
   transform: translateY(100px);
-
+  filter: brightness(140%);
 
 }
 
@@ -884,7 +884,7 @@ nav {
 
 @media (max-width: 411px) {
   .bck-img-holder {
-    top: 300px;
+    top: 250px;
   }
 
   .background-image-container img {
