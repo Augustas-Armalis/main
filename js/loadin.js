@@ -1,6 +1,11 @@
 // Load in animations
 
 document.addEventListener("DOMContentLoaded", () => {
+  gsap.fromTo(".bck-img-holder",
+    { y: 20, opacity: 0 },
+    { y: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 0.1 }
+  );
+
   gsap.fromTo(".title-container",
     { y: 100, opacity: 0 },
     { y: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 0.1 }
@@ -259,7 +264,7 @@ function executeAbove1064px() {
   if (window.innerWidth > 1064) {
     console.clear();
 
-    const circleDissapearTo = document.querySelectorAll('.under-rectangle-layer, nav, .dots, .arrows-testimonials-container, .rectangle, .white-cta-button, .question, .list-element, .contact-icon, .legal-link');
+    const circleDissapearTo = document.querySelectorAll('.under-rectangle-layer, nav, .dots, .arrows-testimonials-container, .rectangle, .white-cta-button, .question, .list-element, .contact-icon, .legal-link, .call-cta-container a');
     const rectangleMorphTo = document.querySelectorAll('.morph-home-web, .slide');
 
     const circleElement = document.querySelector('.circle');
