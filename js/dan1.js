@@ -781,3 +781,29 @@ document.getElementById('year').textContent = new Date().getFullYear();
 //     }
 //   }
 // );
+
+
+
+
+
+
+
+
+// Bottom nav below img
+
+gsap.fromTo(
+  ".footer-image-holder",
+  { y: 100, opacity: 0 },
+  {
+    y: 0,
+    opacity: 1,
+    duration: 1,
+    ease: "power2.out",
+    stagger: 0.1,
+    scrollTrigger: {
+      trigger: ".footer-image-holder",
+      start: "top 70%",
+      once: true
+    }
+  }
+);

@@ -810,6 +810,7 @@ nav {
   position: absolute;
   top: 200px;
   overflow: hidden;
+  opacity: 0;
 }
 
 .background-image-container {

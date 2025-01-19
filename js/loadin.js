@@ -264,7 +264,7 @@ function executeAbove1064px() {
   if (window.innerWidth > 1064) {
     console.clear();
 
-    const circleDissapearTo = document.querySelectorAll('.under-rectangle-layer, nav, .dots, .arrows-testimonials-container, .rectangle, .white-cta-button, .question, .list-element, .contact-icon, .legal-link, .call-cta-container a');
+    const circleDissapearTo = document.querySelectorAll('.under-rectangle-layer, nav, .dots, .arrows-testimonials-container, .rectangle, .white-cta-button, .question, .list-element, .contact-icon, .legal-link, .call-cta-container a, .footer-linkeris');
     const rectangleMorphTo = document.querySelectorAll('.morph-home-web, .slide');
 
     const circleElement = document.querySelector('.circle');
