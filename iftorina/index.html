@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1 Komanda</title>
+
+
+<style>
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(10rem - 32px);
+    font-family: 'SF Pro Display Regular';
+    color: var(--white);
+    overflow-x: hidden;
+    width: 100%;
+  }
+  
+  
+  body {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(10rem - 32px);
+    font-family: 'SF Pro Display Regular';
+    background-color: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+    width: 100%;
+  }
+  
+  img,
+  video {
+    pointer-events: none;
+  }
+  
+  * {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: inherit;
+  }
+  
+  
+  input,
+  textarea,
+  button,
+  select,
+  a {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+  
+  a:focus,
+  a:visited,
+  a:active {
+    outline: none;
+  }
+  
+  /* select color */
+  
+  img::selection {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  
+  ::selection {
+    background-color: hsla(240, 2%, 90%, 0.1);
+  }
+  
+  ::-moz-selection {
+    background-color: hsla(240, 2%, 90%, 0.1);
+  }
+  
+  @font-face {
+    font-family: 'SF Pro Display Regular';
+    font-weight: 400;
+    src: url('https://augustas.co/fonts//Sf\ Pro\ Display\ REGULAR.OTF') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'SF Pro Display Medium';
+    font-weight: 500;
+    src: url('https://augustas.co/fonts/Sf\ Pro\ Display\ MEDIUM.OTF') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'SF Pro Display Bold';
+    font-weight: 700;
+    src: url('https://augustas.co/fonts/Sf\ Pro\ Display\ BOLD.OTF') format('truetype');
+  }
+  
+  :root {
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-bold: 700;
+  
+  
+    --ff-regular: 'SF Pro Display Regular', arial;
+    --ff-medium: 'SF Pro Display Medium', arial;
+    --ff-bold: 'SF Pro Display Bold', arial;
+  
+  
+    --white: hsla(0, 0%, 100%, 1);
+    --gray1: hsla(235, 5%, 70%, 1);
+    --gray2: hsla(235, 5%, 35%, 1);
+    --gray25: hsla(235, 5%, 45%, 1);
+    --gray2: hsla(235, 5%, 35%, 1);
+    --gray3: hsla(235, 5%, 15%, 1);
+    --gray4: hsla(235, 5%, 9%, 1);
+    --gray5: hsla(235, 5%, 6%, 1);
+    --black: hsla(0, 0%, 0%, 1);
+  }
+  
+  h1 {
+    font-size: 64px;
+    letter-spacing: -0.64px;
+    font-family: var(--ff-bold);
+    font-weight: var(--font-bold);
+  }
+  
+  h2 {
+    font-size: 48px;
+    letter-spacing: -0.48px;
+    font-family: var(--ff-bold);
+    font-weight: var(--font-bold);
+  }
+  
+  h3 {
+    font-size: 32px;
+    letter-spacing: -0.32px;
+    font-family: var(--ff-bold);
+    font-weight: var(--font-bold);
+    line-height: 130%;
+  }
+  
+  h4 {
+    font-size: 20px;
+    font-family: var(--ff-regular);
+    font-weight: var(--font-regular);
+    line-height: 130%;
+  }
+  
+  h5 {
+    font-size: 16px;
+    font-family: var(--ff-regular);
+    font-weight: var(--font-regular);
+    line-height: 130%;
+  }
+  
+  @media (max-width: 1064px) {
+  
+    h1 {
+      font-size: 50px;
+    }
+  
+    h2 {
+      font-size: 40px;
+    }
+  
+    h3 {
+      font-size: 30px;
+    }
+  
+    h4 {
+      font-size: 20px;
+    }
+  
+  }
+  
+  @media (max-width: 555px) {
+    h1 {
+      font-size: 32px;
+    }
+  
+    h2 {
+      font-size: 30px;
+    }
+  
+    h3 {
+      font-size: 24px;
+    }
+  
+    h4 {
+      font-size: 16px;
+    }
+  
+    h5 {
+      font-size: 14px;
+      font-family: var(--ff-regular);
+      font-weight: var(--font-regular);
+      line-height: 130%;
+    }
+  }
+
+
+  .full-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+  }
+
+.blog-testimonial-container {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-direction: column;
+  position: relative;
+
+}
+
+.blog-testimonial-container:before {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 100%;
+  top: 0;
+  left: -15px;
+  background: linear-gradient(to right, rgb(0, 0, 0), rgba(0, 0, 0, 0));
+  pointer-events: none;
+  z-index: 20;
+}
+
+.blog-testimonial-container:after {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 100%;
+  top: 0;
+  right: -15px;
+  background: linear-gradient(to left, rgb(0, 0, 0), rgba(0, 0, 0, 0));
+  pointer-events: none;
+  z-index: 20;
+}
+
+@media (max-width: 1350px) {
+
+  .blog-testimonial-container:before,
+  .blog-testimonial-container:after {
+    display: none;
+  }
+}
+
+.blog-carousel-container {
+  position: relative;
+  width: 1000px;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+}
+
+.blog-carousel {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 200%;
+  gap: 16px;
+}
+
+.blog-slide {
+  flex: 0 0 calc(33% - 8px);
+  height: 400px;
+  display: flex;
+  background-color: var(--gray4);
+  font-size: 24px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  border-radius: 16.5px;
+  border: 1px solid var(--gray3);
+  position: relative;
+  overflow: hidden;
+  background-clip: padding-box;
+}
+
+.blog-slide:not(.active) {
+  opacity: 0.6;
+  transform: scale(0.97);
+}
+
+.blog-slide:not(.active) .blog-slide-activator-container {
+  display: none;
+}
+
+.blog-arrow {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: var(--white);
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.blog-arrow:hover {
+  background-color: var(--white);
+}
+
+.blog-arrow:active {
+  background-color: var(--white);
+  transform: scale(0.95);
+}
+
+.blog-arrow.left,
+.blog-arrow.right {
+  border: solid 1px var(--white);
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blog-arrow-left-arrow-svg,
+.blog-arrow-right-arrow-svg {
+  width: 7px;
+  height: auto;
+  transition: all 0.3s ease;
+}
+
+.blog-arrow:hover .blog-arrow-left-arrow-svg,
+.blog-arrow:hover .blog-arrow-right-arrow-svg {
+  filter: brightness(0);
+}
+
+.blog-dots {
+  bottom: 10px;
+  display: flex;
+  gap: 5px;
+}
+
+.blog-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--gray3);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.blog-dot:hover {
+  background-color: var(--gray25);
+}
+
+.blog-dot.active {
+  background-color: var(--white);
+}
+
+.blog-bottom-navigation-container-testimonials {
+  width: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: fit-content;
+  margin-top: 16px;
+}
+
+.blog-arrows-testimonials-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.blog-slide-activator-container {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  z-index: 20;
+  cursor: pointer;
+}
+
+.blog-background-video-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.blog-testimonial-video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.blog-play-svg {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+#blog-svg1 {
+  opacity: 1;
+}
+
+.blog-play-button-container:hover #blog-svg1,
+.blog-play-button-container:focus-within #blog-svg1 {
+  opacity: 0;
+}
+
+.blog-play-button-container:hover #blog-svg2,
+.blog-play-button-container:focus-within #blog-svg2 {
+  opacity: 1;
+}
+
+.blog-play-button-container:active #blog-svg1,
+.blog-play-button-container:active #blog-svg2 {
+  opacity: 1;
+}
+
+.blog-on-top-of-video-slider {
+  width: 100%;
+  height: 33%;
+  position: absolute;
+  z-index: 2;
+  border-radius: 16px 16px 0px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  bottom: 0;
+  border: 1px solid rgba(37, 37, 40, 0.10);
+  background: rgba(0, 0, 0, 0.30);
+  backdrop-filter: blur(10px);
+  padding: 0px 16px 0px 16px;
+  transition: background 0.3s ease, height 0.3s ease;
+}
+
+.blog-on-top-of-video-slider.hovered {
+  background: var(--gray5);
+  height: 36%;
+}
+
+.blog-name-acc-container {
+  height: fit-content;
+}
+
+.blog-name-acc-container h5 {
+  color: var(--gray1);
+}
+
+.blog-play-button-container {
+  width: 50px;
+  height: 50px;
+}
+
+.blog-video-container {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 80000;
+  display: none;
+  background: hsla(0, 0%, 0%, 0.7);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(3px);
+}
+
+.blog-close-button {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  right: 32px;
+  top: 32px;
+  border-radius: 12px;
+  cursor: pointer;
+  z-index: 81000;
+  background: hsla(0, 0%, 0%, 0.7);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(3px);
+  border: 1px solid var(--gray3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blog-close-button img {
+  width: 25px;
+}
+
+.blog-close-button:hover {
+  background: hsla(235, 5%, 6%, 0.7);
+}
+
+.image-blog-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  filter: brightness(100%);
+}
+
+.blog-slide:not(.active):hover .image-blog-container {
+  pointer-events: none;
+}
+
+.image-blog-container img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.image-blog-container:hover+.text-bottom-blog-container .text-blog {
+  filter: brightness(60%);
+}
+
+.image-blog-container:hover {
+  filter: brightness(60%);
+}
+
+.image-blog-container:hover+.text-bottom-blog-container .cta-arrow-blog {
+  gap: 12px;
+}
+
+.image-blog-container:before {
+  content: "";
+  position: absolute;
+  width: 110%;
+  height: 70%;
+  bottom: 0;
+  background: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0));
+  pointer-events: none;
+  z-index: 1;
+}
+
+.text-blog {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--gray1);
+  transition: all 0.3s ease;
+}
+
+.text-blog p {
+  font-size: 24px;
+  font-family: var(--ff-bold);
+  font-weight: var(--font-bold);
+  color: var(--white);
+}
+
+.text-bottom-blog-container {
+  z-index: 2;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  margin: 24px;
+  pointer-events: none;
+  gap: 12px;
+}
+
+.cta-arrow-blog {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.cta-arrow-blog img {
+  height: 12px;
+}
+
+@media (max-width: 1064px) {
+  .blog-slide-activator-container {
+    width: 100%;
+  }
+
+  .blog-carousel-container {
+    position: relative;
+    width: fit-content;
+  }
+
+  .blog-bottom-navigation-container-testimonials {
+    width: 662px;
+  }
+
+  .blog-carousel {
+    width: 662px;
+  }
+
+  .blog-slide {
+    flex: 0 0 calc(50% - 8px);
+  }
+}
+
+@media (max-width: 700px) {
+  .blog-slide {
+    flex: 0 0 100%;
+  }
+
+  .blog-carousel-container {
+    position: relative;
+    width: 350px;
+    padding: 0 24px 0 24px;
+  }
+
+  .blog-bottom-navigation-container-testimonials {
+    position: relative;
+    width: 350px;
+    padding: 0 24px 0 24px;
+  }
+
+  .blog-slide {
+    height: 380px;
+  }
+
+  .blog-close-button {
+    right: 16px;
+    top: 16px;
+  }
+}
+
+@media (max-width: 344px) {
+  .blog-carousel-container {
+    padding: 0 16px 0 16px;
+    width: 100vw;
+  }
+
+  .blog-bottom-navigation-container-testimonials {
+    padding: 0 16px 0 16px;
+    width: 100vw;
+  }
+}
+
+
+
+</style>
+
+
+</head>
+<body>
+
+
+
+    <div class="full-container">
+
+    <div class="blog-testimonial-container">
+        <div class="blog-carousel-container">
+          <div class="blog-carousel">
+    
+            <div class="blog-slide">
+              <a class="image-blog-container" href="images/pirma.webp">
+                <img src="images/pirma.webp" alt="blog bck">
+              </a>
+              <div class="text-bottom-blog-container">
+                <div class="text-blog">
+                  <p>Stipruolis</p>
+                  <h5>Benchina 5kg, skippina leg day, Viršilos fanas</h5>
+                </div>
+                <div class="cta-arrow-blog">
+                  <h5>Pažiūrėk iš arčiau</h5>
+                  <img src="images/arrow-left.svg" style="transform: rotate(180deg);" alt="arrow">
+                </div>
+              </div>
+            </div>
+    
+            <div class="blog-slide">
+              <a class="image-blog-container" href="images/antra.webp">
+                <img src="images/antra.webp" alt="blog bck">
+              </a>
+              <div class="text-bottom-blog-container">
+                <div class="text-blog">
+                  <p>Fortnite gangas</p>
+                  <h5>Kiečiausi fortnito žaidėjai vienoje nuotraukoje</h5>
+                </div>
+                <div class="cta-arrow-blog">
+                  <h5>Pažiūrėk iš arčiau</h5>
+                  <img src="images/arrow-left.svg" style="transform: rotate(180deg);" alt="arrow">
+                </div>
+              </div>
+            </div>
+    
+            <div class="blog-slide">
+              <a class="image-blog-container" href="images/laukiam.webp">
+                <img src="images/laukiam.webp" alt="blog bck">
+              </a>
+              <div class="text-bottom-blog-container">
+                <div class="text-blog">
+                  <p>Pasitarimas koridoriuje</p>
+                  <h5>Reikėjo ilgai laukti pirmos užduoties, bet aptarėme kuri mokykla geriausia - tai "Saulės" gimnazija</h5>
+                </div>
+                <div class="cta-arrow-blog">
+                  <h5>Pažiūrėk iš arčiau</h5>
+                  <img src="images/arrow-left.svg" style="transform: rotate(180deg);" alt="arrow">
+                </div>
+              </div>
+            </div>
+    
+            <div class="blog-slide">
+              <a class="image-blog-container" href="images/ilsimes.webp">
+                <img src="images/ilsimes.webp" alt="blog bck">
+              </a>
+              <div class="text-bottom-blog-container">
+                <div class="text-blog">
+                  <p>Atsigerk</p>
+                  <h5>Net ir kiečiausiams profams reikia pailsėti</h5>
+                </div>
+                <div class="cta-arrow-blog">
+                  <h5>Pažiūrėk iš arčiau</h5>
+                  <img src="images/arrow-left.svg" style="transform: rotate(180deg);" alt="arrow">
+                </div>
+              </div>
+            </div>
+
+            <div class="blog-slide">
+                <a class="image-blog-container" href="images/miega.webp">
+                  <img src="images/miega.webp" alt="blog bck">
+                </a>
+                <div class="text-bottom-blog-container">
+                  <div class="text-blog">
+                    <p>2 dirba 2 miega</p>
+                    <h5>Vieni stengėsi, kiti prie chebros nosį krapšto</h5>
+                  </div>
+                  <div class="cta-arrow-blog">
+                    <h5>Pažiūrėk iš arčiau</h5>
+                    <img src="images/arrow-left.svg" style="transform: rotate(180deg);" alt="arrow">
+                  </div>
+                </div>
+            </div>
+
+
+            <div class="blog-slide">
+                <a class="image-blog-container" href="images/matke.webp">
+                  <img src="images/matke.webp" alt="blog bck">
+                </a>
+                <div class="text-bottom-blog-container">
+                  <div class="text-blog">
+                    <p>"Smagioji" Matematika</p>
+                    <h5>Jūs net neįsivaizduojate, kaip "smagu" buvo 1h spręst matkę :D</h5>
+                  </div>
+                  <div class="cta-arrow-blog">
+                    <h5>Pažiūrėk iš arčiau</h5>
+                    <img src="images/arrow-left.svg" style="transform: rotate(180deg);" alt="arrow">
+                  </div>
+                </div>
+            </div>
+
+            <div class="blog-slide">
+                <a class="image-blog-container" href="images/prof.webp">
+                  <img src="images/prof.webp" alt="blog bck">
+                </a>
+                <div class="text-bottom-blog-container">
+                  <div class="text-blog">
+                    <p>Vienas profas komandoj</p>
+                    <h5>Tikrai ne aš svetainę padariau ir kitose užduotyse išcaryinau, galite nedėkoti xD</h5>
+                  </div>
+                  <div class="cta-arrow-blog">
+                    <h5>Pažiūrėk iš arčiau</h5>
+                    <img src="images/arrow-left.svg" style="transform: rotate(180deg);" alt="arrow">
+                  </div>
+                </div>
+            </div>
+    
+          </div>
+        </div>
+        <div class="blog-bottom-navigation-container-testimonials">
+          <div class="blog-dots">
+            <span class="blog-dot active" onclick="goToBlogSlide(0)"></span>
+            <span class="blog-dot" onclick="goToBlogSlide(1)"></span>
+            <span class="blog-dot" onclick="goToBlogSlide(2)"></span>
+            <span class="blog-dot" onclick="goToBlogSlide(3)"></span>
+          </div>
+          <div class="blog-arrows-testimonials-container">
+            <button class="blog-arrow left" onclick="moveBlogSlide(-1)">
+              <img src="images/arrow-left.svg" class="blog-arrow-left-arrow-svg">
+            </button>
+            <button class="blog-arrow right" onclick="moveBlogSlide(1)">
+              <img src="images/arrow-left.svg" class="blog-arrow-right-arrow-svg" style="transform: rotate(180deg);">
+            </button>
+          </div>
+        </div>
+      </div>
+    
+
+
+    </div>
+
+
+
+
+
+
+
+      <script>
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  updateBlogCarousel();
+});
+
+let currentBlogIndex = 0;
+const blogSlides = document.querySelectorAll('.blog-slide');
+const blogDots = document.querySelectorAll('.blog-dot');
+const blogCarousel = document.querySelector('.blog-carousel');
+
+function getActiveSlideCount() {
+  if (window.innerWidth > 1064) return 3;
+  if (window.innerWidth > 700) return 2;
+  return 1;
+}
+
+function moveBlogSlide(direction) {
+  const activeSlideCount = getActiveSlideCount();
+  currentBlogIndex += direction;
+
+  if (currentBlogIndex < 0) currentBlogIndex = blogSlides.length - activeSlideCount;
+  if (currentBlogIndex >= blogSlides.length - (activeSlideCount - 1)) currentBlogIndex = 0;
+
+  updateBlogCarousel();
+}
+
+function goToBlogSlide(index) {
+  const activeSlideCount = getActiveSlideCount();
+  currentBlogIndex = index % (blogSlides.length - (activeSlideCount - 1));
+  updateBlogCarousel();
+}
+
+function updateBlogCarousel() {
+  const blogCarouselWidth = blogCarousel.offsetWidth;
+  let gap;
+  if (window.innerWidth > 1064) {
+    gap = 4;
+  } else if (window.innerWidth > 700) {
+    gap = 8;
+  } else {
+    gap = 16;
+  }
+
+  const activeSlideCount = getActiveSlideCount();
+  const slideWidth = blogCarouselWidth / activeSlideCount;
+  const newTransform = -(currentBlogIndex * (slideWidth + gap));
+
+  blogCarousel.style.transform = `translateX(${newTransform}px)`;
+
+  blogSlides.forEach((slide, index) => {
+    slide.classList.remove('active');
+    if (index >= currentBlogIndex && index < currentBlogIndex + activeSlideCount) {
+      slide.classList.add('active');
+    }
+  });
+
+  blogDots.forEach((dot, index) => {
+    dot.classList.remove('active');
+    if (index >= currentBlogIndex && index < currentBlogIndex + activeSlideCount) {
+      dot.classList.add('active');
+    }
+  });
+}
+
+window.addEventListener('resize', () => {
+  updateBlogCarousel();
+});
+
+const blogPlayButtons = document.querySelectorAll(".blog-slide-activator-container");
+const blogSvg1Elements = document.querySelectorAll("#blog-svg1");
+const blogSvg2Elements = document.querySelectorAll("#blog-svg2");
+const blogVideoSliders = document.querySelectorAll(".blog-on-top-of-video-slider");
+const blogVideos = document.querySelectorAll(".blog-testimonial-video");
+
+const changeBlogSVG = (index) => {
+  blogSvg1Elements[index].style.opacity = "0";
+  blogSvg2Elements[index].style.opacity = "1";
+  blogVideoSliders[index].classList.add("hovered");
+  blogVideos[index].style.transition = "playback-rate 0.3s ease";
+  blogVideos[index].playbackRate = 0;
+};
+
+const restoreBlogSVG = (index) => {
+  blogSvg1Elements[index].style.opacity = "1";
+  blogSvg2Elements[index].style.opacity = "0";
+  blogVideoSliders[index].classList.remove("hovered");
+  blogVideos[index].style.transition = "playback-rate 0 .3s ease";
+  blogVideos[index].playbackRate = 1;
+};
+
+blogPlayButtons.forEach((playButton, index) => {
+  playButton.addEventListener("mouseover", () => changeBlogSVG(index));
+  playButton.addEventListener("mouseout", () => restoreBlogSVG(index));
+  playButton.addEventListener("touchstart", (event) => {
+    changeBlogSVG(index);
+    event.stopPropagation();
+  });
+  playButton.addEventListener("touchend", (event) => {
+    restoreBlogSVG(index);
+    event.stopPropagation();
+  });
+  playButton.addEventListener("touchcancel", () => restoreBlogSVG(index));
+});
+
+const blogArrows = document.querySelectorAll('.blog-arrow');
+
+blogArrows.forEach(arrow => {
+  const arrowImage = arrow.querySelector('img');
+  arrow.addEventListener('touchstart', function () {
+    arrow.style.backgroundColor = 'rgb(255, 255, 255)';
+    arrow.style.transform = 'scale(0.95) translateZ(0)';
+    arrow.style.opacity = '0.9';
+    if (arrowImage) {
+      arrowImage.style.filter = 'brightness(0)';
+    }
+  });
+
+  arrow.addEventListener('touchend', function () {
+    arrow.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+    arrow.style.transform = 'scale(1)';
+    arrow.style.opacity = '1';
+    if (arrowImage) {
+      arrowImage.style.filter = 'none';
+    }
+  });
+});
+
+
+
+      </script>
+    
+</body>
+</html>
