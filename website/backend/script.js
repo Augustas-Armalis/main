@@ -78,7 +78,7 @@ const setupButtons = () => {
 const addHoverEffect = (element) => {
   const hoverIn = () => element.style.backgroundColor = "var(--gray3)";
   const hoverOut = () => element.style.backgroundColor = "transparent";
-  
+
   element.addEventListener("mouseenter", hoverIn);
   element.addEventListener("mouseleave", hoverOut);
   element.addEventListener("touchstart", hoverIn);
@@ -122,9 +122,9 @@ function executeAbove1064px() {
   if (window.innerWidth > 1064) {
     console.clear();
 
-    const circleDissapearTo = document.querySelectorAll('.visit-button, .template-button, .website-view-container, .back-home-button-holder');
+    const circleDissapearTo = document.querySelectorAll('.visit-button, .template-button, .website-view-container, .back-home-button-holder, .contact-icon-a');
     const rectangleMorphTo = document.querySelectorAll('.video-itself-container, .desktop-button, .mobile-button');
-    
+
     const circleElement = document.querySelector('.circle');
     const mouse = { x: 0, y: 0 };
     const previousMouse = { x: 0, y: 0 };

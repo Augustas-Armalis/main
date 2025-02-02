@@ -1,9 +1,10 @@
-html, body{
-display: flex;
-align-items: flex-start;
-justify-content: center;
-width: 100%;
-height: 100%;
+html,
+body {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
 }
 
 .circle {
@@ -28,7 +29,7 @@ height: 100%;
     padding: 0;
     transition: all 0.6s ease;
 }
-    
+
 .circle-text {
     font-size: 12px;
     line-height: 0px;
@@ -109,7 +110,7 @@ iframe#ytplayer {
     align-items: center;
     gap: 10px;
     cursor: pointer;
-    transition: all 0.3s ease; 
+    transition: all 0.3s ease;
     color: white;
     user-select: none;
     border-radius: 12px;
@@ -140,7 +141,7 @@ iframe#ytplayer {
     max-width: 400px;
     position: sticky;
     height: fit-content;
-    top:128px;
+    top: 128px;
     opacity: 0;
     transform: translateY(100px);
 }
@@ -165,7 +166,8 @@ iframe#ytplayer {
     gap: 42px;
 }
 
-#desktop-button, #mobile-button {
+#desktop-button,
+#mobile-button {
     width: 40px;
     height: 40px;
     cursor: pointer;
@@ -177,18 +179,20 @@ iframe#ytplayer {
     transition: border-bottom 0.3s ease;
 }
 
-#desktop-button.active, #mobile-button.active {
+#desktop-button.active,
+#mobile-button.active {
     border-bottom: 1px solid var(--white);
 }
 
-#desktop-icon, #mobile-icon {
+#desktop-icon,
+#mobile-icon {
     width: 27px;
     height: 27px;
     filter: brightness(35%);
     transition: all 0.3s ease;
 }
 
-#desktop-button.active #desktop-icon, 
+#desktop-button.active #desktop-icon,
 #mobile-button.active #mobile-icon {
     filter: brightness(100%);
 }
@@ -267,6 +271,9 @@ iframe#ytplayer {
 
 .text-below-vid {
     color: var(--gray2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .title-holder {
@@ -323,7 +330,24 @@ iframe#ytplayer {
     background-color: var(--gray1);
 }
 
-footer{
+.contact-icon {
+    opacity: 47%;
+    transition: 0.15s ease;
+}
+
+.contact-icon-a:hover .contact-icon {
+    opacity: 100%;
+}
+
+.contacts-holder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    flex-direction: row;
+}
+
+footer {
     width: 100%;
     height: fit-content;
     display: flex;
@@ -334,12 +358,12 @@ footer{
     color: var(--gray2);
 }
 
-#clock{
+#clock {
     color: var(--gray1);
 }
 
 @media (max-width: 1064px) {
-    .circle{
+    .circle {
         display: none;
     }
 
