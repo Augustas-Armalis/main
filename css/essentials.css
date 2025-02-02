@@ -1,4 +1,5 @@
-html {
+html,
+body {
   scroll-behavior: smooth;
   font-family: 'SF Pro Display Regular';
   color: var(--white);
@@ -9,16 +10,17 @@ html {
 }
 
 
-body {
+/* body {
   scroll-behavior: smooth;
   scroll-padding-top: calc(8rem + 100px);
   font-family: 'SF Pro Display Regular';
   background-color: var(--black);
   color: var(--white);
-  width: 100%;
+  width: 100vw;
   height: 100%;
   position: relative;
-}
+  overflow-x: hidden;
+} */
 
 img,
 video {

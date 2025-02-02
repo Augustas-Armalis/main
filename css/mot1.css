@@ -1744,28 +1744,6 @@ iframe#ytplayer {
   justify-content: space-between;
 }
 
-.footer-image-container {
-  width: 100vw;
-  height: fit-content;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: -350px;
-}
-
-.footer-image-holder {
-  width: 100vw;
-  height: fit-content;
-  position: absolute;
-  z-index: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  bottom: 0;
-  overflow: hidden;
-}
-
 .footer-logo {
   height: 22px;
   width: auto;
@@ -1877,15 +1855,6 @@ iframe#ytplayer {
     align-items: center;
     display: flex;
     flex-direction: column;
-  }
-
-  .footer-image-container {
-    margin-bottom: 220px;
-  }
-
-  .footer-image {
-    height: 500px;
-    width: auto;
   }
 
   .footer-holder {
