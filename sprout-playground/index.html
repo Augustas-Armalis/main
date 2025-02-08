@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+
+  <title>Sprout Playground</title> <!-- Change the title -->
+  <link rel="stylesheet" href="styles.css">
+
+
+</head>
+
+<body>
+
+
+  <div class="welcome-screen" onclick="closeWelcomeScreen()">
+
+    <p>Click anywhere to start!</p>
+
+
+  </div>
+
+
+  <div class="background-image-container">
+
+    <div class="image-holder">
+
+      <img src="images/clouds.png" alt="clouds" class="clouds">
+
+      <img src="images/background.webp" alt="bck" class="background-image">
+
+
+      <a href="https://x.com/SproutCitizens" target="_blank">
+        <div class="house-image-container x-house">
+          <img src="images/x-house.webp" alt="house">
+        </div>
+      </a>
+
+      <a href="https://discord.gg/sprout" target="_blank">
+        <div class="house-image-container dc-stone">
+          <img src="images/Discord.webp" alt="house">
+        </div>
+      </a>
+
+      <a href="https://www.xcoach.ai/" target="_blank">
+        <div class="house-image-container x-coach">
+          <img src="images/x-coach.webp" alt="house">
+        </div>
+      </a>
+
+      <div class="disabled-house-image-container brow-house" onclick="playLottie(this)">
+        <img src="images/brown-house.webp" alt="house">
+        <div class="lock-lottie-container">
+          <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+            type="module"></script>
+          <dotlottie-player class="lottie-box brown-house-lock"
+            src="https://lottie.host/43e64774-d956-4e71-994a-ecf447673795/MXCZTO7exS.lottie" background="transparent"
+            speed="1"></dotlottie-player>
+        </div>
+      </div>
+
+      <div class="disabled-house-image-container tree" onclick="playLottie(this)">
+        <img src="images/tree.webp" alt="house">
+        <div class="lock-lottie-container">
+          <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+            type="module"></script>
+          <dotlottie-player class="lottie-box tree-lock"
+            src="https://lottie.host/43e64774-d956-4e71-994a-ecf447673795/MXCZTO7exS.lottie" background="transparent"
+            speed="1"></dotlottie-player>
+        </div>
+      </div>
+
+      <div class="disabled-house-image-container cyan" onclick="playLottie(this)">
+        <img src="images/cyan.webp" alt="house">
+        <div class="lock-lottie-container">
+          <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+            type="module"></script>
+          <dotlottie-player class="lottie-box cyan-lock"
+            src="https://lottie.host/43e64774-d956-4e71-994a-ecf447673795/MXCZTO7exS.lottie" background="transparent"
+            speed="1"></dotlottie-player>
+        </div>
+      </div>
+
+      <div class="disabled-house-image-container rocket" onclick="playLottie(this)">
+        <img src="images/rocket.webp" alt="house">
+        <div class="lock-lottie-container">
+          <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+            type="module"></script>
+          <dotlottie-player class="lottie-box rocket-lock"
+            src="https://lottie.host/43e64774-d956-4e71-994a-ecf447673795/MXCZTO7exS.lottie" background="transparent"
+            speed="1"></dotlottie-player>
+        </div>
+      </div>
+
+      <div class="disabled-house-image-container hospital" onclick="playLottie(this)">
+        <img src="images/hospital.webp" alt="house">
+        <div class="lock-lottie-container">
+          <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+            type="module"></script>
+          <dotlottie-player class="lottie-box hospital-lock"
+            src="https://lottie.host/43e64774-d956-4e71-994a-ecf447673795/MXCZTO7exS.lottie" background="transparent"
+            speed="1"></dotlottie-player>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+
+
+
+
+
+  <div class="audio-toggle" id="audio-toggle">
+    <img src="images/SPEAKER-2.webp" id="audio-icon" alt="Speaker Icon">
+  </div>
+
+  <audio id="bg-music" loop>
+    <source src="music/bck music.MP3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <audio id="click-sound">
+    <source src="music/click on.MP3" type="audio/mpeg">
+  </audio>
+
+  <audio id="release-sound">
+    <source src="music/click off.MP3" type="audio/mpeg">
+  </audio>
+
+  <audio id="lockSound" src="music/locked.MP3" preload="auto"></audio>
+
+
+  <script>
+
+    document.addEventListener("visibilitychange", () => {
+      document.hidden ? audio.pause() : !isMuted && audio.play();
+    });
+
+    function playLottie(element) {
+      const houseImage = element.querySelector('img');
+      const lottie = element.querySelector('.lock-lottie-container dotlottie-player');
+      const lockSound = document.getElementById('lockSound');
+
+      if (!isMuted) lockSound.play();
+
+      houseImage.classList.add('shake');
+      lottie.stop();
+      lottie.play();
+
+      setTimeout(() => houseImage.classList.remove('shake'), 300);
+    }
+
+
+    window.onload = () => {
+      if (!localStorage.getItem('welcomeClosed')) {
+        document.querySelector('.welcome-screen').classList.remove('hidden');
+      }
+      startAudio();
+    };
+
+    function closeWelcomeScreen() {
+      document.querySelector('.welcome-screen').classList.add('hidden');
+      localStorage.setItem('welcomeClosed', 'true');
+    }
+
+    const audio = document.getElementById("bg-music");
+    const audioToggle = document.getElementById("audio-toggle");
+    const audioIcon = document.getElementById("audio-icon");
+    const clickSound = document.getElementById("click-sound");
+    const releaseSound = document.getElementById("release-sound");
+
+    let isMuted = localStorage.getItem('audioMuted') === 'true';
+
+    function fadeAudio(targetVolume, callback) {
+      let currentVolume = audio.volume;
+      const fadeTime = 300, steps = 30, volumeStep = (currentVolume - targetVolume) / steps;
+      let stepCount = 0;
+
+      const fadeInterval = setInterval(() => {
+        stepCount++;
+        audio.volume = Math.max(0, Math.min(1, audio.volume - volumeStep));
+
+        if (stepCount >= steps) {
+          clearInterval(fadeInterval);
+          callback && callback();
+        }
+      }, fadeTime / steps);
+    }
+
+    function startAudio() {
+      if (!isMuted) {
+        audio.volume = 1;
+        audio.play().catch(() => {
+          console.log("Auto-play blocked, retrying after user interaction.");
+          document.addEventListener("click", playAudioOnClick);
+          document.addEventListener("touchstart", playAudioOnClick);
+        });
+      } else {
+        audio.volume = 0;
+      }
+      updateAudioIcon();
+    }
+
+    function playAudioOnClick() {
+      audio.play().catch(() => console.log("Still blocked, please allow audio to play"));
+      document.removeEventListener("click", playAudioOnClick);
+      document.removeEventListener("touchstart", playAudioOnClick);
+    }
+
+    function updateAudioIcon() {
+      audioIcon.src = isMuted ? 'images/SPEAKER-1.webp' : 'images/SPEAKER-2.webp';
+    }
+
+    audioToggle.addEventListener("click", () => {
+      if (audio.paused) {
+        audio.volume = 0;
+        audio.play();
+        fadeAudio(1);
+        isMuted = false;
+      } else {
+        fadeAudio(0, () => audio.pause());
+        isMuted = true;
+      }
+      localStorage.setItem('audioMuted', isMuted.toString());
+      updateAudioIcon();
+    });
+
+    function handleClickEvent() {
+      if (!isMuted) clickSound.play();
+    }
+
+    function handleReleaseEvent() {
+      if (!isMuted) releaseSound.play();
+    }
+
+    function handleTouchEvents() {
+      if (window.innerWidth <= 700) {
+        document.addEventListener("touchstart", handleClickEvent);
+        document.addEventListener("touchend", handleReleaseEvent);
+      } else {
+        document.removeEventListener("touchstart", handleClickEvent);
+        document.removeEventListener("touchend", handleReleaseEvent);
+      }
+    }
+
+    function handleMouseEvents() {
+      if (window.innerWidth > 700) {
+        document.addEventListener("mousedown", handleClickEvent);
+        document.addEventListener("mouseup", handleReleaseEvent);
+      } else {
+        document.removeEventListener("mousedown", handleClickEvent);
+        document.removeEventListener("mouseup", handleReleaseEvent);
+      }
+    }
+
+    handleTouchEvents();
+    handleMouseEvents();
+
+    window.addEventListener("resize", () => {
+      handleTouchEvents();
+      handleMouseEvents();
+    });
+
+    updateAudioIcon();
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,309 @@
+img,
+video {
+  pointer-events: none;
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: inherit;
+}
+
+
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a:focus,
+a:visited,
+a:active {
+  outline: none;
+}
+
+html,
+body {
+  overflow: hidden;
+  background-color: #ADF0F0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+img::selection {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+::selection {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+::-moz-selection {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+/* ------------------ */
+
+.welcome-screen {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 900000000;
+  background-color: rgba(0, 6, 2, 0.8);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+}
+
+.welcome-screen.hidden {
+  display: none;
+}
+
+.background-image-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 180px;
+  overflow: hidden;
+}
+
+.image-holder {
+  position: relative;
+  height: 100vh;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.background-image {
+  height: 125vh;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  object-position: bottom;
+}
+
+.house-image-container {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 12%;
+  height: auto;
+  cursor: pointer;
+  transform-origin: center;
+  transition: all 0.2s ease;
+}
+
+.x-house {
+  top: 52%;
+  left: 40%;
+  width: 8%;
+}
+
+.dc-stone {
+  top: 74%;
+  left: 40.8%;
+  width: 6%;
+}
+
+.x-coach {
+  top: 37%;
+  left: 61%;
+  width: 8%;
+}
+
+
+.house-image-container:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+  filter: drop-shadow(0 0 15px rgba(63, 255, 30, 0.8));
+}
+
+.house-image-container:active {
+  filter: brightness(90%);
+}
+
+.house-image-container img {
+  width: 100%;
+  height: auto;
+}
+
+#audio-icon {
+  width: 70px;
+  height: 70px;
+}
+
+.audio-toggle {
+  cursor: pointer;
+  position: fixed;
+  z-index: 9000;
+  right: 30px;
+  top: 20px;
+  background-color: rgba(127, 255, 212, 0);
+}
+
+.audio-toggle:active {
+  filter: brightness(80%);
+}
+
+.disabled-house-image-container {
+  position: absolute;
+
+  transform: translate(-50%, -50%);
+
+  height: auto;
+  cursor: pointer;
+  transform-origin: center;
+  transition: all 0.2s ease;
+}
+
+.brow-house {
+  top: 63%;
+  left: 54%;
+  width: 9%;
+}
+
+.tree {
+  top: 34%;
+  left: 48.5%;
+  width: 14.5%;
+}
+
+.cyan {
+  top: 22%;
+  left: 37%;
+  width: 9.2%;
+}
+
+.rocket {
+  top: 10%;
+  left: 45%;
+  width: 4.5%;
+}
+
+.hospital {
+  top: 13%;
+  left: 54%;
+  width: 9%;
+}
+
+.disabled-house-image-container:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+.disabled-house-image-container:active {
+  filter: brightness(90%);
+}
+
+.disabled-house-image-container img {
+  width: 100%;
+  height: auto;
+  filter: brightness(50%);
+}
+
+.lottie-box {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  flex-shrink: 0;
+}
+
+.brown-house-lock {
+  top: 50%;
+  left: 57%;
+}
+
+.tree-lock {
+  top: 34%;
+  left: 46%;
+}
+
+.cyan-lock {
+  top: 34%;
+  left: 46%;
+}
+
+.rocket-lock {
+  top: 50%;
+  left: 51%;
+}
+
+.hospital-lock {
+  top: 47%;
+  left: 58%;
+}
+
+.disabled-house-image-container img.shake {
+  animation: shake 0.27s ease;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(5deg);
+  }
+
+  50% {
+    transform: rotate(-5deg);
+  }
+
+  75% {
+    transform: rotate(5deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.clouds {
+  position: absolute;
+  bottom: -140px;
+  height: 200px;
+  width: auto;
+  z-index: 999;
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .background-image-container {
+    padding-left: 20px;
+    padding-bottom: 60px;
+  }
+
+  .background-image {
+    height: 93vh;
+  }
+
+  .image-holder {
+    height: 74vh;
+  }
+
+  .clouds {
+    display: block;
+  }
+
+  .lottie-box {
+    width: 40px;
+    height: 40px;
+  }
+
+  #audio-icon {
+    width: 50px;
+    height: 50px;
+  }
+}
