@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
     <meta name="keywords"
-    content="AWeb, Augustas Web, Augustas Websites, August Websites, website design, website development, web design agency, web development agency, custom websites, professional website design, responsive web design, e-commerce website design, business websites, digital agency, custom web solutions, website redesign, small business websites, SEO-friendly websites, affordable website design, custom web development for small businesses, responsive website development, web design for startups, SEO-friendly web design services, UX/UI design, corporate website design solutions, personalized website design agency, fast-loading websites, website designer, mobile-friendly websites, branding and website design">
+        content="AWeb, Augustas Web, Augustas Websites, August Websites, website design, website development, web design agency, web development agency, custom websites, professional website design, responsive web design, e-commerce website design, business websites, digital agency, custom web solutions, website redesign, small business websites, SEO-friendly websites, affordable website design, custom web development for small businesses, responsive website development, web design for startups, SEO-friendly web design services, UX/UI design, corporate website design solutions, personalized website design agency, fast-loading websites, website designer, mobile-friendly websites, branding and website design">
 
     <meta name="author" content="Augustas | AWeb">
     <meta name="theme-color" content="#000000">
@@ -42,48 +42,48 @@
 
     <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css">
     <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
-  
+
 </head>
 
 <body>
 
-<!-- Lenis -->
+    <!-- Lenis -->
 
     <script>
-    function isTouchDevice() {
-        return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    }
-
-    if (!isTouchDevice()) {
-        const lenis = new Lenis({
-        autoRaf: false,
-        smoothWheel: true,
-        orientation: 'vertical',
-        gestureOrientation: 'vertical',
-        lerp: 0.1,
-        });
-
-        const scrollPosition = sessionStorage.getItem('scrollPosition') || 0;
-
-        window.addEventListener('beforeunload', () => {
-        sessionStorage.setItem('scrollPosition', window.scrollY);
-        });
-
-        window.addEventListener('load', () => {
-        window.scrollTo(0, scrollPosition);
-        });
-
-        function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
+        function isTouchDevice() {
+            return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
         }
 
-        requestAnimationFrame(raf);
+        if (!isTouchDevice()) {
+            const lenis = new Lenis({
+                autoRaf: false,
+                smoothWheel: true,
+                orientation: 'vertical',
+                gestureOrientation: 'vertical',
+                lerp: 0.1,
+            });
 
-        lenis.on('scroll', (e) => {
-        console.log(e);
-        });
-    }
+            const scrollPosition = sessionStorage.getItem('scrollPosition') || 0;
+
+            window.addEventListener('beforeunload', () => {
+                sessionStorage.setItem('scrollPosition', window.scrollY);
+            });
+
+            window.addEventListener('load', () => {
+                window.scrollTo(0, scrollPosition);
+            });
+
+            function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+
+            requestAnimationFrame(raf);
+
+            lenis.on('scroll', (e) => {
+                console.log(e);
+            });
+        }
     </script>
 
     <div class="content-holder">
@@ -101,166 +101,334 @@
                     <img src="images/Sun.svg" alt="switch" class="switch-svg sun">
                     <img src="images/Moon.svg" alt="switch" class="switch-svg moon">
                 </div>
-                
+
             </div>
 
             <div class="dissapear-to-home">
-            <img src="images/augustas.png" alt="Augustas" class="augustas-image">
+                <img src="images/augustas.png" alt="Augustas" class="augustas-image">
 
-            <div class="below-text-about-container">
-                <p class="about-text"><span style="color: white;">Hey there!</span><br><br>
+                <div class="below-text-about-container">
+                    <p class="about-text"><span style="color: var(--white)">Hey there!</span><br><br>
 
-                    I’m Augustas a passionate web designer, developer, and founder of <a target="_blank" href="https://augustas.co" style="color: white;">AWeb</a> - web agency.<br><br>
-                    
-                    For over 3 years, I’ve been crafting unique, high-quality designs, and now, I’m excited to share them with you!<br><br>
-                    
-                    My goal is simple: to inspire, help you grow, and make your creative journey easier as a Start-up or anybody following along.<br><br>
-                    
-                    Designing these has been an incredible experience, and I hope you’ll enjoy using them as much as I enjoyed creating them.<br><br>
-                    
-                    If you’re ready to take your projects to the next level, <a href="https://buy.stripe.com/dR63en9YTawY4UM14o" style="color: white;">grab these designs</a> and use them purposefully now!<br><br>
-                    
-                    Your support means the world to me!</p>
-            </div>
+                        I’m Augustas a passionate web designer, developer, and founder of <a target="_blank"
+                            href="https://augustas.co" style="color: var(--white)">AWeb</a> - web agency.<br><br>
+
+                        For over 3 years, I’ve been crafting unique, high-quality designs, and now, I’m excited to share
+                        them with you!<br><br>
+
+                        My goal is simple: to inspire, help you grow, and make your creative journey easier as a
+                        Start-up or anybody following along.<br><br>
+
+                        Designing these has been an incredible experience, and I hope you’ll enjoy using them as much as
+                        I enjoyed creating them.<br><br>
+
+                        If you’re ready to take your projects to the next level, <a
+                            href="https://buy.stripe.com/dR63en9YTawY4UM14o" style="color: var(--white)">grab these
+                            designs</a> and use them purposefully now!<br><br>
+
+                        Your support means the world to me!</p>
+                </div>
             </div>
 
             <div class="dissaper-to-designer" style="display: none;">
-            <div class="main-title-holder">
+                <div class="main-title-holder">
 
-                <div class="figma-box">
-                    <img src="images/figma.svg" alt="figma">
-                    <p class="figma-text">Figma templates</p>
+                    <div class="figma-box">
+                        <img src="images/figma.svg" alt="figma">
+                        <p class="figma-text">Figma templates</p>
+                    </div>
+
+                    <p class="main-title">25 Hero-Designs</p>
+                    <p class="main-alt">Make people scroll, & buy from you<br>by having a hero section like this</p>
+
+                    <a href="https://buy.stripe.com/dR63en9YTawY4UM14o" style="text-decoration: none;">
+                        <div class="main-cta-button" style="margin-bottom: 12px;">
+                            <p class="cta-text">Acquire designs</p>
+                        </div>
+                    </a>
+
+                    <a href="https://augustas.co/hero-roast" style="text-decoration: none;" target="_blank">
+                        <div class="main-cta-button black-cta">
+                            <p class="cta-text black-cta-text">Want a custom one?</p>
+                        </div>
+                    </a>
+
+                    <p class="tes-text" style="margin-top: 64px;">550+ satisfied users</p>
                 </div>
 
-                <p class="main-title">25 Hero-Designs</p>
-                <p class="main-alt">Make people scroll, & buy from you<br>by having a hero section like this</p>
+                <div class="infinite-scroller-container">
+                    <div class="scroller-wrapper">
 
-                <a href="https://buy.stripe.com/dR63en9YTawY4UM14o" style="text-decoration: none;">
-                    <div class="main-cta-button" style="margin-bottom: 12px;">
-                        <p class="cta-text">Acquire designs</p>
-                    </div>
-                </a>
-
-                <a href="https://augustas.co/hero-roast" style="text-decoration: none;" target="_blank">
-                    <div class="main-cta-button black-cta">
-                        <p class="cta-text black-cta-text">Want a custom one?</p>
-                    </div>
-                </a>
-
-                <p class="tes-text" style="margin-top: 64px;">550+ satisfied users</p>
-            </div>
-
-            <div class="infinite-scroller-container">
-                <div class="scroller-wrapper">
-                    
-                    <div class="testimonial-box">
-                        <div class="testimonial-box-holder">
-                            <img src="images/pfps/ahmad.png" alt="pfp" class="testimonial-pfp">
-                            <div class="text-side-testimonial">
-                                <p class="tes-title" >Ahmad</p>
-                                <p class="tes-text">Those are great. You deserve the best bud</p>
+                        <div class="testimonial-box">
+                            <div class="testimonial-box-holder">
+                                <img src="images/pfps/ahmad.png" alt="pfp" class="testimonial-pfp">
+                                <div class="text-side-testimonial">
+                                    <p class="tes-title">Ahmad</p>
+                                    <p class="tes-text">Those are great. You deserve the best bud</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="testimonial-box">
-                        <div class="testimonial-box-holder">
-                            <img src="images/pfps/motiejus.jpg" alt="pfp" class="testimonial-pfp">
-                            <div class="text-side-testimonial">
-                                <p class="tes-title">Motiejus</p>
-                                <p class="tes-text">Web designs looks clean, and just freaking cool. Nothing more,  nothing less</p>
+                        <div class="testimonial-box">
+                            <div class="testimonial-box-holder">
+                                <img src="images/pfps/motiejus.png" alt="pfp" class="testimonial-pfp">
+                                <div class="text-side-testimonial">
+                                    <p class="tes-title">Motiejus</p>
+                                    <p class="tes-text">Web designs looks clean, and just freaking cool. Nothing more,
+                                        nothing less</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="testimonial-box">
-                        <div class="testimonial-box-holder">
-                            <img src="images/pfps/paul.png" alt="pfp" class="testimonial-pfp">
-                            <div class="text-side-testimonial">
-                                <p class="tes-title">Paul</p>
-                                <p class="tes-text">Was searching for inspiration which I could use in my project and I’m glad I found this!</p>
+                        <div class="testimonial-box">
+                            <div class="testimonial-box-holder">
+                                <img src="images/pfps/paul.png" alt="pfp" class="testimonial-pfp">
+                                <div class="text-side-testimonial">
+                                    <p class="tes-title">Paul</p>
+                                    <p class="tes-text">Was searching for inspiration which I could use in my project
+                                        and I’m glad I found this!</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="testimonial-box">
-                        <div class="testimonial-box-holder">
-                            <img src="images/pfps/alex.png" alt="pfp" class="testimonial-pfp">
-                            <div class="text-side-testimonial">
-                                <p class="tes-title">Alex</p>
-                                <p class="tes-text">Web designs look, and just freaking cool. Nothing more, nothing less</p>
+                        <div class="testimonial-box">
+                            <div class="testimonial-box-holder">
+                                <img src="images/pfps/alex.png" alt="pfp" class="testimonial-pfp">
+                                <div class="text-side-testimonial">
+                                    <p class="tes-title">Alex</p>
+                                    <p class="tes-text">Web designs look, and just freaking cool. Nothing more, nothing
+                                        less</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="testimonial-box">
-                        <div class="testimonial-box-holder">
-                            <img src="images/pfps/mothl.jpg" alt="pfp" class="testimonial-pfp">
-                            <div class="text-side-testimonial">
-                                <p class="tes-title">Motiejus</p>
-                                <p class="tes-text">Web designs look, and just freaking cool. Nothing more, nothing less</p>
+                        <div class="testimonial-box">
+                            <div class="testimonial-box-holder">
+                                <img src="images/pfps/levo.png" alt="pfp" class="testimonial-pfp">
+                                <div class="text-side-testimonial">
+                                    <p class="tes-title">Levo</p>
+                                    <p class="tes-text">I enjoyed using the designs and especially that I had the right
+                                        to edit everything to my liking</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="testimonial-box">
-                        <div class="testimonial-box-holder">
-                            <img src="images/pfps/mothl.jpg" alt="pfp" class="testimonial-pfp">
-                            <div class="text-side-testimonial">
-                                <p class="tes-title">Motiejus</p>
-                                <p class="tes-text">Web designs look, and just freaking cool. Nothing more, nothing less</p>
+                        <div class="testimonial-box">
+                            <div class="testimonial-box-holder">
+                                <img src="images/pfps/sandeep.png" alt="pfp" class="testimonial-pfp">
+                                <div class="text-side-testimonial">
+                                    <p class="tes-title">Sandeep</p>
+                                    <p class="tes-text">This helped me a lot. Saved some time & gave inspiration which I
+                                        could use while creating</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="testimonial-box">
-                        <div class="testimonial-box-holder">
-                            <img src="images/pfps/mothl.jpg" alt="pfp" class="testimonial-pfp">
-                            <div class="text-side-testimonial">
-                                <p class="tes-title">Motiejus</p>
-                                <p class="tes-text">Web designs look, and just freaking cool. Nothing more, nothing less</p>
+                        <div class="testimonial-box">
+                            <div class="testimonial-box-holder">
+                                <img src="images/pfps/timo.png" alt="pfp" class="testimonial-pfp">
+                                <div class="text-side-testimonial">
+                                    <p class="tes-title">Timo</p>
+                                    <p class="tes-text">Didn’t expect them to be this good, helped me a lot when
+                                        designing!</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="testimonial-box">
-                        <div class="testimonial-box-holder">
-                            <img src="images/pfps/mothl.jpg" alt="pfp" class="testimonial-pfp">
-                            <div class="text-side-testimonial">
-                                <p class="tes-title">Motiejus</p>
-                                <p class="tes-text">Web designs look, and just freaking cool. Nothing more, nothing less</p>
+                        <div class="testimonial-box">
+                            <div class="testimonial-box-holder">
+                                <img src="images/pfps/hisyam.png" alt="pfp" class="testimonial-pfp">
+                                <div class="text-side-testimonial">
+                                    <p class="tes-title">Hisyam</p>
+                                    <p class="tes-text">Just one word - inspiring. Maybe a bit more - well built,
+                                        outstanding and awesome</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
+                        <div class="testimonial-box">
+                            <div class="testimonial-box-holder">
+                                <img src="images/pfps/samir.png" alt="pfp" class="testimonial-pfp">
+                                <div class="text-side-testimonial">
+                                    <p class="tes-title">Samir</p>
+                                    <p class="tes-text">The designs were truly awesome and the fact that I could edit
+                                        them in any way was incredible!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-box">
+                            <div class="testimonial-box-holder">
+                                <img src="images/pfps/yoruba.png" alt="pfp" class="testimonial-pfp">
+                                <div class="text-side-testimonial">
+                                    <p class="tes-title">Yoruba</p>
+                                    <p class="tes-text">I must say, it really opened my eyes to new
+                                        ideas and techniques, loved the designs!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-box">
+                            <div class="testimonial-box-holder">
+                                <img src="images/pfps/dave.png" alt="pfp" class="testimonial-pfp">
+                                <div class="text-side-testimonial">
+                                    <p class="tes-title">Dave</p>
+                                    <p class="tes-text">I went through the designs and I'm in awe at the techniques used
+                                        to get such high quality designs</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-box">
+                            <div class="testimonial-box-holder">
+                                <img src="images/pfps/waseem.png" alt="pfp" class="testimonial-pfp">
+                                <div class="text-side-testimonial">
+                                    <p class="tes-title">Waseem</p>
+                                    <p class="tes-text">The quality of these designs is exceeded my expectations, this
+                                        is a must to have</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-box">
+                            <div class="testimonial-box-holder">
+                                <img src="images/pfps/piotr.png" alt="pfp" class="testimonial-pfp">
+                                <div class="text-side-testimonial">
+                                    <p class="tes-title">Piotr</p>
+                                    <p class="tes-text">Love them! Great marketing techniques you used in the designs,
+                                        they even convinced me to buy</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-box">
+                            <div class="testimonial-box-holder">
+                                <img src="images/pfps/philip.png" alt="pfp" class="testimonial-pfp">
+                                <div class="text-side-testimonial">
+                                    <p class="tes-title">Philip</p>
+                                    <p class="tes-text">Thankyou for the designs! If not them, I wouldn’t have saved so
+                                        much time while designing!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-box">
+                            <div class="testimonial-box-holder">
+                                <img src="images/pfps/gaius.png" alt="pfp" class="testimonial-pfp">
+                                <div class="text-side-testimonial">
+                                    <p class="tes-title">Gaius</p>
+                                    <p class="tes-text">I must say, these designs are really well crafted. Good job man
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-box">
+                            <div class="testimonial-box-holder">
+                                <img src="images/pfps/uihut.png" alt="pfp" class="testimonial-pfp">
+                                <div class="text-side-testimonial">
+                                    <p class="tes-title">UIHut</p>
+                                    <p class="tes-text">We have created thousands of website design resources, but never
+                                        seen anything like this</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-box">
+                            <div class="testimonial-box-holder">
+                                <img src="images/pfps/kovenant.png" alt="pfp" class="testimonial-pfp">
+                                <div class="text-side-testimonial">
+                                    <p class="tes-title">Kovenant</p>
+                                    <p class="tes-text">Developing websites is time consuming in itself, and having
+                                        designs done for you - is a life saver</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-box">
+                            <div class="testimonial-box-holder">
+                                <img src="images/pfps/maryam.png" alt="pfp" class="testimonial-pfp">
+                                <div class="text-side-testimonial">
+                                    <p class="tes-title">Maryam</p>
+                                    <p class="tes-text">I never though I needed designs done for me, but these ones
+                                        proved me wrong</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-box">
+                            <div class="testimonial-box-holder">
+                                <img src="images/pfps/farseen.png" alt="pfp" class="testimonial-pfp">
+                                <div class="text-side-testimonial">
+                                    <p class="tes-title">Farseen</p>
+                                    <p class="tes-text">Just awesome work man! Appreciate how much time you put into
+                                        this to make it perfect</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-box">
+                            <div class="testimonial-box-holder">
+                                <img src="images/pfps/clay.png" alt="pfp" class="testimonial-pfp">
+                                <div class="text-side-testimonial">
+                                    <p class="tes-title">Clay</p>
+                                    <p class="tes-text">I loved the designs, the quality is out from this world, truly
+                                        thankyou!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
 
         <div class="web-side-container">
 
             <div class="main-website-container">
-                <img src="images/example-web.png" alt="website" class="web-img">
+                <img src="images/websites/Porsche.png" alt="website" class="web-img">
+                <img src="images/websites/99tweets.png" alt="website" class="web-img">
+                <img src="images/websites/Woodling.png" alt="website" class="web-img">
+                <img src="images/websites/Outlined.png" alt="website" class="web-img">
+                <img src="images/websites/Moon.png" alt="website" class="web-img">
+                <img src="images/websites/Outride.png" alt="website" class="web-img">
+                <img src="images/websites/Ferony.png" alt="website" class="web-img">
+                <img src="images/websites/Growthview.png" alt="website" class="web-img">
             </div>
 
             <div class="little-website-boxes-container">
-                
+
                 <div class="web-boxes-container">
                     <div class="web-box">
-                        <img src="images/example-web.png" alt="website" class="tiny-web">
+                        <img src="images/websites/mini/Porsche.png" alt="website" class="tiny-web">
                     </div>
                     <div class="web-box">
-                        <img src="images/example-web.png" alt="website" class="tiny-web">
+                        <img src="images/websites/mini/99tweets.png" alt="website" class="tiny-web">
                     </div>
                 </div>
 
                 <div class="web-boxes-container">
                     <div class="web-box">
-                        <img src="images/example-web.png" alt="website" class="tiny-web">
+                        <img src="images/websites/mini/Woodling.png" alt="website" class="tiny-web">
                     </div>
                     <div class="web-box">
-                        <img src="images/example-web.png" alt="website" class="tiny-web">
+                        <img src="images/websites/mini/Outlined.png" alt="website" class="tiny-web">
+                    </div>
+                </div>
+
+                <div class="web-boxes-container">
+                    <div class="web-box">
+                        <img src="images/websites/mini/Moon.png" alt="website" class="tiny-web">
+                    </div>
+                    <div class="web-box">
+                        <img src="images/websites/mini/Outride.png" alt="website" class="tiny-web">
+                    </div>
+                </div>
+
+                <div class="web-boxes-container">
+                    <div class="web-box">
+                        <img src="images/websites/mini/Ferony.png" alt="website" class="tiny-web">
+                    </div>
+                    <div class="web-box">
+                        <img src="images/websites/mini/Growthview.png" alt="website" class="tiny-web">
                     </div>
                 </div>
 
@@ -268,21 +436,22 @@
 
                     <div class="legal-side">
                         <h5 id="clock" class="about-text"></h5>
-                        <h5 style="color: var(--gray2);">© <span id="year"></span> AWeb. All rights reserved</h5>
+                        <h5 style="color: var(--gray2);">© <span id="year"></span> AWeb. <span class="dissapear-400">All
+                                rights reserved</span></h5>
                     </div>
 
                     <div class="contacts-holder">
                         <a href="https://x.com/AugustasWeb/" class="contact-icon" target="_blank">
-                          <img src="https://augustas.co/images/svgs/twitter-icon.svg" alt="icon">
+                            <img src="https://augustas.co/images/svgs/twitter-icon.svg" alt="icon">
                         </a>
                         <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hello@augustas.co" class="contact-icon"
-                          target="_blank">
-                          <img src="https://augustas.co/images/svgs/email-icon.svg" alt="icon">
+                            target="_blank">
+                            <img src="https://augustas.co/images/svgs/email-icon.svg" alt="icon">
                         </a>
                         <a href="https://www.linkedin.com/in/augustas-web/" class="contact-icon" target="_blank">
-                          <img src="https://augustas.co/images/svgs/linkedin-icon.svg" alt="icon">
+                            <img src="https://augustas.co/images/svgs/linkedin-icon.svg" alt="icon">
                         </a>
-                      </div>
+                    </div>
 
                 </div>
 
@@ -292,9 +461,8 @@
 
 
 
-
-    
     <script src="script.js"></script>
 
 </body>
+
 </html>

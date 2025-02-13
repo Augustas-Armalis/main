@@ -1,86 +1,107 @@
-  html,body {
-    scroll-behavior: smooth;
-    scroll-padding-top: 10rem;
-    font-family: 'SF Pro Display Regular';
-    background-color: var(--black);
-    color: var(--white);
-    overflow-x: hidden;
-    width: 100%;
-    transition: all 0.3s ease;
-  }
-  
-  img,
-  video {
-    pointer-events: none;
-  }
-  
-  * {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-font-smoothing: inherit;
-  }
-  
-  input,
-  textarea,
-  button,
-  select,
-  a {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  }
-  
-  a:focus,
-  a:visited,
-  a:active {
-    outline: none;
-  }
-  
-  img::selection {
-    background-color: rgba(0, 0, 0, 0);
-  }
-  
-  ::selection {
-    background-color: hsla(240, 2%, 90%, 0.1);
-  }
-  
-  ::-moz-selection {
-    background-color: hsla(240, 2%, 90%, 0.1);
-  }
-  
-  @font-face {
-    font-family: 'SF Pro Display Regular';
-    font-weight: 400;
-    src: url('https://augustas.co/fonts//Sf\ Pro\ Display\ REGULAR.OTF') format('truetype');
-  }
-  
-  @font-face {
-    font-family: 'SF Pro Display Medium';
-    font-weight: 500;
-    src: url('https://augustas.co/fonts/Sf\ Pro\ Display\ MEDIUM.OTF') format('truetype');
-  }
-  
-  @font-face {
-    font-family: 'SF Pro Display Bold';
-    font-weight: 700;
-    src: url('https://augustas.co/fonts/Sf\ Pro\ Display\ BOLD.OTF') format('truetype');
-  }
-  
-  :root {
-    --font-regular: 400;
-    --font-medium: 500;
-    --font-bold: 700;
-  
-    --ff-regular: 'SF Pro Display Regular', arial;
-    --ff-medium: 'SF Pro Display Medium', arial;
-    --ff-bold: 'SF Pro Display Bold', arial;
-  
-    --white: hsla(0, 0%, 100%, 1);
-    --gray1: hsla(235, 5%, 70%, 1);
-    --gray2: hsla(235, 5%, 35%, 1);
-    --gray5: hsla(235, 5%, 6%, 1);
-    --black: hsla(0, 0%, 0%, 1);
-  }
+html,
+body {
+  scroll-behavior: smooth;
+  scroll-padding-top: 10rem;
+  font-family: 'SF Pro Display Regular';
+  background-color: var(--black);
+  color: var(--white);
+  overflow-x: hidden;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+img,
+video {
+  pointer-events: none;
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: inherit;
+}
+
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a:focus,
+a:visited,
+a:active {
+  outline: none;
+}
+
+img::selection {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+::selection {
+  background-color: hsla(240, 2%, 90%, 0.1);
+}
+
+::-moz-selection {
+  background-color: hsla(240, 2%, 90%, 0.1);
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--black);
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--gray2);
+  border-radius: 99px;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--gray1);
+  transition: all 0.3s ease;
+}
+
+@font-face {
+  font-family: 'SF Pro Display Regular';
+  font-weight: 400;
+  src: url('https://augustas.co/fonts//Sf\ Pro\ Display\ REGULAR.OTF') format('truetype');
+}
+
+@font-face {
+  font-family: 'SF Pro Display Medium';
+  font-weight: 500;
+  src: url('https://augustas.co/fonts/Sf\ Pro\ Display\ MEDIUM.OTF') format('truetype');
+}
+
+@font-face {
+  font-family: 'SF Pro Display Bold';
+  font-weight: 700;
+  src: url('https://augustas.co/fonts/Sf\ Pro\ Display\ BOLD.OTF') format('truetype');
+}
+
+:root {
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-bold: 700;
+
+  --ff-regular: 'SF Pro Display Regular', arial;
+  --ff-medium: 'SF Pro Display Medium', arial;
+  --ff-bold: 'SF Pro Display Bold', arial;
+
+  --white: hsla(0, 0%, 100%, 1);
+  --gray1: hsla(235, 5%, 70%, 1);
+  --gray2: hsla(235, 5%, 35%, 1);
+  --gray5: hsla(235, 5%, 6%, 1);
+  --black: hsla(0, 0%, 0%, 1);
+}
 
 /* ------------------------------------- */
 
@@ -103,13 +124,14 @@
   color: var(--white);
 }
 
-.dissaper-to-designer,
+.dissapear-to-designer,
 .dissapear-to-home {
   opacity: 0;
   transition: opacity 0.2s ease;
+  position: relative;
 }
 
-.tes-title{
+.tes-title {
   font-family: var(--ff-medium);
   font-weight: var(--font-medium);
   color: var(--white);
@@ -118,11 +140,11 @@
   transition: all 0.1s ease;
 }
 
-.text-side-testimonial{
+.text-side-testimonial {
   transition: all 0.1s ease;
 }
 
-.tes-text{
+.tes-text {
   font-family: var(--ff-regular);
   font-weight: var(--font-regular);
   color: var(--gray1);
@@ -130,7 +152,7 @@
   transition: all 0.1s ease;
 }
 
-.main-title{
+.main-title {
   font-family: var(--ff-medium);
   font-weight: var(--font-medium);
   font-size: 32px;
@@ -139,7 +161,7 @@
   transition: all 0.1s ease;
 }
 
-.main-alt{
+.main-alt {
   font-family: var(--ff-regular);
   font-weight: var(--font-regular);
   color: var(--gray1);
@@ -149,7 +171,7 @@
   transition: all 0.1s ease;
 }
 
-.figma-text{
+.figma-text {
   font-family: var(--ff-regular);
   font-weight: var(--font-regular);
   font-size: 14px;
@@ -157,7 +179,7 @@
   transition: all 0.1s ease;
 }
 
-.cta-text{
+.cta-text {
   font-family: var(--ff-medium);
   font-weight: var(--font-medium);
   font-size: 18px;
@@ -165,14 +187,14 @@
   transition: all 0.1s ease;
 }
 
-.black-cta-text{
+.black-cta-text {
   font-family: var(--ff-regular);
   font-weight: var(--font-regular);
   color: var(--white);
   transition: all 0.1s ease;
 }
 
-.about-text{
+.about-text {
   font-family: var(--ff-regular);
   font-weight: var(--font-regular);
   font-size: 16px;
@@ -197,12 +219,12 @@
   flex-shrink: 0;
 }
 
-.dissaper-to-designer{
+.dissaper-to-designer {
   width: 100%;
   height: fit-content;
 }
 
-.dissaper-to-designer:before{
+.dissaper-to-designer:before {
   content: "";
   position: absolute;
   width: 100%;
@@ -225,7 +247,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 42px;
 }
 
 .nav-item-holder {
@@ -242,7 +263,7 @@
   transition: all 0.3s ease;
 }
 
-.mode-switch-holder:hover{
+.mode-switch-holder:hover {
   opacity: 100%;
 }
 
@@ -268,22 +289,27 @@
 .moon {
   display: none;
   opacity: 0;
-  transform: rotate(-30deg); /* Start rotated -30deg */
-  filter: brightness(100%); /* Start at full brightness */
+  transform: rotate(-30deg);
+  /* Start rotated -30deg */
+  filter: brightness(100%);
+  /* Start at full brightness */
 }
 
 /* Hidden state for sun */
 .sun.hidden {
   opacity: 0;
-  transform: rotate(180deg); /* Sun rotates 180deg when hiding */
+  transform: rotate(180deg);
+  /* Sun rotates 180deg when hiding */
 }
 
 /* Visible state for moon */
 .moon.visible {
   display: block;
   opacity: 1;
-  transform: rotate(0deg); /* Moon rotates to 0deg when showing */
-  filter: brightness(20%); /* Moon fades in with reduced brightness */
+  transform: rotate(0deg);
+  /* Moon rotates to 0deg when showing */
+  filter: brightness(20%);
+  /* Moon fades in with reduced brightness */
 }
 
 /* Dark Mode Styles */
@@ -311,6 +337,7 @@
   border-radius: 99px;
   margin-bottom: 12px;
   transition: background-color 0.3s ease;
+  margin-top: 42px;
 }
 
 .main-cta-button {
@@ -325,14 +352,14 @@
   background-color: var(--gray1);
 }
 
-.black-cta{
+.black-cta {
   background-color: var(--black);
   color: var(--white);
   border: 1px solid var(--gray2);
   transition: all 0.3s ease;
 }
 
-.black-cta:hover{
+.black-cta:hover {
   border: 1px solid var(--gray1);
   background-color: var(--black);
 }
@@ -360,11 +387,11 @@
 .scroller-wrapper {
   position: absolute;
   width: 100%;
-  animation: scroll 16s linear infinite;
+  animation: scroll 50s linear infinite;
   transition: all 0.1s ease;
 }
 
-.scroller-wrapper:hover {
+.scroller-wrapper:active {
   animation-play-state: paused;
 }
 
@@ -397,6 +424,7 @@
   0% {
     transform: translateY(0);
   }
+
   100% {
     transform: translateY(-50%);
   }
@@ -461,14 +489,15 @@
   border-radius: 12px;
 }
 
-.augustas-image{
+.augustas-image {
   width: 100%;
   height: auto;
   border-radius: 17px;
   margin-bottom: 16px;
+  margin-top: 16px;
 }
 
-.below-text-about-container{
+.below-text-about-container {
   background-color: var(--gray5);
   width: 100%;
   height: fit-content;
@@ -487,7 +516,7 @@
   align-items: center;
 }
 
-.legal-side{
+.legal-side {
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -507,4 +536,116 @@
 
 .contact-icon:hover {
   filter: brightness(200%);
+}
+
+@media (max-width: 1239px) {
+  .tiny-web {
+    width: calc(100% - 64px);
+  }
+}
+
+@media (max-width: 1000px) {
+  .web-boxes-container {
+    flex-direction: column;
+  }
+
+  .web-box {
+    flex: 1;
+    border-radius: 17px;
+    height: fit-content;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tiny-web {
+    position: relative;
+    width: 100%;
+    height: auto;
+    top: 0;
+    left: 0;
+    transform: none;
+    margin: 0;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 824px) {
+  .content-holder {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .title-side-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 16px;
+    height: fit-content;
+  }
+
+  .web-boxes-container {
+    flex-direction: row;
+  }
+
+  .web-box {
+    background-color: var(--gray5);
+    flex: 1;
+    border-radius: 17px;
+    padding-top: 50%;
+    height: fit-content;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tiny-web {
+    position: absolute;
+    width: calc(100% - 64px);
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    border-radius: 12px;
+  }
+
+  .infinite-scroller-container {
+    width: 100%;
+    height: 264px;
+  }
+
+  .scroller-wrapper {
+    animation: scroll 70s linear infinite;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .web-boxes-container {
+    flex-direction: column;
+  }
+
+  .web-box {
+    padding-top: 0;
+    aspect-ratio: 1 / 1;
+  }
+
+  .tiny-web {
+    width: calc(100% - 64px);
+  }
+}
+
+@media (max-width: 400px) {
+  .dissapear-400 {
+    display: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .tiny-web {
+    width: calc(100% - 36px);
+  }
 }
