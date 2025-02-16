@@ -101,6 +101,17 @@ img::selection {
   --gray2: hsla(235, 5%, 35%, 1);
   --gray5: hsla(235, 5%, 6%, 1);
   --black: hsla(0, 0%, 0%, 1);
+  --black-tr: hsla(0, 0%, 0%, 0.6);
+}
+
+.dark-mode {
+  --white: hsla(0, 0%, 0%, 1);
+  --gray1: hsla(240, 4%, 50%, 1);
+  --gray5: hsla(240, 11%, 96%, 1);
+  --black: hsla(0, 0%, 100%, 1);
+  background-color: var(--black);
+  color: var(--white);
+  --black-tr: hsla(0, 0%, 100%, 0.6);
 }
 
 /* ------------------------------------- */
@@ -214,11 +225,6 @@ img::selection {
   flex-direction: row;
 }
 
-.to-make-it-sticky-on-desktop {
-  width: 388px;
-  flex-shrink: 0;
-}
-
 .dissaper-to-designer {
   width: 100%;
   height: fit-content;
@@ -235,6 +241,12 @@ img::selection {
   z-index: 3;
 }
 
+.to-make-it-sticky-on-desktop {
+  width: 388px;
+  flex-shrink: 0;
+  display: block;
+}
+
 .title-side-container {
   height: calc(100vh - 32px);
   width: 388px;
@@ -247,6 +259,18 @@ img::selection {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.nav-bar-fixation{
+  position: fixed;
+  width: 420px;
+  z-index: 999;
+  background-color: var(--black-tr);
+  backdrop-filter: blur(20px);
+  padding: 16px 16px 12px 16px;
+  top:0;
+  left: 0;
+  transition: all 0.3s ease;
 }
 
 .nav-item-holder {
@@ -273,8 +297,6 @@ img::selection {
   transition: 0.3s ease all;
 }
 
-
-/* Base styles for sun and moon */
 .sun,
 .moon {
   transition: opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease;
@@ -290,36 +312,19 @@ img::selection {
   display: none;
   opacity: 0;
   transform: rotate(-30deg);
-  /* Start rotated -30deg */
   filter: brightness(100%);
-  /* Start at full brightness */
 }
 
-/* Hidden state for sun */
 .sun.hidden {
   opacity: 0;
   transform: rotate(180deg);
-  /* Sun rotates 180deg when hiding */
 }
 
-/* Visible state for moon */
 .moon.visible {
   display: block;
   opacity: 1;
   transform: rotate(0deg);
-  /* Moon rotates to 0deg when showing */
   filter: brightness(20%);
-  /* Moon fades in with reduced brightness */
-}
-
-/* Dark Mode Styles */
-.dark-mode {
-  --white: hsla(0, 0%, 0%, 1);
-  --gray1: hsla(240, 4%, 50%, 1);
-  --gray5: hsla(240, 11%, 96%, 1);
-  --black: hsla(0, 0%, 100%, 1);
-  background-color: var(--black);
-  color: var(--white);
 }
 
 .main-title-holder {
@@ -337,7 +342,7 @@ img::selection {
   border-radius: 99px;
   margin-bottom: 12px;
   transition: background-color 0.3s ease;
-  margin-top: 42px;
+  margin-top: 76px;
 }
 
 .main-cta-button {
@@ -494,7 +499,7 @@ img::selection {
   height: auto;
   border-radius: 17px;
   margin-bottom: 16px;
-  margin-top: 16px;
+  margin-top: 42px;
 }
 
 .below-text-about-container {

@@ -56,6 +56,12 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 200);
       homeBtn.classList.add("active");
       designerBtn.classList.remove("active");
+  
+      if (window.innerWidth > 1000) {
+        document.querySelector(".title-side-container").style.position = "fixed";
+        document.querySelector(".title-side-container").style.overflow = "hidden";
+        document.querySelector(".to-make-it-sticky-on-desktop").style.display = "block";
+      }
     } else {
       homeContent.style.opacity = "0";
       setTimeout(() => {
@@ -65,8 +71,15 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 200);
       designerBtn.classList.add("active");
       homeBtn.classList.remove("active");
+  
+      if (window.innerWidth > 1000) {
+        document.querySelector(".title-side-container").style.position = "relative";
+        document.querySelector(".title-side-container").style.overflow = "visible";
+        document.querySelector(".to-make-it-sticky-on-desktop").style.display = "none";
+      }
     }
   }
+  
 
   homeBtn.addEventListener("click", () => setActive("home"));
   designerBtn.addEventListener("click", () => setActive("designer"));
